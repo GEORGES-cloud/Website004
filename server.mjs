@@ -59,9 +59,101 @@ app.use(
 // Healthcheck simple para despliegues.
 app.get('/api/health', (_req, res) => res.json({ ok: true, ts: Date.now() }));
 
+// --- Formulario de presupuesto → correo a Luxor ---------------------------------
+// Necesita el paquete nodemailer y SMTP_USER / SMTP_PASS en las variables de entorno
+// de hPanel (el buzón desde el que se envía). Si falta cualquiera de los dos responde
+// 503 y la página ofrece al visitante mandar los mismos datos por WhatsApp.
+// No se guarda ni se escribe en el log ningún dato personal.
+const MAIL_TO = process.env.MAIL_TO || 'info@luxormarbella.com';
+const SMTP = {
+  host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+  port: Number(process.env.SMTP_PORT || 465),
+  user: process.env.SMTP_USER,
+  pass: process.env.SMTP_PASS,
+};
+// Import dinámico: server.mjs se sube por FTP y las dependencias solo se instalan al
+// redesplegar desde hPanel; con un import normal, si faltara el módulo la web se caería.
+const nodemailer = await import('nodemailer').then((m) => m.default, () => null);
+const correo =
+  nodemailer && SMTP.user && SMTP.pass
+    ? nodemailer.createTransport({
+        host: SMTP.host,
+        port: SMTP.port,
+        secure: SMTP.port === 465,
+        auth: { user: SMTP.user, pass: SMTP.pass },
+      })
+    : null;
+
+// Tope de envíos por IP. Holgado a propósito: detrás de la CDN varias personas pueden
+// compartir IP, y a quien se le corta le sigue quedando el enlace de WhatsApp.
+const LIMITE = 20;
+const VENTANA = 10 * 60 * 1000;
+const envios = new Map();
+function demasiados(ip) {
+  const ahora = Date.now();
+  const recientes = (envios.get(ip) || []).filter((t) => ahora - t < VENTANA);
+  recientes.push(ahora);
+  if (envios.size > 5000) envios.clear();
+  envios.set(ip, recientes);
+  return recientes.length > LIMITE;
+}
+
+// Sin saltos de línea: estos valores acaban en el asunto y en el Reply-To del correo.
+const limpio = (v, max) => String(v ?? '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, max);
+
+app.post('/api/presupuesto', express.json({ limit: '10kb' }), async (req, res) => {
+  const b = req.body || {};
+  // Campo trampa relleno = bot. Se le responde que sí para que no insista.
+  if (b.web) return res.json({ ok: true });
+  if (demasiados(req.ip)) return res.status(429).json({ ok: false, error: 'Demasiadas solicitudes' });
+
+  const nombre = limpio(b.nombre, 100);
+  const telefono = limpio(b.telefono, 30);
+  const cp = limpio(b.cp, 12);
+  const servicio = limpio(b.servicio, 60);
+  const email = limpio(b.email, 150);
+  const telOk = /^[+\d][\d\s().-]{5,}$/.test(telefono);
+  const emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!nombre || !telOk || !cp || !servicio || !emailOk) {
+    return res.status(400).json({ ok: false, error: 'Datos incompletos' });
+  }
+  if (!correo) return res.status(503).json({ ok: false, error: 'Correo no configurado' });
+
+  try {
+    await correo.sendMail({
+      from: `"Web Luxor Marbella" <${SMTP.user}>`,
+      to: MAIL_TO,
+      replyTo: email || undefined,
+      subject: `Solicitud de presupuesto · ${servicio} · ${nombre}`,
+      text: [
+        'Nueva solicitud de presupuesto desde luxormarbella.com',
+        '',
+        `Nombre:         ${nombre}`,
+        `Teléfono:       ${telefono}`,
+        `Código postal:  ${cp}`,
+        `E-mail:         ${email || '(no indicado)'}`,
+        `Servicio:       ${servicio}`,
+        '',
+        'Acepta la política de privacidad y ser contactado: sí',
+        `Acepta comunicaciones comerciales: ${b.comercial === true ? 'sí' : 'no'}`,
+      ].join('\n'),
+    });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('presupuesto: no se pudo enviar el correo:', err.code || err.message);
+    res.status(502).json({ ok: false, error: 'No se pudo enviar' });
+  }
+});
+
 // Ruta desconocida → 404 real (no la portada con 200).
 app.use((_req, res) => {
   res.status(404).type('text/plain; charset=utf-8').send('404 · Página no encontrada');
+});
+
+// Un JSON malformado en el POST no debe devolver la traza del servidor.
+app.use((err, _req, res, _next) => {
+  console.error(err.message);
+  res.status(err.status || 500).json({ ok: false, error: 'Solicitud no válida' });
 });
 
 // Escuchamos en 0.0.0.0 para que el proxy del hosting pueda alcanzar la app.

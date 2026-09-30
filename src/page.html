@@ -204,7 +204,8 @@ html.js .rv.in{opacity:1;transform:none}
 .qf-error{margin:.9rem 0 0;text-align:center;font-size:.85rem;color:#7A1F0A;font-weight:500}
 .qf-done{max-width:640px;margin-inline:auto;text-align:center;display:flex;flex-direction:column;gap:.85rem}
 .qf-done p{margin:0;color:#4A3A2A;line-height:1.5}
-.qf-done .demo{font-size:.76rem;padding-top:.9rem;border-top:1px dashed rgba(30,30,30,.3)}
+.qf-error a{color:inherit}
+.qf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 @media (max-width:900px){.qf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.qf-grid{grid-template-columns:minmax(0,1fr)}}
 
@@ -324,7 +325,7 @@ html.js .rv.in{opacity:1;transform:none}
       <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
     </a>
     <div class="mh-right">
-      <a class="pill pill-call" href="tel:+34900000000">¡Llámanos! 900 000 000</a>
+      <a class="pill pill-call" href="tel:+34603605543">¡Llámanos! 603 60 55 43</a>
       <a class="pill pill-deep" href="#presupuesto">Solicitar presupuesto</a>
       <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
         <span></span><span></span><span></span>
@@ -368,7 +369,7 @@ html.js .rv.in{opacity:1;transform:none}
         <li><a href="#nosotros">Quiénes somos</a></li>
         <li><a href="#valoraciones">Valoraciones</a></li>
         <li><a href="#detalle">Cómo trabajamos</a></li>
-        <li><a href="tel:+34900000000">900 000 000</a></li>
+        <li><a href="tel:+34603605543">603 60 55 43</a></li>
       </ul>
     </div>
   </div>
@@ -430,6 +431,9 @@ html.js .rv.in{opacity:1;transform:none}
         </label>
       </div>
 
+      <!-- trampa para bots: las personas no ven ni rellenan este campo -->
+      <div class="qf-hp" aria-hidden="true"><label>No rellenar <input id="f-web" type="text" tabindex="-1" autocomplete="off"></label></div>
+
       <div class="qf-consents">
         <label><input type="checkbox" id="f-ok" required><span>He leído y acepto la <a href="#privacidad">política de privacidad</a> y que Luxor me contacte para responder a mi solicitud de presupuesto.</span></label>
         <label><input type="checkbox" id="f-ok2"><span>Doy mi consentimiento para recibir comunicaciones comerciales de Luxor Marbella. (Opcional)</span></label>
@@ -442,7 +446,6 @@ html.js .rv.in{opacity:1;transform:none}
     <div class="qf-done" id="qf-done" hidden tabindex="-1">
       <h2 class="d3">Recibido, <span id="done-name">gracias</span>.</h2>
       <p>Te llamamos hoy mismo al teléfono que nos has dejado para concretar la visita y darte un precio cerrado.</p>
-      <p class="demo">Maqueta de diseño: en la web publicada este formulario enviará el aviso al correo de Luxor.</p>
     </div>
   </div>
 </section>
@@ -584,7 +587,7 @@ html.js .rv.in{opacity:1;transform:none}
     <h2 class="d2">¿Empezamos por tu casa?</h2>
     <div class="closer-actions">
       <a class="pill pill-terra pill-lg" href="#presupuesto">Solicitar presupuesto</a>
-      <a class="pill pill-lg" href="tel:+34900000000">900 000 000</a>
+      <a class="pill pill-lg" href="tel:+34603605543">603 60 55 43</a>
     </div>
   </div>
 </section>
@@ -622,9 +625,9 @@ html.js .rv.in{opacity:1;transform:none}
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li><a href="tel:+34900000000">900 000 000</a></li>
-          <li><a href="https://wa.me/34900000000">WhatsApp</a></li>
-          <li><a href="mailto:hola@luxormarbella.com">hola@luxormarbella.com</a></li>
+          <li><a href="tel:+34603605543">603 60 55 43</a></li>
+          <li><a href="https://wa.me/34603605543">WhatsApp</a></li>
+          <li><a href="mailto:info@luxormarbella.com">info@luxormarbella.com</a></li>
           <li>Lunes a viernes, 8:00 – 18:00</li>
         </ul>
       </div>
@@ -682,10 +685,40 @@ html.js .rv.in{opacity:1;transform:none}
       err.hidden = false; return;
     }
     err.hidden = true;
-    name.textContent = nombre.split(' ')[0];
-    form.hidden = true;
-    done.hidden = false;
-    done.focus();
+
+    // envio: el servidor lo manda por correo a Luxor (POST /api/presupuesto)
+    var btn = form.querySelector('button[type="submit"]');
+    var datos = {
+      nombre: nombre, telefono: tel, cp: cp, servicio: serv,
+      email: document.getElementById('f-mail').value.trim(),
+      comercial: document.getElementById('f-ok2').checked,
+      web: document.getElementById('f-web').value
+    };
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    fetch('/api/presupuesto', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos)
+    }).then(function(r){
+      if (!r.ok) throw new Error(r.status);
+      name.textContent = nombre.split(' ')[0];
+      form.hidden = true;
+      done.hidden = false;
+      done.focus();
+    }).catch(function(){
+      // si el correo falla, que la solicitud no se pierda: WhatsApp con los datos ya escritos
+      var a = document.createElement('a');
+      a.href = 'https://wa.me/34603605543?text=' + encodeURIComponent(
+        'Hola, quiero pedir presupuesto.\nNombre: ' + nombre + '\nTeléfono: ' + tel +
+        '\nCódigo postal: ' + cp + '\nServicio: ' + serv);
+      a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = 'Envíanoslo por WhatsApp';
+      err.textContent = 'No hemos podido enviar el formulario. ';
+      err.appendChild(a);
+      err.appendChild(document.createTextNode(' o llámanos al 603 60 55 43.'));
+      err.hidden = false;
+      btn.disabled = false; btn.textContent = 'Solicitar presupuesto';
+    });
   });
   // hero: pase de fotos. Cada panel avanza cada 6 s; el segundo arranca 3 s despues.
   var quiet = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
