@@ -45,8 +45,12 @@ async function intento(n) {
     const enApp = await nombres(c, APP);
     if (!enApp.includes('server.mjs') || !enApp.includes('public/')) {
       console.log(`::error::${APP} no parece la carpeta de la app (faltan server.mjs o public/). No se ha subido nada.`);
-      console.log(`::notice::Raiz del FTP: ${(await nombres(c, '/')).join('  ')}`);
-      console.log(`::notice::${APP}: ${enApp.join('  ')}`);
+      for (const dir of ['/', APP, '/public_html', '/hbuilds']) {
+        console.log(`::notice::${dir}: ${(await nombres(c, dir)).join('  ')}`);
+      }
+      for (const sub of (await nombres(c, '/hbuilds')).filter((n) => n.endsWith('/'))) {
+        console.log(`::notice::/hbuilds/${sub}: ${(await nombres(c, `/hbuilds/${sub}`)).join('  ')}`);
+      }
       return 'mal-mapeado';
     }
 
