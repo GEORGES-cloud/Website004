@@ -1,0 +1,21 @@
+node_modules/
+npm-debug.log*
+.DS_Store
+.env
+*.local
+
+# Generados por build.mjs (lo que se despliega es public/, que sí va al repo)
+/index.html
+/build/
+
+# Material de trabajo (no forma parte del sitio desplegable)
+photos/candidates/
+photos/sheets/
+photos/crops/
+photos/_*
+/*.png
+*.docx
+*.zip
+
+# Config local del editor/agente
+.claude/

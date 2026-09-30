@@ -1,0 +1,62 @@
+[
+  {
+    "slot": "hero-villa",
+    "index": 3,
+    "file": "1659122908014-277c678aaf24",
+    "metrics": "lum138 warm23 sat21"
+  },
+  {
+    "slot": "hero-equipo",
+    "index": 1,
+    "file": "1758272421995-e993f97fae22",
+    "metrics": "lum138 warm6 sat15"
+  },
+  {
+    "slot": "about-casa",
+    "index": 2,
+    "file": "1716078410207-20e223587181",
+    "metrics": "lum171 warm30 sat21"
+  },
+  {
+    "slot": "mantenimiento",
+    "index": 5,
+    "file": "1693985120993-e9b203ce7631",
+    "metrics": "lum194 warm7 sat9"
+  },
+  {
+    "slot": "limpieza",
+    "index": 5,
+    "file": "1778062868104-c2d4978e44a5",
+    "metrics": "lum177 warm39 sat24"
+  },
+  {
+    "slot": "reparaciones",
+    "index": 4,
+    "file": "1783587354869-de09cfffaf9a",
+    "metrics": "lum184 warm24 sat20"
+  },
+  {
+    "slot": "alquiler",
+    "index": 3,
+    "file": "1598928636135-d146006ff4be",
+    "metrics": "lum171 warm16 sat12"
+  },
+  {
+    "slot": "piscina",
+    "index": 3,
+    "file": "1781456016988-04806c42c260",
+    "metrics": "lum145 warm27 sat25"
+  },
+  {
+    "slot": "reformas",
+    "index": 5,
+    "file": "1722650273085-aaec64371306",
+    "metrics": "lum160 warm19 sat10"
+  },
+  {
+    "slot": "detalle-obra",
+    "index": 3,
+    "file": "1768839725085-829e6ac7ac26",
+    "metrics": "lum181 warm29 sat22"
+  }
+]

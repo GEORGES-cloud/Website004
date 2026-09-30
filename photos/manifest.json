@@ -1,0 +1,502 @@
+{
+  "hero-villa": [
+    {
+      "slug": "1524228461686-3de5d5289d09",
+      "color": "#a6a68c",
+      "score": 82,
+      "file": "photos/candidates/hero-villa/1524228461686-3de5d5289d09.jpg",
+      "url": "https://images.unsplash.com/photo-1524228461686-3de5d5289d09?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1524228461686-3de5d5289d09"
+    },
+    {
+      "slug": "1714894322178-ab18ee9c50fe",
+      "color": "#c0c0a6",
+      "score": 82,
+      "file": "photos/candidates/hero-villa/1714894322178-ab18ee9c50fe.jpg",
+      "url": "https://images.unsplash.com/photo-1714894322178-ab18ee9c50fe?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1714894322178-ab18ee9c50fe"
+    },
+    {
+      "slug": "1659122908014-277c678aaf24",
+      "color": "#a68c73",
+      "score": 82,
+      "file": "photos/candidates/hero-villa/1659122908014-277c678aaf24.jpg",
+      "url": "https://images.unsplash.com/photo-1659122908014-277c678aaf24?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1659122908014-277c678aaf24"
+    },
+    {
+      "slug": "1620320958515-9921cd495d0d",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/hero-villa/1620320958515-9921cd495d0d.jpg",
+      "url": "https://images.unsplash.com/photo-1620320958515-9921cd495d0d?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1620320958515-9921cd495d0d"
+    },
+    {
+      "slug": "1566760936002-d5cba38fe865",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/hero-villa/1566760936002-d5cba38fe865.jpg",
+      "url": "https://images.unsplash.com/photo-1566760936002-d5cba38fe865?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1566760936002-d5cba38fe865"
+    },
+    {
+      "slug": "1671739962797-15a02dc6668d",
+      "color": "#c0a68c",
+      "score": 58,
+      "file": "photos/candidates/hero-villa/1671739962797-15a02dc6668d.jpg",
+      "url": "https://images.unsplash.com/photo-1671739962797-15a02dc6668d?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1671739962797-15a02dc6668d"
+    }
+  ],
+  "hero-equipo": [
+    {
+      "slug": "1758273705627-937374bfa978",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/hero-equipo/1758273705627-937374bfa978.jpg",
+      "url": "https://images.unsplash.com/photo-1758273705627-937374bfa978?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758273705627-937374bfa978"
+    },
+    {
+      "slug": "1758272421751-963195322eaa",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/hero-equipo/1758272421751-963195322eaa.jpg",
+      "url": "https://images.unsplash.com/photo-1758272421751-963195322eaa?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758272421751-963195322eaa"
+    },
+    {
+      "slug": "1758273238415-01ec03d9ef27",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/hero-equipo/1758273238415-01ec03d9ef27.jpg",
+      "url": "https://images.unsplash.com/photo-1758273238415-01ec03d9ef27?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758273238415-01ec03d9ef27"
+    },
+    {
+      "slug": "1758273705723-26ef454252ce",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/hero-equipo/1758273705723-26ef454252ce.jpg",
+      "url": "https://images.unsplash.com/photo-1758273705723-26ef454252ce?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758273705723-26ef454252ce"
+    },
+    {
+      "slug": "1758272421995-e993f97fae22",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/hero-equipo/1758272421995-e993f97fae22.jpg",
+      "url": "https://images.unsplash.com/photo-1758272421995-e993f97fae22?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758272421995-e993f97fae22"
+    },
+    {
+      "slug": "1758272422189-b10f36fd4ddd",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/hero-equipo/1758272422189-b10f36fd4ddd.jpg",
+      "url": "https://images.unsplash.com/photo-1758272422189-b10f36fd4ddd?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758272422189-b10f36fd4ddd"
+    }
+  ],
+  "about-casa": [
+    {
+      "slug": "1631679706909-1844bbd07221",
+      "color": "#d9d9c0",
+      "score": 82,
+      "file": "photos/candidates/about-casa/1631679706909-1844bbd07221.jpg",
+      "url": "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1631679706909-1844bbd07221"
+    },
+    {
+      "slug": "1745429523617-0d837856ca35",
+      "color": "#a68c8c",
+      "score": 82,
+      "file": "photos/candidates/about-casa/1745429523617-0d837856ca35.jpg",
+      "url": "https://images.unsplash.com/photo-1745429523617-0d837856ca35?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1745429523617-0d837856ca35"
+    },
+    {
+      "slug": "1716078410207-20e223587181",
+      "color": "#d9c0c0",
+      "score": 82,
+      "file": "photos/candidates/about-casa/1716078410207-20e223587181.jpg",
+      "url": "https://images.unsplash.com/photo-1716078410207-20e223587181?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1716078410207-20e223587181"
+    },
+    {
+      "slug": "1762544968153-b9b47435fefd",
+      "color": "#c0c0a6",
+      "score": 82,
+      "file": "photos/candidates/about-casa/1762544968153-b9b47435fefd.jpg",
+      "url": "https://images.unsplash.com/photo-1762544968153-b9b47435fefd?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1762544968153-b9b47435fefd"
+    },
+    {
+      "slug": "1678762200388-51e11225d4de",
+      "color": "#a68c73",
+      "score": 82,
+      "file": "photos/candidates/about-casa/1678762200388-51e11225d4de.jpg",
+      "url": "https://images.unsplash.com/photo-1678762200388-51e11225d4de?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1678762200388-51e11225d4de"
+    },
+    {
+      "slug": "1723901831135-782c98d8d8e0",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/about-casa/1723901831135-782c98d8d8e0.jpg",
+      "url": "https://images.unsplash.com/photo-1723901831135-782c98d8d8e0?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1723901831135-782c98d8d8e0"
+    }
+  ],
+  "mantenimiento": [
+    {
+      "slug": "1674376360445-2996327553e7",
+      "color": "#c0c0a6",
+      "score": 82,
+      "file": "photos/candidates/mantenimiento/1674376360445-2996327553e7.jpg",
+      "url": "https://images.unsplash.com/photo-1674376360445-2996327553e7?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1674376360445-2996327553e7"
+    },
+    {
+      "slug": "1674376360441-356d1d9b48eb",
+      "color": "#c0c0a6",
+      "score": 82,
+      "file": "photos/candidates/mantenimiento/1674376360441-356d1d9b48eb.jpg",
+      "url": "https://images.unsplash.com/photo-1674376360441-356d1d9b48eb?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1674376360441-356d1d9b48eb"
+    },
+    {
+      "slug": "1599619585752-c3edb42a414c",
+      "color": "#a6a6a6",
+      "score": 79,
+      "file": "photos/candidates/mantenimiento/1599619585752-c3edb42a414c.jpg",
+      "url": "https://images.unsplash.com/photo-1599619585752-c3edb42a414c?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1599619585752-c3edb42a414c"
+    },
+    {
+      "slug": "1652829069862-87874e119527",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/mantenimiento/1652829069862-87874e119527.jpg",
+      "url": "https://images.unsplash.com/photo-1652829069862-87874e119527?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1652829069862-87874e119527"
+    },
+    {
+      "slug": "1688372199140-cade7ae820fe",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/mantenimiento/1688372199140-cade7ae820fe.jpg",
+      "url": "https://images.unsplash.com/photo-1688372199140-cade7ae820fe?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1688372199140-cade7ae820fe"
+    },
+    {
+      "slug": "1693985120993-e9b203ce7631",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/mantenimiento/1693985120993-e9b203ce7631.jpg",
+      "url": "https://images.unsplash.com/photo-1693985120993-e9b203ce7631?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1693985120993-e9b203ce7631"
+    }
+  ],
+  "limpieza": [
+    {
+      "slug": "1778062868104-c2d4978e44a5",
+      "color": "#d9d9c0",
+      "score": 82,
+      "file": "photos/candidates/limpieza/1778062868104-c2d4978e44a5.jpg",
+      "url": "https://images.unsplash.com/photo-1778062868104-c2d4978e44a5?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1778062868104-c2d4978e44a5"
+    },
+    {
+      "slug": "1554995207-c18c203602cb",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/limpieza/1554995207-c18c203602cb.jpg",
+      "url": "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1554995207-c18c203602cb"
+    },
+    {
+      "slug": "1758273238506-d6cca51665e5",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/limpieza/1758273238506-d6cca51665e5.jpg",
+      "url": "https://images.unsplash.com/photo-1758273238506-d6cca51665e5?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758273238506-d6cca51665e5"
+    },
+    {
+      "slug": "1758273238564-806f750a2cce",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/limpieza/1758273238564-806f750a2cce.jpg",
+      "url": "https://images.unsplash.com/photo-1758273238564-806f750a2cce?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1758273238564-806f750a2cce"
+    },
+    {
+      "slug": "1683141219653-fc199f8ae98f",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/limpieza/1683141219653-fc199f8ae98f.jpg",
+      "url": "https://images.unsplash.com/photo-1683141219653-fc199f8ae98f?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1683141219653-fc199f8ae98f"
+    },
+    {
+      "slug": "1729173078273-3ee243b9273b",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/limpieza/1729173078273-3ee243b9273b.jpg",
+      "url": "https://images.unsplash.com/photo-1729173078273-3ee243b9273b?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1729173078273-3ee243b9273b"
+    }
+  ],
+  "reparaciones": [
+    {
+      "slug": "1783587354869-de09cfffaf9a",
+      "color": "#d9d9c0",
+      "score": 82,
+      "file": "photos/candidates/reparaciones/1783587354869-de09cfffaf9a.jpg",
+      "url": "https://images.unsplash.com/photo-1783587354869-de09cfffaf9a?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1783587354869-de09cfffaf9a"
+    },
+    {
+      "slug": "1780385187605-7324343d3f76",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/reparaciones/1780385187605-7324343d3f76.jpg",
+      "url": "https://images.unsplash.com/photo-1780385187605-7324343d3f76?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1780385187605-7324343d3f76"
+    },
+    {
+      "slug": "1562259929-b4e1fd3aef09",
+      "color": "#f3f3f3",
+      "score": 57,
+      "file": "photos/candidates/reparaciones/1562259929-b4e1fd3aef09.jpg",
+      "url": "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1562259929-b4e1fd3aef09"
+    },
+    {
+      "slug": "1584677191047-38f48d0db64e",
+      "color": "#f3f3f3",
+      "score": 57,
+      "file": "photos/candidates/reparaciones/1584677191047-38f48d0db64e.jpg",
+      "url": "https://images.unsplash.com/photo-1584677191047-38f48d0db64e?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1584677191047-38f48d0db64e"
+    },
+    {
+      "slug": "1763798816055-9a03df62bd65",
+      "color": "#f3f3f3",
+      "score": 57,
+      "file": "photos/candidates/reparaciones/1763798816055-9a03df62bd65.jpg",
+      "url": "https://images.unsplash.com/photo-1763798816055-9a03df62bd65?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1763798816055-9a03df62bd65"
+    },
+    {
+      "slug": "1783587616539-39bdab1a608f",
+      "color": "#f3f3f3",
+      "score": 57,
+      "file": "photos/candidates/reparaciones/1783587616539-39bdab1a608f.jpg",
+      "url": "https://images.unsplash.com/photo-1783587616539-39bdab1a608f?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1783587616539-39bdab1a608f"
+    }
+  ],
+  "alquiler": [
+    {
+      "slug": "1598928636135-d146006ff4be",
+      "color": "#c0a6a6",
+      "score": 82,
+      "file": "photos/candidates/alquiler/1598928636135-d146006ff4be.jpg",
+      "url": "https://images.unsplash.com/photo-1598928636135-d146006ff4be?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1598928636135-d146006ff4be"
+    },
+    {
+      "slug": "1560185128-e173042f79dd",
+      "color": "#a68c73",
+      "score": 82,
+      "file": "photos/candidates/alquiler/1560185128-e173042f79dd.jpg",
+      "url": "https://images.unsplash.com/photo-1560185128-e173042f79dd?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1560185128-e173042f79dd"
+    },
+    {
+      "slug": "1560184897-502a475f7a0d",
+      "color": "#a6a68c",
+      "score": 82,
+      "file": "photos/candidates/alquiler/1560184897-502a475f7a0d.jpg",
+      "url": "https://images.unsplash.com/photo-1560184897-502a475f7a0d?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1560184897-502a475f7a0d"
+    },
+    {
+      "slug": "1588946355955-8ad8dc42ce49",
+      "color": "#d9d9c0",
+      "score": 82,
+      "file": "photos/candidates/alquiler/1588946355955-8ad8dc42ce49.jpg",
+      "url": "https://images.unsplash.com/photo-1588946355955-8ad8dc42ce49?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1588946355955-8ad8dc42ce49"
+    },
+    {
+      "slug": "1631048501786-4e97f20eac71",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/alquiler/1631048501786-4e97f20eac71.jpg",
+      "url": "https://images.unsplash.com/photo-1631048501786-4e97f20eac71?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1631048501786-4e97f20eac71"
+    },
+    {
+      "slug": "1634208006171-6713e0c9a25e",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/alquiler/1634208006171-6713e0c9a25e.jpg",
+      "url": "https://images.unsplash.com/photo-1634208006171-6713e0c9a25e?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1634208006171-6713e0c9a25e"
+    }
+  ],
+  "piscina": [
+    {
+      "slug": "1787868377879-98168d69cfe2",
+      "color": "#d9d9d9",
+      "score": 79,
+      "file": "photos/candidates/piscina/1787868377879-98168d69cfe2.jpg",
+      "url": "https://images.unsplash.com/photo-1787868377879-98168d69cfe2?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1787868377879-98168d69cfe2"
+    },
+    {
+      "slug": "1781456016988-04806c42c260",
+      "color": "#f3f3f3",
+      "score": 57,
+      "file": "photos/candidates/piscina/1781456016988-04806c42c260.jpg",
+      "url": "https://images.unsplash.com/photo-1781456016988-04806c42c260?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1781456016988-04806c42c260"
+    },
+    {
+      "slug": "1751972774281-34f966e9d21e",
+      "color": "#f3f3f3",
+      "score": 57,
+      "file": "photos/candidates/piscina/1751972774281-34f966e9d21e.jpg",
+      "url": "https://images.unsplash.com/photo-1751972774281-34f966e9d21e?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1751972774281-34f966e9d21e"
+    },
+    {
+      "slug": "1715896025798-8393318a7fb5",
+      "color": "#8c8c8c",
+      "score": 57,
+      "file": "photos/candidates/piscina/1715896025798-8393318a7fb5.jpg",
+      "url": "https://images.unsplash.com/photo-1715896025798-8393318a7fb5?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1715896025798-8393318a7fb5"
+    },
+    {
+      "slug": "1726221687853-fe4857a3ddbe",
+      "color": "#f3f3f3",
+      "score": 57,
+      "file": "photos/candidates/piscina/1726221687853-fe4857a3ddbe.jpg",
+      "url": "https://images.unsplash.com/photo-1726221687853-fe4857a3ddbe?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1726221687853-fe4857a3ddbe"
+    },
+    {
+      "slug": "1723489679424-938636b6b9bb",
+      "color": "#8c7359",
+      "score": 17,
+      "file": "photos/candidates/piscina/1723489679424-938636b6b9bb.jpg",
+      "url": "https://images.unsplash.com/photo-1723489679424-938636b6b9bb?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1723489679424-938636b6b9bb"
+    }
+  ],
+  "reformas": [
+    {
+      "slug": "1600488999585-e4364713b90a",
+      "color": "#a68c73",
+      "score": 82,
+      "file": "photos/candidates/reformas/1600488999585-e4364713b90a.jpg",
+      "url": "https://images.unsplash.com/photo-1600488999585-e4364713b90a?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1600488999585-e4364713b90a"
+    },
+    {
+      "slug": "1722247481379-e798ed9f4b97",
+      "color": "#c0c0a6",
+      "score": 82,
+      "file": "photos/candidates/reformas/1722247481379-e798ed9f4b97.jpg",
+      "url": "https://images.unsplash.com/photo-1722247481379-e798ed9f4b97?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1722247481379-e798ed9f4b97"
+    },
+    {
+      "slug": "1722604831165-03f3a0fe2559",
+      "color": "#a6a68c",
+      "score": 82,
+      "file": "photos/candidates/reformas/1722604831165-03f3a0fe2559.jpg",
+      "url": "https://images.unsplash.com/photo-1722604831165-03f3a0fe2559?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1722604831165-03f3a0fe2559"
+    },
+    {
+      "slug": "1722604831781-be16c7870641",
+      "color": "#a6a68c",
+      "score": 82,
+      "file": "photos/candidates/reformas/1722604831781-be16c7870641.jpg",
+      "url": "https://images.unsplash.com/photo-1722604831781-be16c7870641?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1722604831781-be16c7870641"
+    },
+    {
+      "slug": "1721825155908-c8ba49a7b8b6",
+      "color": "#c0c0a6",
+      "score": 82,
+      "file": "photos/candidates/reformas/1721825155908-c8ba49a7b8b6.jpg",
+      "url": "https://images.unsplash.com/photo-1721825155908-c8ba49a7b8b6?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1721825155908-c8ba49a7b8b6"
+    },
+    {
+      "slug": "1722650273085-aaec64371306",
+      "color": "#a68c8c",
+      "score": 82,
+      "file": "photos/candidates/reformas/1722650273085-aaec64371306.jpg",
+      "url": "https://images.unsplash.com/photo-1722650273085-aaec64371306?w=1000&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1722650273085-aaec64371306"
+    }
+  ],
+  "detalle-obra": [
+    {
+      "slug": "1768839725085-829e6ac7ac26",
+      "color": "#d9d9c0",
+      "score": 82,
+      "file": "photos/candidates/detalle-obra/1768839725085-829e6ac7ac26.jpg",
+      "url": "https://images.unsplash.com/photo-1768839725085-829e6ac7ac26?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1768839725085-829e6ac7ac26"
+    },
+    {
+      "slug": "1726912051143-3c732c0f580a",
+      "color": "#a68c8c",
+      "score": 82,
+      "file": "photos/candidates/detalle-obra/1726912051143-3c732c0f580a.jpg",
+      "url": "https://images.unsplash.com/photo-1726912051143-3c732c0f580a?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1726912051143-3c732c0f580a"
+    },
+    {
+      "slug": "1731341712423-40fc1f8bf84f",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/detalle-obra/1731341712423-40fc1f8bf84f.jpg",
+      "url": "https://images.unsplash.com/photo-1731341712423-40fc1f8bf84f?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1731341712423-40fc1f8bf84f"
+    },
+    {
+      "slug": "1664301210513-76167b070179",
+      "color": "#a6a6a6",
+      "score": 79,
+      "file": "photos/candidates/detalle-obra/1664301210513-76167b070179.jpg",
+      "url": "https://images.unsplash.com/photo-1664301210513-76167b070179?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1664301210513-76167b070179"
+    },
+    {
+      "slug": "1683121248255-9816c1cef6b2",
+      "color": "#c0c0c0",
+      "score": 79,
+      "file": "photos/candidates/detalle-obra/1683121248255-9816c1cef6b2.jpg",
+      "url": "https://images.unsplash.com/photo-1683121248255-9816c1cef6b2?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1683121248255-9816c1cef6b2"
+    },
+    {
+      "slug": "1508943265616-34356d958a57",
+      "color": "#a6a6a6",
+      "score": 79,
+      "file": "photos/candidates/detalle-obra/1508943265616-34356d958a57.jpg",
+      "url": "https://images.unsplash.com/photo-1508943265616-34356d958a57?w=1600&q=80&fm=jpg&fit=max",
+      "credit": "https://unsplash.com/photos/1508943265616-34356d958a57"
+    }
+  ]
+}

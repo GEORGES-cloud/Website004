@@ -1,0 +1,24 @@
+{
+  "name": "luxor-marbella",
+  "version": "1.0.0",
+  "description": "Sitio web de Luxor Marbella — mantenimiento, limpieza, reparaciones y gestión de alquiler vacacional en Marbella.",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "build": "node build.mjs"
+  },
+  "author": "Luxor Marbella",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "compression": "^1.7.5",
+    "express": "^4.21.2"
+  },
+  "overrides": {
+    "qs": "^6.16.0"
+  }
+}

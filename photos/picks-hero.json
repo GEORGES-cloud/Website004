@@ -1,0 +1,6 @@
+[
+  { "slot": "hero-extra", "index": 0, "file": "1716078410207-20e223587181", "out": "hero-villa-2",  "size": [900, 1020], "origen": "about-casa [2]" },
+  { "slot": "hero-extra", "index": 1, "file": "1781456016988-04806c42c260", "out": "hero-villa-3",  "size": [900, 1020], "origen": "piscina [3]" },
+  { "slot": "hero-extra", "index": 2, "file": "1778062868104-c2d4978e44a5", "out": "hero-equipo-2", "size": [900, 1020], "origen": "limpieza [5]" },
+  { "slot": "hero-extra", "index": 3, "file": "1768839725085-829e6ac7ac26", "out": "hero-equipo-3", "size": [900, 1020], "origen": "detalle-obra [3]" }
+]
