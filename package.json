@@ -18,7 +18,7 @@
   "dependencies": {
     "compression": "^1.7.5",
     "express": "^4.21.2",
-    "nodemailer": "^10.0.13"
+    "nodemailer": "^9.1.1"
   },
   "overrides": {
     "qs": "^6.16.0"
