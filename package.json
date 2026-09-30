@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node --watch server.mjs",
-    "generar": "node build.mjs"
+    "generar": "node build.mjs",
+    "build": "node -e \"console.log('Nada que compilar: public/ ya viene generado')\""
   },
   "author": "Luxor Marbella",
   "license": "UNLICENSED",

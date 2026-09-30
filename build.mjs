@@ -1,6 +1,7 @@
 // Genera los entregables a partir de src/page.html  (npm run generar)
-// OJO: el script NO se llama "build" a proposito. Hostinger ejecuta "npm run build"
-// en cada despliegue si existe, y alli no estan ni este fichero ni src/: el despliegue falla.
+// OJO: este script NO es el "build" de package.json a proposito. Hostinger ejecuta
+// "npm run build" en cada despliegue y alli no estan ni este fichero ni src/, asi que
+// "build" es un paso vacio que tiene que existir (si falta, el despliegue tambien falla).
 //   index.html                -> web real, con <head> completo y assets enlazados
 //   public/                   -> lo que sirve server.mjs en Hostinger (index.html + solo las imagenes que usa)
 //   build/luxor-onefile.html  -> fichero unico con los logos incrustados (para publicar)
