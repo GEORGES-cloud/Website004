@@ -3,46 +3,541 @@
   <url>
     <loc>https://www.luxormarbella.com/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/servicios/gestion-alquileres/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/servicios/reformas-home-staging/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/reformas-home-staging/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/servicios/reformas-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/servicios/mantenimiento-limpieza/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/presupuesto/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/presupuesto/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/presupuesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/quote/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/quote/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/quote/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/quote/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/quote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/quote/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/nosotros/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/nosotros/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/nosotros/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/about/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/about/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/aviso-legal/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/aviso-legal/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/aviso-legal/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/legal-notice/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/privacidad/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/privacidad/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/privacy/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/cookies/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/cookies/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/services/property-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/services/renovation-home-staging/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/reformas-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/services/maintenance-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/quote/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/presupuesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/quote/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/quote/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/quote/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/quote/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/quote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/quote/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/nosotros/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/about/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/about/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/legal-notice/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/aviso-legal/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/cookies/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/cookies/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/services/property-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/services/renovation-home-staging/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/reformas-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/services/maintenance-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/quote/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/presupuesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/quote/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/quote/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/quote/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/quote/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/quote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/quote/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/about/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/nosotros/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/about/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/about/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/legal-notice/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/aviso-legal/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/cookies/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/cookies/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/services/property-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/services/renovation-home-staging/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/reformas-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/services/maintenance-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/quote/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/presupuesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/quote/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/quote/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/quote/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/quote/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/quote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/quote/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/about/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/nosotros/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/about/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/about/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/legal-notice/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/aviso-legal/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/cookies/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/cookies/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/services/property-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/services/renovation-home-staging/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/reformas-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/services/maintenance-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/quote/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/presupuesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/quote/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/quote/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/quote/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/quote/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/quote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/quote/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/about/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/nosotros/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/about/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/about/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/legal-notice/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/aviso-legal/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/cookies/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/cookies/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/services/property-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/services/renovation-home-staging/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/reformas-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/renovation-home-staging/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/renovation-home-staging/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/services/maintenance-cleaning/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/maintenance-cleaning/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/maintenance-cleaning/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/quote/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/presupuesto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/quote/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/quote/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/quote/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/quote/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/quote/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/quote/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/about/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/nosotros/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/about/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/about/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/about/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/about/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/legal-notice/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/aviso-legal/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/legal-notice/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/privacidad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/cookies/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/cookies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/cookies/"/>
   </url>
 </urlset>

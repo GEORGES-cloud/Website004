@@ -414,7 +414,7 @@ const presupuesto = () => `<section class="quiz-sec">
           ${opcion('checkbox', 'servicio', 'Gestión de alquileres', 'Alquilar mi vivienda', 'Vacacional o de larga temporada, gestionado de principio a fin.', 'alquileres')}
           ${opcion('checkbox', 'servicio', 'Reformas y home staging', 'Reformar o amueblar', 'Reformas grandes o pequeñas, amueblado y home staging.', 'reformas')}
           ${opcion('checkbox', 'servicio', 'Mantenimiento y limpieza', 'Mantenimiento y limpieza', 'Averías, limpieza, llaves y todo lo que necesita la casa.', 'mantenimiento')}
-          ${opcion('checkbox', 'servicio', 'Otra cosa', 'Otra cosa', 'Nos lo cuentas en el siguiente paso.')}
+          ${opcion('checkbox', 'servicio', 'Otra cosa', 'Otra cosa', 'Nos lo cuentas más adelante.')}
         </div>
       </fieldset>
 
