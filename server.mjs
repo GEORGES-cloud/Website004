@@ -51,7 +51,9 @@ app.use(compression());
 app.use((req, res, next) => {
   if (req.path.endsWith('/index.html')) {
     const i = req.originalUrl.indexOf('?');
-    return res.redirect(301, req.path.slice(0, -'index.html'.length) + (i === -1 ? '' : req.originalUrl.slice(i)));
+    // Barras iniciales colapsadas: con "//evil.com/index.html" el destino sería "//evil.com/", otro dominio
+    const destino = req.path.slice(0, -'index.html'.length).replace(/^\/+/, '/');
+    return res.redirect(301, destino + (i === -1 ? '' : req.originalUrl.slice(i)));
   }
   next();
 });
@@ -98,6 +100,11 @@ const correo =
         port: SMTP.port,
         secure: SMTP.port === 465,
         auth: { user: SMTP.user, pass: SMTP.pass },
+        // Un SMTP que acepta y no contesta no debe dejar al visitante 2 min en "Enviando…":
+        // con 502 en ≤10 s la página le ofrece WhatsApp.
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 30000,
       })
     : null;
 
