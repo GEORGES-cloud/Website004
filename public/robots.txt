@@ -1,0 +1,8 @@
+# robots.txt de https://www.luxormarbella.com
+# Sitio público: rastreo permitido a buscadores y a asistentes de IA.
+# No añadir grupos por bot: un bot con grupo propio deja de leer el grupo *.
+
+User-agent: *
+Disallow: /api/
+
+Sitemap: https://www.luxormarbella.com/sitemap.xml

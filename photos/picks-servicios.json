@@ -1,5 +1,5 @@
 [
-  { "slot": "hero-villa",  "index": 1, "file": "1566760936002-d5cba38fe865", "out": "svc-alquileres",    "size": [1440, 900], "origen": "hero-villa [1]" },
+  { "slot": "hero-villa",  "index": 1, "file": "1566760936002-d5cba38fe865", "out": "svc-alquileres",    "size": [1440, 900], "calidad": 68, "origen": "hero-villa [1]" },
   { "slot": "about-casa",  "index": 1, "file": "1678762200388-51e11225d4de", "out": "svc-reformas",      "size": [1440, 900], "origen": "about-casa [1]" },
   { "slot": "hero-equipo", "index": 3, "file": "1758273238415-01ec03d9ef27", "out": "svc-mantenimiento", "size": [1440, 900], "origen": "hero-equipo [3]" }
 ]

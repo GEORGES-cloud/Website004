@@ -4,9 +4,12 @@ npm-debug.log*
 .env
 *.local
 
-# Generados por build.mjs (lo que se despliega es public/, que sí va al repo)
+# Restos de la etapa de página única (build.mjs ya no los genera; lo que se despliega es public/)
 /index.html
 /build/
+
+# Catálogo de textos con identificadores que usan los traductores (se regenera)
+src/i18n/*.ids.json
 
 # Material de trabajo (no forma parte del sitio desplegable)
 photos/candidates/

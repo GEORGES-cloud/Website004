@@ -6,7 +6,7 @@
 #   - conserva solo un 40% del croma original
 #   - deriva ligera hacia calido (sube R, baja B)
 #   - levanta los negros y baja los blancos: nada de negro ni blanco puros
-param([string]$PicksFile = "photos\picks.json")   # cada entrada admite "out" y "size" opcionales
+param([string]$PicksFile = "photos\picks.json")   # cada entrada admite "out", "size", "croma" (0 = monocromo), "flip" (espejo horizontal) y "calidad" (JPEG, 82 por defecto) opcionales
 Add-Type -AssemblyName System.Drawing
 $root = Split-Path $PSScriptRoot -Parent   # raiz del proyecto (antes era una ruta fija al Escritorio)
 
@@ -25,24 +25,27 @@ $TARGET = @{
 
 # --- matriz de color: desaturacion parcial + tinte calido + suavizado de extremos
 # (PowerShell 5.1 no digiere literales de array anidados: se rellena celda a celda)
-[double]$s  = 0.40               # croma conservado
-[double]$k  = 0.94               # compresion de rango (blancos mas suaves)
-[double]$lr = 0.299; [double]$lg = 0.587; [double]$lb = 0.114
-$lum = @($lr, $lg, $lb)
-$m = New-Object 'single[][]' 5
-for ($i = 0; $i -lt 5; $i++) { $m[$i] = New-Object 'single[]' 5 }
-for ($i = 0; $i -lt 3; $i++) {
-  for ($j = 0; $j -lt 3; $j++) {
-    $v = $lum[$i] * (1.0 - $s)
-    if ($i -eq $j) { $v = $v + $s }
-    $m[$i][$j] = [single]($v * $k)
+function New-Tratamiento([double]$s) {   # $s = croma conservado (0.40 por defecto; 0 = monocromo)
+  [double]$k  = 0.94               # compresion de rango (blancos mas suaves)
+  [double]$lr = 0.299; [double]$lg = 0.587; [double]$lb = 0.114
+  $lum = @($lr, $lg, $lb)
+  $m = New-Object 'single[][]' 5
+  for ($i = 0; $i -lt 5; $i++) { $m[$i] = New-Object 'single[]' 5 }
+  for ($i = 0; $i -lt 3; $i++) {
+    for ($j = 0; $j -lt 3; $j++) {
+      $v = $lum[$i] * (1.0 - $s)
+      if ($i -eq $j) { $v = $v + $s }
+      $m[$i][$j] = [single]($v * $k)
+    }
   }
+  $m[3][3] = [single]1
+  $m[4][0] = [single]0.050; $m[4][1] = [single]0.038; $m[4][2] = [single]0.022; $m[4][4] = [single]1   # levanta negros, algo mas en R que en B
+  $cm = New-Object System.Drawing.Imaging.ColorMatrix -ArgumentList (,$m)
+  $a = New-Object System.Drawing.Imaging.ImageAttributes
+  $a.SetColorMatrix($cm)
+  return $a
 }
-$m[3][3] = [single]1
-$m[4][0] = [single]0.050; $m[4][1] = [single]0.038; $m[4][2] = [single]0.022; $m[4][4] = [single]1   # levanta negros, algo mas en R que en B
-$cm = New-Object System.Drawing.Imaging.ColorMatrix -ArgumentList (,$m)
-$ia = New-Object System.Drawing.Imaging.ImageAttributes
-$ia.SetColorMatrix($cm)
+$ia = New-Tratamiento 0.40
 
 # autotest: un gris medio debe salir mas calido (R > B) y un color puro debe perder croma
 $t = New-Object System.Drawing.Bitmap(2,1); $t.SetPixel(0,0,[System.Drawing.Color]::FromArgb(128,128,128)); $t.SetPixel(1,0,[System.Drawing.Color]::FromArgb(40,90,200))
@@ -68,6 +71,8 @@ foreach ($p in $picks) {
   else { $tw = $TARGET[$slot][0]; $th = $TARGET[$slot][1] }
 
   $img = New-Object System.Drawing.Bitmap($src)
+  if ($p.PSObject.Properties['flip'] -and $p.flip) { $img.RotateFlip([System.Drawing.RotateFlipType]::RotateNoneFlipX) }
+  $trat = if ($p.PSObject.Properties['croma']) { New-Tratamiento ([double]$p.croma) } else { $ia }
   $srcAsp = $img.Width / [double]$img.Height
   $dstAsp = $tw / [double]$th
   if ($srcAsp -gt $dstAsp) { $ch = $img.Height; $cw = [int]([Math]::Round($ch * $dstAsp)) }
@@ -78,9 +83,14 @@ foreach ($p in $picks) {
   $out = New-Object System.Drawing.Bitmap($tw, $th)
   $g = [System.Drawing.Graphics]::FromImage($out)
   $g.InterpolationMode = 'HighQualityBicubic'; $g.PixelOffsetMode = 'HighQuality'; $g.SmoothingMode = 'HighQuality'
-  $g.DrawImage($img, (New-Object System.Drawing.Rectangle(0,0,$tw,$th)), $cx, $cy, $cw, $ch, [System.Drawing.GraphicsUnit]::Pixel, $ia)
+  $g.DrawImage($img, (New-Object System.Drawing.Rectangle(0,0,$tw,$th)), $cx, $cy, $cw, $ch, [System.Drawing.GraphicsUnit]::Pixel, $trat)
   $g.Dispose()
-  $out.Save("$root\photos\$outName.jpg", $jpeg, $prm)
+  $q = $prm
+  if ($p.PSObject.Properties['calidad']) {   # calidad JPEG propia de esta foto (por defecto 82)
+    $q = New-Object System.Drawing.Imaging.EncoderParameters(1)
+    $q.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter([System.Drawing.Imaging.Encoder]::Quality, [long]$p.calidad)
+  }
+  $out.Save("$root\photos\$outName.jpg", $jpeg, $q)
   $out.Dispose(); $img.Dispose()
 
   $kb = [int]((Get-Item "$root\photos\$outName.jpg").Length / 1KB)

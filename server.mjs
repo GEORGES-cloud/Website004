@@ -1,7 +1,8 @@
 /**
  * Luxor Marbella — servidor de producción
  * --------------------------------------------------
- * Sirve el sitio estático (public/) con compresión y cabeceras de caché.
+ * Sirve el sitio estático (public/, generado por build.mjs) con compresión y
+ * cabeceras de caché, y recibe el formulario de presupuesto.
  *
  * Arranque:  npm install  &&  npm start
  * Por defecto escucha en http://localhost:3000
@@ -11,10 +12,12 @@ import express from 'express';
 import compression from 'compression';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { existsSync } from 'node:fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || process.argv[2] || 3000;
 const PUBLIC_DIR = join(__dirname, 'public');
+const IDIOMAS = ['es', 'en', 'fr', 'de', 'sv', 'ru'];
 
 const app = express();
 
@@ -32,24 +35,38 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(compression());
-
-// /index.html -> / (URL única para la portada)
+// Dominio canónico: www.luxormarbella.com. El dominio sin www redirige con 301
+// conservando la ruta, para que Google no vea el sitio duplicado.
+// Solo GET y HEAD, para no convertir en GET un POST del formulario.
 app.use((req, res, next) => {
-  if (req.path === '/index.html') return res.redirect(301, '/');
+  if ((req.hostname || '').toLowerCase() === 'luxormarbella.com' && (req.method === 'GET' || req.method === 'HEAD')) {
+    return res.redirect(301, `https://www.luxormarbella.com${req.originalUrl}`);
+  }
   next();
 });
 
-// HTML sin caché (los cambios se ven al momento); imágenes con caché de un día.
-// No se marcan como immutable: los nombres de las fotos no llevan versión y
-// todavía se están cambiando.
+app.use(compression());
+
+// URL única por página: /carpeta/index.html -> /carpeta/ (arrastrando la query)
+app.use((req, res, next) => {
+  if (req.path.endsWith('/index.html')) {
+    const i = req.originalUrl.indexOf('?');
+    return res.redirect(301, req.path.slice(0, -'index.html'.length) + (i === -1 ? '' : req.originalUrl.slice(i)));
+  }
+  next();
+});
+
+// HTML sin caché (los cambios se ven al momento). CSS, JS y fuentes llevan la huella del
+// contenido en el nombre o no cambian nunca: un año. Las imágenes, un día: sus nombres no
+// llevan versión y todavía se están cambiando.
 app.use(
   express.static(PUBLIC_DIR, {
-    extensions: ['html'],
     setHeaders(res, filePath) {
       if (filePath.endsWith('.html')) {
         res.setHeader('Cache-Control', 'no-cache');
-      } else if (/\.(?:jpg|jpeg|png|webp|avif|svg|ico|woff2?)$/.test(filePath)) {
+      } else if (/\.(?:css|js|woff2)$/.test(filePath)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      } else if (/\.(?:jpg|jpeg|png|webp|avif|svg|ico)$/.test(filePath)) {
         res.setHeader('Cache-Control', 'public, max-age=86400');
       }
     },
@@ -109,12 +126,16 @@ app.post('/api/presupuesto', express.json({ limit: '10kb' }), async (req, res) =
 
   const nombre = limpio(b.nombre, 100);
   const telefono = limpio(b.telefono, 30);
-  const cp = limpio(b.cp, 12);
-  const servicio = limpio(b.servicio, 60);
   const email = limpio(b.email, 150);
+  const servicio = limpio(b.servicio, 160);
+  const zona = limpio(b.zona, 60);
+  const plazo = limpio(b.plazo, 60);
+  // El mensaje es el único campo que puede llevar saltos de línea (va solo en el cuerpo).
+  const mensaje = String(b.mensaje ?? '').replace(/\r/g, '').trim().slice(0, 1200);
+  const idioma = IDIOMAS.includes(b.idioma) ? b.idioma : 'es';
   const telOk = /^[+\d][\d\s().-]{5,}$/.test(telefono);
   const emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!nombre || !telOk || !cp || !servicio || !emailOk) {
+  if (!nombre || !telOk || !servicio || !emailOk) {
     return res.status(400).json({ ok: false, error: 'Datos incompletos' });
   }
   if (!correo) return res.status(503).json({ ok: false, error: 'Correo no configurado' });
@@ -128,11 +149,16 @@ app.post('/api/presupuesto', express.json({ limit: '10kb' }), async (req, res) =
       text: [
         'Nueva solicitud de presupuesto desde luxormarbella.com',
         '',
-        `Nombre:         ${nombre}`,
-        `Teléfono:       ${telefono}`,
-        `Código postal:  ${cp}`,
-        `E-mail:         ${email || '(no indicado)'}`,
-        `Servicio:       ${servicio}`,
+        `Nombre:     ${nombre}`,
+        `Teléfono:   ${telefono}`,
+        `E-mail:     ${email || '(no indicado)'}`,
+        `Servicio:   ${servicio}`,
+        `Zona:       ${zona || '(no indicada)'}`,
+        `Plazo:      ${plazo || '(no indicado)'}`,
+        `Idioma:     ${idioma}`,
+        '',
+        'Mensaje:',
+        mensaje || '(sin mensaje)',
         '',
         'Acepta la política de privacidad y ser contactado: sí',
         `Acepta comunicaciones comerciales: ${b.comercial === true ? 'sí' : 'no'}`,
@@ -145,8 +171,15 @@ app.post('/api/presupuesto', express.json({ limit: '10kb' }), async (req, res) =
   }
 });
 
-// Ruta desconocida → 404 real (no la portada con 200).
-app.use((_req, res) => {
+// Ruta desconocida → 404 real con la página de error en el idioma de la ruta
+// (no la portada con 200, que Google trata como "soft 404").
+app.use((req, res) => {
+  const lang = IDIOMAS.find((l) => l !== 'es' && (req.path === `/${l}` || req.path.startsWith(`/${l}/`)));
+  // si ese idioma aún no tiene página de error propia, la española
+  const pagina = [join(PUBLIC_DIR, lang || '', '404', 'index.html'), join(PUBLIC_DIR, '404', 'index.html')].find(existsSync);
+  if (req.method === 'GET' && !req.path.startsWith('/api/') && pagina) {
+    return res.status(404).set('Cache-Control', 'no-cache').sendFile(pagina);
+  }
   res.status(404).type('text/plain; charset=utf-8').send('404 · Página no encontrada');
 });
 
