@@ -1,0 +1,39 @@
+name: Desplegar a Hostinger
+
+# La web la sirve una app Node.js de Hostinger (server.mjs + Express + public/).
+# Cada push a main que toque la web sube public/ y server.mjs por FTP y reinicia la app.
+# Hostinger no deja conectar Git a esta app (se gestiona con acceso delegado), por eso va por FTP.
+#
+# Requiere 3 secrets (Settings -> Secrets and variables -> Actions):
+#   FTP_SERVER · FTP_USERNAME · FTP_PASSWORD  (hPanel -> Archivos -> Cuentas FTP)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public/**"
+      - "server.mjs"
+      - "tools/deploy-ftp.mjs"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Subir public/ y server.mjs a Hostinger
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Subir por FTP y reiniciar la app
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          npm install basic-ftp@5 --no-save --no-fund --no-audit --silent
+          node tools/deploy-ftp.mjs
