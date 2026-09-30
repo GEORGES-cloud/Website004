@@ -8,8 +8,14 @@ import * as ftp from 'basic-ftp';
 import { Readable } from 'node:stream';
 
 const { FTP_SERVER, FTP_USERNAME, FTP_PASSWORD } = process.env;
-// Carpeta de la app vista desde la raiz de la cuenta FTP (la misma que en Zeñorio).
-const APP = process.env.FTP_APP_DIR || '/nodejs';
+// Carpeta de la app vista desde la raiz de la cuenta FTP (mapeada el 2026-09-30):
+//   /public_html            solo un .htaccess
+//   /hbuilds/versions/<id>  una carpeta por despliegue hecho desde hPanel
+//   /hbuilds/current        enlace a la version activa: ahi corre server.mjs
+// No es /nodejs como en Zeñorio. Se sube a "current" para seguir a la version activa.
+// OJO: un redespliegue desde hPanel crea una version nueva con lo que lleve el zip,
+// asi que ese zip tiene que estar al dia o la web retrocede hasta el siguiente push.
+const APP = process.env.FTP_APP_DIR || '/hbuilds/current';
 
 if (!FTP_SERVER || !FTP_USERNAME || !FTP_PASSWORD) {
   console.log('::warning::Faltan los secrets FTP_SERVER / FTP_USERNAME / FTP_PASSWORD: no se ha desplegado nada.');
