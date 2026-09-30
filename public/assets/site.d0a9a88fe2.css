@@ -334,6 +334,10 @@ html.js .svc-nav{
 
 /* movil: la hoja monta sobre el pie de la foto */
 @media (max-width:899px){
+  /* en idiomas de palabras largas las tres pestañas pueden no caber: que se desplacen, no que desborden */
+  html.js .svc-nav{max-width:calc(100% - 1rem);overflow-x:auto;scrollbar-width:none}
+  html.js .svc-nav::-webkit-scrollbar{display:none}
+  .svc-tab{flex:none}
   html.js .svc-photo{aspect-ratio:1/1.02}
   html.js .svc-panel{
     position:relative;z-index:2;margin:-2.4rem .55rem 0;padding:1.35rem 1.2rem 1.4rem;border-radius:22px;

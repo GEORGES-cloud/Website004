@@ -55,7 +55,7 @@ const pagina = (id) => {
 
 // Textos que no se traducen: correos, direcciones web y nombres propios.
 const FIJOS = new Set(['Luxor Marbella', 'Luxor', 'WhatsApp']);
-const fijo = (s) => FIJOS.has(s) || /^[\w.+-]+@[\w.-]+\.\w+$/.test(s) || /^(?:www\.|https?:)/.test(s);
+const fijo = (s) => FIJOS.has(s) || /^[\w.+-]+@[\w.-]+\.\w+$/.test(s) || /^(?:www\.|https?:)/.test(s) || /^\{\{[^}]*\}\}$/.test(s);
 const conLetras = (s) => /\p{L}/u.test(s);
 const norm = (s) => s.replace(/\s+/g, ' ').trim();
 
@@ -106,10 +106,10 @@ function traducir(html, t) {
 /* ------------------------------------------------------------------ piezas por idioma */
 
 function selector(l, p, t, tipo) {
+  const rotulo = escAttr(t('Idioma', 'rótulo del selector de idioma'));   // antes del return: que entre siempre en el catálogo
   if (activos.length < 2) return '';
   const destino = (a) => ruta(a, p.oculta ? pagina('inicio') : p);
   const enlaces = activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}</a></li>`).join('');
-  const rotulo = escAttr(t('Idioma', 'selector de idioma'));
   return tipo === 'desplegable'
     ? `<details class="lang"><summary class="pill" aria-label="${rotulo}">${l.code.toUpperCase()}</summary><ul>${enlaces}</ul></details>`
     : `<ul class="langs" aria-label="${rotulo}">${enlaces}</ul>`;
