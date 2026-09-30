@@ -8,7 +8,7 @@
 #   - levanta los negros y baja los blancos: nada de negro ni blanco puros
 param([string]$PicksFile = "photos\picks.json")   # cada entrada admite "out" y "size" opcionales
 Add-Type -AssemblyName System.Drawing
-$root = "C:\Users\Georges Barrio\Desktop\Luxor"
+$root = Split-Path $PSScriptRoot -Parent   # raiz del proyecto (antes era una ruta fija al Escritorio)
 
 $TARGET = @{
   'hero-villa'    = @(900, 1020)

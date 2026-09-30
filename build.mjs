@@ -13,7 +13,7 @@ const src = readFileSync(join(root, 'src/page.html'), 'utf8');
 const [head, body] = src.split('<!--HEAD-END-->');
 if (body === undefined) throw new Error('Falta el marcador <!--HEAD-END--> en src/page.html');
 
-const DESC = 'Luxor Marbella: mantenimiento, limpieza, reparaciones y gestión de alquiler vacacional para viviendas en Marbella y la Costa del Sol.';
+const DESC = 'Luxor Marbella: gestión integral de alquileres, reformas y home staging, y mantenimiento y limpieza de viviendas en Marbella y la Costa del Sol.';
 
 const meta = [
   '  <meta charset="utf-8">',
