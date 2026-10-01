@@ -128,7 +128,7 @@ html.stack main > section::after{
   content:"";position:absolute;inset:0;z-index:30;pointer-events:none;
   background:var(--tinta);opacity:calc(var(--cover,0) * .5);
 }
-html.stack main > section.suelta{position:relative}
+html.stack main > section.suelta{position:relative;top:auto;transform:none}
 html.stack main > section + section{box-shadow:0 -1px 0 var(--linea)}
 @media print{html.stack main > section{position:relative;transform:none}html.stack main > section::after{display:none}}
 

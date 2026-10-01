@@ -394,7 +394,8 @@
         var h = s.offsetHeight, fija = Math.min(cabH, alto - h), arriba = Math.max(cabH, fija);
         var d = { s: s, n: y, h: h, a: y - fija, l: fija + h - arriba, p: -1, suelta: !!s.querySelector('.faq, .prose, .quiz') };
         s.classList.toggle('suelta', d.suelta);
-        s.style.setProperty('--stick', fija + 'px');
+        // las sueltas siguen el flujo normal: sin altura fija (con position:relative, un top negativo las subiría)
+        if (d.suelta) s.style.removeProperty('--stick'); else s.style.setProperty('--stick', fija + 'px');
         s.style.setProperty('--oy', Math.round((arriba + fija + h) / 2 - fija) + 'px');
         y += h;
         return d;
