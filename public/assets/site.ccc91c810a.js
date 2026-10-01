@@ -8,30 +8,64 @@
 
   // hero con vídeo: la foto se pinta primero y el vídeo se añade encima solo si conviene
   // (nada de vídeo con "reducir movimiento", con ahorro de datos o en conexiones lentas).
-  // En pantallas en vertical se usa la versión vertical, más ligera.
+  // Con la pantalla en vertical se usa la versión vertical, más ligera; si se gira, se cambia.
+  // Un botón permite pararlo (y la pausa se respeta aunque la sección se tape y se destape).
   var fondo = document.querySelector('.hero-bg[data-video]');
+  var video = null;
   if (fondo) {
     var red = navigator.connection || {};
     var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!quieto && !red.saveData && !/(^|-)2g$/.test(red.effectiveType || '')) {
-      var v = document.createElement('video');
+    if (!quieto && !red.saveData && !/(^|-)(2g|3g)$/.test(red.effectiveType || '')) {
+      var v = video = document.createElement('video');
+      var vertical = window.matchMedia('(orientation: portrait)');
+      var fuente = function(){ return fondo.getAttribute(vertical.matches && fondo.dataset.videoSm ? 'data-video-sm' : 'data-video'); };
       v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true;
       v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
       v.preload = 'auto';
-      v.src = fondo.getAttribute(window.innerHeight > window.innerWidth && fondo.dataset.videoSm ? 'data-video-sm' : 'data-video');
-      v.addEventListener('playing', function(){ v.classList.add('is-on'); }, { once: true });
+      v.src = fuente();
+      v.addEventListener('playing', function(){ v.classList.add('is-on'); });
       fondo.appendChild(v);
+      var parado = false;
+      // arranca si toca (no parado por la persona, no tapado); devuelve si se ha conseguido
       var arranca = function(){
-        if (!v.paused || fondo.parentNode.classList.contains('tapada')) return;
-        var p = v.play(); if (p && p.catch) p.catch(function(){});
+        if (parado || !v.paused || fondo.parentNode.classList.contains('tapada')) return Promise.resolve(!v.paused);
+        var p = v.play();
+        return p && p.then ? p.then(function(){ return true; }, function(){ return false; }) : Promise.resolve(!v.paused);
       };
+      v.permitido = function(){ return !parado; };
       arranca();
-      v.addEventListener('canplay', arranca, { once: true });
-      // si el navegador no deja arrancarlo solo (ahorro de energía, políticas estrictas),
-      // arranca con el primer toque, clic o tecla; mientras tanto se ve la foto
-      ['pointerdown', 'touchstart', 'keydown'].forEach(function(ev){
-        window.addEventListener(ev, arranca, { passive: true, once: true });
+      v.addEventListener('canplay', function(){ arranca(); }, { once: true });
+      // si el navegador no deja arrancarlo solo (ahorro de energía, políticas estrictas), lo
+      // intenta con cada clic, toque o tecla hasta que lo consigue; mientras tanto se ve la foto
+      var gestos = ['click', 'touchend', 'keydown'];
+      var conGesto = function(){
+        arranca().then(function(ok){ if (ok) gestos.forEach(function(ev){ window.removeEventListener(ev, conGesto); }); });
+      };
+      gestos.forEach(function(ev){ window.addEventListener(ev, conGesto, { passive: true }); });
+      // al girar la pantalla, el vídeo que corresponde a la nueva orientación
+      var alGirar = function(){
+        var src = fuente();
+        if (v.getAttribute('src') === src) return;
+        v.classList.remove('is-on');
+        v.src = src;
+        arranca();
+      };
+      if (vertical.addEventListener) vertical.addEventListener('change', alGirar);
+      // pausa y reproducción (WCAG 2.2.2: todo lo que se mueve más de 5 s se tiene que poder parar)
+      var boton = document.createElement('button');
+      boton.type = 'button';
+      boton.className = 'hero-pausa';
+      var pinta = function(){
+        boton.setAttribute('aria-label', parado ? T.video_play : T.video_pausa);
+        boton.setAttribute('aria-pressed', String(parado));
+      };
+      boton.addEventListener('click', function(){
+        parado = !parado;
+        if (parado) v.pause(); else arranca();
+        pinta();
       });
+      pinta();
+      fondo.parentNode.appendChild(boton);
     }
   }
 
@@ -40,15 +74,20 @@
     if (a.pathname === location.pathname) a.setAttribute('aria-current', 'page');
   });
 
-  // menu a pantalla completa (movil y tableta). Escape cierra; el tabulador no se escapa por debajo.
+  // menu a pantalla completa (movil y tableta). Escape cierra; mientras esta abierto, lo de
+  // debajo queda inerte (ni el tabulador ni un lector de pantalla entran ahi).
   var burger = $('burger');
   var menu   = $('menu');
+  var debajo = document.querySelectorAll('main, .foot');
   var abrir = function(si){
+    var dentro = menu.contains(document.activeElement);
     if (si) { menu.hidden = false; void menu.offsetWidth; menu.classList.add('abierto'); }
     else { menu.classList.remove('abierto'); menu.hidden = true; }
+    each(debajo, function(el){ el.inert = si; });
     document.documentElement.classList.toggle('menu-abierto', si);
     burger.setAttribute('aria-expanded', String(si));
     burger.setAttribute('aria-label', si ? T.menu_cerrar : T.menu_abrir);
+    if (!si && dentro) burger.focus();
   };
   burger.addEventListener('click', function(){ abrir(menu.hidden); });
   document.addEventListener('keydown', function(e){
@@ -289,8 +328,11 @@
 
   // secciones que se apilan: cada <section> de <main> se queda fija (sticky) cuando asoma su final
   // —o arriba, bajo la cabecera, si cabe entera— y la siguiente sube por encima. La de debajo se
-  // oscurece y se aleja un poco; tapada del todo, se oculta. Las cuentas usan la posicion natural
-  // de cada seccion (suma de altos), no la pintada, asi que no dependen de lo que ya esta fijo.
+  // oscurece y se aleja un poco. Las cuentas usan la posicion natural de cada seccion (suma de
+  // altos), no la pintada, asi que no dependen de lo que ya esta fijo.
+  // Las secciones con mucho texto que se busca o se enlaza (preguntas frecuentes, textos legales,
+  // cuestionario) no se fijan: si el navegador salta a una frase suya (buscar en la pagina, enlaces
+  // de Google a un fragmento), tiene que quedar a la vista y no debajo de la seccion siguiente.
   var secs = document.querySelectorAll('main > section');
   if (!quiet && secs.length > 1 && window.CSS && CSS.supports('position', 'sticky')) {
     var cab = document.querySelector('.masthead'), principal = document.querySelector('main');
@@ -299,16 +341,17 @@
     sonda.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
     document.body.appendChild(sonda);
     var capas = [], cabH = 0;
-    var video = function(d, p){
-      var v = d.s.querySelector('video');
-      if (!v) return;
-      if (p >= 1) { if (!v.paused) v.pause(); }
-      else if (v.paused) { var r = v.play(); if (r && r.catch) r.catch(function(){}); }
+    // el video del hero se para mientras esta tapado (salvo que la persona lo haya parado antes)
+    var pausaVideo = function(d, p){
+      if (!video || !d.s.contains(video)) return;
+      if (p >= 1) { if (!video.paused) video.pause(); }
+      else if (video.paused && video.permitido()) { var r = video.play(); if (r && r.catch) r.catch(function(){}); }
     };
     var pintar = function(){
       var y = window.scrollY;
       for (var i = 0; i < capas.length - 1; i++) {
         var d = capas[i];
+        if (d.suelta) continue;
         var p = d.l > 0 ? (y - d.a) / d.l : (y >= d.a ? 1 : 0);
         p = Math.round(Math.min(1, Math.max(0, p)) * 1000) / 1000;
         if (p === d.p) continue;
@@ -316,7 +359,7 @@
         d.s.style.setProperty('--cover', p);
         d.s.classList.toggle('tapando', p > 0 && p < 1);
         d.s.classList.toggle('tapada', p >= 1);
-        video(d, p);
+        pausaVideo(d, p);
       }
     };
     var medir = function(){
@@ -325,7 +368,8 @@
       var y = principal.getBoundingClientRect().top + window.scrollY;
       capas = Array.prototype.map.call(secs, function(s){
         var h = s.offsetHeight, fija = Math.min(cabH, alto - h), arriba = Math.max(cabH, fija);
-        var d = { s: s, n: y, h: h, a: y - fija, l: fija + h - arriba, p: -1 };
+        var d = { s: s, n: y, h: h, a: y - fija, l: fija + h - arriba, p: -1, suelta: !!s.querySelector('.faq, .prose, .quiz') };
+        s.classList.toggle('suelta', d.suelta);
         s.style.setProperty('--stick', fija + 'px');
         s.style.setProperty('--oy', Math.round((arriba + fija + h) / 2 - fija) + 'px');
         y += h;

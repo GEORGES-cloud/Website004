@@ -621,961 +621,971 @@
  },
  {
   "id": 125,
+  "texto": "Pausar el vídeo",
+  "contexto": "inicio texto de site.js (video_pausa) | alquileres texto de site.js (video_pausa) | reformas texto de site.js (video_pausa)"
+ },
+ {
+  "id": 126,
+  "texto": "Reproducir el vídeo",
+  "contexto": "inicio texto de site.js (video_play) | alquileres texto de site.js (video_play) | reformas texto de site.js (video_play)"
+ },
+ {
+  "id": 127,
   "texto": "Paso {n} de {total}",
   "contexto": "inicio texto de site.js (paso) | alquileres texto de site.js (paso) | reformas texto de site.js (paso)"
  },
  {
-  "id": 126,
+  "id": 128,
   "texto": "Marca al menos una opción.",
   "contexto": "inicio texto de site.js (q_servicio) | alquileres texto de site.js (q_servicio) | reformas texto de site.js (q_servicio)"
  },
  {
-  "id": 127,
+  "id": 129,
   "texto": "Elige una zona.",
   "contexto": "inicio texto de site.js (q_zona) | alquileres texto de site.js (q_zona) | reformas texto de site.js (q_zona)"
  },
  {
-  "id": 128,
+  "id": 130,
   "texto": "Para poder llamarte nos faltan estos datos: {lista}.",
   "contexto": "inicio texto de site.js (faltan) | alquileres texto de site.js (faltan) | reformas texto de site.js (faltan)"
  },
  {
-  "id": 129,
+  "id": 131,
   "texto": "nombre",
   "contexto": "inicio texto de site.js (f_nombre) | alquileres texto de site.js (f_nombre) | reformas texto de site.js (f_nombre)"
  },
  {
-  "id": 130,
+  "id": 132,
   "texto": "teléfono",
   "contexto": "inicio texto de site.js (f_tel) | alquileres texto de site.js (f_tel) | reformas texto de site.js (f_tel)"
  },
  {
-  "id": 131,
+  "id": 133,
   "texto": "Necesitamos tu consentimiento para poder contactarte.",
   "contexto": "inicio texto de site.js (consentimiento) | alquileres texto de site.js (consentimiento) | reformas texto de site.js (consentimiento)"
  },
  {
-  "id": 132,
+  "id": 134,
   "texto": "Revisa el teléfono: parece incompleto.",
   "contexto": "inicio texto de site.js (tel_mal) | alquileres texto de site.js (tel_mal) | reformas texto de site.js (tel_mal)"
  },
  {
-  "id": 133,
+  "id": 135,
   "texto": "Revisa el e-mail: parece incompleto.",
   "contexto": "inicio texto de site.js (mail_mal) | alquileres texto de site.js (mail_mal) | reformas texto de site.js (mail_mal)"
  },
  {
-  "id": 134,
+  "id": 136,
   "texto": "Enviando…",
   "contexto": "inicio texto de site.js (enviando) | alquileres texto de site.js (enviando) | reformas texto de site.js (enviando)"
  },
  {
-  "id": 135,
+  "id": 137,
   "texto": "No hemos podido enviar el formulario.",
   "contexto": "inicio texto de site.js (error_antes) | alquileres texto de site.js (error_antes) | reformas texto de site.js (error_antes)"
  },
  {
-  "id": 136,
+  "id": 138,
   "texto": "Envíanoslo por WhatsApp",
   "contexto": "inicio texto de site.js (error_wa) | alquileres texto de site.js (error_wa) | reformas texto de site.js (error_wa)"
  },
  {
-  "id": 137,
+  "id": 139,
   "texto": "o llámanos al +34 603 60 55 43.",
   "contexto": "inicio texto de site.js (error_despues) | alquileres texto de site.js (error_despues) | reformas texto de site.js (error_despues)"
  },
  {
-  "id": 138,
+  "id": 140,
   "texto": "Hola, quiero pedir presupuesto.",
   "contexto": "inicio texto de site.js (wa_saludo) | alquileres texto de site.js (wa_saludo) | reformas texto de site.js (wa_saludo)"
  },
  {
-  "id": 139,
+  "id": 141,
   "texto": "Servicio",
   "contexto": "inicio texto de site.js (wa_serv) | alquileres texto de site.js (wa_serv) | reformas texto de site.js (wa_serv)"
  },
  {
-  "id": 140,
+  "id": 142,
   "texto": "Zona",
   "contexto": "inicio texto de site.js (wa_zona) | alquileres texto de site.js (wa_zona) | reformas texto de site.js (wa_zona)"
  },
  {
-  "id": 141,
+  "id": 143,
   "texto": "Plazo",
   "contexto": "inicio texto de site.js (wa_plazo) | alquileres texto de site.js (wa_plazo) | reformas texto de site.js (wa_plazo)"
  },
  {
-  "id": 142,
+  "id": 144,
   "texto": "Nombre",
   "contexto": "inicio texto de site.js (wa_nombre) | alquileres texto de site.js (wa_nombre) | reformas texto de site.js (wa_nombre)"
  },
  {
-  "id": 143,
+  "id": 145,
   "texto": "Teléfono",
   "contexto": "inicio texto de site.js (wa_tel) | alquileres texto de site.js (wa_tel) | reformas texto de site.js (wa_tel)"
  },
  {
-  "id": 144,
+  "id": 146,
   "texto": "Idioma",
   "contexto": "inicio rótulo del selector de idioma | alquileres rótulo del selector de idioma | reformas rótulo del selector de idioma"
  },
  {
-  "id": 145,
+  "id": 147,
   "texto": "Luxor Marbella | Gestión de alquileres, reformas y mantenimiento",
   "contexto": "inicio"
  },
  {
-  "id": 146,
+  "id": 148,
   "texto": "Luxor Marbella gestiona alquileres, reforma y mantiene viviendas en Marbella para propietarios que no viven aquí todo el año. Tel. +34 603 60 55 43.",
   "contexto": "inicio | alquileres | reformas"
  },
  {
-  "id": 147,
+  "id": 149,
   "texto": "Inicio",
   "contexto": "alquileres <a href=\"{{url:inicio}}\"> | alquileres | reformas <a href=\"{{url:inicio}}\">"
  },
  {
-  "id": 148,
+  "id": 150,
   "texto": "Gestión de alquileres en Marbella",
   "contexto": "alquileres <h1>"
  },
  {
-  "id": 149,
+  "id": 151,
   "texto": "Alquiler vacacional y de larga temporada, llevado de principio a fin. Publicamos la vivienda, atendemos a quien la ocupa y tú hablas con una sola persona.",
   "contexto": "alquileres <p class=\"lead\">"
  },
  {
-  "id": 150,
+  "id": 152,
   "texto": "Qué incluye",
   "contexto": "alquileres <h2 class=\"d2\"> | reformas <h2 class=\"d2\"> | mantenimiento <h2 class=\"d2\">"
  },
  {
-  "id": 151,
+  "id": 153,
   "texto": "Preparamos el anuncio y lo publicamos en Airbnb, Idealista y otros portales de alquiler.",
   "contexto": "alquileres <p>"
  },
  {
-  "id": 152,
+  "id": 154,
   "texto": "Cada persona interesada queda registrada en nuestro CRM y la seguimos hasta cerrar la reserva o el contrato.",
   "contexto": "alquileres <p>"
  },
  {
-  "id": 153,
+  "id": 155,
   "texto": "Somos el contacto de quien vive o se aloja en tu casa, y también el tuyo. No tienes que atender llamadas ni mensajes.",
   "contexto": "alquileres <p>"
  },
  {
-  "id": 154,
+  "id": 156,
   "texto": "Revisamos precios y ocupación para que la vivienda rinda lo que puede dar.",
   "contexto": "alquileres <p>"
  },
  {
-  "id": 155,
+  "id": 157,
   "texto": "Vacacional o de larga temporada",
   "contexto": "alquileres <h2 class=\"d3\">"
  },
  {
-  "id": 156,
+  "id": 158,
   "texto": "Gestionamos las dos modalidades. Si no tienes claro cuál te conviene, lo vemos contigo según la vivienda, la zona y el uso que quieras darle.",
   "contexto": "alquileres <p>"
  },
  {
-  "id": 157,
+  "id": 159,
   "texto": "Todo lo que rodea al alquiler",
   "contexto": "alquileres <h2 class=\"d3\">"
  },
  {
-  "id": 158,
+  "id": 160,
   "texto": "Una vivienda alquilada necesita limpieza entre estancias, lavandería y alguien que responda cuando algo falla. Lo hacemos con nuestro propio servicio de",
   "contexto": "alquileres <p>"
  },
  {
-  "id": 159,
+  "id": 161,
   "texto": "mantenimiento y limpieza",
   "contexto": "alquileres <a href=\"{{url:mantenimiento}}\">"
  },
  {
-  "id": 160,
+  "id": 162,
   "texto": ", así que no tienes que coordinar a nadie.",
   "contexto": "alquileres </a>"
  },
  {
-  "id": 161,
+  "id": 163,
   "texto": "¿Gestionáis alquiler de larga temporada o solo vacacional?",
   "contexto": "alquileres <summary> | alquileres"
  },
  {
-  "id": 162,
+  "id": 164,
   "texto": "Los dos. Llevamos alquiler vacacional y alquiler de larga temporada.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
-  "id": 163,
+  "id": 165,
   "texto": "¿En qué portales anunciáis la vivienda?",
   "contexto": "alquileres <summary> | alquileres"
  },
  {
-  "id": 164,
+  "id": 166,
   "texto": "En Airbnb, Idealista y otros portales de alquiler.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
-  "id": 165,
+  "id": 167,
   "texto": "¿Tengo que estar en Marbella para alquilar mi casa?",
   "contexto": "alquileres <summary> | alquileres"
  },
  {
-  "id": 166,
+  "id": 168,
   "texto": "No. Guardamos las llaves y nos ocupamos de la vivienda y de quien la ocupa. Tú hablas con una sola persona.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
-  "id": 167,
+  "id": 169,
   "texto": "Otros servicios",
   "contexto": "alquileres <h2 class=\"d2\"> | reformas <h2 class=\"d2\"> | mantenimiento <h2 class=\"d2\">"
  },
  {
-  "id": 168,
+  "id": 170,
   "texto": "Gestión de alquileres en Marbella | Luxor Marbella",
   "contexto": "alquileres"
  },
  {
-  "id": 169,
+  "id": 171,
   "texto": "Gestión integral de alquiler vacacional y de larga temporada en Marbella: anuncio en Airbnb e Idealista, atención a inquilinos y un solo interlocutor.",
   "contexto": "alquileres"
  },
  {
-  "id": 170,
+  "id": 172,
   "texto": "Reformas y home staging en Marbella",
   "contexto": "reformas <h1>"
  },
  {
-  "id": 171,
+  "id": 173,
   "texto": "Reformas integrales, parciales y pequeñas, amueblado y decoración. Dejamos la vivienda lista para vivirla o para sacarla al mercado.",
   "contexto": "reformas <p class=\"lead\">"
  },
  {
-  "id": 172,
+  "id": 174,
   "texto": "Desde pequeñas reformas y arreglos hasta la vivienda completa: baños, cocinas y actualizaciones puntuales.",
   "contexto": "reformas <p>"
  },
  {
-  "id": 173,
+  "id": 175,
   "texto": "Ponemos la vivienda a punto antes de sacarla al mercado de alquiler: reparamos y renovamos lo que haga falta.",
   "contexto": "reformas <p>"
  },
  {
-  "id": 174,
+  "id": 176,
   "texto": "Amueblamos y decoramos la vivienda pensando en las fotos del anuncio y en las visitas.",
   "contexto": "reformas <p>"
  },
  {
-  "id": 175,
+  "id": 177,
   "texto": "Al terminar limpiamos a fondo y te entregamos la vivienda lista para entrar.",
   "contexto": "reformas <p>"
  },
  {
-  "id": 176,
+  "id": 178,
   "texto": "De una pequeña reforma a la vivienda entera",
   "contexto": "reformas <h2 class=\"d3\">"
  },
  {
-  "id": 177,
+  "id": 179,
   "texto": "No hace falta una obra grande para llamarnos. Hacemos arreglos y pequeñas reformas igual que reformas parciales e integrales.",
   "contexto": "reformas <p>"
  },
  {
-  "id": 178,
+  "id": 180,
   "texto": "Pensado para alquilar mejor",
   "contexto": "reformas <h2 class=\"d3\">"
  },
  {
-  "id": 179,
+  "id": 181,
   "texto": "Si la vivienda va a alquilarse, la reforma y el amueblado se deciden con ese fin: que guste, que aguante el uso y que sea fácil de mantener. Después podemos encargarnos también de la",
   "contexto": "reformas <p>"
  },
  {
-  "id": 180,
+  "id": 182,
   "texto": "gestión del alquiler",
   "contexto": "reformas <a href=\"{{url:alquileres}}\">"
  },
  {
-  "id": 181,
+  "id": 183,
   "texto": "¿Hacéis pequeñas reformas?",
   "contexto": "reformas <summary> | reformas"
  },
  {
-  "id": 182,
+  "id": 184,
   "texto": "Sí. Hacemos pequeñas reformas y arreglos, además de reformas parciales e integrales.",
   "contexto": "reformas <p> | reformas"
  },
  {
-  "id": 183,
+  "id": 185,
   "texto": "¿Amuebláis la vivienda?",
   "contexto": "reformas <summary> | reformas"
  },
  {
-  "id": 184,
+  "id": 186,
   "texto": "Sí. Nos ocupamos del amueblado, la decoración y el home staging.",
   "contexto": "reformas <p> | reformas"
  },
  {
-  "id": 185,
+  "id": 187,
   "texto": "¿Quién limpia al terminar la obra?",
   "contexto": "reformas <summary> | reformas"
  },
  {
-  "id": 186,
+  "id": 188,
   "texto": "Nosotros. Hacemos la limpieza de fin de obra y entregamos la vivienda lista para entrar.",
   "contexto": "reformas <p> | reformas"
  },
  {
-  "id": 187,
+  "id": 189,
   "texto": "Reformas y home staging en Marbella | Luxor Marbella",
   "contexto": "reformas"
  },
  {
-  "id": 188,
+  "id": 190,
   "texto": "Reformas integrales, parciales y pequeñas en Marbella, reacondicionamiento para alquiler, amueblado, decoración, home staging y limpieza de fin de obra.",
   "contexto": "reformas"
  },
  {
-  "id": 189,
+  "id": 191,
   "texto": "Mantenimiento y limpieza de viviendas en Marbella",
   "contexto": "mantenimiento <h1>"
  },
  {
-  "id": 190,
+  "id": 192,
   "texto": "Revisiones, averías, limpieza, lavandería, llaves y gestiones de la vivienda, para que la casa esté a punto aunque tú no estés.",
   "contexto": "mantenimiento <p class=\"lead\">"
  },
  {
-  "id": 191,
+  "id": 193,
   "texto": "Mantenimiento preventivo y correctivo, con piscina y exteriores. Revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.",
   "contexto": "mantenimiento <p>"
  },
  {
-  "id": 192,
+  "id": 194,
   "texto": "Limpieza de la vivienda y lavandería, para que la casa y la ropa de cama y baño estén listas cuando llegues.",
   "contexto": "mantenimiento <p>"
  },
  {
-  "id": 193,
+  "id": 195,
   "texto": "Custodiamos y entregamos las llaves, e inspeccionamos la vivienda de forma periódica cuando está cerrada.",
   "contexto": "mantenimiento <p>"
  },
  {
-  "id": 194,
+  "id": 196,
   "texto": "Contratamos por ti los suministros, la alarma, el seguro, la telefonía e internet, y el servicio doméstico.",
   "contexto": "mantenimiento <p>"
  },
  {
-  "id": 195,
+  "id": 197,
   "texto": "Gestionamos el pago de los impuestos de la vivienda y te representamos en las reuniones de la comunidad de propietarios.",
   "contexto": "mantenimiento <p>"
  },
  {
-  "id": 196,
+  "id": 198,
   "texto": "Para propietarios que no viven aquí todo el año",
   "contexto": "mantenimiento <h2 class=\"d3\">"
  },
  {
-  "id": 197,
+  "id": 199,
   "texto": "Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.",
   "contexto": "mantenimiento <p>"
  },
  {
-  "id": 198,
+  "id": 200,
   "texto": "Un parte después de cada visita",
   "contexto": "mantenimiento <h2 class=\"d3\">"
  },
  {
-  "id": 199,
+  "id": 201,
   "texto": "Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.",
   "contexto": "mantenimiento <p>"
  },
  {
-  "id": 200,
+  "id": 202,
   "texto": "¿Os ocupáis también de la piscina y el jardín?",
   "contexto": "mantenimiento <summary> | mantenimiento"
  },
  {
-  "id": 201,
+  "id": 203,
   "texto": "Sí. El mantenimiento incluye piscina y exteriores.",
   "contexto": "mantenimiento <p> | mantenimiento"
  },
  {
-  "id": 202,
+  "id": 204,
   "texto": "¿Guardáis las llaves de la vivienda?",
   "contexto": "mantenimiento <summary> | mantenimiento"
  },
  {
-  "id": 203,
+  "id": 205,
   "texto": "Sí. Custodiamos las llaves y las entregamos a quien tú nos indiques.",
   "contexto": "mantenimiento <p> | mantenimiento"
  },
  {
-  "id": 204,
+  "id": 206,
   "texto": "¿Podéis contratar la alarma, el seguro o internet?",
   "contexto": "mantenimiento <summary> | mantenimiento"
  },
  {
-  "id": 205,
+  "id": 207,
   "texto": "Sí. Nos encargamos de contratar los suministros, la alarma, el seguro, la telefonía e internet.",
   "contexto": "mantenimiento <p> | mantenimiento"
  },
  {
-  "id": 206,
+  "id": 208,
   "texto": "Mantenimiento y limpieza de viviendas en Marbella | Luxor Marbella",
   "contexto": "mantenimiento"
  },
  {
-  "id": 207,
+  "id": 209,
   "texto": "Mantenimiento preventivo y correctivo, limpieza, lavandería, piscina y exteriores, custodia de llaves y gestión de suministros para viviendas en Marbella.",
   "contexto": "mantenimiento"
  },
  {
-  "id": 208,
+  "id": 210,
   "texto": "Por ejemplo: villa de cuatro dormitorios, vacía desde junio.",
   "contexto": "presupuesto atributo placeholder"
  },
  {
-  "id": 209,
+  "id": 211,
   "texto": "Nombre y apellidos",
   "contexto": "presupuesto atributo placeholder"
  },
  {
-  "id": 210,
+  "id": 212,
   "texto": "Pide tu presupuesto",
   "contexto": "presupuesto <h1>"
  },
  {
-  "id": 211,
+  "id": 213,
   "texto": "Cuatro preguntas y te llamamos para concretar la visita de valoración. Si lo prefieres, escríbenos directamente por WhatsApp.",
   "contexto": "presupuesto <p>"
  },
  {
-  "id": 212,
+  "id": 214,
   "texto": "¿Qué necesitas?",
   "contexto": "presupuesto <legend tabindex=\"-1\">"
  },
  {
-  "id": 213,
+  "id": 215,
   "texto": "Puedes marcar más de una opción.",
   "contexto": "presupuesto <p class=\"hint\">"
  },
  {
-  "id": 214,
+  "id": 216,
   "texto": "Alquilar mi vivienda",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 215,
+  "id": 217,
   "texto": "Vacacional o de larga temporada, gestionado de principio a fin.",
   "contexto": "presupuesto <small>"
  },
  {
-  "id": 216,
+  "id": 218,
   "texto": "Reformar o amueblar",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 217,
+  "id": 219,
   "texto": "Reformas grandes o pequeñas, amueblado y home staging.",
   "contexto": "presupuesto <small>"
  },
  {
-  "id": 218,
+  "id": 220,
   "texto": "Averías, limpieza, llaves y todo lo que necesita la casa.",
   "contexto": "presupuesto <small>"
  },
  {
-  "id": 219,
+  "id": 221,
   "texto": "Otra cosa",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 220,
+  "id": 222,
   "texto": "Nos lo cuentas más adelante.",
   "contexto": "presupuesto <small>"
  },
  {
-  "id": 221,
+  "id": 223,
   "texto": "¿Dónde está la vivienda?",
   "contexto": "presupuesto <legend tabindex=\"-1\">"
  },
  {
-  "id": 222,
+  "id": 224,
   "texto": "Elige la zona más cercana.",
   "contexto": "presupuesto <p class=\"hint\">"
  },
  {
-  "id": 223,
+  "id": 225,
   "texto": "Marbella",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 224,
+  "id": 226,
   "texto": "Puerto Banús",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 225,
+  "id": 227,
   "texto": "Nueva Andalucía",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 226,
+  "id": 228,
   "texto": "San Pedro de Alcántara",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 227,
+  "id": 229,
   "texto": "Benahavís",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 228,
+  "id": 230,
   "texto": "Estepona",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 229,
+  "id": 231,
   "texto": "Elviria y Las Chapas",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 230,
+  "id": 232,
   "texto": "Sotogrande",
   "contexto": "presupuesto <b> | nosotros <li>"
  },
  {
-  "id": 231,
+  "id": 233,
   "texto": "Otra zona",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 232,
+  "id": 234,
   "texto": "¿Para cuándo lo necesitas?",
   "contexto": "presupuesto <legend tabindex=\"-1\">"
  },
  {
-  "id": 233,
+  "id": 235,
   "texto": "Así sabemos con qué prisa llamarte.",
   "contexto": "presupuesto <p class=\"hint\">"
  },
  {
-  "id": 234,
+  "id": 236,
   "texto": "Cuanto antes",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 235,
+  "id": 237,
   "texto": "Este mes",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 236,
+  "id": 238,
   "texto": "En los próximos meses",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 237,
+  "id": 239,
   "texto": "Solo me estoy informando",
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 238,
+  "id": 240,
   "texto": "Algo que debamos saber (opcional)",
   "contexto": "presupuesto <span class=\"lbl\">"
  },
  {
-  "id": 239,
+  "id": 241,
   "texto": "¿Cómo te localizamos?",
   "contexto": "presupuesto <legend tabindex=\"-1\">"
  },
  {
-  "id": 240,
+  "id": 242,
   "texto": "Te llamamos al teléfono que nos dejes.",
   "contexto": "presupuesto <p class=\"hint\">"
  },
  {
-  "id": 241,
+  "id": 243,
   "texto": "Tu nombre",
   "contexto": "presupuesto <span class=\"lbl\">"
  },
  {
-  "id": 242,
+  "id": 244,
   "texto": "E-mail (opcional)",
   "contexto": "presupuesto <span class=\"lbl\">"
  },
  {
-  "id": 243,
+  "id": 245,
   "texto": "No rellenar",
   "contexto": "presupuesto <label>"
  },
  {
-  "id": 244,
+  "id": 246,
   "texto": "He leído y acepto la",
   "contexto": "presupuesto <span>"
  },
  {
-  "id": 245,
+  "id": 247,
   "texto": "política de privacidad",
   "contexto": "presupuesto <a href=\"{{url:privacidad}}\">"
  },
  {
-  "id": 246,
+  "id": 248,
   "texto": "y que Luxor Marbella me contacte para responder a mi solicitud de presupuesto.",
   "contexto": "presupuesto </a>"
  },
  {
-  "id": 247,
+  "id": 249,
   "texto": "Doy mi consentimiento para recibir comunicaciones comerciales de Luxor Marbella. (Opcional)",
   "contexto": "presupuesto <span>"
  },
  {
-  "id": 248,
+  "id": 250,
   "texto": "Atrás",
   "contexto": "presupuesto <button class=\"btn btn-borde btn-atras\" type=\"button\" id=\"quiz-back\" hidden>"
  },
  {
-  "id": 249,
+  "id": 251,
   "texto": "Siguiente",
   "contexto": "presupuesto <button class=\"btn\" type=\"button\" id=\"quiz-next\">"
  },
  {
-  "id": 250,
+  "id": 252,
   "texto": "Enviar solicitud",
   "contexto": "presupuesto <button class=\"btn\" type=\"submit\" id=\"quiz-send\">"
  },
  {
-  "id": 251,
+  "id": 253,
   "texto": "Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al +34 603 60 55 43.",
   "contexto": "presupuesto <p class=\"quiz-error\">"
  },
  {
-  "id": 252,
+  "id": 254,
   "texto": "Recibido,",
   "contexto": "presupuesto <h2 class=\"d3\">"
  },
  {
-  "id": 253,
+  "id": 255,
   "texto": "gracias",
   "contexto": "presupuesto <span id=\"done-name\">"
  },
  {
-  "id": 254,
+  "id": 256,
   "texto": "Te llamamos al teléfono que nos has dejado para concretar la visita y darte un precio cerrado.",
   "contexto": "presupuesto <p>"
  },
  {
-  "id": 255,
+  "id": 257,
   "texto": "¿Prefieres escribirnos?",
   "contexto": "presupuesto <span>"
  },
  {
-  "id": 256,
+  "id": 258,
   "texto": "Enviar por WhatsApp",
   "contexto": "presupuesto <a class=\"btn btn-borde\" id=\"quiz-wa\" href=\"https://wa.me/34603605543\" target=\"_blank\" rel=\"noopener\">"
  },
  {
-  "id": 257,
+  "id": 259,
   "texto": "Llamar al +34 603 60 55 43",
   "contexto": "presupuesto <a class=\"lnk\" href=\"tel:+34603605543\">"
  },
  {
-  "id": 258,
+  "id": 260,
   "texto": "Pedir presupuesto | Luxor Marbella",
   "contexto": "presupuesto"
  },
  {
-  "id": 259,
+  "id": 261,
   "texto": "Pide presupuesto a Luxor Marbella en cuatro pasos o escríbenos por WhatsApp. Gestión de alquileres, reformas y mantenimiento de viviendas en Marbella.",
   "contexto": "presupuesto"
  },
  {
-  "id": 260,
+  "id": 262,
   "texto": "Salón blanco minimalista con ventanal",
   "contexto": "nosotros atributo alt"
  },
  {
-  "id": 261,
+  "id": 263,
   "texto": "La llave que no tienes que buscar",
   "contexto": "nosotros <h2 class=\"d2\">"
  },
  {
-  "id": 262,
+  "id": 264,
   "texto": "Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.",
   "contexto": "nosotros <p>"
  },
  {
-  "id": 263,
+  "id": 265,
   "texto": "Trabajamos en tres líneas —gestión de alquileres, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.",
   "contexto": "nosotros <p>"
  },
  {
-  "id": 264,
+  "id": 266,
   "texto": "Dónde trabajamos",
   "contexto": "nosotros <h2 class=\"d2\">"
  },
  {
-  "id": 265,
+  "id": 267,
   "texto": "Quiénes somos | Luxor Marbella",
   "contexto": "nosotros"
  },
  {
-  "id": 266,
+  "id": 268,
   "texto": "Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.",
   "contexto": "nosotros"
  },
  {
-  "id": 267,
+  "id": 269,
   "texto": "Información general sobre este sitio web y las condiciones para usarlo.",
   "contexto": "aviso-legal <p class=\"lead\"> | aviso-legal"
  },
  {
-  "id": 268,
+  "id": 270,
   "texto": "Titular del sitio",
   "contexto": "aviso-legal <h2>"
  },
  {
-  "id": 269,
+  "id": 271,
   "texto": "El sitio web www.luxormarbella.com pertenece a Luxor Marbella.",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 270,
+  "id": 272,
   "texto": "Contacto:",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 271,
+  "id": 273,
   "texto": "Objeto",
   "contexto": "aviso-legal <h2>"
  },
  {
-  "id": 272,
+  "id": 274,
   "texto": "El sitio informa sobre los servicios de Luxor Marbella —gestión de alquileres, reformas y mantenimiento de viviendas en Marbella y la Costa del Sol— y permite pedir presupuesto.",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 273,
+  "id": 275,
   "texto": "Condiciones de uso",
   "contexto": "aviso-legal <h2>"
  },
  {
-  "id": 274,
+  "id": 276,
   "texto": "El acceso al sitio es libre y gratuito. Quien lo usa se compromete a hacerlo de forma lícita y a no dañar el sitio ni impedir su funcionamiento.",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 275,
+  "id": 277,
   "texto": "Propiedad intelectual",
   "contexto": "aviso-legal <h2>"
  },
  {
-  "id": 276,
+  "id": 278,
   "texto": "Los textos, el diseño y la marca Luxor Marbella pertenecen a su titular. Las fotografías proceden de Unsplash y el vídeo de la portada, de Pexels; se usan conforme a sus licencias. No está permitido reproducir los contenidos con fines comerciales sin autorización.",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 277,
+  "id": 279,
   "texto": "Responsabilidad",
   "contexto": "aviso-legal <h2>"
  },
  {
-  "id": 278,
+  "id": 280,
   "texto": "La información del sitio es orientativa y no constituye una oferta vinculante: las condiciones y el precio de cada servicio son los que figuren en el presupuesto aceptado por escrito.",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 279,
+  "id": 281,
   "texto": "Luxor Marbella no responde del contenido de los sitios de terceros a los que este sitio enlaza.",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 280,
+  "id": 282,
   "texto": "Legislación aplicable",
   "contexto": "aviso-legal <h2>"
  },
  {
-  "id": 281,
+  "id": 283,
   "texto": "Este aviso legal se rige por la legislación española.",
   "contexto": "aviso-legal <p>"
  },
  {
-  "id": 282,
+  "id": 284,
   "texto": "Aviso legal | Luxor Marbella",
   "contexto": "aviso-legal"
  },
  {
-  "id": 283,
+  "id": 285,
   "texto": "Qué datos personales recogemos en esta web, para qué los usamos y cómo puedes ejercer tus derechos.",
   "contexto": "privacidad <p class=\"lead\"> | privacidad"
  },
  {
-  "id": 284,
+  "id": 286,
   "texto": "Quién es el responsable",
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 285,
+  "id": 287,
   "texto": "El responsable del tratamiento es Luxor Marbella. Puedes escribirnos a",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 286,
+  "id": 288,
   "texto": "o llamarnos al",
   "contexto": "privacidad </a>"
  },
  {
-  "id": 287,
+  "id": 289,
   "texto": "Qué datos recogemos",
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 288,
+  "id": 290,
   "texto": "Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa, para cuándo lo necesitas, lo que quieras contarnos en el mensaje y si aceptas o no recibir comunicaciones comerciales. Con la solicitud nos llega también el idioma en que has usado la web.",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 289,
+  "id": 291,
   "texto": "Si nos escribes por WhatsApp, por correo o nos llamas, trataremos los datos que nos facilites por ese medio.",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 290,
+  "id": 292,
   "texto": "Para qué los usamos",
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 291,
+  "id": 293,
   "texto": "Para responder a tu solicitud y prepararte un presupuesto.",
   "contexto": "privacidad <li>"
  },
  {
-  "id": 292,
+  "id": 294,
   "texto": "Para enviarte comunicaciones comerciales de Luxor Marbella, solo si marcas la casilla correspondiente.",
   "contexto": "privacidad <li>"
  },
  {
-  "id": 293,
+  "id": 295,
   "texto": "Base legal",
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 294,
+  "id": 296,
   "texto": "Tratamos tus datos porque nos los envías para que te hagamos un presupuesto (medidas precontractuales a petición tuya) y con tu consentimiento. Las comunicaciones comerciales se basan únicamente en tu consentimiento, que puedes retirar cuando quieras.",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 295,
+  "id": 297,
   "texto": "Cuánto tiempo los conservamos",
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 296,
+  "id": 298,
   "texto": "Mientras gestionamos tu solicitud y, después, el tiempo necesario para atender posibles responsabilidades legales. Si aceptaste recibir comunicaciones comerciales, hasta que retires tu consentimiento.",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 297,
+  "id": 299,
   "texto": "A quién se comunican",
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 298,
+  "id": 300,
   "texto": "No cedemos tus datos a terceros, salvo obligación legal. El formulario de la web no guarda tus datos en una base de datos: nos los envía por correo electrónico. Nuestro proveedor de alojamiento y correo es Hostinger, que actúa como encargado del tratamiento.",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 299,
+  "id": 301,
   "texto": "Si eliges escribirnos por WhatsApp, ese servicio lo presta Meta conforme a sus propias condiciones y política de privacidad.",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 300,
+  "id": 302,
   "texto": "Tus derechos",
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 301,
+  "id": 303,
   "texto": "Puedes pedirnos acceder a tus datos, rectificarlos, suprimirlos, limitar u oponerte a su tratamiento y solicitar su portabilidad escribiendo a",
   "contexto": "privacidad <p>"
  },
  {
-  "id": 302,
+  "id": 304,
   "texto": ". Si crees que no hemos atendido bien tu solicitud, puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es).",
   "contexto": "privacidad </a>"
  },
  {
-  "id": 303,
+  "id": 305,
   "texto": "Política de privacidad | Luxor Marbella",
   "contexto": "privacidad"
  },
  {
-  "id": 304,
+  "id": 306,
   "texto": "Esta web no usa cookies.",
   "contexto": "cookies <p class=\"lead\"> | cookies"
  },
  {
-  "id": 305,
+  "id": 307,
   "texto": "Qué usamos y qué no",
   "contexto": "cookies <h2>"
  },
  {
-  "id": 306,
+  "id": 308,
   "texto": "Esta web no instala cookies propias ni de terceros, y no usa herramientas de analítica ni de publicidad. Las tipografías y las imágenes se sirven desde nuestro propio servidor.",
   "contexto": "cookies <p>"
  },
  {
-  "id": 307,
+  "id": 309,
   "texto": "Enlaces a otros servicios",
   "contexto": "cookies <h2>"
  },
  {
-  "id": 308,
+  "id": 310,
   "texto": "Los enlaces a WhatsApp abren un servicio de Meta, que tiene su propia política de cookies y privacidad.",
   "contexto": "cookies <p>"
  },
  {
-  "id": 309,
+  "id": 311,
   "texto": "Cambios",
   "contexto": "cookies <h2>"
  },
  {
-  "id": 310,
+  "id": 312,
   "texto": "Si en el futuro la web empieza a usar cookies, actualizaremos esta página y te pediremos tu consentimiento cuando sea necesario.",
   "contexto": "cookies <p>"
  },
  {
-  "id": 311,
+  "id": 313,
   "texto": "Política de cookies | Luxor Marbella",
   "contexto": "cookies"
  },
  {
-  "id": 312,
+  "id": 314,
   "texto": "Error 404",
   "contexto": "404 <p class=\"kicker\">"
  },
  {
-  "id": 313,
+  "id": 315,
   "texto": "No encontramos esa página",
   "contexto": "404 <h1 class=\"d2\">"
  },
  {
-  "id": 314,
+  "id": 316,
   "texto": "Puede que el enlace esté mal escrito o que la página ya no exista.",
   "contexto": "404 <p>"
  },
  {
-  "id": 315,
+  "id": 317,
   "texto": "Ir al inicio",
   "contexto": "404 <a class=\"btn\" href=\"{{url:inicio}}\">"
  },
  {
-  "id": 316,
+  "id": 318,
   "texto": "Página no encontrada | Luxor Marbella",
   "contexto": "404"
  }

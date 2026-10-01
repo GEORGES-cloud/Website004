@@ -12,6 +12,8 @@ const svc = (id) => SERVICIOS.find((s) => s.id === id);
 const TEXTOS_JS = {
   menu_abrir: 'Abrir menú',
   menu_cerrar: 'Cerrar menú',
+  video_pausa: 'Pausar el vídeo',
+  video_play: 'Reproducir el vídeo',
   paso: 'Paso {n} de {total}',
   q_servicio: 'Marca al menos una opción.',
   q_zona: 'Elige una zona.',
