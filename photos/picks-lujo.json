@@ -1,0 +1,7 @@
+[
+  { "slot": "nuevas", "index": 0, "file": "1748063578185-3d68121b11ff", "out": "portada",           "size": [1600, 1000], "croma": 0.85, "calidad": 74, "origen": "villa blanca con luz cálida al anochecer (estilo de la referencia del cliente)" },
+  { "slot": "nuevas", "index": 1, "file": "1710883734891-93709398496d", "out": "svc-alquileres",    "size": [1440, 900],  "croma": 0.8,  "calidad": 74, "origen": "dormitorio con ventanal panorámico" },
+  { "slot": "nuevas", "index": 2, "file": "1750639258774-9a714379a093", "out": "svc-reformas",      "size": [1440, 900],  "croma": 0.8,  "calidad": 74, "origen": "salón crema con mesa de travertino" },
+  { "slot": "nuevas", "index": 3, "file": "1774437290632-f4e91d831537", "out": "svc-mantenimiento", "size": [1440, 900],  "croma": 0.8,  "calidad": 74, "origen": "salón blanco con patio interior y árbol" },
+  { "slot": "nuevas", "index": 4, "file": "1682184805271-11671b7ecf4c", "out": "about-casa",        "size": [1160, 798],  "croma": 0.8,  "calidad": 76, "origen": "salón blanco minimalista con ventanal" }
+]

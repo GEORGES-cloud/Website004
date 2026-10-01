@@ -2,10 +2,6 @@
  "Luxor Marbella, inicio": "Luxor Marbella — на главную",
  "Abrir menú": "Открыть меню",
  "Menú principal": "Главное меню",
- "Edificio de piedra con terrazas frente al mar": "Каменное здание с террасами у моря",
- "Casa blanca con arcos, tejado de teja y jardín": "Белый дом с арками, черепичной крышей и садом",
- "Salón en tonos claros con sofá modular y lámpara de techo": "Гостиная в светлых тонах с модульным диваном и потолочным светильником",
- "Persona fregando el suelo de un dormitorio luminoso": "Человек моет пол в светлой спальне",
  "Líneas de servicio": "Направления услуг",
  "Fachada de piedra clara con ventanales y balcones de forja": "Фасад из светлого камня с большими окнами и коваными балконами",
  "Salón en tonos claros con sofá, mesa de centro y dos cuadros": "Гостиная в светлых тонах с диваном, журнальным столиком и двумя картинами",
@@ -254,7 +250,6 @@
  "Llamar al +34 603 60 55 43": "Позвонить: +34 603 60 55 43",
  "Pedir presupuesto | Luxor Marbella": "Запросить расчёт стоимости | Luxor Marbella",
  "Pide presupuesto a Luxor Marbella en cuatro pasos o escríbenos por WhatsApp. Gestión de alquileres, reformas y mantenimiento de viviendas en Marbella.": "Запросите расчёт стоимости у Luxor Marbella за четыре шага или напишите нам в WhatsApp. Управление арендой, ремонт и обслуживание жилья в Марбелье.",
- "Salón ordenado con sofá claro, alfombra y ventanal": "Прибранная гостиная со светлым диваном, ковром и большим окном",
  "La llave que no tienes que buscar": "Ключ, который не нужно искать",
  "Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.": "Мы заботимся о домах и квартирах в Марбелье и окрестностях для собственников, которые не живут здесь круглый год. Храним ключи, заходим только с предварительным уведомлением и держим дом в таком состоянии, будто вы приезжаете завтра.",
  "Trabajamos en tres líneas —gestión de alquileres, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.": "Работаем по трём направлениям — управление арендой, ремонт и обслуживание, — и все их координирует одно контактное лицо. После каждого визита вы получаете отчёт: что сделано, какие материалы использованы и что ещё предстоит.",
@@ -316,5 +311,10 @@
  "Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa, para cuándo lo necesitas, lo que quieras contarnos en el mensaje y si aceptas o no recibir comunicaciones comerciales. Con la solicitud nos llega también el idioma en que has usado la web.": "Только те, которые вы сами сообщаете при запросе расчёта стоимости: имя, телефон, адрес электронной почты (если вы его указали), район, где находится жильё, интересующую вас услугу, желаемые сроки, то, что вы захотите написать в сообщении, и согласны ли вы получать рекламные сообщения. Вместе с запросом мы также узнаём, на каком языке вы пользовались сайтом.",
  "Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.": "Знакомьтесь с Luxor Marbella: мы заботимся о жилье в Марбелье и окрестностях для собственников, которые не живут здесь круглый год, — с одним контактным лицом.",
  "Revisa el teléfono: parece incompleto.": "Проверьте номер телефона: кажется, он неполный.",
- "Revisa el e-mail: parece incompleto.": "Проверьте адрес электронной почты: кажется, он неполный."
+ "Revisa el e-mail: parece incompleto.": "Проверьте адрес электронной почты: кажется, он неполный.",
+ "Villa moderna blanca iluminada al anochecer": "Современная белая вилла с подсветкой в сумерках",
+ "Dormitorio con ventanal panorámico y vistas al lago": "Спальня с панорамным окном и видом на озеро",
+ "Salón en tonos crema con mesa de travertino": "Гостиная в кремовых тонах с журнальным столиком из травертина",
+ "Salón blanco con patio interior y un árbol": "Белая гостиная с внутренним двориком и деревом",
+ "Salón blanco minimalista con ventanal": "Минималистичная белая гостиная с большим окном"
 }

@@ -16,7 +16,7 @@
  },
  {
   "id": 4,
-  "texto": "Edificio de piedra con terrazas frente al mar",
+  "texto": "Villa moderna blanca iluminada al anochecer",
   "contexto": "inicio atributo alt"
  },
  {
@@ -26,17 +26,17 @@
  },
  {
   "id": 6,
-  "texto": "Casa blanca con arcos, tejado de teja y jardín",
+  "texto": "Dormitorio con ventanal panorámico y vistas al lago",
   "contexto": "inicio atributo alt | alquileres atributo alt"
  },
  {
   "id": 7,
-  "texto": "Salón en tonos claros con sofá modular y lámpara de techo",
+  "texto": "Salón en tonos crema con mesa de travertino",
   "contexto": "inicio atributo alt | reformas atributo alt"
  },
  {
   "id": 8,
-  "texto": "Persona fregando el suelo de un dormitorio luminoso",
+  "texto": "Salón blanco con patio interior y un árbol",
   "contexto": "inicio atributo alt | mantenimiento atributo alt"
  },
  {
@@ -1301,7 +1301,7 @@
  },
  {
   "id": 261,
-  "texto": "Salón ordenado con sofá claro, alfombra y ventanal",
+  "texto": "Salón blanco minimalista con ventanal",
   "contexto": "nosotros atributo alt"
  },
  {

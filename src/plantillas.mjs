@@ -206,7 +206,7 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
 </section>`;
 
 const inicio = () => `<section class="hero" id="top">
-  <div class="hero-bg"><img src="/photos/portada.jpg" alt="Edificio de piedra con terrazas frente al mar" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
+  <div class="hero-bg"><img src="/photos/portada.jpg" alt="Villa moderna blanca iluminada al anochecer" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
   <div class="wrap">
     <h1><span class="kick">Luxor Marbella</span> Hacemos fácil tener casa en Marbella</h1>
     <p>Luxor Marbella gestiona alquileres, hace reformas y mantiene viviendas en Marbella y la Costa del Sol. Un solo equipo y un solo interlocutor.</p>
@@ -358,7 +358,7 @@ const nosotros = () => `<section class="phead solo">
 
 <section class="about">
   <div class="wrap">
-    <div class="shot">${img('about-casa.jpg', 'Salón ordenado con sofá claro, alfombra y ventanal')}</div>
+    <div class="shot">${img('about-casa.jpg', 'Salón blanco minimalista con ventanal')}</div>
     <div class="about-copy">
       <h2 class="d2">La llave que no tienes que buscar</h2>
       <p>Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p>

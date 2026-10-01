@@ -2,10 +2,6 @@
  "Luxor Marbella, inicio": "Luxor Marbella, startsida",
  "Abrir menú": "Öppna menyn",
  "Menú principal": "Huvudmeny",
- "Edificio de piedra con terrazas frente al mar": "Stenbyggnad med terrasser vid havet",
- "Casa blanca con arcos, tejado de teja y jardín": "Vitt hus med valvbågar, tegeltak och trädgård",
- "Salón en tonos claros con sofá modular y lámpara de techo": "Vardagsrum i ljusa toner med modulsoffa och taklampa",
- "Persona fregando el suelo de un dormitorio luminoso": "Person som moppar golvet i ett ljust sovrum",
  "Líneas de servicio": "Tjänsteområden",
  "Fachada de piedra clara con ventanales y balcones de forja": "Fasad i ljus sten med stora fönster och balkonger med smidesräcken",
  "Salón en tonos claros con sofá, mesa de centro y dos cuadros": "Vardagsrum i ljusa toner med soffa, soffbord och två tavlor",
@@ -254,7 +250,6 @@
  "Llamar al +34 603 60 55 43": "Ring +34 603 60 55 43",
  "Pedir presupuesto | Luxor Marbella": "Begär offert | Luxor Marbella",
  "Pide presupuesto a Luxor Marbella en cuatro pasos o escríbenos por WhatsApp. Gestión de alquileres, reformas y mantenimiento de viviendas en Marbella.": "Begär offert från Luxor Marbella i fyra steg eller skriv till oss på WhatsApp. Uthyrning, renovering och underhåll av bostäder i Marbella.",
- "Salón ordenado con sofá claro, alfombra y ventanal": "Prydligt vardagsrum med ljus soffa, matta och stort fönster",
  "La llave que no tienes que buscar": "Nyckeln du inte behöver leta efter",
  "Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.": "Vi tar hand om bostäder i Marbella med omnejd åt ägare som inte bor här året runt. Vi förvarar nycklarna, hör av oss innan vi går in och håller bostaden redo som om du skulle komma i morgon.",
  "Trabajamos en tres líneas —gestión de alquileres, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.": "Vi arbetar inom tre områden – uthyrning, renovering och underhåll – som samordnas av en enda kontaktperson. Efter varje besök får du en rapport om vad som har gjorts, vilket material som har använts och vad som återstår.",
@@ -316,5 +311,10 @@
  "Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa, para cuándo lo necesitas, lo que quieras contarnos en el mensaje y si aceptas o no recibir comunicaciones comerciales. Con la solicitud nos llega también el idioma en que has usado la web.": "Bara de uppgifter du själv lämnar när du begär offert: namn, telefonnummer, e-postadress om du anger den, området där bostaden ligger, den tjänst du är intresserad av, när du behöver den, det du väljer att berätta i meddelandet och om du vill ta emot marknadsföring eller inte. Med förfrågan får vi också veta vilket språk du använde webbplatsen på.",
  "Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.": "Möt Luxor Marbella: vi tar hand om bostäder i Marbella med omnejd åt ägare som inte bor här året runt, med en enda kontaktperson.",
  "Revisa el teléfono: parece incompleto.": "Kontrollera telefonnumret – det verkar ofullständigt.",
- "Revisa el e-mail: parece incompleto.": "Kontrollera e-postadressen – den verkar ofullständig."
+ "Revisa el e-mail: parece incompleto.": "Kontrollera e-postadressen – den verkar ofullständig.",
+ "Villa moderna blanca iluminada al anochecer": "Modern vit villa upplyst i skymningen",
+ "Dormitorio con ventanal panorámico y vistas al lago": "Sovrum med panoramafönster och sjöutsikt",
+ "Salón en tonos crema con mesa de travertino": "Vardagsrum i krämtoner med soffbord i travertin",
+ "Salón blanco con patio interior y un árbol": "Vitt vardagsrum med innergård och ett träd",
+ "Salón blanco minimalista con ventanal": "Minimalistiskt vitt vardagsrum med stort fönster"
 }
