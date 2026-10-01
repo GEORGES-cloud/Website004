@@ -238,8 +238,7 @@ const conHuella = (f) => {
 let paginasEscritas = 0;
 for (const l of activos) {
   for (const p of PAGINAS) {
-    if (p.soloEs && l.code !== 'es') continue;   // páginas de trabajo para el cliente: solo en español
-    const t = p.soloEs ? (texto) => texto : traductor(l, p.id);
+    const t = traductor(l, p.id);
     let html = traducir(cuerpo(p), t)
       .replace(/\{\{langs:(desplegable|lista)\}\}/g, (todo, tipo) => selector(l, p, t, tipo))
       .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)));

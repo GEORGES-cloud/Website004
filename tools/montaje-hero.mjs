@@ -1,15 +1,16 @@
 // Monta los vídeos del hero "recorrido por la casa" a partir de photos/hero-casa-tomas.json.
-//   node tools/montaje-hero.mjs            (necesita ffmpeg; ruta en la variable FFMPEG o la de winget)
+//   node tools/montaje-hero.mjs           (necesita ffmpeg; ruta en la variable FFMPEG o la de winget)
+//   node tools/montaje-hero.mjs --todo    además, las variantes que se enseñaron al cliente y no eligió
 //
 // Salidas en photos/:
-//   hero-casa.mp4 / hero-casa-v.mp4   tomas unidas con fundidos (2560x1440 y 720x1280 vertical)
-//   hero-luz.mp4  / hero-luz-v.mp4    las mismas tomas, cambiando con una línea de luz que barre la imagen
+//   hero-casa.mp4 / hero-casa-v.mp4   tomas unidas con fundidos (2560x1440 y 720x1280 vertical): el hero de la portada
 //   hero-casa.jpg / hero-casa-v.jpg   primer fotograma (póster)
-//   mos-<nombre>.mp4 / .jpg           clips cortos 4:5 para la opción mosaico (las tomas con "mosaico")
-//   hero-casa.json                    estancias en orden y segundo en que empieza y acaba cada una
+// Con --todo, también:
+//   hero-luz.mp4  / hero-luz-v.mp4    las mismas tomas, cambiando con una línea de luz que barre la imagen
+//   mos-<nombre>.mp4 / .jpg           clips cortos 4:5 para un mosaico (las tomas con "mosaico")
 // Todos los bucles son continuos: la última toma funde con la primera y el corte cae en el mismo fotograma.
 // Las descargas 4K se guardan en photos/_videos/ (fuera de git).
-import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -75,30 +76,32 @@ const monta = ({ vertical, transicion, dur, salida, linea }) => {
   }
   filtros.push(`[${ultimo}]trim=start=${dur}:end=${fin.toFixed(3)},setpts=PTS-STARTPTS,format=yuv420p[out]`);
   ff([...entradas, '-filter_complex', filtros.join(';'), '-map', '[out]', '-an', '-c:v', 'libx264', '-preset', 'slow',
-    '-crf', vertical ? '27' : '24', '-profile:v', 'high', '-maxrate', vertical ? '3M' : '9M', '-bufsize', vertical ? '6M' : '18M',
+    '-crf', vertical ? '27' : '26', '-profile:v', 'high', '-maxrate', vertical ? '3M' : '7M', '-bufsize', vertical ? '6M' : '14M',
     '-g', '60', '-movflags', '+faststart', join(fotos, salida)], salida);
   return { offs, total: fin - dur };
 };
 
 const casa = monta({ vertical: false, transicion: 'fade', dur: F, salida: 'hero-casa.mp4' });
 monta({ vertical: true, transicion: 'fade', dur: F, salida: 'hero-casa-v.mp4' });
-monta({ vertical: false, transicion: 'wiperight', dur: FL, salida: 'hero-luz.mp4', linea: true });
-monta({ vertical: true, transicion: 'wiperight', dur: FL, salida: 'hero-luz-v.mp4', linea: true });
+const todo = process.argv.includes('--todo');
+if (todo) {
+  monta({ vertical: false, transicion: 'wiperight', dur: FL, salida: 'hero-luz.mp4', linea: true });
+  monta({ vertical: true, transicion: 'wiperight', dur: FL, salida: 'hero-luz-v.mp4', linea: true });
+}
 
 // pósters: primer fotograma de cada montaje
 ff(['-i', join(fotos, 'hero-casa.mp4'), '-frames:v', '1', '-q:v', '4', join(fotos, 'hero-casa.jpg')], 'póster');
 ff(['-i', join(fotos, 'hero-casa-v.mp4'), '-frames:v', '1', '-vf', 'scale=900:1600:flags=lanczos', '-q:v', '4', join(fotos, 'hero-casa-v.jpg')], 'póster vertical');
 
-// estancias y tiempos (cada una va de la mitad de un fundido a la mitad del siguiente)
+// estancias y tiempos, para el registro (cada una va de la mitad de un fundido a la mitad del siguiente)
 const segmentos = tomas.map((t, k) => ({
   nombre: t.nombre,
   inicio: +(k === 0 ? 0 : casa.offs[k - 1] - F / 2).toFixed(2),
   fin: +(k === tomas.length - 1 ? casa.total : casa.offs[k] - F / 2).toFixed(2),
 }));
-writeFileSync(join(fotos, 'hero-casa.json'), JSON.stringify({ duracion: +casa.total.toFixed(2), segmentos }, null, 1) + '\n');
 
 // clips del mosaico: 4:5, 960x1200, bucle de ida y vuelta
-for (const t of tomas.filter((t) => t.mosaico)) {
+for (const t of todo ? tomas.filter((t) => t.mosaico) : []) {
   const d = Math.min(4.5, t.fin - t.inicio);
   const cw = 1728, cx = Math.round(Math.min(3840 - cw, Math.max(0, t.x * 3840 - cw / 2)));
   const base = `trim=start=${t.inicio}:duration=${d},setpts=PTS-STARTPTS,fps=30,crop=${cw}:2160:${cx}:0,scale=960:1200:flags=lanczos,hqdn3d=1.2:1.2:5:5,format=yuv420p`;

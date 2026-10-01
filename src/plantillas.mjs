@@ -3,7 +3,6 @@
 // No hay textos de otras lenguas aquí: build.mjs traduce el HTML ya montado.
 import { NEGOCIO as N, SERVICIOS, GARANTIAS, VENTAJAS, TICKER, FAQ, ZONAS_FRASE } from './contenido.mjs';
 import { LEGAL } from './legal.mjs';
-import { paginasOpcionesHero } from './opciones-hero.mjs';
 
 const WA = `https://wa.me/${N.whatsapp}`;
 const TEL = `tel:${N.telefono}`;
@@ -211,23 +210,25 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
   </div>
 </section>`;
 
-export const heroTexto = `    <h1><span class="kick">Luxor Marbella</span> Hacemos fácil tener casa en Marbella</h1>
+const heroTexto = `    <h1><span class="kick">Luxor Marbella</span> Hacemos fácil tener casa en Marbella</h1>
     <div class="hero-row">
       <p>Luxor Marbella gestiona alquileres, hace reformas y mantiene viviendas en Marbella y la Costa del Sol. Un solo equipo y un solo interlocutor.</p>
       <div class="hero-actions">
-        <a class="btn btn-claro" href="{{url:presupuesto}}">Pedir presupuesto</a>
+        <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
         <a class="lnk" href="#servicios">Qué hacemos</a>
       </div>
     </div>`;
 
 const heroActual = () => `<section class="hero" id="top">
-  <div class="hero-bg" data-video="/photos/hero-dia.mp4" data-video-sm="/photos/hero-dia-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-dia-v.jpg" width="900" height="1600"><img src="/photos/hero-dia.jpg" alt="Salón luminoso con sofá blanco y mesa de madera a la luz del sol" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="Recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
+    <div class="hero-caja">
 ${heroTexto}
+    </div>
   </div>
 </section>`;
 
-const inicio = (hero = heroActual()) => `${hero}
+const inicio = () => `${heroActual()}
 
 <section class="pledges">
   <div class="wrap">
@@ -544,8 +545,6 @@ export const PAGINAS = [
   { id: 'nosotros', es: 'nosotros', xx: 'about', title: 'Quiénes somos | Luxor Marbella', desc: 'Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.', cuerpo: nosotros },
   ...Object.keys(LEGAL).map((id) => ({ id, es: LEGAL[id].es, xx: LEGAL[id].xx, title: `${LEGAL[id].titulo} | Luxor Marbella`, desc: LEGAL[id].entrada, cuerpo: () => legal(id) })),
   { id: '404', es: '404', xx: '404', title: 'Página no encontrada | Luxor Marbella', desc: '', cuerpo: noEncontrada, oculta: true },
-  // opciones de hero para el cliente (temporales, ocultas y solo en español)
-  ...paginasOpcionesHero({ inicio, heroTexto, heroActual }),
 ];
 
 // Todo lo que va dentro de <body>

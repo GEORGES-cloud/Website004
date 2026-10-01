@@ -21,7 +21,7 @@
  },
  {
   "id": 5,
-  "texto": "Salón luminoso con sofá blanco y mesa de madera a la luz del sol",
+  "texto": "Recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza",
   "contexto": "inicio atributo alt"
  },
  {
@@ -92,7 +92,7 @@
  {
   "id": 19,
   "texto": "Pedir presupuesto",
-  "contexto": "inicio <a class=\"btn\" href=\"{{url:presupuesto}}\"> | inicio <a href=\"{{url:presupuesto}}\"> | inicio <a class=\"btn btn-claro\" href=\"{{url:presupuesto}}\">"
+  "contexto": "inicio <a class=\"btn\" href=\"{{url:presupuesto}}\"> | inicio <a href=\"{{url:presupuesto}}\"> | inicio <a class=\"lnk\" href=\"{{url:presupuesto}}?s=alquileres\">"
  },
  {
   "id": 20,
