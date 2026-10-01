@@ -1,0 +1,59 @@
+{
+ "nota": "Tomas del hero recorrido por la casa (Pexels, licencia libre; autor Alef Morais). Las monta tools/montaje-hero.mjs.",
+ "fundido": 0.9,
+ "barrido": 1.3,
+ "tomas": [
+  {
+   "id": "39576515",
+   "nombre": "Salón",
+   "inicio": 0.3,
+   "fin": 4.3,
+   "x": 0.564,
+   "mosaico": "salon",
+   "url": "https://videos.pexels.com/video-files/39576515/16868161_3840_2160_30fps.mp4"
+  },
+  {
+   "id": "39576532",
+   "nombre": "Comedor",
+   "inicio": 3.8,
+   "fin": 7.8,
+   "x": 0.55,
+   "url": "https://videos.pexels.com/video-files/39576532/16868216_3840_2160_30fps.mp4"
+  },
+  {
+   "id": "39024330",
+   "nombre": "Dormitorio",
+   "inicio": 1,
+   "fin": 5,
+   "x": 0.45,
+   "mosaico": "dormitorio",
+   "url": "https://videos.pexels.com/video-files/39024330/16605534_3840_2160_30fps.mp4"
+  },
+  {
+   "id": "39024332",
+   "nombre": "Baño",
+   "inicio": 3,
+   "fin": 6.9,
+   "x": 0.62,
+   "mosaico": "bano",
+   "url": "https://videos.pexels.com/video-files/39024332/16605438_3840_2160_30fps.mp4"
+  },
+  {
+   "id": "39024325",
+   "nombre": "Escalera",
+   "inicio": 0.3,
+   "fin": 4.3,
+   "x": 0.5,
+   "url": "https://videos.pexels.com/video-files/39024325/16605474_3840_2160_30fps.mp4"
+  },
+  {
+   "id": "39576516",
+   "nombre": "Terraza",
+   "inicio": 1,
+   "fin": 5,
+   "x": 0.45,
+   "mosaico": "exterior",
+   "url": "https://videos.pexels.com/video-files/39576516/16868163_3840_2160_30fps.mp4"
+  }
+ ]
+}

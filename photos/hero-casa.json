@@ -1,0 +1,35 @@
+{
+ "duracion": 18.5,
+ "segmentos": [
+  {
+   "nombre": "Salón",
+   "inicio": 0,
+   "fin": 2.65
+  },
+  {
+   "nombre": "Comedor",
+   "inicio": 2.65,
+   "fin": 5.75
+  },
+  {
+   "nombre": "Dormitorio",
+   "inicio": 5.75,
+   "fin": 8.85
+  },
+  {
+   "nombre": "Baño",
+   "inicio": 8.85,
+   "fin": 11.85
+  },
+  {
+   "nombre": "Escalera",
+   "inicio": 11.85,
+   "fin": 14.95
+  },
+  {
+   "nombre": "Terraza",
+   "inicio": 14.95,
+   "fin": 18.5
+  }
+ ]
+}

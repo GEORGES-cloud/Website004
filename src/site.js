@@ -101,6 +101,30 @@
   // al pasar a escritorio el menu de texto ya esta a la vista
   window.addEventListener('resize', function(){ if (!menu.hidden && window.innerWidth >= 1080) abrir(false); });
 
+  // selector de idioma de la cabecera (<details>): se cierra al tocar fuera o con Escape
+  each(document.querySelectorAll('details.lang'), function(d){
+    document.addEventListener('click', function(e){ if (d.open && !d.contains(e.target)) d.open = false; });
+    d.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary').focus(); }
+    });
+  });
+
+  // boton flotante de WhatsApp: con el saludo en el idioma de la pagina. En la portada aparece
+  // al dejar atras el hero (alli ya estan los botones principales y taparia "Que hacemos").
+  var waf = $('wa-flota');
+  if (waf) {
+    waf.href = waf.href.split('?')[0] + '?text=' + encodeURIComponent(T.wa_hola);
+    var heroSec = document.querySelector('.hero');
+    var verWa = function(){
+      var si = !heroSec || window.scrollY > heroSec.offsetHeight * 0.55;
+      if (si !== waf.classList.contains('visible')) waf.classList.toggle('visible', si);
+    };
+    document.documentElement.classList.add('wa-js');
+    verWa();
+    window.addEventListener('scroll', verWa, { passive: true });
+    window.addEventListener('resize', verWa, { passive: true });
+  }
+
   // presupuesto: cuestionario por pasos. El servidor manda la solicitud por correo a Luxor
   // (POST /api/presupuesto); el enlace de WhatsApp lleva siempre lo contestado hasta el momento.
   var quiz = $('quiz');

@@ -110,10 +110,11 @@ function selector(l, p, t, tipo) {
   const rotulo = escAttr(t('Idioma', 'rótulo del selector de idioma'));   // antes del return: que entre siempre en el catálogo
   if (activos.length < 2) return '';
   const destino = (a) => ruta(a, p.oculta ? pagina('inicio') : p);
-  const enlaces = activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}</a></li>`).join('');
+  // en el desplegable cada idioma lleva también su código (ES, EN…) a la derecha
+  const enlaces = (conCodigo) => activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}${conCodigo ? `<span class="lang-cod" aria-hidden="true">${a.code.toUpperCase()}</span>` : ''}</a></li>`).join('');
   return tipo === 'desplegable'
-    ? `<details class="lang"><summary aria-label="${rotulo}: ${l.nombre} (${l.code.toUpperCase()})">${l.code.toUpperCase()}</summary><ul>${enlaces}</ul></details>`
-    : `<ul class="langs" aria-label="${rotulo}">${enlaces}</ul>`;
+    ? `<details class="lang"><summary aria-label="${rotulo}: ${l.nombre} (${l.code.toUpperCase()})"><span class="globo" aria-hidden="true"></span>${l.code.toUpperCase()}</summary><ul>${enlaces(true)}</ul></details>`
+    : `<div class="langs-caja"><span class="langs-rotulo" aria-hidden="true"><span class="globo"></span>${rotulo}</span><ul class="langs" aria-label="${rotulo}">${enlaces(false)}</ul></div>`;
 }
 
 // Datos estructurados. Los @id son estables y comunes a todos los idiomas.
@@ -237,7 +238,8 @@ const conHuella = (f) => {
 let paginasEscritas = 0;
 for (const l of activos) {
   for (const p of PAGINAS) {
-    const t = traductor(l, p.id);
+    if (p.soloEs && l.code !== 'es') continue;   // páginas de trabajo para el cliente: solo en español
+    const t = p.soloEs ? (texto) => texto : traductor(l, p.id);
     let html = traducir(cuerpo(p), t)
       .replace(/\{\{langs:(desplegable|lista)\}\}/g, (todo, tipo) => selector(l, p, t, tipo))
       .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)));
