@@ -28,10 +28,10 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.4832f7ad2a.css">
+  <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.34c3e0b7a1.css">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="/assets/site.e016468ada.js" defer></script>
+  <script src="/assets/site.32ac41cd89.js" defer></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.luxormarbella.com/#negocio","name":"Luxor Marbella","url":"https://www.luxormarbella.com/","description":"Luxor Marbella gestiona alquileres, reforma y mantiene viviendas en Marbella para propietarios que no viven aquí todo el año. Tel. +34 603 60 55 43.","telephone":"+34603605543","email":"info@luxormarbella.com","logo":"https://www.luxormarbella.com/assets/logo-master-color.png","address":{"@type":"PostalAddress","addressLocality":"Marbella","addressRegion":"Málaga","addressCountry":"ES"},"areaServed":[{"@type":"City","name":"Marbella"},{"@type":"Place","name":"Puerto Banús"},{"@type":"Place","name":"Nueva Andalucía"},{"@type":"Place","name":"San Pedro de Alcántara"},{"@type":"Place","name":"Benahavís"},{"@type":"Place","name":"Estepona"},{"@type":"Place","name":"Elviria"},{"@type":"Place","name":"Las Chapas"},{"@type":"Place","name":"Sotogrande"}],"contactPoint":{"@type":"ContactPoint","telephone":"+34603605543","email":"info@luxormarbella.com","contactType":"customer service","availableLanguage":["es"]},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Servicios","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","@id":"https://www.luxormarbella.com/#servicio-alquileres","name":"Gestión integral de propiedades y alquileres","url":"https://www.luxormarbella.com/servicios/gestion-alquileres/"}},{"@type":"Offer","itemOffered":{"@type":"Service","@id":"https://www.luxormarbella.com/#servicio-reformas","name":"Reformas, home staging y optimización de viviendas","url":"https://www.luxormarbella.com/servicios/reformas-home-staging/"}},{"@type":"Offer","itemOffered":{"@type":"Service","@id":"https://www.luxormarbella.com/#servicio-mantenimiento","name":"Mantenimiento, limpieza y servicios premium para propietarios","url":"https://www.luxormarbella.com/servicios/mantenimiento-limpieza/"}}]}},{"@type":"WebSite","@id":"https://www.luxormarbella.com/#web","url":"https://www.luxormarbella.com/","name":"Luxor Marbella","alternateName":"luxormarbella.com","publisher":{"@id":"https://www.luxormarbella.com/#negocio"},"inLanguage":["es","en","fr","de","sv","ru"]},{"@type":"WebPage","@id":"https://www.luxormarbella.com/aviso-legal/#pagina","url":"https://www.luxormarbella.com/aviso-legal/","name":"Aviso legal | Luxor Marbella","description":"Información general sobre este sitio web y las condiciones para usarlo.","inLanguage":"es","isPartOf":{"@id":"https://www.luxormarbella.com/#web"},"about":{"@id":"https://www.luxormarbella.com/#negocio"}}]}</script>
 </head>
 <body>
@@ -54,14 +54,20 @@
 
 <header class="masthead">
   <div class="wrap">
-    <a href="/" aria-label="Luxor Marbella, inicio">
+    <a class="mh-logo" href="/" aria-label="Luxor Marbella, inicio">
       <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
     </a>
+    <nav class="mh-nav" aria-label="Secciones">
+      <a href="/servicios/gestion-alquileres/">Alquileres</a>
+      <a href="/servicios/reformas-home-staging/">Reformas</a>
+      <a href="/servicios/mantenimiento-limpieza/">Mantenimiento</a>
+      <a href="/nosotros/">Quiénes somos</a>
+    </nav>
     <div class="mh-right">
-      <a class="pill pill-call" href="tel:+34603605543">¡Llámanos! 603 60 55 43</a>
-      <a class="pill pill-deep" href="/presupuesto/">Solicitar presupuesto</a>
-      <details class="lang"><summary class="pill" aria-label="Idioma: Español (ES)">ES</summary><ul><li><a href="/aviso-legal/" lang="es" hreflang="es" aria-current="true">Español</a></li><li><a href="/en/legal-notice/" lang="en" hreflang="en">English</a></li><li><a href="/fr/legal-notice/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/legal-notice/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/legal-notice/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/legal-notice/" lang="ru" hreflang="ru">Русский</a></li></ul></details>
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <a class="mh-tel" href="tel:+34603605543">603 60 55 43</a>
+      <details class="lang"><summary aria-label="Idioma: Español (ES)">ES</summary><ul><li><a href="/aviso-legal/" lang="es" hreflang="es" aria-current="true">Español</a></li><li><a href="/en/legal-notice/" lang="en" hreflang="en">English</a></li><li><a href="/fr/legal-notice/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/legal-notice/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/legal-notice/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/legal-notice/" lang="ru" hreflang="ru">Русский</a></li></ul></details>
+      <a class="btn" href="/presupuesto/">Pedir presupuesto</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -70,42 +76,28 @@
 
 <nav class="menu" id="menu" aria-label="Menú principal" hidden>
   <div class="wrap">
-    <div>
-      <h4>Servicios</h4>
-      <ul>
-        <li><a href="/servicios/gestion-alquileres/">Gestión de propiedades y alquileres</a></li>
-        <li><a href="/servicios/reformas-home-staging/">Reformas y home staging</a></li>
-        <li><a href="/servicios/mantenimiento-limpieza/">Mantenimiento y limpieza</a></li>
-      </ul>
+    <ul class="menu-main">
+      <li><a href="/servicios/gestion-alquileres/">Gestión de propiedades y alquileres</a></li>
+      <li><a href="/servicios/reformas-home-staging/">Reformas y home staging</a></li>
+      <li><a href="/servicios/mantenimiento-limpieza/">Mantenimiento y limpieza</a></li>
+      <li><a href="/nosotros/">Quiénes somos</a></li>
+      <li><a href="/presupuesto/">Pedir presupuesto</a></li>
+    </ul>
+    <div class="menu-side">
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34603605543">+34 603 60 55 43</a></li>
+          <li><a href="https://wa.me/34603605543">WhatsApp</a></li>
+          <li><a href="mailto:info@luxormarbella.com">info@luxormarbella.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Zonas</h4>
+        <p>Luxor Marbella trabaja en Marbella, Puerto Banús, Nueva Andalucía, San Pedro de Alcántara, Benahavís, Estepona, Elviria y Las Chapas, y Sotogrande.</p>
+      </div>
+      <ul class="langs" aria-label="Idioma"><li><a href="/aviso-legal/" lang="es" hreflang="es" aria-current="true">Español</a></li><li><a href="/en/legal-notice/" lang="en" hreflang="en">English</a></li><li><a href="/fr/legal-notice/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/legal-notice/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/legal-notice/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/legal-notice/" lang="ru" hreflang="ru">Русский</a></li></ul>
     </div>
-    <div>
-      <h4>Luxor Marbella</h4>
-      <ul>
-        <li><a href="/nosotros/">Quiénes somos</a></li>
-        <li><a href="/presupuesto/">Pedir presupuesto</a></li>
-        <li><a href="https://wa.me/34603605543">WhatsApp</a></li>
-        <li><a href="tel:+34603605543">+34 603 60 55 43</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Zonas</h4>
-      <ul>
-        <li>Marbella</li>
-        <li>Puerto Banús</li>
-        <li>Nueva Andalucía</li>
-        <li>San Pedro de Alcántara</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Más zonas</h4>
-      <ul>
-        <li>Benahavís</li>
-        <li>Estepona</li>
-        <li>Elviria y Las Chapas</li>
-        <li>Sotogrande</li>
-      </ul>
-    </div>
-    <ul class="langs" aria-label="Idioma"><li><a href="/aviso-legal/" lang="es" hreflang="es" aria-current="true">Español</a></li><li><a href="/en/legal-notice/" lang="en" hreflang="en">English</a></li><li><a href="/fr/legal-notice/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/legal-notice/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/legal-notice/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/legal-notice/" lang="ru" hreflang="ru">Русский</a></li></ul>
   </div>
 </nav>
 
@@ -134,7 +126,7 @@
       <h2>Condiciones de uso</h2>
       <p>El acceso al sitio es libre y gratuito. Quien lo usa se compromete a hacerlo de forma lícita y a no dañar el sitio ni impedir su funcionamiento.</p>
       <h2>Propiedad intelectual</h2>
-      <p>Los textos, el diseño y la marca Luxor Marbella pertenecen a su titular. Las fotografías proceden de Unsplash y se usan conforme a su licencia. No está permitido reproducir los contenidos con fines comerciales sin autorización.</p>
+      <p>Los textos, el diseño y la marca Luxor Marbella pertenecen a su titular. Las fotografías proceden de Unsplash y el vídeo de la portada, de Pexels; se usan conforme a sus licencias. No está permitido reproducir los contenidos con fines comerciales sin autorización.</p>
       <h2>Responsabilidad</h2>
       <p>La información del sitio es orientativa y no constituye una oferta vinculante: las condiciones y el precio de cada servicio son los que figuren en el presupuesto aceptado por escrito.</p>
       <p>Luxor Marbella no responde del contenido de los sitios de terceros a los que este sitio enlaza.</p>
@@ -183,7 +175,7 @@
       <span>© 2026 Luxor Marbella</span>
       <span><a href="/aviso-legal/">Aviso legal</a> · <a href="/privacidad/">Política de privacidad</a> · <a href="/cookies/">Política de cookies</a></span>
       <ul class="langs" aria-label="Idioma"><li><a href="/aviso-legal/" lang="es" hreflang="es" aria-current="true">Español</a></li><li><a href="/en/legal-notice/" lang="en" hreflang="en">English</a></li><li><a href="/fr/legal-notice/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/legal-notice/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/legal-notice/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/legal-notice/" lang="ru" hreflang="ru">Русский</a></li></ul>
-      <span class="foot-credits">Fotografía: Unsplash</span>
+      <span class="foot-credits">Fotografía: Unsplash · Vídeo: Pexels</span>
     </div>
   </div>
 </footer>

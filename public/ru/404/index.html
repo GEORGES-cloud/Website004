@@ -19,10 +19,10 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.4832f7ad2a.css">
+  <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.34c3e0b7a1.css">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="/assets/site.e016468ada.js" defer></script>
+  <script src="/assets/site.32ac41cd89.js" defer></script>
 </head>
 <body>
 <svg width="0" height="0" aria-hidden="true" style="position:absolute">
@@ -44,14 +44,20 @@
 
 <header class="masthead">
   <div class="wrap">
-    <a href="/ru/" aria-label="Luxor Marbella — на главную">
+    <a class="mh-logo" href="/ru/" aria-label="Luxor Marbella — на главную">
       <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
     </a>
+    <nav class="mh-nav" aria-label="Разделы">
+      <a href="/ru/services/property-management/">Аренда</a>
+      <a href="/ru/services/renovation-home-staging/">Ремонт</a>
+      <a href="/ru/services/maintenance-cleaning/">Обслуживание</a>
+      <a href="/ru/about/">О компании</a>
+    </nav>
     <div class="mh-right">
-      <a class="pill pill-call" href="tel:+34603605543">Звоните: 603 60 55 43</a>
-      <a class="pill pill-deep" href="/ru/quote/">Запросить расчёт</a>
-      <details class="lang"><summary class="pill" aria-label="Язык: Русский (RU)">RU</summary><ul><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru" aria-current="true">Русский</a></li></ul></details>
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню">
+      <a class="mh-tel" href="tel:+34603605543">603 60 55 43</a>
+      <details class="lang"><summary aria-label="Язык: Русский (RU)">RU</summary><ul><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru" aria-current="true">Русский</a></li></ul></details>
+      <a class="btn" href="/ru/quote/">Узнать стоимость</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -60,42 +66,28 @@
 
 <nav class="menu" id="menu" aria-label="Главное меню" hidden>
   <div class="wrap">
-    <div>
-      <h4>Услуги</h4>
-      <ul>
-        <li><a href="/ru/services/property-management/">Управление недвижимостью и арендой</a></li>
-        <li><a href="/ru/services/renovation-home-staging/">Ремонт и хоум-стейджинг</a></li>
-        <li><a href="/ru/services/maintenance-cleaning/">Обслуживание и уборка</a></li>
-      </ul>
+    <ul class="menu-main">
+      <li><a href="/ru/services/property-management/">Управление недвижимостью и арендой</a></li>
+      <li><a href="/ru/services/renovation-home-staging/">Ремонт и хоум-стейджинг</a></li>
+      <li><a href="/ru/services/maintenance-cleaning/">Обслуживание и уборка</a></li>
+      <li><a href="/ru/about/">О компании</a></li>
+      <li><a href="/ru/quote/">Узнать стоимость</a></li>
+    </ul>
+    <div class="menu-side">
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li><a href="tel:+34603605543">+34 603 60 55 43</a></li>
+          <li><a href="https://wa.me/34603605543">WhatsApp</a></li>
+          <li><a href="mailto:info@luxormarbella.com">info@luxormarbella.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Районы</h4>
+        <p>Luxor Marbella работает в Марбелье, Пуэрто-Банусе, Нуэва-Андалусии, Сан-Педро-де-Алькантара, Бенаависе, Эстепоне, Эльвирии и Лас-Чапас, а также в Сотогранде.</p>
+      </div>
+      <ul class="langs" aria-label="Язык"><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru" aria-current="true">Русский</a></li></ul>
     </div>
-    <div>
-      <h4>Luxor Marbella</h4>
-      <ul>
-        <li><a href="/ru/about/">О компании</a></li>
-        <li><a href="/ru/quote/">Узнать стоимость</a></li>
-        <li><a href="https://wa.me/34603605543">WhatsApp</a></li>
-        <li><a href="tel:+34603605543">+34 603 60 55 43</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Районы</h4>
-      <ul>
-        <li>Марбелья</li>
-        <li>Пуэрто-Банус</li>
-        <li>Нуэва-Андалусия</li>
-        <li>Сан-Педро-де-Алькантара</li>
-      </ul>
-    </div>
-    <div>
-      <h4>Другие районы</h4>
-      <ul>
-        <li>Бенаавис</li>
-        <li>Эстепона</li>
-        <li>Эльвирия и Лас-Чапас</li>
-        <li>Сотогранде</li>
-      </ul>
-    </div>
-    <ul class="langs" aria-label="Язык"><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru" aria-current="true">Русский</a></li></ul>
   </div>
 </nav>
 
@@ -106,8 +98,8 @@
     <h1 class="d2">Страница не найдена</h1>
     <p>Возможно, в ссылке ошибка или страницы больше не существует.</p>
     <div class="closer-actions">
-      <a class="pill pill-deep pill-lg" href="/ru/">На главную</a>
-      <a class="pill pill-lg" href="/ru/quote/">Узнать стоимость</a>
+      <a class="btn" href="/ru/">На главную</a>
+      <a class="lnk" href="/ru/quote/">Узнать стоимость</a>
     </div>
   </div>
 </section>
@@ -151,7 +143,7 @@
       <span>© 2026 Luxor Marbella</span>
       <span><a href="/ru/legal-notice/">Правовая информация</a> · <a href="/ru/privacy/">Политика конфиденциальности</a> · <a href="/ru/cookies/">Политика использования файлов cookie</a></span>
       <ul class="langs" aria-label="Язык"><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru" aria-current="true">Русский</a></li></ul>
-      <span class="foot-credits">Фото: Unsplash</span>
+      <span class="foot-credits">Фото: Unsplash · Видео: Pexels</span>
     </div>
   </div>
 </footer>

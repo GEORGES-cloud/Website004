@@ -126,7 +126,6 @@
  "Aviso legal": "Mentions légales",
  "Política de privacidad": "Politique de confidentialité",
  "Política de cookies": "Politique de cookies",
- "Fotografía: Unsplash": "Photos : Unsplash",
  "Cerrar menú": "Fermer le menu",
  "Paso {n} de {total}": "Étape {n} sur {total}",
  "Marca al menos una opción.": "Cochez au moins une option.",
@@ -265,7 +264,6 @@
  "Condiciones de uso": "Conditions d’utilisation",
  "El acceso al sitio es libre y gratuito. Quien lo usa se compromete a hacerlo de forma lícita y a no dañar el sitio ni impedir su funcionamiento.": "L’accès au site est libre et gratuit. L’utilisateur s’engage à en faire un usage licite et à ne pas endommager le site ni entraver son fonctionnement.",
  "Propiedad intelectual": "Propriété intellectuelle",
- "Los textos, el diseño y la marca Luxor Marbella pertenecen a su titular. Las fotografías proceden de Unsplash y se usan conforme a su licencia. No está permitido reproducir los contenidos con fines comerciales sin autorización.": "Les textes, le design et la marque Luxor Marbella appartiennent à leur titulaire. Les photographies proviennent d’Unsplash et sont utilisées conformément à sa licence. La reproduction des contenus à des fins commerciales est interdite sans autorisation.",
  "Responsabilidad": "Responsabilité",
  "La información del sitio es orientativa y no constituye una oferta vinculante: las condiciones y el precio de cada servicio son los que figuren en el presupuesto aceptado por escrito.": "Les informations du site sont fournies à titre indicatif et ne constituent pas une offre contractuelle : les conditions et le prix de chaque service sont ceux qui figurent dans le devis accepté par écrit.",
  "Luxor Marbella no responde del contenido de los sitios de terceros a los que este sitio enlaza.": "Luxor Marbella n’est pas responsable du contenu des sites tiers vers lesquels ce site renvoie.",
@@ -312,9 +310,12 @@
  "Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.": "Découvrez Luxor Marbella : nous prenons soin de logements à Marbella et dans ses environs pour les propriétaires qui n’y vivent pas toute l’année, avec un interlocuteur unique.",
  "Revisa el teléfono: parece incompleto.": "Vérifiez le numéro de téléphone : il semble incomplet.",
  "Revisa el e-mail: parece incompleto.": "Vérifiez l’adresse e-mail : elle semble incomplète.",
- "Villa moderna blanca iluminada al anochecer": "Villa moderne blanche éclairée à la tombée de la nuit",
  "Dormitorio con ventanal panorámico y vistas al lago": "Chambre avec baie vitrée panoramique et vue sur le lac",
  "Salón en tonos crema con mesa de travertino": "Salon aux tons crème avec table basse en travertin",
  "Salón blanco con patio interior y un árbol": "Salon blanc avec patio intérieur et un arbre",
- "Salón blanco minimalista con ventanal": "Salon blanc minimaliste avec grande baie vitrée"
+ "Salón blanco minimalista con ventanal": "Salon blanc minimaliste avec grande baie vitrée",
+ "Secciones": "Rubriques",
+ "Salón luminoso con sofá blanco y mesa de madera a la luz del sol": "Salon lumineux avec canapé blanc et table en bois baignés de soleil",
+ "Los textos, el diseño y la marca Luxor Marbella pertenecen a su titular. Las fotografías proceden de Unsplash y el vídeo de la portada, de Pexels; se usan conforme a sus licencias. No está permitido reproducir los contenidos con fines comerciales sin autorización.": "Les textes, le design et la marque Luxor Marbella appartiennent à leur titulaire. Les photographies proviennent d’Unsplash et la vidéo de la page d’accueil de Pexels ; elles sont utilisées conformément à leurs licences. La reproduction des contenus à des fins commerciales est interdite sans autorisation.",
+ "Fotografía: Unsplash · Vídeo: Pexels": "Photos : Unsplash · Vidéo : Pexels"
 }

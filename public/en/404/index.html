@@ -19,10 +19,10 @@
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.4832f7ad2a.css">
+  <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.34c3e0b7a1.css">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="/assets/site.e016468ada.js" defer></script>
+  <script src="/assets/site.32ac41cd89.js" defer></script>
 </head>
 <body>
 <svg width="0" height="0" aria-hidden="true" style="position:absolute">
@@ -44,14 +44,20 @@
 
 <header class="masthead">
   <div class="wrap">
-    <a href="/en/" aria-label="Luxor Marbella, home">
+    <a class="mh-logo" href="/en/" aria-label="Luxor Marbella, home">
       <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
     </a>
+    <nav class="mh-nav" aria-label="Sections">
+      <a href="/en/services/property-management/">Rentals</a>
+      <a href="/en/services/renovation-home-staging/">Renovations</a>
+      <a href="/en/services/maintenance-cleaning/">Maintenance</a>
+      <a href="/en/about/">About us</a>
+    </nav>
     <div class="mh-right">
-      <a class="pill pill-call" href="tel:+34603605543">Call us on 603 60 55 43</a>
-      <a class="pill pill-deep" href="/en/quote/">Request a quote</a>
-      <details class="lang"><summary class="pill" aria-label="Language: English (EN)">EN</summary><ul><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en" aria-current="true">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru">Русский</a></li></ul></details>
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <a class="mh-tel" href="tel:+34603605543">603 60 55 43</a>
+      <details class="lang"><summary aria-label="Language: English (EN)">EN</summary><ul><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en" aria-current="true">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru">Русский</a></li></ul></details>
+      <a class="btn" href="/en/quote/">Get a quote</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -60,42 +66,28 @@
 
 <nav class="menu" id="menu" aria-label="Main menu" hidden>
   <div class="wrap">
-    <div>
-      <h4>Services</h4>
-      <ul>
-        <li><a href="/en/services/property-management/">Property and rental management</a></li>
-        <li><a href="/en/services/renovation-home-staging/">Renovations and home staging</a></li>
-        <li><a href="/en/services/maintenance-cleaning/">Maintenance and cleaning</a></li>
-      </ul>
+    <ul class="menu-main">
+      <li><a href="/en/services/property-management/">Property and rental management</a></li>
+      <li><a href="/en/services/renovation-home-staging/">Renovations and home staging</a></li>
+      <li><a href="/en/services/maintenance-cleaning/">Maintenance and cleaning</a></li>
+      <li><a href="/en/about/">About us</a></li>
+      <li><a href="/en/quote/">Get a quote</a></li>
+    </ul>
+    <div class="menu-side">
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+34603605543">+34 603 60 55 43</a></li>
+          <li><a href="https://wa.me/34603605543">WhatsApp</a></li>
+          <li><a href="mailto:info@luxormarbella.com">info@luxormarbella.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Areas</h4>
+        <p>Luxor Marbella covers Marbella, Puerto Banús, Nueva Andalucía, San Pedro de Alcántara, Benahavís, Estepona, Elviria and Las Chapas, and Sotogrande.</p>
+      </div>
+      <ul class="langs" aria-label="Language"><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en" aria-current="true">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru">Русский</a></li></ul>
     </div>
-    <div>
-      <h4>Luxor Marbella</h4>
-      <ul>
-        <li><a href="/en/about/">About us</a></li>
-        <li><a href="/en/quote/">Get a quote</a></li>
-        <li><a href="https://wa.me/34603605543">WhatsApp</a></li>
-        <li><a href="tel:+34603605543">+34 603 60 55 43</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Areas</h4>
-      <ul>
-        <li>Marbella</li>
-        <li>Puerto Banús</li>
-        <li>Nueva Andalucía</li>
-        <li>San Pedro de Alcántara</li>
-      </ul>
-    </div>
-    <div>
-      <h4>More areas</h4>
-      <ul>
-        <li>Benahavís</li>
-        <li>Estepona</li>
-        <li>Elviria and Las Chapas</li>
-        <li>Sotogrande</li>
-      </ul>
-    </div>
-    <ul class="langs" aria-label="Language"><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en" aria-current="true">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru">Русский</a></li></ul>
   </div>
 </nav>
 
@@ -106,8 +98,8 @@
     <h1 class="d2">We can’t find that page</h1>
     <p>The link may have been mistyped, or the page may no longer exist.</p>
     <div class="closer-actions">
-      <a class="pill pill-deep pill-lg" href="/en/">Go to the homepage</a>
-      <a class="pill pill-lg" href="/en/quote/">Get a quote</a>
+      <a class="btn" href="/en/">Go to the homepage</a>
+      <a class="lnk" href="/en/quote/">Get a quote</a>
     </div>
   </div>
 </section>
@@ -151,7 +143,7 @@
       <span>© 2026 Luxor Marbella</span>
       <span><a href="/en/legal-notice/">Legal notice</a> · <a href="/en/privacy/">Privacy policy</a> · <a href="/en/cookies/">Cookie policy</a></span>
       <ul class="langs" aria-label="Language"><li><a href="/" lang="es" hreflang="es">Español</a></li><li><a href="/en/" lang="en" hreflang="en" aria-current="true">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de">Deutsch</a></li><li><a href="/sv/" lang="sv" hreflang="sv">Svenska</a></li><li><a href="/ru/" lang="ru" hreflang="ru">Русский</a></li></ul>
-      <span class="foot-credits">Photography: Unsplash</span>
+      <span class="foot-credits">Photography: Unsplash · Video: Pexels</span>
     </div>
   </div>
 </footer>

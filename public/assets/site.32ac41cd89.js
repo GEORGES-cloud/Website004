@@ -6,15 +6,61 @@
   // textos de este script en el idioma de la pagina (bloque JSON que escribe build.mjs)
   var T = JSON.parse($('i18n').textContent);
 
-  // menu
+  // hero con vídeo: la foto se pinta primero y el vídeo se añade encima solo si conviene
+  // (nada de vídeo con "reducir movimiento", con ahorro de datos o en conexiones lentas).
+  // En pantallas en vertical se usa la versión vertical, más ligera.
+  var fondo = document.querySelector('.hero-bg[data-video]');
+  if (fondo) {
+    var red = navigator.connection || {};
+    var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!quieto && !red.saveData && !/(^|-)2g$/.test(red.effectiveType || '')) {
+      var v = document.createElement('video');
+      v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true;
+      v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+      v.preload = 'auto';
+      v.src = fondo.getAttribute(window.innerHeight > window.innerWidth && fondo.dataset.videoSm ? 'data-video-sm' : 'data-video');
+      v.addEventListener('playing', function(){ v.classList.add('is-on'); }, { once: true });
+      fondo.appendChild(v);
+      var arranca = function(){
+        if (!v.paused || fondo.parentNode.classList.contains('tapada')) return;
+        var p = v.play(); if (p && p.catch) p.catch(function(){});
+      };
+      arranca();
+      v.addEventListener('canplay', arranca, { once: true });
+      // si el navegador no deja arrancarlo solo (ahorro de energía, políticas estrictas),
+      // arranca con el primer toque, clic o tecla; mientras tanto se ve la foto
+      ['pointerdown', 'touchstart', 'keydown'].forEach(function(ev){
+        window.addEventListener(ev, arranca, { passive: true, once: true });
+      });
+    }
+  }
+
+  // menu de texto de la cabecera: marca la pagina en la que estamos
+  each(document.querySelectorAll('.mh-nav a'), function(a){
+    if (a.pathname === location.pathname) a.setAttribute('aria-current', 'page');
+  });
+
+  // menu a pantalla completa (movil y tableta). Escape cierra; el tabulador no se escapa por debajo.
   var burger = $('burger');
   var menu   = $('menu');
-  burger.addEventListener('click', function(){
-    var open = menu.hidden;
-    menu.hidden = !open;
-    burger.setAttribute('aria-expanded', String(open));
-    burger.setAttribute('aria-label', open ? T.menu_cerrar : T.menu_abrir);
+  var abrir = function(si){
+    if (si) { menu.hidden = false; void menu.offsetWidth; menu.classList.add('abierto'); }
+    else { menu.classList.remove('abierto'); menu.hidden = true; }
+    document.documentElement.classList.toggle('menu-abierto', si);
+    burger.setAttribute('aria-expanded', String(si));
+    burger.setAttribute('aria-label', si ? T.menu_cerrar : T.menu_abrir);
+  };
+  burger.addEventListener('click', function(){ abrir(menu.hidden); });
+  document.addEventListener('keydown', function(e){
+    if (menu.hidden) return;
+    if (e.key === 'Escape') { abrir(false); burger.focus(); return; }
+    if (e.key === 'Tab' && !e.shiftKey) {
+      var enlaces = menu.querySelectorAll('a');
+      if (document.activeElement === enlaces[enlaces.length - 1]) { e.preventDefault(); burger.focus(); }
+    }
   });
+  // al pasar a escritorio el menu de texto ya esta a la vista
+  window.addEventListener('resize', function(){ if (!menu.hidden && window.innerWidth >= 1080) abrir(false); });
 
   // presupuesto: cuestionario por pasos. El servidor manda la solicitud por correo a Luxor
   // (POST /api/presupuesto); el enlace de WhatsApp lleva siempre lo contestado hasta el momento.
@@ -169,8 +215,11 @@
     each(tabs, function(t, k){
       t.addEventListener('click', function(){ show(k); });
       t.addEventListener('keydown', function(e){
-        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-        show(now + (e.key === 'ArrowRight' ? 1 : -1));
+        // en escritorio las pestañas van en columna: tambien valen las flechas arriba y abajo
+        var paso = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (!paso) return;
+        e.preventDefault();
+        show(now + paso);
         tabs[now].focus();
       });
     });
@@ -207,7 +256,7 @@
   // revelado al hacer scroll: los bloques entran con un leve fundido hacia arriba,
   // escalonados entre hermanos (80 ms, tope 400 ms). El hero queda fuera: ya tiene su propio movimiento.
   var SEL = ['.pledges .wrap > div','.about-copy > *','.rev-col > *','.ben','.grid-head > *','.svcx',
-             '.incl li','.row','.faq details','.more a','.zones li','.closer .wrap > *'].join(',');
+             '.duo-title > *','.duo .shot','.incl li','.row','.faq details','.more a','.zones li','.closer .wrap > *'].join(',');
   var els = document.querySelectorAll(SEL);
   if (!quiet && 'IntersectionObserver' in window && els.length) {
     var count = new Map();
@@ -236,5 +285,74 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     setTimeout(sweep, 400);
+  }
+
+  // secciones que se apilan: cada <section> de <main> se queda fija (sticky) cuando asoma su final
+  // —o arriba, bajo la cabecera, si cabe entera— y la siguiente sube por encima. La de debajo se
+  // oscurece y se aleja un poco; tapada del todo, se oculta. Las cuentas usan la posicion natural
+  // de cada seccion (suma de altos), no la pintada, asi que no dependen de lo que ya esta fijo.
+  var secs = document.querySelectorAll('main > section');
+  if (!quiet && secs.length > 1 && window.CSS && CSS.supports('position', 'sticky')) {
+    var cab = document.querySelector('.masthead'), principal = document.querySelector('main');
+    // alto de la pantalla con las barras del navegador a la vista (svh): asi nunca queda texto sin ver
+    var sonda = document.createElement('div');
+    sonda.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
+    document.body.appendChild(sonda);
+    var capas = [], cabH = 0;
+    var video = function(d, p){
+      var v = d.s.querySelector('video');
+      if (!v) return;
+      if (p >= 1) { if (!v.paused) v.pause(); }
+      else if (v.paused) { var r = v.play(); if (r && r.catch) r.catch(function(){}); }
+    };
+    var pintar = function(){
+      var y = window.scrollY;
+      for (var i = 0; i < capas.length - 1; i++) {
+        var d = capas[i];
+        var p = d.l > 0 ? (y - d.a) / d.l : (y >= d.a ? 1 : 0);
+        p = Math.round(Math.min(1, Math.max(0, p)) * 1000) / 1000;
+        if (p === d.p) continue;
+        d.p = p;
+        d.s.style.setProperty('--cover', p);
+        d.s.classList.toggle('tapando', p > 0 && p < 1);
+        d.s.classList.toggle('tapada', p >= 1);
+        video(d, p);
+      }
+    };
+    var medir = function(){
+      var alto = sonda.offsetHeight;
+      cabH = cab ? cab.offsetHeight : 0;
+      var y = principal.getBoundingClientRect().top + window.scrollY;
+      capas = Array.prototype.map.call(secs, function(s){
+        var h = s.offsetHeight, fija = Math.min(cabH, alto - h), arriba = Math.max(cabH, fija);
+        var d = { s: s, n: y, h: h, a: y - fija, l: fija + h - arriba, p: -1 };
+        s.style.setProperty('--stick', fija + 'px');
+        s.style.setProperty('--oy', Math.round((arriba + fija + h) / 2 - fija) + 'px');
+        y += h;
+        return d;
+      });
+      pintar();
+    };
+    var enCola = false, medirEnCola = false;
+    var alScroll = function(){ if (!enCola) { enCola = true; requestAnimationFrame(function(){ enCola = false; pintar(); }); } };
+    var remedir = function(){ if (!medirEnCola) { medirEnCola = true; requestAnimationFrame(function(){ medirEnCola = false; medir(); }); } };
+    document.documentElement.classList.add('stack');
+    medir();
+    window.addEventListener('scroll', alScroll, { passive: true });
+    window.addEventListener('resize', remedir);
+    window.addEventListener('load', remedir);
+    if ('ResizeObserver' in window) { var ro = new ResizeObserver(remedir); each(secs, function(s){ ro.observe(s); }); }
+    // el foco del teclado entra en una seccion ya tapada: se vuelve a ella para que se vea
+    document.addEventListener('focusin', function(e){
+      for (var i = 0; i < capas.length; i++) {
+        var d = capas[i];
+        if (d.p > 0.02 && d.s.contains(e.target)) {
+          var esc = d.s.classList.contains('tapando') ? 1 - d.p * 0.06 : 1;
+          var off = (e.target.getBoundingClientRect().top - d.s.getBoundingClientRect().top) / esc;
+          window.scrollTo({ top: Math.max(0, Math.min(d.a, d.n + off - cabH - 24)), behavior: 'instant' });
+          return;
+        }
+      }
+    });
   }
 })();

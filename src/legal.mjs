@@ -18,7 +18,7 @@ export const LEGAL = {
       <h2>Condiciones de uso</h2>
       <p>El acceso al sitio es libre y gratuito. Quien lo usa se compromete a hacerlo de forma lícita y a no dañar el sitio ni impedir su funcionamiento.</p>
       <h2>Propiedad intelectual</h2>
-      <p>Los textos, el diseño y la marca Luxor Marbella pertenecen a su titular. Las fotografías proceden de Unsplash y se usan conforme a su licencia. No está permitido reproducir los contenidos con fines comerciales sin autorización.</p>
+      <p>Los textos, el diseño y la marca Luxor Marbella pertenecen a su titular. Las fotografías proceden de Unsplash y el vídeo de la portada, de Pexels; se usan conforme a sus licencias. No está permitido reproducir los contenidos con fines comerciales sin autorización.</p>
       <h2>Responsabilidad</h2>
       <p>La información del sitio es orientativa y no constituye una oferta vinculante: las condiciones y el precio de cada servicio son los que figuren en el presupuesto aceptado por escrito.</p>
       <p>Luxor Marbella no responde del contenido de los sitios de terceros a los que este sitio enlaza.</p>

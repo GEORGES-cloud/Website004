@@ -58,17 +58,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// HTML sin caché (los cambios se ven al momento). CSS, JS y fuentes llevan la huella del
-// contenido en el nombre o no cambian nunca: un año. Las imágenes, un día: sus nombres no
-// llevan versión y todavía se están cambiando.
+// HTML sin caché (los cambios se ven al momento). CSS, JS, fuentes y las fotos y vídeos con
+// la huella del contenido en el nombre (foto.1a2b3c4d5e.jpg) no cambian nunca: un año.
+// El resto de imágenes (logo, iconos), un día.
 app.use(
   express.static(PUBLIC_DIR, {
     setHeaders(res, filePath) {
       if (filePath.endsWith('.html')) {
         res.setHeader('Cache-Control', 'no-cache');
-      } else if (/\.(?:css|js|woff2)$/.test(filePath)) {
+      } else if (/\.(?:css|js|woff2)$/.test(filePath) || /\.[0-9a-f]{10}\.(?:jpe?g|png|webp|mp4|webm)$/.test(filePath)) {
         res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-      } else if (/\.(?:jpg|jpeg|png|webp|avif|svg|ico)$/.test(filePath)) {
+      } else if (/\.(?:jpg|jpeg|png|webp|avif|svg|ico|mp4|webm)$/.test(filePath)) {
         res.setHeader('Cache-Control', 'public, max-age=86400');
       }
     },

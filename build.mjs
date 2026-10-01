@@ -112,7 +112,7 @@ function selector(l, p, t, tipo) {
   const destino = (a) => ruta(a, p.oculta ? pagina('inicio') : p);
   const enlaces = activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}</a></li>`).join('');
   return tipo === 'desplegable'
-    ? `<details class="lang"><summary class="pill" aria-label="${rotulo}: ${l.nombre} (${l.code.toUpperCase()})">${l.code.toUpperCase()}</summary><ul>${enlaces}</ul></details>`
+    ? `<details class="lang"><summary aria-label="${rotulo}: ${l.nombre} (${l.code.toUpperCase()})">${l.code.toUpperCase()}</summary><ul>${enlaces}</ul></details>`
     : `<ul class="langs" aria-label="${rotulo}">${enlaces}</ul>`;
 }
 
@@ -202,7 +202,7 @@ function cabeza(l, p, t, css, js) {
     '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">',
     '<link rel="icon" href="/assets/favicon-48.png" sizes="48x48" type="image/png">',
     '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">',
-    '<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>',
+    '<link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>',
     `<link rel="stylesheet" href="${css}">`,
     // la clase "js" se pone antes de pintar para que no parpadee la versión sin JavaScript
     "<script>document.documentElement.classList.add('js')</script>",
@@ -243,7 +243,7 @@ for (const l of activos) {
       .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)));
     html = `<!doctype html>\n<html lang="${l.code}">\n<head>\n${cabeza(l, p, t, css, js)}\n</head>\n<body>\n${html}\n</body>\n</html>\n`;
     if (html.includes('{{')) throw new Error(`Quedan marcas sin resolver en ${p.id} (${l.code})`);
-    html = html.replace(/\/photos\/([\w.-]+\.(?:jpe?g|png|webp))/g, (todo, f) => `/photos/${conHuella(f)}`);
+    html = html.replace(/\/photos\/([\w.-]+\.(?:jpe?g|png|webp|mp4|webm))/g, (todo, f) => `/photos/${conHuella(f)}`);
     escribe(join(pub, ruta(l, p), 'index.html'), html);
     paginasEscritas++;
   }

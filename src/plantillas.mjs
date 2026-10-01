@@ -54,14 +54,18 @@ const glifos = `<svg width="0" height="0" aria-hidden="true" style="position:abs
 
 const cabecera = `<header class="masthead">
   <div class="wrap">
-    <a href="{{url:inicio}}" aria-label="Luxor Marbella, inicio">
+    <a class="mh-logo" href="{{url:inicio}}" aria-label="Luxor Marbella, inicio">
       <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
     </a>
+    <nav class="mh-nav" aria-label="Secciones">
+${SERVICIOS.map((s) => `      <a href="{{url:${s.id}}}">${s.corto}</a>`).join('\n')}
+      <a href="{{url:nosotros}}">Quiénes somos</a>
+    </nav>
     <div class="mh-right">
-      <a class="pill pill-call" href="${TEL}">¡Llámanos! ${N.telefonoVisible}</a>
-      <a class="pill pill-deep" href="{{url:presupuesto}}">Solicitar presupuesto</a>
+      <a class="mh-tel" href="${TEL}">${N.telefonoVisible}</a>
       {{langs:desplegable}}
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -70,34 +74,26 @@ const cabecera = `<header class="masthead">
 
 <nav class="menu" id="menu" aria-label="Menú principal" hidden>
   <div class="wrap">
-    <div>
-      <h4>Servicios</h4>
-      <ul>
-${SERVICIOS.map((s) => `        <li><a href="{{url:${s.id}}}">${s.menu}</a></li>`).join('\n')}
-      </ul>
+    <ul class="menu-main">
+${SERVICIOS.map((s) => `      <li><a href="{{url:${s.id}}}">${s.menu}</a></li>`).join('\n')}
+      <li><a href="{{url:nosotros}}">Quiénes somos</a></li>
+      <li><a href="{{url:presupuesto}}">Pedir presupuesto</a></li>
+    </ul>
+    <div class="menu-side">
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="${TEL}">${N.telefonoIntl}</a></li>
+          <li><a href="${WA}">WhatsApp</a></li>
+          <li><a href="mailto:${N.email}">${N.email}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Zonas</h4>
+        <p>${ZONAS_FRASE}</p>
+      </div>
+      {{langs:lista}}
     </div>
-    <div>
-      <h4>Luxor Marbella</h4>
-      <ul>
-        <li><a href="{{url:nosotros}}">Quiénes somos</a></li>
-        <li><a href="{{url:presupuesto}}">Pedir presupuesto</a></li>
-        <li><a href="${WA}">WhatsApp</a></li>
-        <li><a href="${TEL}">${N.telefonoIntl}</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Zonas</h4>
-      <ul>
-${N.zonas.slice(0, 4).map((z) => `        <li>${z}</li>`).join('\n')}
-      </ul>
-    </div>
-    <div>
-      <h4>Más zonas</h4>
-      <ul>
-${N.zonas.slice(4).map((z) => `        <li>${z}</li>`).join('\n')}
-      </ul>
-    </div>
-    {{langs:lista}}
   </div>
 </nav>`;
 
@@ -137,19 +133,19 @@ ${SERVICIOS.map((s) => `          <li><a href="{{url:${s.id}}}">${s.menu}</a></l
       <span>© 2026 Luxor Marbella</span>
       <span><a href="{{url:aviso-legal}}">Aviso legal</a> · <a href="{{url:privacidad}}">Política de privacidad</a> · <a href="{{url:cookies}}">Política de cookies</a></span>
       {{langs:lista}}
-      <span class="foot-credits">Fotografía: Unsplash</span>
+      <span class="foot-credits">Fotografía: Unsplash · Vídeo: Pexels</span>
     </div>
   </div>
 </footer>`;
 
 const cierre = (titulo = '¿Empezamos por tu casa?') => `<section class="closer">
-  <svg class="glyphs" aria-hidden="true" style="opacity:.13"><rect width="100%" height="100%" fill="url(#gSand)"/></svg>
+  <svg class="glyphs" aria-hidden="true" style="opacity:.07"><rect width="100%" height="100%" fill="url(#gSand)"/></svg>
   <div class="wrap">
     <h2 class="d2">${titulo}</h2>
     <div class="closer-actions">
-      <a class="pill pill-terra pill-lg" href="{{url:presupuesto}}">Solicitar presupuesto</a>
-      <a class="pill pill-lg" href="${WA}">WhatsApp</a>
-      <a class="pill pill-lg" href="${TEL}">${N.telefonoIntl}</a>
+      <a class="btn" href="{{url:presupuesto}}">Solicitar presupuesto</a>
+      <a class="lnk" href="${WA}">WhatsApp</a>
+      <a class="lnk" href="${TEL}">${N.telefonoIntl}</a>
     </div>
   </div>
 </section>`;
@@ -195,8 +191,8 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
           </ul>
           <p class="svc-note" aria-live="polite"></p>
           <div class="svc-actions">
-            <a class="pill pill-terra" href="{{url:${s.id}}}">Ver el servicio</a>
-            <a class="txt" href="{{url:presupuesto}}?s=${s.id}">Pedir presupuesto</a>
+            <a class="btn" href="{{url:${s.id}}}">Ver el servicio</a>
+            <a class="lnk" href="{{url:presupuesto}}?s=${s.id}">Pedir presupuesto</a>
           </div>
         </div>
       </article>`).join('\n')}
@@ -206,13 +202,15 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
 </section>`;
 
 const inicio = () => `<section class="hero" id="top">
-  <div class="hero-bg"><img src="/photos/portada.jpg" alt="Villa moderna blanca iluminada al anochecer" width="1600" height="1000" fetchpriority="high" decoding="async"></div>
+  <div class="hero-bg" data-video="/photos/hero-dia.mp4" data-video-sm="/photos/hero-dia-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-dia-v.jpg" width="900" height="1600"><img src="/photos/hero-dia.jpg" alt="Salón luminoso con sofá blanco y mesa de madera a la luz del sol" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <h1><span class="kick">Luxor Marbella</span> Hacemos fácil tener casa en Marbella</h1>
-    <p>Luxor Marbella gestiona alquileres, hace reformas y mantiene viviendas en Marbella y la Costa del Sol. Un solo equipo y un solo interlocutor.</p>
-    <div class="hero-actions">
-      <a class="pill pill-light pill-lg" href="{{url:presupuesto}}">Pedir presupuesto</a>
-      <a class="pill pill-ghost pill-lg" href="#servicios">Qué hacemos</a>
+    <div class="hero-row">
+      <p>Luxor Marbella gestiona alquileres, hace reformas y mantiene viviendas en Marbella y la Costa del Sol. Un solo equipo y un solo interlocutor.</p>
+      <div class="hero-actions">
+        <a class="btn btn-claro" href="{{url:presupuesto}}">Pedir presupuesto</a>
+        <a class="lnk" href="#servicios">Qué hacemos</a>
+      </div>
     </div>
   </div>
 </section>
@@ -226,12 +224,14 @@ ${GARANTIAS.map(([b, s]) => `    <div><b>${b}</b><span>${s}</span></div>`).join(
 ${explorador()}
 
 <section class="duo">
-  <div class="shot slides">${img('hero-villa.jpg', 'Fachada de piedra clara con ventanales y balcones de forja', ' class="is-on"')}${img('hero-villa-2.jpg', 'Salón en tonos claros con sofá, mesa de centro y dos cuadros')}${img('hero-villa-3.jpg', 'Terraza con sillones de mimbre, pérgola con cortinas blancas y tumbonas')}</div>
-  <div class="shot slides">${img('duo-oficio.jpg', 'Manos cortando una pieza de madera', ' class="is-on"')}${img('hero-equipo-3.jpg', 'Manos con espátula enluciendo una pared')}</div>
-  <div class="duo-title">
-    <h2 class="d1">Cuidamos tu casa en Marbella los 365 días</h2>
-    <p>Para propietarios que no viven aquí todo el año: guardamos las llaves y dejamos la casa como si fueras a llegar mañana.</p>
-    <a class="pill pill-ghost" href="{{url:nosotros}}">Conoce Luxor Marbella</a>
+  <div class="wrap">
+    <div class="duo-title">
+      <h2 class="d1">Cuidamos tu casa en Marbella los 365 días</h2>
+      <p>Para propietarios que no viven aquí todo el año: guardamos las llaves y dejamos la casa como si fueras a llegar mañana.</p>
+      <a class="lnk" href="{{url:nosotros}}">Conoce Luxor Marbella</a>
+    </div>
+    <div class="shot slides">${img('hero-villa.jpg', 'Fachada de piedra clara con ventanales y balcones de forja', ' class="is-on"')}${img('hero-villa-2.jpg', 'Salón en tonos claros con sofá, mesa de centro y dos cuadros')}${img('hero-villa-3.jpg', 'Terraza con sillones de mimbre, pérgola con cortinas blancas y tumbonas')}</div>
+    <div class="shot slides">${img('duo-oficio.jpg', 'Manos cortando una pieza de madera', ' class="is-on"')}${img('hero-equipo-3.jpg', 'Manos con espátula enluciendo una pared')}</div>
   </div>
 </section>
 
@@ -285,8 +285,8 @@ const servicio = (id) => {
       <h1>${s.h1}</h1>
       <p class="lead">${s.entrada}</p>
       <div class="phead-actions">
-        <a class="pill pill-terra pill-lg" href="{{url:presupuesto}}?s=${s.id}">Pedir presupuesto</a>
-        <a class="pill pill-lg" href="${WA}">WhatsApp</a>
+        <a class="btn" href="{{url:presupuesto}}?s=${s.id}">Pedir presupuesto</a>
+        <a class="lnk" href="${WA}">WhatsApp</a>
       </div>
     </div>
     <div class="shot">${img(s.foto, s.alt, s.flip ? ' class="flip"' : '')}</div>
@@ -335,7 +335,7 @@ ${s.secciones.map((x) => `      <div class="row">
       <p>Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.</p>
     </div>
     <div class="more">
-${otros.map((o) => `      <a href="{{url:${o.id}}}">${img(o.foto, '', o.flip ? ' class="flip"' : '')}<span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
+${otros.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
     </div>
   </div>
 </section>
@@ -363,7 +363,7 @@ const nosotros = () => `<section class="phead solo">
       <h2 class="d2">La llave que no tienes que buscar</h2>
       <p>Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p>
       <p>Trabajamos en tres líneas —gestión de alquileres, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.</p>
-      <div><a class="pill pill-deep pill-lg" href="{{url:presupuesto}}">Pedir presupuesto</a></div>
+      <div><a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a></div>
     </div>
   </div>
 </section>
@@ -375,7 +375,7 @@ const nosotros = () => `<section class="phead solo">
       <p>Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.</p>
     </div>
     <div class="more three">
-${SERVICIOS.map((o) => `      <a href="{{url:${o.id}}}">${img(o.foto, '', o.flip ? ' class="flip"' : '')}<span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
+${SERVICIOS.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
     </div>
   </div>
 </section>
@@ -461,10 +461,10 @@ const presupuesto = () => `<section class="quiz-sec">
 
       <p class="quiz-error" id="quiz-error" role="alert" hidden></p>
       <div class="quiz-nav">
-        <button class="pill" type="button" id="quiz-back" hidden>Atrás</button>
+        <button class="btn btn-borde btn-atras" type="button" id="quiz-back" hidden>Atrás</button>
         <span></span>
-        <button class="pill pill-deep pill-lg" type="button" id="quiz-next">Siguiente</button>
-        <button class="pill pill-terra pill-lg" type="submit" id="quiz-send">Enviar solicitud</button>
+        <button class="btn" type="button" id="quiz-next">Siguiente</button>
+        <button class="btn" type="submit" id="quiz-send">Enviar solicitud</button>
       </div>
       <noscript><p class="quiz-error">Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al ${N.telefonoIntl}.</p></noscript>
     </form>
@@ -474,7 +474,7 @@ const presupuesto = () => `<section class="quiz-sec">
       <p>Te llamamos al teléfono que nos has dejado para concretar la visita y darte un precio cerrado.</p>
     </div>
 
-    <p class="quiz-wa"><span>¿Prefieres escribirnos?</span> <a class="pill pill-deep" id="quiz-wa" href="${WA}" target="_blank" rel="noopener">Enviar por WhatsApp</a> <a href="${TEL}">Llamar al ${N.telefonoIntl}</a></p>
+    <p class="quiz-wa"><span>¿Prefieres escribirnos?</span> <a class="btn btn-borde" id="quiz-wa" href="${WA}" target="_blank" rel="noopener">Enviar por WhatsApp</a> <a class="lnk" href="${TEL}">Llamar al ${N.telefonoIntl}</a></p>
   </div>
 </section>`;
 
@@ -507,8 +507,8 @@ const noEncontrada = () => `<section class="nf">
     <h1 class="d2">No encontramos esa página</h1>
     <p>Puede que el enlace esté mal escrito o que la página ya no exista.</p>
     <div class="closer-actions">
-      <a class="pill pill-deep pill-lg" href="{{url:inicio}}">Ir al inicio</a>
-      <a class="pill pill-lg" href="{{url:presupuesto}}">Pedir presupuesto</a>
+      <a class="btn" href="{{url:inicio}}">Ir al inicio</a>
+      <a class="lnk" href="{{url:presupuesto}}">Pedir presupuesto</a>
     </div>
   </div>
 </section>`;
