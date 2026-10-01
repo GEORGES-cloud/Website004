@@ -16,6 +16,7 @@ export const NEGOCIO = {
   direccion: null,          // { streetAddress: 'Calle y número', postalCode: '29600', addressLocality: 'Marbella', addressRegion: 'Málaga', addressCountry: 'ES' }
   geo: null,                // { latitude: 36.00000, longitude: -4.00000 }  solo si la dirección es pública
   horario: null,            // { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '18:00' }
+  horarioTexto: null,       // el mismo horario en texto para el pie, p. ej. 'Lunes a viernes, 8:00 – 18:00' (traducir en src/i18n)
   idiomasAtencion: ['es'],  // idiomas en los que se atiende de verdad el teléfono; no los de la web
   perfiles: [],             // URL reales: ficha de Google, Instagram, Facebook, LinkedIn
   razonSocial: null,
@@ -37,7 +38,7 @@ export const SERVICIOS = [
     foto: 'svc-alquileres.jpg',
     alt: 'Dormitorio con ventanal panorámico y vistas al lago',
     flip: false,
-    h1: 'Gestión de alquileres en Marbella',
+    h1: 'Gestión de alquiler vacacional y de larga temporada en Marbella',
     entrada: 'Alquiler vacacional y de larga temporada, llevado de principio a fin. Publicamos la vivienda, atendemos a quien la ocupa y tú hablas con una sola persona.',
     metaTitle: 'Gestión de alquileres en Marbella | Luxor Marbella',
     metaDesc: 'Gestión integral de alquiler vacacional y de larga temporada en Marbella: anuncio en Airbnb e Idealista, atención a inquilinos y un solo interlocutor.',
@@ -99,7 +100,7 @@ export const SERVICIOS = [
     flip: false,
     h1: 'Mantenimiento y limpieza de viviendas en Marbella',
     entrada: 'Revisiones, averías, limpieza, lavandería, llaves y gestiones de la vivienda, para que la casa esté a punto aunque tú no estés.',
-    metaTitle: 'Mantenimiento y limpieza de viviendas en Marbella | Luxor Marbella',
+    metaTitle: 'Mantenimiento y limpieza en Marbella | Luxor Marbella',
     metaDesc: 'Mantenimiento preventivo y correctivo, limpieza, lavandería, piscina y exteriores, custodia de llaves y gestión de suministros para viviendas en Marbella.',
     incluye: [
       { n: 'Mantenimiento y averías', t: 'Preventivo y correctivo, con piscina y exteriores: revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', d: 'Mantenimiento preventivo y correctivo, con piscina y exteriores. Revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', p: [82, 60, 82, 62, true] },
@@ -109,8 +110,8 @@ export const SERVICIOS = [
       { n: 'Gestión administrativa', t: 'Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.', d: 'Gestionamos el pago de los impuestos de la vivienda y te representamos en las reuniones de la comunidad de propietarios.', p: [86, 36, 84, 34, true] },
     ],
     secciones: [
-      { h: 'Para propietarios que no viven aquí todo el año', p: ['Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.'] },
-      { h: 'Un parte después de cada visita', p: ['Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.'] },
+      { h: 'Para propietarios que no viven aquí todo el año', p: ['Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.', 'Si además quieres que la vivienda genere ingresos mientras no estás, también nos encargamos de la <a href="{{url:alquileres}}">gestión del alquiler</a>.'] },
+      { h: 'Un parte después de cada visita', p: ['Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.', 'Si en una visita vemos algo que conviene arreglar o renovar, te pasamos presupuesto antes de tocar nada y lo hacemos con nuestro <a href="{{url:reformas}}">servicio de reformas</a>.'] },
     ],
     faq: [
       { q: '¿Os ocupáis también de la piscina y el jardín?', a: 'Sí. El mantenimiento incluye piscina y exteriores.' },
@@ -123,7 +124,7 @@ export const SERVICIOS = [
 export const GARANTIAS = [
   ['Presupuesto cerrado', 'Lo que firmas es lo que pagas.'],
   ['Equipo propio', 'Sin subcontratas rotativas.'],
-  ['Respuesta en 24 h', 'En días laborables.'],
+  ['Respuesta en 24 h', 'En días laborables.'],
   ['Parte de cada visita', 'Con fotos, estés donde estés.'],
 ];
 

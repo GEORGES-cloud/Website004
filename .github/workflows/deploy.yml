@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # para saber qué páginas han cambiado (IndexNow)
 
       - name: Subir por FTP y reiniciar la app
         env:
@@ -37,3 +39,10 @@ jobs:
         run: |
           npm install basic-ftp@5 --no-save --no-fund --no-audit --silent
           node tools/deploy-ftp.mjs
+
+      # Solo si el despliegue ha ido bien. Avisa a Bing, Yandex y demás de las páginas cambiadas.
+      # Nunca pone el job en rojo: si falla, deja un aviso amarillo y ya está.
+      - name: Avisar a los buscadores (IndexNow)
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: node tools/indexnow.mjs

@@ -3,7 +3,8 @@
 //   node tools/montaje-hero.mjs --todo    además, las variantes que se enseñaron al cliente y no eligió
 //
 // Salidas en photos/:
-//   hero-casa.mp4 / hero-casa-v.mp4   tomas unidas con fundidos (2560x1440 y 720x1280 vertical): el hero de la portada
+//   hero-casa-xl.mp4 / hero-casa.mp4  tomas unidas con fundidos, a 2560x1440 (pantallas muy grandes) y 1920x1080
+//   hero-casa-v.mp4                   la versión vertical para móvil (720x1280)
 //   hero-casa.jpg / hero-casa-v.jpg   primer fotograma (póster)
 // Con --todo, también:
 //   hero-luz.mp4  / hero-luz-v.mp4    las mismas tomas, cambiando con una línea de luz que barre la imagen
@@ -81,7 +82,10 @@ const monta = ({ vertical, transicion, dur, salida, linea }) => {
   return { offs, total: fin - dur };
 };
 
-const casa = monta({ vertical: false, transicion: 'fade', dur: F, salida: 'hero-casa.mp4' });
+const casa = monta({ vertical: false, transicion: 'fade', dur: F, salida: 'hero-casa-xl.mp4' });
+// la de 1920 sale de la de 2560 (es la que se descarga casi siempre: pesa menos de la mitad)
+ff(['-i', join(fotos, 'hero-casa-xl.mp4'), '-an', '-vf', 'scale=1920:1080:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-crf', '25',
+  '-profile:v', 'high', '-maxrate', '5M', '-bufsize', '10M', '-g', '60', '-movflags', '+faststart', join(fotos, 'hero-casa.mp4')], 'hero 1920');
 monta({ vertical: true, transicion: 'fade', dur: F, salida: 'hero-casa-v.mp4' });
 const todo = process.argv.includes('--todo');
 if (todo) {
@@ -90,7 +94,7 @@ if (todo) {
 }
 
 // pósters: primer fotograma de cada montaje
-ff(['-i', join(fotos, 'hero-casa.mp4'), '-frames:v', '1', '-q:v', '4', join(fotos, 'hero-casa.jpg')], 'póster');
+ff(['-i', join(fotos, 'hero-casa-xl.mp4'), '-frames:v', '1', '-q:v', '4', join(fotos, 'hero-casa.jpg')], 'póster');
 ff(['-i', join(fotos, 'hero-casa-v.mp4'), '-frames:v', '1', '-vf', 'scale=900:1600:flags=lanczos', '-q:v', '4', join(fotos, 'hero-casa-v.jpg')], 'póster vertical');
 
 // estancias y tiempos, para el registro (cada una va de la mitad de un fundido a la mitad del siguiente)

@@ -18,13 +18,15 @@
     if (!quieto && !red.saveData && !/(^|-)(2g|3g)$/.test(red.effectiveType || '')) {
       var v = video = document.createElement('video');
       var vertical = window.matchMedia('(orientation: portrait)');
-      var fuente = function(){ return fondo.getAttribute(vertical.matches && fondo.dataset.videoSm ? 'data-video-sm' : 'data-video'); };
+      var enorme = window.matchMedia('(min-width: 1800px)');
+      var fuente = function(){
+        if (vertical.matches && fondo.dataset.videoSm) return fondo.dataset.videoSm;
+        return enorme.matches && fondo.dataset.videoXl ? fondo.dataset.videoXl : fondo.dataset.video;
+      };
       v.muted = true; v.loop = true; v.playsInline = true; v.autoplay = true;
       v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
       v.preload = 'auto';
-      v.src = fuente();
       v.addEventListener('playing', function(){ v.classList.add('is-on'); });
-      fondo.appendChild(v);
       var parado = false;
       // arranca si toca (no parado por la persona, no tapado); devuelve si se ha conseguido
       var arranca = function(){
@@ -33,8 +35,14 @@
         return p && p.then ? p.then(function(){ return true; }, function(){ return false; }) : Promise.resolve(!v.paused);
       };
       v.permitido = function(){ return !parado; };
-      arranca();
-      v.addEventListener('canplay', function(){ arranca(); }, { once: true });
+      // el vídeo se pide cuando ya ha cargado la página (foto del hero, textos): no compite con ellos
+      var ponVideo = function(){
+        v.src = fuente();
+        fondo.appendChild(v);
+        arranca();
+        v.addEventListener('canplay', function(){ arranca(); }, { once: true });
+      };
+      if (document.readyState === 'complete') ponVideo(); else window.addEventListener('load', ponVideo, { once: true });
       // si el navegador no deja arrancarlo solo (ahorro de energía, políticas estrictas), lo
       // intenta con cada clic, toque o tecla hasta que lo consigue; mientras tanto se ve la foto
       var gestos = ['click', 'touchend', 'keydown'];
@@ -45,7 +53,7 @@
       // al girar la pantalla, el vídeo que corresponde a la nueva orientación
       var alGirar = function(){
         var src = fuente();
-        if (v.getAttribute('src') === src) return;
+        if (!v.parentNode || v.getAttribute('src') === src) return;
         v.classList.remove('is-on');
         v.src = src;
         arranca();
@@ -56,7 +64,7 @@
       boton.type = 'button';
       boton.className = 'hero-pausa';
       var pinta = function(){
-        boton.setAttribute('aria-label', parado ? T.video_play : T.video_pausa);
+        boton.setAttribute('aria-label', T.video_pausa);
         boton.setAttribute('aria-pressed', String(parado));
       };
       boton.addEventListener('click', function(){
@@ -65,12 +73,12 @@
         pinta();
       });
       pinta();
-      fondo.parentNode.appendChild(boton);
+      fondo.parentNode.insertBefore(boton, fondo.nextSibling);
     }
   }
 
   // menu de texto de la cabecera: marca la pagina en la que estamos
-  each(document.querySelectorAll('.mh-nav a'), function(a){
+  each(document.querySelectorAll('.mh-nav a, .menu-main a, .mh-right .btn'), function(a){
     if (a.pathname === location.pathname) a.setAttribute('aria-current', 'page');
   });
 
@@ -103,6 +111,7 @@
 
   // selector de idioma de la cabecera (<details>): se cierra al tocar fuera o con Escape
   each(document.querySelectorAll('details.lang'), function(d){
+    d.addEventListener('focusout', function(e){ if (d.open && e.relatedTarget && !d.contains(e.relatedTarget)) d.open = false; });
     document.addEventListener('click', function(e){ if (d.open && !d.contains(e.target)) d.open = false; });
     d.addEventListener('keydown', function(e){
       if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary').focus(); }
@@ -111,9 +120,12 @@
 
   // boton flotante de WhatsApp: con el saludo en el idioma de la pagina. En la portada aparece
   // al dejar atras el hero (alli ya estan los botones principales y taparia "Que hacemos").
+  each(document.querySelectorAll('a[href^="https://wa.me/"]:not(#quiz-wa)'), function(a){
+    a.href = a.href.split('?')[0] + '?text=' + encodeURIComponent(T.wa_hola);
+    a.target = '_blank'; a.rel = 'noopener';
+  });
   var waf = $('wa-flota');
   if (waf) {
-    waf.href = waf.href.split('?')[0] + '?text=' + encodeURIComponent(T.wa_hola);
     var heroSec = document.querySelector('.hero');
     var verWa = function(){
       var si = !heroSec || window.scrollY > heroSec.offsetHeight * 0.55;
@@ -154,9 +166,18 @@
     };
 
     // el, si se pasa, es el campo que hay que corregir: se le da el foco
-    var fallo = function(txt, el){ qerr.textContent = txt; qerr.hidden = false; if (el) el.focus(); return false; };
+    var navQ = quiz.querySelector('.quiz-nav');
+    var fallo = function(txt, el){
+      qerr.textContent = txt; qerr.hidden = false;
+      // el aviso junto a lo que hay que corregir: encima de los campos de texto; si no, encima de los botones
+      var junto = el && el.type !== 'checkbox' ? el.closest('.fields') : navQ;
+      junto.parentNode.insertBefore(qerr, junto);
+      if (el) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', 'quiz-error'); el.focus(); qerr.scrollIntoView({ block: 'nearest' }); }
+      return false;
+    };
     var valido = function(n){
       qerr.hidden = true;
+      each(quiz.querySelectorAll('[aria-invalid]'), function(i){ i.removeAttribute('aria-invalid'); i.removeAttribute('aria-describedby'); });
       if (n === 0 && !marcados('servicio').length) return fallo(T.q_servicio);
       if (n === 1 && !marcados('zona').length) return fallo(T.q_zona);
       if (n === 3) {
@@ -185,7 +206,8 @@
 
     next.addEventListener('click', function(){ if (valido(paso)) ir(paso + 1, true); });
     back.addEventListener('click', function(){ ir(paso - 1, true); });
-    quiz.addEventListener('change', ponWa);
+    // al marcar una opción, el aviso de "marca al menos una" deja de tener sentido
+    quiz.addEventListener('change', function(){ if (paso < 2) qerr.hidden = true; ponWa(); });
     quiz.addEventListener('input', ponWa);
     // en el paso de la zona (una sola respuesta) elegir con raton o dedo avanza solo;
     // con teclado no, porque las flechas cambian la seleccion mientras se recorre la lista
@@ -217,11 +239,13 @@
       fetch('/api/presupuesto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: (window.AbortSignal && AbortSignal.timeout) ? AbortSignal.timeout(15000) : undefined,
         body: JSON.stringify(datos)
       }).then(function(r){
         if (!r.ok) throw new Error(r.status);
         $('done-name').textContent = nombre.split(' ')[0];
         quiz.hidden = true;
+        document.querySelector('.quiz-wa').hidden = true;   // ya enviada: no invitar a mandarla otra vez
         $('quiz-done').hidden = false;
         $('quiz-done').focus();
       }).catch(function(){
@@ -233,6 +257,7 @@
         qerr.textContent = T.error_antes + ' ';
         qerr.appendChild(a);
         qerr.appendChild(document.createTextNode(' ' + T.error_despues));
+        navQ.parentNode.insertBefore(qerr, navQ);
         qerr.hidden = false;
         send.disabled = false; send.textContent = rotulo;
       });
@@ -250,19 +275,49 @@
   var sx = $('svcx');
   if (sx) {
     var svcs = sx.querySelectorAll('.svc');
+    var quietoSx = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var tabs = sx.querySelectorAll('.svc-tab');
     var now = 0;
+    var fila = sx.querySelector('.svc-nav');
+    var bordes = function(){
+      var max = fila.scrollWidth - fila.clientWidth;
+      fila.classList.toggle('fi', fila.scrollLeft > 2);
+      fila.classList.toggle('fd', fila.scrollLeft < max - 2);
+    };
+    // la etiqueta del punto activo se abre hacia el lado de la foto donde cabe; si no cabe en ninguno, pasa a dos líneas
+    var coloca = function(d){
+      var s = d.querySelector('span');
+      s.style.whiteSpace = s.style.width = s.style.lineHeight = s.style.textAlign = '';
+      d.classList.remove('to-left');
+      if (!s.offsetWidth) return;   // por debajo de 900 px la etiqueta no se muestra
+      var f = d.parentNode.getBoundingClientRect(), c = d.getBoundingClientRect();
+      var der = f.right - c.right - 14, izq = c.left - f.left - 14, w = s.offsetWidth;
+      var aIzq = w > der && izq > der;
+      d.classList.toggle('to-left', aIzq);
+      var sitio = Math.floor(aIzq ? izq : der);
+      if (w > sitio) { s.style.whiteSpace = 'normal'; s.style.width = sitio + 'px'; s.style.lineHeight = '1.25'; s.style.textAlign = 'left'; }
+    };
     var pick = function(svc, i){
       each(svc.querySelectorAll('.it'), function(b, n){
         b.setAttribute('aria-pressed', String(n === i));
         if (n === i) svc.querySelector('.svc-note').textContent = b.querySelector('span').textContent;
       });
-      each(svc.querySelectorAll('.dot'), function(d, n){ d.classList.toggle('is-on', n === i); });
+      each(svc.querySelectorAll('.dot'), function(d, n){ d.classList.toggle('is-on', n === i); if (n === i) coloca(d); });
     };
     var show = function(n){
       now = (n + svcs.length) % svcs.length;
       each(svcs, function(s, k){ s.classList.toggle('is-on', k === now); });
       each(tabs, function(t, k){ t.setAttribute('aria-selected', String(k === now)); t.tabIndex = k === now ? 0 : -1; });
+      // en móvil la fila de pestañas desliza: la activa siempre a la vista (también al cambiar deslizando la foto)
+      var t = tabs[now], max = fila.scrollWidth - fila.clientWidth;
+      if (max > 0) {
+        var x = fila.scrollLeft, izq = t.offsetLeft - 40, der = t.offsetLeft + t.offsetWidth + 56 - fila.clientWidth;
+        if (x > izq) x = izq;
+        if (x < der) x = der;
+        fila.scrollTo({ left: Math.max(0, Math.min(max, x)), behavior: quietoSx ? 'auto' : 'smooth' });
+      }
+      bordes();
+      each(svcs[now].querySelectorAll('.dot.is-on'), coloca);
     };
     each(svcs, function(svc, k){
       svc.setAttribute('role', 'tabpanel');
@@ -296,6 +351,10 @@
       var dx = e.changedTouches[0].clientX - x0; x0 = null;
       if (Math.abs(dx) > 50) show(now + (dx < 0 ? 1 : -1));
     }, { passive: true });
+    fila.addEventListener('scroll', bordes, { passive: true });
+    var recoloca = function(){ bordes(); each(sx.querySelectorAll('.svc.is-on .dot.is-on'), coloca); };
+    window.addEventListener('resize', recoloca);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(recoloca);
     show(0);
   }
 
@@ -307,6 +366,7 @@
     if (frames.length < 2 || quiet) return;
     var cur = 0;
     function next(){
+      if (document.documentElement.classList.contains('sin-mov')) return;
       frames[cur].classList.remove('is-on');
       cur = (cur + 1) % frames.length;
       var f = frames[cur];
@@ -315,6 +375,18 @@
     }
     setTimeout(function(){ next(); setInterval(next, HOLD); }, HOLD + n * HOLD / 2);
   });
+  // cinta y pase de fotos: un botón para pararlos (WCAG 2.2.2); con "reducir movimiento" ya están quietos
+  var cinta = document.querySelector('.quote-block');
+  if (cinta && !quiet) {
+    var bm = document.createElement('button');
+    bm.type = 'button';
+    bm.className = 'hero-pausa mov-pausa';
+    bm.setAttribute('aria-label', T.mov_pausa);
+    bm.setAttribute('aria-pressed', 'false');
+    bm.addEventListener('click', function(){ bm.setAttribute('aria-pressed', String(document.documentElement.classList.toggle('sin-mov'))); });
+    cinta.appendChild(bm);
+    cinta.classList.add('con-pausa');
+  }
 
   // revelado al hacer scroll: los bloques entran con un leve fundido hacia arriba,
   // escalonados entre hermanos (80 ms, tope 400 ms). El hero queda fuera: ya tiene su propio movimiento.
@@ -412,16 +484,24 @@
     window.addEventListener('load', remedir);
     if ('ResizeObserver' in window) { var ro = new ResizeObserver(remedir); each(secs, function(s){ ro.observe(s); }); }
     // el foco del teclado entra en una seccion ya tapada: se vuelve a ella para que se vea
+    // Solo con foco de teclado: un clic con el ratón no debe mover la página.
     document.addEventListener('focusin', function(e){
-      for (var i = 0; i < capas.length; i++) {
+      var t = e.target, kb = true;
+      try { kb = t.matches(':focus-visible'); } catch (x) {}
+      if (!kb) return;
+      var r = t.getBoundingClientRect();
+      for (var i = 0; i < capas.length - 1; i++) {
         var d = capas[i];
-        if (d.p > 0.02 && d.s.contains(e.target)) {
+        if (d.suelta || !d.s.contains(t)) continue;
+        var tope = Math.min(window.innerHeight, capas[i + 1].s.getBoundingClientRect().top);
+        if (d.p > 0.02 || r.top < cabH || r.bottom > tope) {
           var esc = d.s.classList.contains('tapando') ? 1 - d.p * 0.06 : 1;
-          var off = (e.target.getBoundingClientRect().top - d.s.getBoundingClientRect().top) / esc;
+          var off = (r.top - d.s.getBoundingClientRect().top) / esc;
           window.scrollTo({ top: Math.max(0, Math.min(d.a, d.n + off - cabH - 24)), behavior: 'instant' });
-          return;
         }
+        return;
       }
     });
   }
+  window.luxorListo = true;
 })();

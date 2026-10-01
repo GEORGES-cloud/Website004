@@ -14,7 +14,7 @@ const TEXTOS_JS = {
   menu_cerrar: 'Cerrar menú',
   wa_hola: 'Hola, os escribo desde la web de Luxor Marbella.',
   video_pausa: 'Pausar el vídeo',
-  video_play: 'Reproducir el vídeo',
+  mov_pausa: 'Pausar el movimiento',
   paso: 'Paso {n} de {total}',
   q_servicio: 'Marca al menos una opción.',
   q_zona: 'Elige una zona.',
@@ -85,15 +85,15 @@ ${SERVICIOS.map((s) => `      <li><a href="{{url:${s.id}}}">${s.menu}</a></li>`)
     </ul>
     <div class="menu-side">
       <div>
-        <h4>Contacto</h4>
+        <p class="tit">Contacto</p>
         <ul>
           <li><a href="${TEL}">${N.telefonoIntl}</a></li>
-          <li><a href="${WA}">WhatsApp</a></li>
+          <li><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="mailto:${N.email}">${N.email}</a></li>
         </ul>
       </div>
       <div>
-        <h4>Zonas</h4>
+        <p class="tit">Zonas</p>
         <p>${ZONAS_FRASE}</p>
       </div>
     </div>
@@ -114,26 +114,25 @@ const pie = `<footer class="foot">
         <p>Luxor Marbella es una empresa de Marbella (Málaga) dedicada a la gestión de alquileres, las reformas y el mantenimiento de viviendas en Marbella y la Costa del Sol.</p>
       </div>
       <div>
-        <h4>Servicios</h4>
+        <p class="tit">Servicios</p>
         <ul>
 ${SERVICIOS.map((s) => `          <li><a href="{{url:${s.id}}}">${s.menu}</a></li>`).join('\n')}
         </ul>
       </div>
       <div>
-        <h4>Luxor Marbella</h4>
+        <p class="tit">Luxor Marbella</p>
         <ul>
           <li><a href="{{url:nosotros}}">Quiénes somos</a></li>
           <li><a href="{{url:presupuesto}}">Pedir presupuesto</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contacto</h4>
+        <p class="tit">Contacto</p>
         <ul>
           <li><a href="${TEL}">${N.telefonoIntl}</a></li>
-          <li><a href="${WA}">WhatsApp</a></li>
+          <li><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="mailto:${N.email}">${N.email}</a></li>
-          <li>Lunes a viernes, 8:00 – 18:00</li>
-        </ul>
+${N.horarioTexto ? `          <li>${N.horarioTexto}</li>\n` : ''}        </ul>
       </div>
     </div>
   </div>
@@ -152,16 +151,16 @@ const cierre = (titulo = '¿Empezamos por tu casa?') => `<section class="closer"
   <div class="wrap">
     <h2 class="d2">${titulo}</h2>
     <div class="closer-actions">
-      <a class="btn" href="{{url:presupuesto}}">Solicitar presupuesto</a>
-      <a class="lnk" href="${WA}">WhatsApp</a>
+      <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
+      <a class="lnk" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
       <a class="lnk" href="${TEL}">${N.telefonoIntl}</a>
     </div>
   </div>
 </section>`;
 
-const migas = (...pasos) => `<ol class="crumbs">
+const migas = (...pasos) => `<nav class="migas" aria-label="Migas de pan"><ol class="crumbs">
 ${pasos.map(([texto, id]) => (id ? `        <li><a href="{{url:${id}}}">${texto}</a></li>` : `        <li aria-current="page">${texto}</li>`)).join('\n')}
-      </ol>`;
+      </ol></nav>`;
 
 const preguntas = (lista) => `<div class="faq">
 ${lista.map((f) => `      <details>
@@ -193,7 +192,7 @@ ${s.incluye.map((i) => `          <button class="dot${i.p[4] ? ' to-left' : ''}"
         </div>
         <div class="svc-panel">
           <p class="svc-kicker">${s.kicker}</p>
-          <h3 class="svc-title">${s.titulo}</h3>
+          <h3 class="svc-title"><a href="{{url:${s.id}}}">${s.titulo}</a></h3>
           <p class="svc-desc">${s.resumen}</p>
           <ul class="svc-items">
 ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.n}</b><span>${i.t}</span></button></li>`).join('\n')}
@@ -220,7 +219,7 @@ const heroTexto = `    <h1><span class="kick">Luxor Marbella</span> Hacemos fác
     </div>`;
 
 const heroActual = () => `<section class="hero" id="top">
-  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="Recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="Recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <div class="hero-caja">
 ${heroTexto}
@@ -279,7 +278,7 @@ ${VENTAJAS.map(([h, p]) => `      <div class="ben">
   <div class="wrap">
     <div class="ticker" aria-hidden="true">
       <div class="ticker-track">
-        ${[...TICKER, ...TICKER].map((t) => `<span>${t}</span>`).join('')}
+        ${TICKER.map((t) => `<span>${t}</span>`).join('')}${TICKER.map((t) => `<span class="dup">${t}</span>`).join('')}
       </div>
     </div>
   </div>
@@ -301,10 +300,10 @@ const servicio = (id) => {
       <p class="lead">${s.entrada}</p>
       <div class="phead-actions">
         <a class="btn" href="{{url:presupuesto}}?s=${s.id}">Pedir presupuesto</a>
-        <a class="lnk" href="${WA}">WhatsApp</a>
+        <a class="lnk" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
-    <div class="shot">${img(s.foto, s.alt, s.flip ? ' class="flip"' : '')}</div>
+    <div class="shot"><img src="/photos/${s.foto}" alt="${s.alt}" width="1440" height="900" fetchpriority="high"${s.flip ? ' class="flip"' : ''}></div>
   </div>
 </section>
 
@@ -364,7 +363,6 @@ const nosotros = () => `<section class="phead solo">
   <div class="wrap">
     <div class="phead-copy">
       ${migas(['Inicio', 'inicio'], ['Quiénes somos'])}
-      <p class="kicker">Quiénes somos</p>
       <h1>Luxor Marbella</h1>
       <p class="lead">${FAQ[0].a}</p>
     </div>
@@ -373,7 +371,7 @@ const nosotros = () => `<section class="phead solo">
 
 <section class="about">
   <div class="wrap">
-    <div class="shot">${img('about-casa.jpg', 'Salón blanco minimalista con ventanal')}</div>
+    <div class="shot"><img src="/photos/about-casa.jpg" alt="Salón blanco minimalista con ventanal" width="1160" height="798" fetchpriority="high"></div>
     <div class="about-copy">
       <h2 class="d2">La llave que no tienes que buscar</h2>
       <p>Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p>
@@ -399,7 +397,7 @@ ${SERVICIOS.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Dónde trabajamos</h2>
-      <p>${ZONAS_FRASE}</p>
+      <p>De Sotogrande a Elviria, estas son las zonas en las que trabajamos.</p>
     </div>
     <ul class="zones">
 ${N.zonas.map((z) => `      <li>${z}</li>`).join('\n')}
@@ -425,7 +423,7 @@ const presupuesto = () => `<section class="quiz-sec">
       <div class="quiz-bar"><span id="quiz-count"></span><div class="quiz-track"><i id="quiz-fill"></i></div></div>
 
       <fieldset>
-        <legend tabindex="-1">¿Qué necesitas?</legend>
+        <legend tabindex="-1" aria-describedby="quiz-count">¿Qué necesitas?</legend>
         <p class="hint">Puedes marcar más de una opción.</p>
         <div class="opts">
           ${opcion('checkbox', 'servicio', 'Gestión de alquileres', 'Alquilar mi vivienda', 'Vacacional o de larga temporada, gestionado de principio a fin.', 'alquileres')}
@@ -436,7 +434,7 @@ const presupuesto = () => `<section class="quiz-sec">
       </fieldset>
 
       <fieldset>
-        <legend tabindex="-1">¿Dónde está la vivienda?</legend>
+        <legend tabindex="-1" aria-describedby="quiz-count">¿Dónde está la vivienda?</legend>
         <p class="hint">Elige la zona más cercana.</p>
         <div class="opts cols3">
           ${N.zonas.map((z) => opcion('radio', 'zona', z, z)).join('\n          ')}
@@ -445,7 +443,7 @@ const presupuesto = () => `<section class="quiz-sec">
       </fieldset>
 
       <fieldset>
-        <legend tabindex="-1">¿Para cuándo lo necesitas?</legend>
+        <legend tabindex="-1" aria-describedby="quiz-count">¿Para cuándo lo necesitas?</legend>
         <p class="hint">Así sabemos con qué prisa llamarte.</p>
         <div class="opts">
           ${opcion('radio', 'plazo', 'Cuanto antes', 'Cuanto antes')}
@@ -459,7 +457,7 @@ const presupuesto = () => `<section class="quiz-sec">
       </fieldset>
 
       <fieldset>
-        <legend tabindex="-1">¿Cómo te localizamos?</legend>
+        <legend tabindex="-1" aria-describedby="quiz-count">¿Cómo te localizamos?</legend>
         <p class="hint">Te llamamos al teléfono que nos dejes.</p>
         <div class="fields">
           <label><span class="lbl">Tu nombre</span><input id="q-nombre" type="text" placeholder="Nombre y apellidos" autocomplete="name" required></label>
@@ -481,7 +479,7 @@ const presupuesto = () => `<section class="quiz-sec">
         <button class="btn" type="button" id="quiz-next">Siguiente</button>
         <button class="btn" type="submit" id="quiz-send">Enviar solicitud</button>
       </div>
-      <noscript><p class="quiz-error">Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al ${N.telefonoIntl}.</p></noscript>
+      <p class="quiz-error quiz-sinjs">Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al ${N.telefonoIntl}.</p>
     </form>
 
     <div class="quiz-done" id="quiz-done" hidden tabindex="-1">
@@ -550,9 +548,10 @@ export const PAGINAS = [
 // Todo lo que va dentro de <body>
 export const cuerpo = (pagina) => `${glifos}
 
+<a class="saltar" href="#contenido">Saltar al contenido</a>
 ${cabecera}
 
-<main>
+<main id="contenido" tabindex="-1">
 ${pagina.cuerpo()}
 </main>
 

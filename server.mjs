@@ -28,6 +28,7 @@ app.set('trust proxy', 1);
 app.use((req, res, next) => {
   res.set({
     'X-Content-Type-Options': 'nosniff',
+    'Strict-Transport-Security': 'max-age=31536000',
     'X-Frame-Options': 'SAMEORIGIN',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy': 'geolocation=(), microphone=(), camera=()',
