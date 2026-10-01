@@ -101,6 +101,7 @@ h1,h2,h3{overflow-wrap:break-word}
 /* revelado al hacer scroll: solo con JS activo (html.js); una sola vez; escalonado por --d */
 html.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0ms)}
 html.js .rv.in{opacity:1;transform:none}
+@media print{html.js .rv{opacity:1;transform:none;transition:none}}
 @media (prefers-reduced-motion: reduce){html.js .rv{opacity:1;transform:none;transition:none}}
 
 /* ============================================================
@@ -542,7 +543,7 @@ html.js .svc-nav{
 html.js .quiz-bar{display:flex}
 html.js .quiz fieldset{display:none;margin-bottom:1.9rem}
 html.js .quiz fieldset.is-on{display:block}
-html:not(.js) #quiz-back,html:not(.js) #quiz-next{display:none}
+html:not(.js) #quiz-back,html:not(.js) #quiz-next,html:not(.js) #quiz-send{display:none}
 @media (max-width:640px){.opts,.opts.cols3,.fields{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion: reduce){.quiz-track i,.opt span{transition:none}}
 

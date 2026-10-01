@@ -44,7 +44,8 @@
       wa.href = waBase + '?text=' + encodeURIComponent(l.join('\n'));
     };
 
-    var fallo = function(txt){ qerr.textContent = txt; qerr.hidden = false; return false; };
+    // el, si se pasa, es el campo que hay que corregir: se le da el foco
+    var fallo = function(txt, el){ qerr.textContent = txt; qerr.hidden = false; if (el) el.focus(); return false; };
     var valido = function(n){
       qerr.hidden = true;
       if (n === 0 && !marcados('servicio').length) return fallo(T.q_servicio);
@@ -53,8 +54,11 @@
         var falta = [];
         if (!val('q-nombre')) falta.push(T.f_nombre);
         if (!val('q-tel'))    falta.push(T.f_tel);
-        if (falta.length) return fallo(T.faltan.replace('{lista}', falta.join(', ')));
-        if (!$('q-ok').checked) return fallo(T.consentimiento);
+        if (falta.length) return fallo(T.faltan.replace('{lista}', falta.join(', ')), $(val('q-nombre') ? 'q-tel' : 'q-nombre'));
+        // las mismas comprobaciones que hace server.mjs: si no, un 400 se mostraría como un fallo del envío
+        if (!/^[+\d][\d\s().-]{5,}$/.test(val('q-tel'))) return fallo(T.tel_mal, $('q-tel'));
+        if (val('q-mail') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('q-mail'))) return fallo(T.mail_mal, $('q-mail'));
+        if (!$('q-ok').checked) return fallo(T.consentimiento, $('q-ok'));
       }
       return true;
     };
@@ -87,7 +91,7 @@
       // Intro en un campo de un paso intermedio equivale a "Siguiente"
       if (paso < steps.length - 1) { if (valido(paso)) ir(paso + 1, true); return; }
       for (var k = 0; k < steps.length; k++) {
-        if (!valido(k)) { var aviso = qerr.textContent; ir(k, true); fallo(aviso); return; }
+        if (!valido(k)) { if (k !== paso) { var aviso = qerr.textContent; ir(k, true); fallo(aviso); } return; }
       }
       var nombre = val('q-nombre'), rotulo = send.textContent;
       var datos = {

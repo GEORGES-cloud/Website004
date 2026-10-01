@@ -19,6 +19,8 @@ const TEXTOS_JS = {
   f_nombre: 'nombre',
   f_tel: 'teléfono',
   consentimiento: 'Necesitamos tu consentimiento para poder contactarte.',
+  tel_mal: 'Revisa el teléfono: parece incompleto.',
+  mail_mal: 'Revisa el e-mail: parece incompleto.',
   enviando: 'Enviando…',
   error_antes: 'No hemos podido enviar el formulario.',
   error_wa: 'Envíanoslo por WhatsApp',
@@ -175,6 +177,9 @@ const explorador = () => `<section class="grid-sec" id="servicios">
     </div>
 
     <div class="svcx" id="svcx">
+      <div class="svc-nav" role="tablist" aria-label="Líneas de servicio">
+${SERVICIOS.map((s, k) => `        <button class="svc-tab" type="button" role="tab" aria-controls="svc-${s.id}" aria-selected="${k === 0}"><img src="/photos/${s.foto}" alt="" loading="lazy" decoding="async">${s.corto}</button>`).join('\n')}
+      </div>
 ${SERVICIOS.map((s, k) => `
       <article class="svc${k === 0 ? ' is-on' : ''}" id="svc-${s.id}">
         <div class="shot svc-photo">
@@ -196,9 +201,6 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
         </div>
       </article>`).join('\n')}
 
-      <div class="svc-nav" role="tablist" aria-label="Líneas de servicio">
-${SERVICIOS.map((s, k) => `        <button class="svc-tab" type="button" role="tab" aria-controls="svc-${s.id}" aria-selected="${k === 0}"><img src="/photos/${s.foto}" alt="" loading="lazy" decoding="async">${s.corto}</button>`).join('\n')}
-      </div>
     </div>
   </div>
 </section>`;
@@ -525,7 +527,7 @@ export const PAGINAS = [
     title: s.metaTitle, desc: s.metaDesc, cuerpo: () => servicio(s.id), servicio: s,
   })),
   { id: 'presupuesto', es: 'presupuesto', xx: 'quote', title: 'Pedir presupuesto | Luxor Marbella', desc: 'Pide presupuesto a Luxor Marbella en cuatro pasos o escríbenos por WhatsApp. Gestión de alquileres, reformas y mantenimiento de viviendas en Marbella.', cuerpo: presupuesto },
-  { id: 'nosotros', es: 'nosotros', xx: 'about', title: 'Quiénes somos | Luxor Marbella', desc: 'Luxor Marbella gestiona alquileres, reforma y mantiene viviendas en Marbella para propietarios que no viven aquí todo el año.', cuerpo: nosotros },
+  { id: 'nosotros', es: 'nosotros', xx: 'about', title: 'Quiénes somos | Luxor Marbella', desc: 'Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.', cuerpo: nosotros },
   ...Object.keys(LEGAL).map((id) => ({ id, es: LEGAL[id].es, xx: LEGAL[id].xx, title: `${LEGAL[id].titulo} | Luxor Marbella`, desc: LEGAL[id].entrada, cuerpo: () => legal(id) })),
   { id: '404', es: '404', xx: '404', title: 'Página no encontrada | Luxor Marbella', desc: '', cuerpo: noEncontrada, oculta: true },
 ];

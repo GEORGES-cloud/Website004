@@ -33,7 +33,7 @@ export const LEGAL = {
     html: `      <h2>Quién es el responsable</h2>
       <p>El responsable del tratamiento es Luxor Marbella. Puedes escribirnos a <a href="mailto:${N.email}">${N.email}</a> o llamarnos al <a href="tel:${N.telefono}">+34 ${N.telefonoVisible}</a>.</p>
       <h2>Qué datos recogemos</h2>
-      <p>Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa y lo que quieras contarnos en el mensaje.</p>
+      <p>Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa, para cuándo lo necesitas, lo que quieras contarnos en el mensaje y si aceptas o no recibir comunicaciones comerciales. Con la solicitud nos llega también el idioma en que has usado la web.</p>
       <p>Si nos escribes por WhatsApp, por correo o nos llamas, trataremos los datos que nos facilites por ese medio.</p>
       <h2>Para qué los usamos</h2>
       <ul>

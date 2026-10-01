@@ -40,7 +40,7 @@ export const SERVICIOS = [
     h1: 'Gestión de alquileres en Marbella',
     entrada: 'Alquiler vacacional y de larga temporada, llevado de principio a fin. Publicamos la vivienda, atendemos a quien la ocupa y tú hablas con una sola persona.',
     metaTitle: 'Gestión de alquileres en Marbella | Luxor Marbella',
-    metaDesc: 'Gestión integral de alquiler vacacional y de larga temporada en Marbella: publicación en Airbnb e Idealista, atención a inquilinos y un solo interlocutor para el propietario.',
+    metaDesc: 'Gestión integral de alquiler vacacional y de larga temporada en Marbella: anuncio en Airbnb e Idealista, atención a inquilinos y un solo interlocutor.',
     incluye: [
       { n: 'Publicación en plataformas', t: 'Tu vivienda anunciada en Airbnb, Idealista y otros portales de alquiler.', d: 'Preparamos el anuncio y lo publicamos en Airbnb, Idealista y otros portales de alquiler.', p: [46, 55, 40, 56, false] },
       { n: 'Captación de inquilinos y huéspedes', t: 'Seguimos cada contacto en nuestro CRM hasta cerrar la reserva o el contrato.', d: 'Cada persona interesada queda registrada en nuestro CRM y la seguimos hasta cerrar la reserva o el contrato.', p: [61, 49, 70, 50, false] },
@@ -98,7 +98,7 @@ export const SERVICIOS = [
     alt: 'Persona fregando el suelo de un dormitorio luminoso',
     flip: true,
     h1: 'Mantenimiento y limpieza de viviendas en Marbella',
-    entrada: 'Lo que necesita una casa cuando su dueño no está: que funcione, que esté limpia y que alguien responda por ella.',
+    entrada: 'Revisiones, averías, limpieza, lavandería, llaves y gestiones de la vivienda, para que la casa esté a punto aunque tú no estés.',
     metaTitle: 'Mantenimiento y limpieza de viviendas en Marbella | Luxor Marbella',
     metaDesc: 'Mantenimiento preventivo y correctivo, limpieza, lavandería, piscina y exteriores, custodia de llaves y gestión de suministros para viviendas en Marbella.',
     incluye: [

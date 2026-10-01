@@ -6,6 +6,8 @@
 // (zip nuevo), que es quien ejecuta "npm install" en el servidor.
 import * as ftp from 'basic-ftp';
 import { Readable } from 'node:stream';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const { FTP_SERVER, FTP_USERNAME, FTP_PASSWORD } = process.env;
 // Carpeta de la app vista desde la raiz de la cuenta FTP (mapeada el 2026-09-30):
@@ -18,12 +20,40 @@ const { FTP_SERVER, FTP_USERNAME, FTP_PASSWORD } = process.env;
 // asi que ese zip tiene que estar al dia o la web retrocede hasta el siguiente push.
 const APP = process.env.FTP_APP_DIR || '/hbuilds/current/nodejs';
 
+// Sin secrets el job tiene que salir en rojo: en verde parecería desplegado y la web seguiría con la versión anterior.
 if (!FTP_SERVER || !FTP_USERNAME || !FTP_PASSWORD) {
-  console.log('::warning::Faltan los secrets FTP_SERVER / FTP_USERNAME / FTP_PASSWORD: no se ha desplegado nada.');
-  process.exit(0);
+  console.log('::error::Faltan los secrets FTP_SERVER / FTP_USERNAME / FTP_PASSWORD: no se ha desplegado nada.');
+  process.exit(1);
 }
 
 const primera = (e) => String(e.message).split('\n')[0];
+
+// Ficheros de public/ en local, con rutas relativas y barras normales
+const locales = (dir, base = '') =>
+  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? locales(join(dir, e.name), `${base}${e.name}/`) : [`${base}${e.name}`]);
+
+// uploadFromDir solo añade o sobrescribe, y Hostinger sirve todo lo que haya en public/: lo borrado
+// o renombrado en el repo seguiría publicado. Se borran del servidor los ficheros que ya no están
+// en local. Solo ficheros (las carpetas vacías no se sirven) y nunca si el public/ local parece incompleto.
+async function podar(c, remoto, local) {
+  const enLocal = new Set(locales(local));
+  if (enLocal.size < 50 || !enLocal.has('index.html')) {
+    console.log(`::warning::public/ local con ${enLocal.size} ficheros: no se borra nada del servidor.`);
+    return;
+  }
+  let borrados = 0;
+  const recorre = async (dir, base) => {
+    for (const f of await c.list(dir)) {
+      if (f.name === '.' || f.name === '..') continue;
+      const rel = base + f.name;
+      if (f.isDirectory) await recorre(`${dir}/${f.name}`, `${rel}/`);
+      else if (!enLocal.has(rel) && !rel.startsWith('.')) { await c.remove(`${dir}/${f.name}`); borrados++; }
+    }
+  };
+  await recorre(remoto, '');
+  console.log(`PODADOS ${borrados} ficheros que ya no están en el repo`);
+}
 
 async function nombres(c, dir) {
   try {
@@ -65,6 +95,7 @@ async function intento(n) {
     console.log(`SUBIDO public/ -> ${APP}/public (intento ${n})`);
     await c.uploadFrom('server.mjs', `${APP}/server.mjs`);
     console.log(`SUBIDO server.mjs -> ${APP}/server.mjs`);
+    await podar(c, `${APP}/public`, 'public');
 
     await c.ensureDir(`${APP}/tmp`);
     await c.uploadFrom(Readable.from([new Date().toISOString()]), 'restart.txt');

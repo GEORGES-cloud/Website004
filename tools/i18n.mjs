@@ -8,13 +8,20 @@
 // (_traducir.json) y entrega <idioma>.ids.json = { "1": "traducción", ... }. Al unir, el diccionario
 // final queda indexado por el texto español, que es lo que build.mjs busca; si luego cambia un
 // texto español, build.mjs avisa de que falta su traducción.
-import { readFileSync, writeFileSync, existsSync, copyFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const [accion, idioma] = process.argv.slice(2);
 const CATALOGO = 'src/i18n/_traducir.json';
 if (accion === 'preparar') {
-  copyFileSync('src/i18n/_fuente.json', CATALOGO);
-  console.log(`${CATALOGO}: ${JSON.parse(readFileSync(CATALOGO, 'utf8')).length} textos`);
+  // Ids estables: un texto que ya estaba en el catálogo conserva su id y los nuevos reciben ids a partir
+  // del mayor, así un <idioma>.ids.json entregado sobre un catálogo anterior sigue bien emparejado.
+  const nuevo = JSON.parse(readFileSync('src/i18n/_fuente.json', 'utf8'));
+  const viejo = existsSync(CATALOGO) ? JSON.parse(readFileSync(CATALOGO, 'utf8')) : [];
+  const idDe = new Map(viejo.map((e) => [e.texto, e.id]));
+  let sig = Math.max(0, ...viejo.map((e) => e.id));
+  for (const e of nuevo) e.id = idDe.get(e.texto) ?? ++sig;
+  writeFileSync(CATALOGO, JSON.stringify(nuevo, null, 1) + '\n', 'utf8');
+  console.log(`${CATALOGO}: ${nuevo.length} textos (${nuevo.filter((e) => !idDe.has(e.texto)).length} nuevos)`);
   process.exit(0);
 }
 if (!['comprobar', 'unir'].includes(accion) || !/^[a-z]{2}$/.test(idioma || '')) {
@@ -43,6 +50,7 @@ for (const e of fuente) {
   const donde = `#${e.id} «${e.texto.slice(0, 50)}»`;
   if (typeof t !== 'string' || !t.trim()) { problemas.push(`${donde}: falta la traducción`); continue; }
   if (/[<>]/.test(t)) problemas.push(`${donde}: lleva < o > (los textos no llevan etiquetas HTML)`);
+  if (/&(?:[a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);/.test(t)) problemas.push(`${donde}: lleva una entidad HTML (&…;); escribe el carácter directamente (p. ej. el espacio duro U+00A0)`);
   if (marcas(t) !== marcas(e.texto)) problemas.push(`${donde}: no conserva las marcas ${marcas(e.texto) || '(ninguna)'}`);
   if (e.texto.includes('603 60 55 43') && !t.includes('603 60 55 43')) problemas.push(`${donde}: falta el teléfono 603 60 55 43`);
   if (e.texto.includes('+34') && !t.includes('+34')) problemas.push(`${donde}: falta el prefijo +34`);

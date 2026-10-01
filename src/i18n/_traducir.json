@@ -20,6 +20,11 @@
   "contexto": "inicio atributo alt"
  },
  {
+  "id": 8,
+  "texto": "Líneas de servicio",
+  "contexto": "inicio atributo aria-label"
+ },
+ {
   "id": 5,
   "texto": "Casa blanca con arcos, tejado de teja y jardín",
   "contexto": "inicio atributo alt | alquileres atributo alt"
@@ -33,11 +38,6 @@
   "id": 7,
   "texto": "Persona fregando el suelo de un dormitorio luminoso",
   "contexto": "inicio atributo alt | mantenimiento atributo alt"
- },
- {
-  "id": 8,
-  "texto": "Líneas de servicio",
-  "contexto": "inicio atributo aria-label"
  },
  {
   "id": 9,
@@ -220,6 +220,21 @@
   "contexto": "inicio <p>"
  },
  {
+  "id": 81,
+  "texto": "Alquileres",
+  "contexto": "inicio <img src=\"/photos/svc-alquileres.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
+ },
+ {
+  "id": 82,
+  "texto": "Reformas",
+  "contexto": "inicio <img src=\"/photos/svc-reformas.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
+ },
+ {
+  "id": 83,
+  "texto": "Mantenimiento",
+  "contexto": "inicio <img src=\"/photos/svc-mantenimiento.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
+ },
+ {
   "id": 45,
   "texto": "Publicación en plataformas",
   "contexto": "inicio <span> | inicio <b> | alquileres <h3>"
@@ -372,7 +387,7 @@
  {
   "id": 75,
   "texto": "Lo que necesita una casa cuando su dueño no está: que funcione, que esté limpia y que alguien responda por ella.",
-  "contexto": "inicio <p class=\"svc-desc\"> | mantenimiento <p class=\"lead\"> | mantenimiento <p>"
+  "contexto": "inicio <p class=\"svc-desc\"> | mantenimiento <p>"
  },
  {
   "id": 76,
@@ -398,21 +413,6 @@
   "id": 80,
   "texto": "Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.",
   "contexto": "inicio <span>"
- },
- {
-  "id": 81,
-  "texto": "Alquileres",
-  "contexto": "inicio <img src=\"/photos/svc-alquileres.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
- },
- {
-  "id": 82,
-  "texto": "Reformas",
-  "contexto": "inicio <img src=\"/photos/svc-reformas.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
- },
- {
-  "id": 83,
-  "texto": "Mantenimiento",
-  "contexto": "inicio <img src=\"/photos/svc-mantenimiento.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
  },
  {
   "id": 84,
@@ -700,6 +700,16 @@
   "contexto": "inicio texto de site.js (consentimiento) | alquileres texto de site.js (consentimiento) | reformas texto de site.js (consentimiento)"
  },
  {
+  "id": 315,
+  "texto": "Revisa el teléfono: parece incompleto.",
+  "contexto": "inicio texto de site.js (tel_mal) | alquileres texto de site.js (tel_mal) | reformas texto de site.js (tel_mal)"
+ },
+ {
+  "id": 316,
+  "texto": "Revisa el e-mail: parece incompleto.",
+  "contexto": "inicio texto de site.js (mail_mal) | alquileres texto de site.js (mail_mal) | reformas texto de site.js (mail_mal)"
+ },
+ {
   "id": 141,
   "texto": "Enviando…",
   "contexto": "inicio texto de site.js (enviando) | alquileres texto de site.js (enviando) | reformas texto de site.js (enviando)"
@@ -875,8 +885,8 @@
   "contexto": "alquileres"
  },
  {
-  "id": 176,
-  "texto": "Gestión integral de alquiler vacacional y de larga temporada en Marbella: publicación en Airbnb e Idealista, atención a inquilinos y un solo interlocutor para el propietario.",
+  "id": 317,
+  "texto": "Gestión integral de alquiler vacacional y de larga temporada en Marbella: anuncio en Airbnb e Idealista, atención a inquilinos y un solo interlocutor.",
   "contexto": "alquileres"
  },
  {
@@ -978,6 +988,11 @@
   "id": 196,
   "texto": "Mantenimiento y limpieza de viviendas en Marbella",
   "contexto": "mantenimiento <h1>"
+ },
+ {
+  "id": 318,
+  "texto": "Revisiones, averías, limpieza, lavandería, llaves y gestiones de la vivienda, para que la casa esté a punto aunque tú no estés.",
+  "contexto": "mantenimiento <p class=\"lead\">"
  },
  {
   "id": 197,
@@ -1125,8 +1140,8 @@
   "contexto": "presupuesto <b>"
  },
  {
-  "id": 226,
-  "texto": "Nos lo cuentas en el siguiente paso.",
+  "id": 319,
+  "texto": "Nos lo cuentas más adelante.",
   "contexto": "presupuesto <small>"
  },
  {
@@ -1315,8 +1330,8 @@
   "contexto": "nosotros"
  },
  {
-  "id": 264,
-  "texto": "Luxor Marbella gestiona alquileres, reforma y mantiene viviendas en Marbella para propietarios que no viven aquí todo el año.",
+  "id": 320,
+  "texto": "Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.",
   "contexto": "nosotros"
  },
  {
@@ -1425,8 +1440,8 @@
   "contexto": "privacidad <h2>"
  },
  {
-  "id": 286,
-  "texto": "Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa y lo que quieras contarnos en el mensaje.",
+  "id": 321,
+  "texto": "Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa, para cuándo lo necesitas, lo que quieras contarnos en el mensaje y si aceptas o no recibir comunicaciones comerciales. Con la solicitud nos llega también el idioma en que has usado la web.",
   "contexto": "privacidad <p>"
  },
  {

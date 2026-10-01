@@ -7,14 +7,15 @@
 // OJO: este script NO es el "build" de package.json a proposito. Hostinger ejecuta
 // "npm run build" en cada despliegue y alli no estan ni este fichero ni src/, asi que
 // "build" es un paso vacio que tiene que existir (si falta, el despliegue tambien falla).
-import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, renameSync, copyFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { createHash } from 'node:crypto';
 import { PAGINAS, cuerpo } from './src/plantillas.mjs';
 import { NEGOCIO, SERVICIOS, FAQ } from './src/contenido.mjs';
 
 const root = process.cwd();
-const pub = join(root, 'public');
+const pubFinal = join(root, 'public');
+const pub = join(root, 'public.tmp');   // pasa a ser public/ al final, solo si no falta ninguna traducción
 const SITE = 'https://www.luxormarbella.com';
 const lee = (f) => readFileSync(join(root, f), 'utf8').replace(/\r\n/g, '\n');
 const escribe = (f, txt) => { mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, txt, 'utf8'); };
@@ -111,7 +112,7 @@ function selector(l, p, t, tipo) {
   const destino = (a) => ruta(a, p.oculta ? pagina('inicio') : p);
   const enlaces = activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}</a></li>`).join('');
   return tipo === 'desplegable'
-    ? `<details class="lang"><summary class="pill" aria-label="${rotulo}">${l.code.toUpperCase()}</summary><ul>${enlaces}</ul></details>`
+    ? `<details class="lang"><summary class="pill" aria-label="${rotulo}: ${l.nombre} (${l.code.toUpperCase()})">${l.code.toUpperCase()}</summary><ul>${enlaces}</ul></details>`
     : `<ul class="langs" aria-label="${rotulo}">${enlaces}</ul>`;
 }
 
@@ -223,7 +224,16 @@ const js = `/assets/site.${huella(jsTxt)}.js`;
 escribe(join(pub, css), cssTxt);
 escribe(join(pub, js), jsTxt);
 
-const fotos = new Set(['og.jpg']);
+// Fotos con la huella del contenido en el nombre, como CSS y JS: la CDN de Hostinger las sirve con un año
+// de caché y, si se cambia una foto conservando el nombre, navegadores y CDN seguirían enseñando la vieja.
+const fotos = new Map();
+const conHuella = (f) => {
+  if (!fotos.has(f)) {
+    const ext = f.slice(f.lastIndexOf('.'));
+    fotos.set(f, `${f.slice(0, -ext.length)}.${huella(readFileSync(join(root, 'photos', f)))}${ext}`);
+  }
+  return fotos.get(f);
+};
 let paginasEscritas = 0;
 for (const l of activos) {
   for (const p of PAGINAS) {
@@ -233,7 +243,7 @@ for (const l of activos) {
       .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)));
     html = `<!doctype html>\n<html lang="${l.code}">\n<head>\n${cabeza(l, p, t, css, js)}\n</head>\n<body>\n${html}\n</body>\n</html>\n`;
     if (html.includes('{{')) throw new Error(`Quedan marcas sin resolver en ${p.id} (${l.code})`);
-    for (const m of html.matchAll(/\/photos\/([\w.-]+\.(?:jpe?g|png|webp))/g)) fotos.add(m[1]);
+    html = html.replace(/\/photos\/([\w.-]+\.(?:jpe?g|png|webp))/g, (todo, f) => `/photos/${conHuella(f)}`);
     escribe(join(pub, ruta(l, p), 'index.html'), html);
     paginasEscritas++;
   }
@@ -249,7 +259,7 @@ for (const f of readdirSync(join(root, 'assets/fonts'))) {
   if (f.endsWith('.woff2')) copyFileSync(join(root, 'assets/fonts', f), join(pub, 'assets/fonts', f));
 }
 mkdirSync(join(pub, 'photos'), { recursive: true });
-for (const f of fotos) copyFileSync(join(root, 'photos', f), join(pub, 'photos', f));
+for (const [f, h] of fotos) copyFileSync(join(root, 'photos', f), join(pub, 'photos', h));
 
 // favicon.ico en la raíz: los navegadores y Google lo piden ahí aunque haya <link rel="icon">
 copyFileSync(join(root, 'assets', 'favicon-48.png'), join(pub, 'favicon.ico'));
@@ -289,7 +299,13 @@ for (const l of activos) {
   }
 }
 // Una página medio en español marcada como hreflang="de" es peor que no tener la versión alemana.
+// Se genera en public.tmp y solo pasa a public/ si están todas: así un diccionario incompleto
+// nunca llega a public/ (que es lo que se sube) con páginas medio en español.
 if (Object.values(faltan).some((s) => s.size)) {
-  console.error('Hay idiomas con traducciones incompletas: no desplegar hasta completarlas.');
+  rmSync(pub, { recursive: true, force: true });
+  console.error('Hay idiomas con traducciones incompletas: public/ no se ha tocado.');
   process.exitCode = 1;
+} else {
+  rmSync(pubFinal, { recursive: true, force: true });
+  renameSync(pub, pubFinal);
 }
