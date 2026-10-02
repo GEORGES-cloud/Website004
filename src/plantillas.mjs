@@ -1,7 +1,7 @@
 // Plantillas del sitio. Devuelven HTML en español con marcas {{...}} que build.mjs resuelve
 // por idioma:  {{url:ID}} enlace a una página · {{langs:desplegable}} / {{langs:lista}} selector de idioma.
 // No hay textos de otras lenguas aquí: build.mjs traduce el HTML ya montado.
-import { NEGOCIO as N, SERVICIOS, GARANTIAS, VENTAJAS, TICKER, FAQ, ZONAS_FRASE } from './contenido.mjs';
+import { NEGOCIO as N, SERVICIOS, GARANTIAS, VENTAJAS, FAQ, ZONAS_FRASE } from './contenido.mjs';
 import { LEGAL } from './legal.mjs';
 
 const WA = `https://wa.me/${N.whatsapp}`;
@@ -271,16 +271,6 @@ ${VENTAJAS.map(([h, p]) => `      <div class="ben">
       <h2 class="d2">Preguntas frecuentes</h2>
     </div>
     ${preguntas(FAQ)}
-  </div>
-</section>
-
-<section class="quote-block">
-  <div class="wrap">
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        ${TICKER.map((t) => `<span>${t}</span>`).join('')}${TICKER.map((t) => `<span class="dup">${t}</span>`).join('')}
-      </div>
-    </div>
   </div>
 </section>
 
