@@ -20,7 +20,7 @@ export const NEGOCIO = {
   geo: null,                // { latitude: 36.00000, longitude: -4.00000 }  solo si la dirección es pública
   horario: { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '09:00', closes: '20:00' },
   horarioTexto: 'Todos los días, 9:00 – 20:00',   // el mismo horario en texto para el pie (traducir en src/i18n)
-  idiomasAtencion: ['es'],  // idiomas en los que se atiende de verdad el teléfono; no los de la web
+  idiomasAtencion: ['es', 'en'],  // idiomas en los que se atiende de verdad (dato del cliente, 2026-10-02); la web va en los 6
   perfiles: [],             // URL reales: ficha de Google, Instagram, Facebook, LinkedIn
   razonSocial: null,
   nif: null,
