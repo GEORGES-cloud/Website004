@@ -3,7 +3,7 @@
 // despliegue. Google NO usa IndexNow: para Google cuentan el sitemap y Search Console.
 // Lo lanza .github/workflows/deploy.yml después de subir por FTP. Nunca hace fallar el despliegue.
 //
-//   node tools/indexnow.mjs            URL de public/**/index.html cambiadas entre $BEFORE y HEAD
+//   node tools/indexnow.mjs            URL de public/**/index.html cambiadas entre $BEFORE y la copia de trabajo
 //   node tools/indexnow.mjs --todas    todas las URL del sitemap (primera vez, o a mano)
 //   DRY=1 node tools/indexnow.mjs      enseña lo que mandaría, sin mandarlo
 //
@@ -32,7 +32,10 @@ function cambiadas() {
     // con fetch-depth: 2 el commit anterior puede no estar si el push trae varios: se pide
     try { execFileSync('git', ['cat-file', '-e', `${before}^{commit}`], { stdio: 'ignore' }); }
     catch { execFileSync('git', ['fetch', '--no-tags', '--depth=1', 'origin', before], { stdio: 'ignore' }); }
-    const out = execFileSync('git', ['diff', '--name-status', '--no-renames', before, 'HEAD', '--', 'public'], { encoding: 'utf8' });
+    // contra la copia de trabajo, no contra HEAD: el workflow regenera public/ antes de desplegar
+    // (add -N para que las páginas nuevas sin commit también salgan en el diff)
+    execFileSync('git', ['add', '-N', 'public'], { stdio: 'ignore' });
+    const out = execFileSync('git', ['diff', '--name-status', '--no-renames', before, '--', 'public'], { encoding: 'utf8' });
     const urls = new Set();
     for (const linea of out.split('\n').filter(Boolean)) {
       const [estado, f] = linea.split('\t');

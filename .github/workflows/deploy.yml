@@ -1,7 +1,9 @@
 name: Desplegar a Hostinger
 
 # La web la sirve una app Node.js de Hostinger (server.mjs + Express + public/).
-# Cada push a main que toque la web sube public/ y server.mjs por FTP y reinicia la app.
+# Cada push a main que toque la web regenera public/ con build.mjs, lo sube con server.mjs por FTP
+# y reinicia la app. Así un cambio en src/ se publica aunque no se haya ejecutado "npm run generar"
+# en local; si faltan traducciones, build.mjs falla y no se sube nada.
 # Hostinger no deja conectar Git a esta app (se gestiona con acceso delegado), por eso va por FTP.
 #
 # Requiere 3 secrets (Settings -> Secrets and variables -> Actions):
@@ -12,8 +14,13 @@ on:
     branches: [main]
     paths:
       - "public/**"
+      - "src/**"
+      - "assets/**"
+      - "photos/**"
+      - "build.mjs"
       - "server.mjs"
       - "tools/deploy-ftp.mjs"
+      - "tools/indexnow.mjs"
       - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
@@ -30,6 +37,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 2   # para saber qué páginas han cambiado (IndexNow)
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generar la web (build.mjs)
+        run: node build.mjs
 
       - name: Subir por FTP y reiniciar la app
         env:
