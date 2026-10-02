@@ -13,10 +13,13 @@ export const NEGOCIO = {
 
   // PENDIENTE DEL CLIENTE. Mientras valgan null / [] no salen en los datos estructurados
   // (build.mjs, función jsonld) y el negocio se marca como Organization y no como LocalBusiness.
-  direccion: null,          // { streetAddress: 'Calle y número', postalCode: '29600', addressLocality: 'Marbella', addressRegion: 'Málaga', addressCountry: 'ES' }
+  // Oficina dentro del Real Club de Pádel Marbella (dato del cliente, 2026-10-02). Es la misma que figura en la ficha de Google.
+  direccion: { streetAddress: 'Calle Río Amazonas, s/n (Real Club de Pádel Marbella)', postalCode: '29660', addressLocality: 'Marbella', addressRegion: 'Málaga', addressCountry: 'ES' },
+  direccionTexto: 'Real Club de Pádel Marbella · C. Río Amazonas, s/n · 29660 Marbella',   // pie y aviso legal (traducir en src/i18n)
+  mapa: 'https://www.google.com/maps/search/?api=1&query=Real+Club+de+P%C3%A1del+Marbella%2C+Calle+R%C3%ADo+Amazonas%2C+29660+Marbella',
   geo: null,                // { latitude: 36.00000, longitude: -4.00000 }  solo si la dirección es pública
-  horario: null,            // { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '18:00' }
-  horarioTexto: null,       // el mismo horario en texto para el pie, p. ej. 'Lunes a viernes, 8:00 – 18:00' (traducir en src/i18n)
+  horario: { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '09:00', closes: '20:00' },
+  horarioTexto: 'Todos los días, 9:00 – 20:00',   // el mismo horario en texto para el pie (traducir en src/i18n)
   idiomasAtencion: ['es'],  // idiomas en los que se atiende de verdad el teléfono; no los de la web
   perfiles: [],             // URL reales: ficha de Google, Instagram, Facebook, LinkedIn
   razonSocial: null,

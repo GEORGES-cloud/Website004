@@ -132,7 +132,7 @@ ${SERVICIOS.map((s) => `          <li><a href="{{url:${s.id}}}">${s.menu}</a></l
           <li><a href="${TEL}">${N.telefonoIntl}</a></li>
           <li><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="mailto:${N.email}">${N.email}</a></li>
-${N.horarioTexto ? `          <li>${N.horarioTexto}</li>\n` : ''}        </ul>
+${N.direccionTexto ? `          <li><a href="${N.mapa}" target="_blank" rel="noopener">${N.direccionTexto}</a></li>\n` : ''}${N.horarioTexto ? `          <li>${N.horarioTexto}</li>\n` : ''}        </ul>
       </div>
     </div>
   </div>

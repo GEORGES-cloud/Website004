@@ -1,6 +1,6 @@
 // Textos legales en español. Describen lo que la web hace de verdad: si cambia el tratamiento
 // de datos (analítica, cookies, otro proveedor), hay que actualizarlos aquí.
-// PENDIENTE DEL CLIENTE: razón social, NIF y domicilio del titular. La LSSI (art. 10) y el RGPD
+// PENDIENTE DEL CLIENTE: razón social, NIF y domicilio del titular (la oficina ya figura, pero no tiene por qué ser el domicilio social). La LSSI (art. 10) y el RGPD
 // (art. 13) piden identificarlo; hasta tener esos datos solo figuran nombre comercial y contacto.
 import { NEGOCIO as N } from './contenido.mjs';
 
@@ -13,6 +13,7 @@ export const LEGAL = {
     html: `      <h2>Titular del sitio</h2>
       <p>El sitio web www.luxormarbella.com pertenece a Luxor Marbella.</p>
       <p>Contacto: <a href="mailto:${N.email}">${N.email}</a> · <a href="tel:${N.telefono}">+34 ${N.telefonoVisible}</a></p>
+      <p>Oficina: ${N.direccionTexto}</p>
       <h2>Objeto</h2>
       <p>El sitio informa sobre los servicios de Luxor Marbella —gestión de alquileres, reformas y mantenimiento de viviendas en Marbella y la Costa del Sol— y permite pedir presupuesto.</p>
       <h2>Condiciones de uso</h2>
