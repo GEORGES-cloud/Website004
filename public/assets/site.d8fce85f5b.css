@@ -725,3 +725,17 @@ body:has(.wa-flota) .foot-base .wrap{padding-bottom:5.5rem}
 @media (min-width:900px){body:has(.wa-flota) .foot-base .wrap{padding-bottom:6.5rem}}
 @media print{.wa-flota{display:none}}
 @media (prefers-reduced-motion: reduce){.wa-flota,.wa-glifo{transition:none}}
+
+/* ------------------------------------------------------------------ ritmo vertical en movil
+   Con los rellenos de escritorio, en movil sobraba aire: dos secciones seguidas con el mismo fondo
+   sumaban unos 110 px de hueco. Aqui el relleno base baja y, cuando no hay cambio de color que las
+   separe, el hueco de arriba de la segunda se recorta. */
+@media (max-width:760px){
+  .grid-sec .wrap,.block .wrap,.duo .wrap,.reviews .wrap,.about .wrap{padding-block:2.75rem}
+  .phead .wrap{padding-block:1.75rem 2.25rem}
+  .closer .wrap{padding-block:3.5rem;gap:2rem}
+  .pledges .wrap{padding-block:1.75rem 2rem}
+  .pledges + .grid-sec .wrap,.reviews + .block .wrap,.phead + .block .wrap,
+  .block:not(.tint) + .block:not(.tint) .wrap,.block.tint + .block.tint .wrap{padding-top:1.75rem}
+  .phead.solo + .about .wrap,.phead.solo + .block .wrap{padding-top:.75rem}
+}

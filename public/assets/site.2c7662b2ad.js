@@ -422,15 +422,16 @@
     setTimeout(sweep, 400);
   }
 
-  // secciones que se apilan: cada <section> de <main> se queda fija (sticky) cuando asoma su final
-  // —o arriba, bajo la cabecera, si cabe entera— y la siguiente sube por encima. La de debajo se
-  // oscurece y se aleja un poco. Las cuentas usan la posicion natural de cada seccion (suma de
-  // altos), no la pintada, asi que no dependen de lo que ya esta fijo.
+  // secciones que se apilan: solo las marcadas con data-capa en plantillas.mjs (dos o tres por
+  // pagina; con todas mareaba). Cada una se queda fija (sticky) cuando asoma su final —o arriba,
+  // bajo la cabecera, si cabe entera— y la siguiente sube por encima; la de debajo se oscurece y se
+  // aleja un poco. Las demas siguen el flujo normal. Las cuentas usan la posicion natural de cada
+  // seccion (suma de altos), no la pintada, asi que no dependen de lo que ya esta fijo.
   // Las secciones con mucho texto que se busca o se enlaza (preguntas frecuentes, textos legales,
-  // cuestionario) no se fijan: si el navegador salta a una frase suya (buscar en la pagina, enlaces
-  // de Google a un fragmento), tiene que quedar a la vista y no debajo de la seccion siguiente.
+  // cuestionario) no se fijan nunca, aunque se marquen: si el navegador salta a una frase suya
+  // (buscar en la pagina, enlaces de Google a un fragmento), tiene que quedar a la vista.
   var secs = document.querySelectorAll('main > section');
-  if (!quiet && secs.length > 1 && window.CSS && CSS.supports('position', 'sticky')) {
+  if (!quiet && document.querySelector('main > section[data-capa]') && secs.length > 1 && window.CSS && CSS.supports('position', 'sticky')) {
     var cab = document.querySelector('.masthead'), principal = document.querySelector('main');
     // alto de la pantalla con las barras del navegador a la vista (svh): asi nunca queda texto sin ver
     var sonda = document.createElement('div');
@@ -464,7 +465,7 @@
       var y = principal.getBoundingClientRect().top + window.scrollY;
       capas = Array.prototype.map.call(secs, function(s){
         var h = s.offsetHeight, fija = Math.min(cabH, alto - h), arriba = Math.max(cabH, fija);
-        var d = { s: s, n: y, h: h, a: y - fija, l: fija + h - arriba, p: -1, suelta: !!s.querySelector('.faq, .prose, .quiz') };
+        var d = { s: s, n: y, h: h, a: y - fija, l: fija + h - arriba, p: -1, suelta: !s.hasAttribute('data-capa') || !!s.querySelector('.faq, .prose, .quiz') };
         s.classList.toggle('suelta', d.suelta);
         // las sueltas siguen el flujo normal: sin altura fija (con position:relative, un top negativo las subiría)
         if (d.suelta) s.style.removeProperty('--stick'); else s.style.setProperty('--stick', fija + 'px');

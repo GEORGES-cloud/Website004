@@ -173,7 +173,7 @@ const img = (foto, alt, extra = '') => `<img src="/photos/${foto}" alt="${alt}" 
 
 /* ------------------------------------------------------------------ portada */
 
-const explorador = () => `<section class="grid-sec" id="servicios">
+const explorador = () => `<section class="grid-sec" id="servicios" data-capa>
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Servicios de Luxor Marbella</h2>
@@ -218,7 +218,7 @@ const heroTexto = `    <h1><span class="kick">Luxor Marbella</span> Hacemos fác
       </div>
     </div>`;
 
-const heroActual = () => `<section class="hero" id="top">
+const heroActual = () => `<section class="hero" id="top" data-capa>
   <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="Recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <div class="hero-caja">
@@ -249,7 +249,7 @@ ${explorador()}
   </div>
 </section>
 
-<section class="reviews" id="como-trabajamos">
+<section class="reviews" id="como-trabajamos" data-capa>
   <div class="wrap">
     <div class="rev-col">
       <p class="eyebrow">Cómo trabajamos</p>
@@ -291,7 +291,7 @@ ${cierre()}`;
 const servicio = (id) => {
   const s = svc(id);
   const otros = SERVICIOS.filter((o) => o.id !== id);
-  return `<section class="phead">
+  return `<section class="phead" data-capa>
   <div class="wrap">
     <div class="phead-copy">
       ${migas(['Inicio', 'inicio'], [s.menu])}
@@ -342,7 +342,7 @@ ${s.secciones.map((x) => `      <div class="row">
   </div>
 </section>
 
-<section class="block tint">
+<section class="block tint" data-capa>
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Otros servicios</h2>
@@ -369,7 +369,7 @@ const nosotros = () => `<section class="phead solo">
   </div>
 </section>
 
-<section class="about">
+<section class="about" data-capa>
   <div class="wrap">
     <div class="shot"><img src="/photos/about-casa.jpg" alt="Salón blanco minimalista con ventanal" width="1160" height="798" fetchpriority="high"></div>
     <div class="about-copy">
@@ -393,7 +393,7 @@ ${SERVICIOS.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o
   </div>
 </section>
 
-<section class="block">
+<section class="block" data-capa>
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Dónde trabajamos</h2>
