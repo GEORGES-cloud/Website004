@@ -13,8 +13,8 @@ export const LEGAL = {
     html: `      <h2>Titular del sitio</h2>
       <p>El sitio web www.luxormarbella.com pertenece a Luxor Marbella.</p>
       <p>Contacto: <a href="mailto:${N.email}">${N.email}</a> · <a href="tel:${N.telefono}">+34 ${N.telefonoVisible}</a></p>
-      <p>Oficina: ${N.direccionTexto}</p>
-      <h2>Objeto</h2>
+${N.direccionTexto ? `      <p>Oficina: ${N.direccionTexto}</p>
+` : ''}      <h2>Objeto</h2>
       <p>El sitio informa sobre los servicios de Luxor Marbella —gestión de alquileres, reformas y mantenimiento de viviendas en Marbella y la Costa del Sol— y permite pedir presupuesto.</p>
       <h2>Condiciones de uso</h2>
       <p>El acceso al sitio es libre y gratuito. Quien lo usa se compromete a hacerlo de forma lícita y a no dañar el sitio ni impedir su funcionamiento.</p>
