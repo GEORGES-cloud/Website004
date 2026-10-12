@@ -699,32 +699,30 @@ html:not(.js) #quiz-back,html:not(.js) #quiz-next,html:not(.js) #quiz-send{displ
 
 /* ============================================================
    BOTON FLOTANTE DE WHATSAPP
-   Rectangulo de tinta con el logotipo en verde WhatsApp; en escritorio, con la palabra al lado.
-   En la portada aparece al dejar atras el hero (site.js anade .visible); sin JS, siempre a la vista.
+   El icono que todo el mundo reconoce: circulo verde WhatsApp con el logotipo en blanco, siempre a la vista
+   (2026-10-12; antes era un rectangulo de tinta que en la portada no salia hasta dejar atras el hero).
    ============================================================ */
 .wa-flota{
   position:fixed;z-index:50;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));
-  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;height:56px;min-width:56px;padding:0 15px;
-  background:var(--tinta);color:var(--cal);text-decoration:none;font:600 .95rem/1 var(--f);letter-spacing:-.01em;
-  border:1px solid rgba(251,248,242,.16);box-shadow:0 16px 36px -16px rgba(28,24,19,.65);
-  transition:opacity .35s ease,transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s,background-color .2s ease,color .2s ease;
+  display:grid;place-items:center;width:58px;height:58px;padding:0;border-radius:50%;
+  background:#25D366;color:#fff;text-decoration:none;
+  box-shadow:0 10px 26px -8px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.12);
+  transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .2s ease,box-shadow .25s ease;
 }
-.wa-glifo{flex:none;color:#25D366;transition:color .2s ease}
-.wa-txt{display:none}
-.wa-flota:hover{background:#25D366;border-color:#25D366;color:var(--tinta)}
-.wa-flota:hover .wa-glifo{color:var(--tinta)}
-html.wa-js .wa-flota:not(.visible){opacity:0;transform:translateY(18px);visibility:hidden;pointer-events:none;
-  transition:opacity .25s ease,transform .25s ease,visibility 0s .25s}
+.wa-glifo{width:32px;height:32px;color:#fff}
+.wa-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wa-flota:hover{background:#1EBE5A;transform:scale(1.06);box-shadow:0 14px 30px -8px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.12)}
+.wa-flota:focus-visible{outline:2px solid var(--tinta);outline-offset:3px}
 html.menu-abierto .wa-flota{visibility:hidden}
 @media (min-width:900px){
-  .wa-flota{right:max(1.5rem,env(safe-area-inset-right));bottom:max(1.5rem,env(safe-area-inset-bottom));padding:0 1.25rem 0 1.05rem}
-  .wa-txt{display:inline}
+  .wa-flota{right:max(1.75rem,env(safe-area-inset-right));bottom:max(1.75rem,env(safe-area-inset-bottom));width:62px;height:62px}
+  .wa-glifo{width:34px;height:34px}
 }
 /* en movil, que el boton no tape la ultima linea del pie */
 body:has(.wa-flota) .foot-base .wrap{padding-bottom:5.5rem}
 @media (min-width:900px){body:has(.wa-flota) .foot-base .wrap{padding-bottom:6.5rem}}
 @media print{.wa-flota{display:none}}
-@media (prefers-reduced-motion: reduce){.wa-flota,.wa-glifo{transition:none}}
+@media (prefers-reduced-motion: reduce){.wa-flota{transition:none}.wa-flota:hover{transform:none}}
 
 /* ------------------------------------------------------------------ ritmo vertical en movil
    Con los rellenos de escritorio, en movil sobraba aire: dos secciones seguidas con el mismo fondo

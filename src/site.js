@@ -118,24 +118,11 @@
     });
   });
 
-  // boton flotante de WhatsApp: con el saludo en el idioma de la pagina. En la portada aparece
-  // al dejar atras el hero (alli ya estan los botones principales y taparia "Que hacemos").
+  // enlaces de WhatsApp (tambien el boton flotante, siempre a la vista): con el saludo en el idioma de la pagina
   each(document.querySelectorAll('a[href^="https://wa.me/"]:not(#quiz-wa)'), function(a){
     a.href = a.href.split('?')[0] + '?text=' + encodeURIComponent(T.wa_hola);
     a.target = '_blank'; a.rel = 'noopener';
   });
-  var waf = $('wa-flota');
-  if (waf) {
-    var heroSec = document.querySelector('.hero');
-    var verWa = function(){
-      var si = !heroSec || window.scrollY > heroSec.offsetHeight * 0.55;
-      if (si !== waf.classList.contains('visible')) waf.classList.toggle('visible', si);
-    };
-    document.documentElement.classList.add('wa-js');
-    verWa();
-    window.addEventListener('scroll', verWa, { passive: true });
-    window.addEventListener('resize', verWa, { passive: true });
-  }
 
   // presupuesto: cuestionario por pasos. El servidor manda la solicitud por correo a Luxor
   // (POST /api/presupuesto); el enlace de WhatsApp lleva siempre lo contestado hasta el momento.
