@@ -219,7 +219,7 @@ const heroTexto = `    <h1><span class="kick">Luxor Marbella · Property service
     </div>`;
 
 const heroActual = () => `<section class="hero" id="top" data-capa>
-  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="Recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="Fachada de una villa moderna, planos de obra, operarios trabajando en una reforma, la entrada terminada y la terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <div class="hero-caja">
 ${heroTexto}

@@ -1,4 +1,4 @@
-// Monta los vídeos del hero "recorrido por la casa" a partir de photos/hero-casa-tomas.json.
+// Monta los vídeos del hero (fachada, plano, obra, entrada, terraza) a partir de photos/hero-casa-tomas.json.
 //   node tools/montaje-hero.mjs           (necesita ffmpeg; ruta en la variable FFMPEG o la de winget)
 //   node tools/montaje-hero.mjs --todo    además, las variantes que se enseñaron al cliente y no eligió
 //
@@ -29,7 +29,7 @@ const ff = (args, que) => {
 const spec = JSON.parse(readFileSync(join(fotos, 'hero-casa-tomas.json'), 'utf8'));
 const F = spec.fundido ?? 0.9;        // duración de cada fundido (s)
 const FL = spec.barrido ?? 1.3;       // duración de cada barrido de luz (s)
-const tomas = spec.tomas;             // [{ id, nombre, url, inicio, fin, x, mosaico? }]
+const tomas = spec.tomas;             // [{ id, nombre, url, inicio, fin, x, filtro?, mosaico? }]
 
 // 1. descargar las fuentes 4K que falten
 for (const t of tomas) {
@@ -45,7 +45,8 @@ const prepara = (t, vertical) => {
   const d = (t.fin - t.inicio).toFixed(3);
   const cx = Math.round(Math.min(3840 - 1215, Math.max(0, t.x * 3840 - 607)));
   const geo = vertical ? `crop=1215:2160:${cx}:0,scale=720:1280:flags=lanczos` : 'scale=2560:1440:flags=lanczos';
-  return `trim=start=${t.inicio}:duration=${d},setpts=PTS-STARTPTS,fps=30,${geo},hqdn3d=1.2:1.2:5:5,format=yuv420p,setsar=1`;
+  // "filtro" (opcional): corrección de color de esa toma, para igualar tomas de autores distintos
+  return `trim=start=${t.inicio}:duration=${d},setpts=PTS-STARTPTS,fps=30,${geo},${t.filtro ? t.filtro + ',' : ''}hqdn3d=1.2:1.2:5:5,format=yuv420p,setsar=1`;
 };
 
 // offsets de cada transición en la línea de tiempo de salida (transición k entra a la toma k)
