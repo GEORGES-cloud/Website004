@@ -265,15 +265,17 @@ html.stack main > .hero{background:var(--travertino)}
 }
 @keyframes hero-luz{0%{opacity:0;transform:translateX(-4vw)}12%{opacity:1}88%{opacity:1}100%{opacity:0;transform:translateX(104vw)}}
 @keyframes hero-drift{from{transform:scale(1.06)}to{transform:scale(1)}}
-/* el texto va en un recuadro crema abajo a la izquierda: se lee sobre cualquier estancia del
-   recorrido y el video se ve limpio, sin velos que lo apaguen */
+/* el texto va en un recuadro crema abajo a la izquierda: se lee sobre cualquier toma y el video
+   se ve limpio, sin velos que lo apaguen. 2026-10-12: recuadro mas pequeño (antes 760px y titular
+   de hasta 5.4rem), porque tapaba demasiado video */
 .hero .wrap{position:relative;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding-top:clamp(2rem,7vh,4.5rem);padding-bottom:clamp(1.25rem,4vh,2.5rem)}
-.hero-caja{width:min(760px,100%);padding:clamp(1.25rem,2.6vw,2.4rem);background:var(--cal)}
-.hero h1{font-size:clamp(2.4rem,5vw,5.4rem);line-height:.92;letter-spacing:-.05em;text-wrap:balance;color:var(--tinta)}
-.hero h1 .kick{display:block;margin:0 0 1.2rem;font-size:.9rem;font-weight:500;letter-spacing:0;line-height:1.3;color:var(--tinta-2)}
-.hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:1.25rem 2rem;margin-top:clamp(1rem,2.5vh,1.75rem);padding-top:1.25rem;border-top:1px solid var(--linea)}
-.hero-row p{margin:0;max-width:46ch;font-size:clamp(1rem,1.2vw,1.1rem);line-height:1.5;color:var(--tinta-2)}
+.hero-caja{width:min(520px,100%);padding:clamp(1.1rem,1.8vw,1.75rem);background:var(--cal)}
+.hero h1{font-size:clamp(2rem,3.3vw,3.5rem);line-height:.94;letter-spacing:-.05em;text-wrap:balance;color:var(--tinta)}
+.hero h1 .kick{display:block;margin:0 0 .85rem;font-size:.82rem;font-weight:500;letter-spacing:0;line-height:1.3;color:var(--tinta-2)}
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;margin-top:clamp(.85rem,2vh,1.25rem);padding-top:1rem;border-top:1px solid var(--linea)}
+.hero-row p{margin:0;max-width:46ch;font-size:clamp(.92rem,1vw,1rem);line-height:1.5;color:var(--tinta-2)}
 .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.6rem}
+.hero-actions .btn{padding-block:.85rem}
 .hero-pausa{position:absolute;z-index:5;top:1rem;right:max(var(--gutter),calc((100% - var(--wrap)) / 2 + var(--gutter)));
   display:grid;place-items:center;width:40px;height:40px;padding:0;cursor:pointer;color:var(--tinta);
   background:rgba(251,248,242,.6);border:1px solid rgba(28,24,19,.3);transition:background-color .2s ease}
@@ -282,10 +284,17 @@ html.stack main > .hero{background:var(--travertino)}
 .hero-pausa[aria-pressed="true"]::before{width:11px;background:currentColor;clip-path:polygon(0 0,100% 50%,0 100%)}
 @media (prefers-reduced-motion: reduce){.hero-bg img{animation:none}.hero-bg::before,.hero-bg video{display:none}}
 @media (max-width:760px){
-  .hero-row{grid-template-columns:minmax(0,1fr)}
-  .hero h1 .kick{margin-bottom:.9rem}
+  .hero h1{font-size:clamp(1.75rem,8vw,2.3rem)}
+  .hero h1 .kick{margin-bottom:.6rem;font-size:.78rem}
   .hero .wrap{padding-inline:.75rem;padding-bottom:.75rem}
-  .hero-caja{padding:1.25rem 1.1rem 1.4rem}
+  .hero-caja{width:min(100%,420px);padding:1rem 1rem 1.1rem}
+  .hero-row{gap:.8rem;margin-top:.75rem;padding-top:.75rem}
+  /* en movil el recuadro tapaba casi medio video: sin el parrafo (el kicker ya dice a que se dedica) */
+  .hero-row p{display:none}
+  .hero-actions{gap:.6rem 1.1rem}
+  .hero-actions .btn{padding:.75rem .85rem .75rem 1rem;font-size:.9rem}
+  /* "Que hacemos" solo baja a los servicios; en movil lo tapaba el boton flotante de WhatsApp */
+  .hero-actions .lnk{display:none}
 }
 
 /* ============================================================
