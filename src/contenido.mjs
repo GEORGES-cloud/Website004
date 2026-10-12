@@ -34,6 +34,7 @@ export const NEGOCIO = {
 // El 2026-10-12 el cliente pasó de presentarse como "property management" a "property services" y
 // añadió el project management: la línea de alquiler dejó de ser "gestión integral" y pasó a ser el
 // conjunto de servicios que necesita una vivienda alquilada, que se contratan juntos o por separado.
+// Solo la parte operativa: Luxor no busca huéspedes ni inquilinos (no publica anuncios ni lleva captación).
 export const SERVICIOS = [
   {
     id: 'alquileres',
@@ -41,28 +42,28 @@ export const SERVICIOS = [
     menu: 'Servicios para alquileres',
     kicker: 'Property services · vacacional y larga temporada',
     titulo: 'Servicios para tu vivienda en alquiler',
-    resumen: 'Todo lo que necesita una vivienda alquilada en Marbella, vacacional o de larga temporada: el anuncio, las entradas y salidas, la limpieza entre estancias y la atención a quien la ocupa.',
+    resumen: 'La parte operativa de una vivienda alquilada en Marbella, vacacional o de larga temporada: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien la ocupa.',
     foto: 'svc-alquileres.jpg',
     alt: 'Dormitorio con ventanal panorámico y vistas al lago',
     flip: false,
     h1: 'Servicios para alquiler vacacional y de larga temporada en Marbella',
-    entrada: 'Nos ocupamos de lo que necesita una vivienda alquilada: el anuncio, las entradas y salidas, la limpieza entre estancias y la atención a quien la ocupa. Tú hablas con una sola persona.',
+    entrada: 'Nos ocupamos de la parte operativa de tu alquiler: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien ocupa la vivienda. Tú hablas con una sola persona.',
     metaTitle: 'Servicios para alquileres en Marbella | Luxor Marbella',
-    metaDesc: 'Property services para viviendas en alquiler en Marbella: anuncio en Airbnb e Idealista, entradas y salidas, limpieza entre estancias y atención a huéspedes.',
+    metaDesc: 'Property services para viviendas en alquiler en Marbella: entradas y salidas, llaves, limpieza y lavandería entre estancias, puesta a punto y atención a huéspedes.',
     incluye: [
-      { n: 'Anuncio y reservas', t: 'Publicamos la vivienda en Airbnb, Idealista y otros portales, y seguimos cada contacto en nuestro CRM.', d: 'Preparamos el anuncio, lo publicamos en Airbnb, Idealista y otros portales, y seguimos a cada persona interesada en nuestro CRM hasta cerrar la reserva o el contrato.', p: [62, 38, 62, 36, false] },
-      { n: 'Entradas, salidas y llaves', t: 'Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.', d: 'Recibimos a huéspedes e inquilinos y les entregamos las llaves. Cuando se van, las recogemos y revisamos la vivienda.', p: [47, 62, 38, 64, false] },
-      { n: 'Limpieza y lavandería entre estancias', t: 'La casa limpia y la ropa de cama y baño lista para cada llegada.', d: 'Limpiamos la vivienda y nos ocupamos de la lavandería entre una estancia y la siguiente, para que todo esté listo para cada llegada.', p: [65, 63, 70, 62, false] },
+      { n: 'Entradas, salidas y llaves', t: 'Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.', d: 'Recibimos a huéspedes e inquilinos y les entregamos las llaves. Cuando se van, las recogemos y revisamos la vivienda.', p: [62, 38, 62, 36, false] },
+      { n: 'Limpieza y lavandería entre estancias', t: 'La casa limpia y la ropa de cama y baño lista para cada llegada.', d: 'Limpiamos la vivienda y nos ocupamos de la lavandería entre una estancia y la siguiente, para que todo esté listo para cada llegada.', p: [47, 62, 38, 64, false] },
+      { n: 'Puesta a punto antes de cada llegada', t: 'Revisamos que todo funcione y reponemos lo necesario antes de cada check-in.', d: 'Antes de cada llegada revisamos que todo funcione y reponemos lo necesario, para que la vivienda esté a punto.', p: [65, 63, 70, 62, false] },
       { n: 'Atención a huéspedes e inquilinos', t: 'Respondemos nosotros: a ti y a quien vive o se aloja en tu casa.', d: 'Somos el contacto de quien vive o se aloja en tu casa, y también el tuyo. Si algo falla, lo resolvemos con nuestro equipo de mantenimiento.', p: [84, 47, 84, 46, true] },
     ],
     secciones: [
-      { h: 'Vacacional o de larga temporada', p: ['Gestionamos las dos modalidades. Si no tienes claro cuál te conviene, lo vemos contigo según la vivienda, la zona y el uso que quieras darle.'] },
-      { h: 'Contratas solo lo que necesitas', p: ['Puedes encargarnos todo lo que rodea al alquiler o solo una parte: el anuncio, las entradas y salidas o la limpieza. Lo que haga falta en la casa lo resolvemos con nuestro propio servicio de <a href="{{url:mantenimiento}}">mantenimiento y limpieza</a>, así que no tienes que coordinar a nadie.'] },
+      { h: 'Vacacional o de larga temporada', p: ['Trabajamos con las dos modalidades y adaptamos el servicio a cada una: en el alquiler vacacional, las entradas, las salidas y la limpieza entre estancias; en el de larga temporada, la atención al inquilino y el cuidado de la vivienda.'] },
+      { h: 'Contratas solo lo que necesitas', p: ['Puedes encargarnos toda la parte operativa del alquiler o solo una parte: las entradas y salidas, la limpieza o la atención a huéspedes. Lo que haga falta en la casa lo resolvemos con nuestro propio servicio de <a href="{{url:mantenimiento}}">mantenimiento y limpieza</a>, así que no tienes que coordinar a nadie.'] },
     ],
     faq: [
-      { q: '¿Gestionáis alquiler de larga temporada o solo vacacional?', a: 'Los dos. Llevamos alquiler vacacional y alquiler de larga temporada.' },
-      { q: '¿En qué portales anunciáis la vivienda?', a: 'En Airbnb, Idealista y otros portales de alquiler.' },
-      { q: '¿Puedo contratar solo la limpieza o las entradas y salidas?', a: 'Sí. Puedes encargarnos todo lo que rodea al alquiler o solo la parte que necesites.' },
+      { q: '¿Trabajáis con alquiler de larga temporada o solo vacacional?', a: 'Con los dos. Damos servicio a viviendas en alquiler vacacional y de larga temporada.' },
+      { q: '¿Buscáis huéspedes o inquilinos?', a: 'No. Nos ocupamos de la parte operativa del alquiler: entradas y salidas, limpieza, lavandería, atención y mantenimiento. Trabajamos con las reservas y los contratos que consigas tú o tu agencia.' },
+      { q: '¿Puedo contratar solo la limpieza o las entradas y salidas?', a: 'Sí. Puedes encargarnos toda la parte operativa del alquiler o solo la parte que necesites.' },
       { q: '¿Tengo que estar en Marbella para alquilar mi casa?', a: 'No. Guardamos las llaves y nos ocupamos de la vivienda y de quien la ocupa. Tú hablas con una sola persona.' },
     ],
   },
@@ -148,7 +149,7 @@ export const SERVICIOS = [
       { n: 'Gestión administrativa', t: 'Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.', d: 'Gestionamos el pago de los impuestos de la vivienda y te representamos en las reuniones de la comunidad de propietarios.', p: [86, 36, 84, 34, true] },
     ],
     secciones: [
-      { h: 'Para propietarios que no viven aquí todo el año', p: ['Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.', 'Si además quieres que la vivienda genere ingresos mientras no estás, también nos encargamos de los <a href="{{url:alquileres}}">servicios para el alquiler</a>.'] },
+      { h: 'Para propietarios que no viven aquí todo el año', p: ['Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.', 'Si además la alquilas mientras no estás, también nos encargamos de los <a href="{{url:alquileres}}">servicios para el alquiler</a>.'] },
       { h: 'Un parte después de cada visita', p: ['Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.', 'Si en una visita vemos algo que conviene arreglar o renovar, te pasamos presupuesto antes de tocar nada y lo hacemos con nuestro <a href="{{url:reformas}}">servicio de reformas</a>.'] },
     ],
     faq: [

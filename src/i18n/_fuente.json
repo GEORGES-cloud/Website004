@@ -216,17 +216,17 @@
  },
  {
   "id": 44,
-  "texto": "Anuncio y reservas",
-  "contexto": "inicio <span> | inicio <b> | alquileres <h3>"
- },
- {
-  "id": 45,
   "texto": "Entradas, salidas y llaves",
   "contexto": "inicio <span> | inicio <b> | alquileres <h3>"
  },
  {
-  "id": 46,
+  "id": 45,
   "texto": "Limpieza y lavandería entre estancias",
+  "contexto": "inicio <span> | inicio <b> | alquileres <h3>"
+ },
+ {
+  "id": 46,
+  "texto": "Puesta a punto antes de cada llegada",
   "contexto": "inicio <span> | inicio <b> | alquileres <h3>"
  },
  {
@@ -246,22 +246,22 @@
  },
  {
   "id": 50,
-  "texto": "Todo lo que necesita una vivienda alquilada en Marbella, vacacional o de larga temporada: el anuncio, las entradas y salidas, la limpieza entre estancias y la atención a quien la ocupa.",
+  "texto": "La parte operativa de una vivienda alquilada en Marbella, vacacional o de larga temporada: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien la ocupa.",
   "contexto": "inicio <p class=\"svc-desc\"> | alquileres <p>"
  },
  {
   "id": 51,
-  "texto": "Publicamos la vivienda en Airbnb, Idealista y otros portales, y seguimos cada contacto en nuestro CRM.",
-  "contexto": "inicio <span>"
- },
- {
-  "id": 52,
   "texto": "Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 53,
+  "id": 52,
   "texto": "La casa limpia y la ropa de cama y baño lista para cada llegada.",
+  "contexto": "inicio <span>"
+ },
+ {
+  "id": 53,
+  "texto": "Revisamos que todo funcione y reponemos lo necesario antes de cada check-in.",
   "contexto": "inicio <span>"
  },
  {
@@ -796,7 +796,7 @@
  },
  {
   "id": 160,
-  "texto": "Property services para viviendas en alquiler en Marbella: anuncio en Airbnb e Idealista, entradas y salidas, limpieza entre estancias y atención a huéspedes.",
+  "texto": "Property services para viviendas en alquiler en Marbella: entradas y salidas, llaves, limpieza y lavandería entre estancias, puesta a punto y atención a huéspedes.",
   "contexto": "inicio | alquileres"
  },
  {
@@ -831,7 +831,7 @@
  },
  {
   "id": 167,
-  "texto": "Nos ocupamos de lo que necesita una vivienda alquilada: el anuncio, las entradas y salidas, la limpieza entre estancias y la atención a quien la ocupa. Tú hablas con una sola persona.",
+  "texto": "Nos ocupamos de la parte operativa de tu alquiler: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien ocupa la vivienda. Tú hablas con una sola persona.",
   "contexto": "alquileres <p class=\"lead\">"
  },
  {
@@ -841,17 +841,17 @@
  },
  {
   "id": 169,
-  "texto": "Preparamos el anuncio, lo publicamos en Airbnb, Idealista y otros portales, y seguimos a cada persona interesada en nuestro CRM hasta cerrar la reserva o el contrato.",
-  "contexto": "alquileres <p> | alquileres"
- },
- {
-  "id": 170,
   "texto": "Recibimos a huéspedes e inquilinos y les entregamos las llaves. Cuando se van, las recogemos y revisamos la vivienda.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
-  "id": 171,
+  "id": 170,
   "texto": "Limpiamos la vivienda y nos ocupamos de la lavandería entre una estancia y la siguiente, para que todo esté listo para cada llegada.",
+  "contexto": "alquileres <p> | alquileres"
+ },
+ {
+  "id": 171,
+  "texto": "Antes de cada llegada revisamos que todo funcione y reponemos lo necesario, para que la vivienda esté a punto.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
@@ -866,7 +866,7 @@
  },
  {
   "id": 174,
-  "texto": "Gestionamos las dos modalidades. Si no tienes claro cuál te conviene, lo vemos contigo según la vivienda, la zona y el uso que quieras darle.",
+  "texto": "Trabajamos con las dos modalidades y adaptamos el servicio a cada una: en el alquiler vacacional, las entradas, las salidas y la limpieza entre estancias; en el de larga temporada, la atención al inquilino y el cuidado de la vivienda.",
   "contexto": "alquileres <p>"
  },
  {
@@ -876,7 +876,7 @@
  },
  {
   "id": 176,
-  "texto": "Puedes encargarnos todo lo que rodea al alquiler o solo una parte: el anuncio, las entradas y salidas o la limpieza. Lo que haga falta en la casa lo resolvemos con nuestro propio servicio de",
+  "texto": "Puedes encargarnos toda la parte operativa del alquiler o solo una parte: las entradas y salidas, la limpieza o la atención a huéspedes. Lo que haga falta en la casa lo resolvemos con nuestro propio servicio de",
   "contexto": "alquileres <p>"
  },
  {
@@ -891,22 +891,22 @@
  },
  {
   "id": 179,
-  "texto": "¿Gestionáis alquiler de larga temporada o solo vacacional?",
+  "texto": "¿Trabajáis con alquiler de larga temporada o solo vacacional?",
   "contexto": "alquileres <summary> | alquileres"
  },
  {
   "id": 180,
-  "texto": "Los dos. Llevamos alquiler vacacional y alquiler de larga temporada.",
+  "texto": "Con los dos. Damos servicio a viviendas en alquiler vacacional y de larga temporada.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
   "id": 181,
-  "texto": "¿En qué portales anunciáis la vivienda?",
+  "texto": "¿Buscáis huéspedes o inquilinos?",
   "contexto": "alquileres <summary> | alquileres"
  },
  {
   "id": 182,
-  "texto": "En Airbnb, Idealista y otros portales de alquiler.",
+  "texto": "No. Nos ocupamos de la parte operativa del alquiler: entradas y salidas, limpieza, lavandería, atención y mantenimiento. Trabajamos con las reservas y los contratos que consigas tú o tu agencia.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
@@ -916,7 +916,7 @@
  },
  {
   "id": 184,
-  "texto": "Sí. Puedes encargarnos todo lo que rodea al alquiler o solo la parte que necesites.",
+  "texto": "Sí. Puedes encargarnos toda la parte operativa del alquiler o solo la parte que necesites.",
   "contexto": "alquileres <p> | alquileres"
  },
  {
@@ -1191,7 +1191,7 @@
  },
  {
   "id": 239,
-  "texto": "Si además quieres que la vivienda genere ingresos mientras no estás, también nos encargamos de los",
+  "texto": "Si además la alquilas mientras no estás, también nos encargamos de los",
   "contexto": "mantenimiento <p>"
  },
  {
@@ -1281,12 +1281,12 @@
  },
  {
   "id": 257,
-  "texto": "Alquilar mi vivienda",
+  "texto": "Mi vivienda en alquiler",
   "contexto": "presupuesto <b>"
  },
  {
   "id": 258,
-  "texto": "Anuncio, entradas y salidas, limpieza y atención, vacacional o de larga temporada.",
+  "texto": "Entradas y salidas, limpieza y atención, vacacional o de larga temporada.",
   "contexto": "presupuesto <small>"
  },
  {

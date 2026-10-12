@@ -25,7 +25,7 @@
   --tinta-2:#5F5447;      /* texto secundario                  */
   --tinta-3:#8C7E6D;      /* solo texto grande o decorativo    */
   --linea:rgba(28,24,19,.15);
-  --noche:#2A2119;        /* bloque de cierre                  */
+  --noche:#111111;        /* bloque de cierre: negro (2026-10-12, antes marron #2A2119) */
   --sobre-noche:#F2EADD;
   --sobre-noche-2:#BCAD97;
   --tierra:#933803;       /* terracota de marca: solo detalles */

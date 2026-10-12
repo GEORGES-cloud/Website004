@@ -416,7 +416,7 @@ const presupuesto = () => `<section class="quiz-sec">
         <legend tabindex="-1" aria-describedby="quiz-count">¿Qué necesitas?</legend>
         <p class="hint">Puedes marcar más de una opción.</p>
         <div class="opts">
-          ${opcion('checkbox', 'servicio', 'Servicios para alquileres', 'Alquilar mi vivienda', 'Anuncio, entradas y salidas, limpieza y atención, vacacional o de larga temporada.', 'alquileres')}
+          ${opcion('checkbox', 'servicio', 'Servicios para alquileres', 'Mi vivienda en alquiler', 'Entradas y salidas, limpieza y atención, vacacional o de larga temporada.', 'alquileres')}
           ${opcion('checkbox', 'servicio', 'Project management', 'Dirigir un proyecto', 'Una reforma o una obra coordinada de principio a fin.', 'proyectos')}
           ${opcion('checkbox', 'servicio', 'Reformas y home staging', 'Reformar o amueblar', 'Reformas grandes o pequeñas, amueblado y home staging.', 'reformas')}
           ${opcion('checkbox', 'servicio', 'Mantenimiento y limpieza', 'Mantenimiento y limpieza', 'Averías, limpieza, llaves y todo lo que necesita la casa.', 'mantenimiento')}
