@@ -59,6 +59,24 @@ app.use((req, res, next) => {
   next();
 });
 
+// Páginas que han cambiado de dirección → 301 a la nueva (arrastrando la query), para no perder
+// enlaces ni lo que Google ya tenga indexado. 2026-10-12: "Gestión de propiedades y alquileres"
+// pasó a "Servicios para alquileres" al presentarse Luxor como property services.
+const MOVIDAS = [
+  [/^\/servicios\/gestion-alquileres\/?$/, '/servicios/alquileres/'],
+  [/^\/(en|fr|de|sv|ru)\/services\/property-management\/?$/, '/$1/services/rentals/'],
+];
+app.use((req, res, next) => {
+  if (req.method === 'GET' || req.method === 'HEAD') {
+    const movida = MOVIDAS.find(([re]) => re.test(req.path));
+    if (movida) {
+      const i = req.originalUrl.indexOf('?');
+      return res.redirect(301, req.path.replace(movida[0], movida[1]) + (i === -1 ? '' : req.originalUrl.slice(i)));
+    }
+  }
+  next();
+});
+
 // HTML sin caché (los cambios se ven al momento). CSS, JS, fuentes y las fotos y vídeos con
 // la huella del contenido en el nombre (foto.1a2b3c4d5e.jpg) no cambian nunca: un año.
 // El resto de imágenes (logo, iconos), un día.

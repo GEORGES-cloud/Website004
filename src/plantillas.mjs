@@ -111,7 +111,7 @@ const pie = `<footer class="foot">
     <div class="foot-top">
       <div>
         <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
-        <p>Luxor Marbella es una empresa de Marbella (Málaga) dedicada a la gestión de alquileres, las reformas y el mantenimiento de viviendas en Marbella y la Costa del Sol.</p>
+        <p>Luxor Marbella es una empresa de property services y project management de Marbella (Málaga): alquileres, reformas y mantenimiento de viviendas en Marbella y la Costa del Sol.</p>
       </div>
       <div>
         <p class="tit">Servicios</p>
@@ -177,7 +177,7 @@ const explorador = () => `<section class="grid-sec" id="servicios" data-capa>
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Servicios de Luxor Marbella</h2>
-      <p>Gestión de alquileres, reformas y mantenimiento: tres líneas de trabajo para una misma vivienda en Marbella. Elige una y recorre los puntos de la foto para ver qué incluye.</p>
+      <p>Alquileres, project management, reformas y mantenimiento: cuatro líneas de trabajo para una misma vivienda en Marbella. Elige una y recorre los puntos de la foto para ver qué incluye.</p>
     </div>
 
     <div class="svcx" id="svcx">
@@ -209,9 +209,9 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
   </div>
 </section>`;
 
-const heroTexto = `    <h1><span class="kick">Luxor Marbella</span> Hacemos fácil tener casa en Marbella</h1>
+const heroTexto = `    <h1><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
     <div class="hero-row">
-      <p>Luxor Marbella gestiona alquileres, hace reformas y mantiene viviendas en Marbella y la Costa del Sol. Un solo equipo y un solo interlocutor.</p>
+      <p>Property services y project management en Marbella y la Costa del Sol: alquileres, reformas y mantenimiento de tu vivienda. Un solo equipo y un solo interlocutor.</p>
       <div class="hero-actions">
         <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
         <a class="lnk" href="#servicios">Qué hacemos</a>
@@ -338,7 +338,7 @@ ${s.secciones.map((x) => `      <div class="row">
       <h2 class="d2">Otros servicios</h2>
       <p>Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.</p>
     </div>
-    <div class="more">
+    <div class="more${otros.length === 3 ? ' three' : ''}">
 ${otros.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
     </div>
   </div>
@@ -365,7 +365,7 @@ const nosotros = () => `<section class="phead solo">
     <div class="about-copy">
       <h2 class="d2">La llave que no tienes que buscar</h2>
       <p>Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p>
-      <p>Trabajamos en tres líneas —gestión de alquileres, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.</p>
+      <p>Trabajamos en cuatro líneas —servicios para alquileres, project management, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.</p>
       <div><a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a></div>
     </div>
   </div>
@@ -377,7 +377,7 @@ const nosotros = () => `<section class="phead solo">
       <h2 class="d2">Qué hacemos</h2>
       <p>Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.</p>
     </div>
-    <div class="more three">
+    <div class="more${SERVICIOS.length === 3 ? ' three' : ''}">
 ${SERVICIOS.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
     </div>
   </div>
@@ -416,7 +416,8 @@ const presupuesto = () => `<section class="quiz-sec">
         <legend tabindex="-1" aria-describedby="quiz-count">¿Qué necesitas?</legend>
         <p class="hint">Puedes marcar más de una opción.</p>
         <div class="opts">
-          ${opcion('checkbox', 'servicio', 'Gestión de alquileres', 'Alquilar mi vivienda', 'Vacacional o de larga temporada, gestionado de principio a fin.', 'alquileres')}
+          ${opcion('checkbox', 'servicio', 'Servicios para alquileres', 'Alquilar mi vivienda', 'Anuncio, entradas y salidas, limpieza y atención, vacacional o de larga temporada.', 'alquileres')}
+          ${opcion('checkbox', 'servicio', 'Project management', 'Dirigir un proyecto', 'Una reforma o una obra coordinada de principio a fin.', 'proyectos')}
           ${opcion('checkbox', 'servicio', 'Reformas y home staging', 'Reformar o amueblar', 'Reformas grandes o pequeñas, amueblado y home staging.', 'reformas')}
           ${opcion('checkbox', 'servicio', 'Mantenimiento y limpieza', 'Mantenimiento y limpieza', 'Averías, limpieza, llaves y todo lo que necesita la casa.', 'mantenimiento')}
           ${opcion('checkbox', 'servicio', 'Otra cosa', 'Otra cosa', 'Nos lo cuentas más adelante.')}
@@ -518,18 +519,19 @@ const noEncontrada = () => `<section class="nf">
 
 /* ------------------------------------------------------------------ páginas */
 
-const DESC = 'Luxor Marbella gestiona alquileres, reforma y mantiene viviendas en Marbella para propietarios que no viven aquí todo el año. Tel. +34 603 60 55 43.';
+const DESC = 'Property services y project management en Marbella: alquileres, reformas y mantenimiento para propietarios que no viven aquí todo el año. Tel. +34 603 60 55 43.';
 
 // id · ruta en español · ruta en el resto de idiomas · título y descripción · cuerpo
 export const PAGINAS = [
-  { id: 'inicio', es: '', xx: '', title: 'Luxor Marbella | Gestión de alquileres, reformas y mantenimiento', desc: DESC, cuerpo: inicio },
+  { id: 'inicio', es: '', xx: '', title: 'Luxor Marbella | Property services y project management', desc: DESC, cuerpo: inicio },
   ...SERVICIOS.map((s) => ({
     id: s.id,
-    es: { alquileres: 'servicios/gestion-alquileres', reformas: 'servicios/reformas-home-staging', mantenimiento: 'servicios/mantenimiento-limpieza' }[s.id],
-    xx: { alquileres: 'services/property-management', reformas: 'services/renovation-home-staging', mantenimiento: 'services/maintenance-cleaning' }[s.id],
+    // las rutas viejas de alquileres (gestion-alquileres, property-management) redirigen en server.mjs
+    es: { alquileres: 'servicios/alquileres', proyectos: 'servicios/project-management', reformas: 'servicios/reformas-home-staging', mantenimiento: 'servicios/mantenimiento-limpieza' }[s.id],
+    xx: { alquileres: 'services/rentals', proyectos: 'services/project-management', reformas: 'services/renovation-home-staging', mantenimiento: 'services/maintenance-cleaning' }[s.id],
     title: s.metaTitle, desc: s.metaDesc, cuerpo: () => servicio(s.id), servicio: s,
   })),
-  { id: 'presupuesto', es: 'presupuesto', xx: 'quote', title: 'Pedir presupuesto | Luxor Marbella', desc: 'Pide presupuesto a Luxor Marbella en cuatro pasos o escríbenos por WhatsApp. Gestión de alquileres, reformas y mantenimiento de viviendas en Marbella.', cuerpo: presupuesto },
+  { id: 'presupuesto', es: 'presupuesto', xx: 'quote', title: 'Pedir presupuesto | Luxor Marbella', desc: 'Pide presupuesto a Luxor Marbella en cuatro pasos o escríbenos por WhatsApp. Property services y project management para viviendas en Marbella.', cuerpo: presupuesto },
   { id: 'nosotros', es: 'nosotros', xx: 'about', title: 'Quiénes somos | Luxor Marbella', desc: 'Conoce Luxor Marbella: cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año, con una sola persona de contacto.', cuerpo: nosotros },
   ...Object.keys(LEGAL).map((id) => ({ id, es: LEGAL[id].es, xx: LEGAL[id].xx, title: `${LEGAL[id].titulo} | Luxor Marbella`, desc: LEGAL[id].entrada, cuerpo: () => legal(id) })),
   { id: '404', es: '404', xx: '404', title: 'Página no encontrada | Luxor Marbella', desc: '', cuerpo: noEncontrada, oculta: true },

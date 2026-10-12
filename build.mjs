@@ -369,7 +369,7 @@ escribe(join(pub, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
   escribe(join(pub, 'llms.txt'), [
     `# ${N.nombre}`,
     '',
-    `> ${N.nombre} is a company in Marbella (Málaga, Spain) that manages holiday and long-term rentals, renovates and furnishes homes, and looks after their maintenance and cleaning, for owners who do not live on the Costa del Sol all year round. One team and a single point of contact for the whole property.`,
+    `> ${N.nombre} is a property services and project management company in Marbella (Málaga, Spain): services for holiday and long-term rentals, project management of renovations and building works, renovations and home staging, and home maintenance and cleaning, for owners who do not live on the Costa del Sol all year round. One team and a single point of contact for the whole property.`,
     '',
     `- Website: ${SITE}/ (Spanish, with versions in ${lista(activos.filter((a) => a.code !== 'es').map((a) => ({ en: 'English', fr: 'French', de: 'German', sv: 'Swedish', ru: 'Russian' })[a.code]))})`,
     `- Phone and WhatsApp: ${N.telefonoIntl}`,

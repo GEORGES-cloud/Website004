@@ -36,7 +36,7 @@ const ids = lee(fIds);
 
 // Largo máximo (en caracteres) de los textos que van en botones, pestañas y títulos.
 const LIMITE = [
-  [/^(Alquileres|Reformas|Mantenimiento)$/, 14, 'pestaña del explorador'],
+  [/^(Alquileres|Proyectos|Reformas|Mantenimiento)$/, 14, 'pestaña del explorador'],
   [/^¡Llámanos! 603/, 24, 'botón de la cabecera'],
   [/^(Solicitar presupuesto|Pedir presupuesto|Ver el servicio|Enviar solicitud|Enviar por WhatsApp|Conoce Luxor Marbella)$/, 26, 'botón'],
   [/^Hacemos fácil tener casa/, 48, 'titular de la portada'],
@@ -60,7 +60,7 @@ for (const e of fuente) {
     if (re.test(e.texto) && [...t].length > max) problemas.push(`${donde}: ${[...t].length} caracteres, máximo ${max} (${que})`);
   }
   // las descripciones de página (las que acaban en teléfono o describen el servicio) no deben pasar de 160
-  if (/^(inicio|alquileres|reformas|mantenimiento|presupuesto|nosotros)$/.test(e.contexto.split(' | ')[0]) && e.texto.length > 100 && [...t].length > 165) {
+  if (/^(inicio|alquileres|proyectos|reformas|mantenimiento|presupuesto|nosotros)$/.test(e.contexto.split(' | ')[0]) && e.texto.length > 100 && [...t].length > 165) {
     problemas.push(`${donde}: ${[...t].length} caracteres, máximo 165 (descripción de página)`);
   }
 }

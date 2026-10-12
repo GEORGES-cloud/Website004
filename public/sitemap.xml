@@ -11,14 +11,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
   </url>
   <url>
-    <loc>https://www.luxormarbella.com/servicios/gestion-alquileres/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <loc>https://www.luxormarbella.com/servicios/alquileres/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/rentals/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/servicios/project-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/project-management/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/servicios/reformas-home-staging/</loc>
@@ -101,14 +111,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
   </url>
   <url>
-    <loc>https://www.luxormarbella.com/en/services/property-management/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <loc>https://www.luxormarbella.com/en/services/rentals/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/rentals/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/en/services/project-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/project-management/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/en/services/renovation-home-staging/</loc>
@@ -191,14 +211,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
   </url>
   <url>
-    <loc>https://www.luxormarbella.com/fr/services/property-management/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <loc>https://www.luxormarbella.com/fr/services/rentals/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/rentals/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/fr/services/project-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/project-management/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/fr/services/renovation-home-staging/</loc>
@@ -281,14 +311,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
   </url>
   <url>
-    <loc>https://www.luxormarbella.com/de/services/property-management/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <loc>https://www.luxormarbella.com/de/services/rentals/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/rentals/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/de/services/project-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/project-management/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/de/services/renovation-home-staging/</loc>
@@ -371,14 +411,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
   </url>
   <url>
-    <loc>https://www.luxormarbella.com/sv/services/property-management/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <loc>https://www.luxormarbella.com/sv/services/rentals/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/rentals/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/sv/services/project-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/project-management/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/sv/services/renovation-home-staging/</loc>
@@ -461,14 +511,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/"/>
   </url>
   <url>
-    <loc>https://www.luxormarbella.com/ru/services/property-management/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/gestion-alquileres/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/property-management/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/property-management/"/>
+    <loc>https://www.luxormarbella.com/ru/services/rentals/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/alquileres/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/rentals/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/rentals/"/>
+  </url>
+  <url>
+    <loc>https://www.luxormarbella.com/ru/services/project-management/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.luxormarbella.com/servicios/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.luxormarbella.com/en/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.luxormarbella.com/fr/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.luxormarbella.com/de/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://www.luxormarbella.com/sv/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.luxormarbella.com/ru/services/project-management/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.luxormarbella.com/en/services/project-management/"/>
   </url>
   <url>
     <loc>https://www.luxormarbella.com/ru/services/renovation-home-staging/</loc>
