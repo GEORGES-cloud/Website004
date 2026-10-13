@@ -209,14 +209,21 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
   </div>
 </section>`;
 
-// Hero limpio (2026-10-13, lo pidió el usuario): solo el vídeo a pantalla completa y una línea fina
-// que invita a deslizar. El titular sigue siendo el h1 de la página, oculto a la vista: lo leen los
-// lectores de pantalla y los buscadores.
+const heroTexto = `    <h1><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
+    <div class="hero-row">
+      <p>Property services y project management en Marbella y la Costa del Sol: alquileres, reformas y mantenimiento de tu vivienda. Un solo equipo y un solo interlocutor.</p>
+      <div class="hero-actions">
+        <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
+        <a class="lnk" href="#servicios">Qué hacemos</a>
+      </div>
+    </div>`;
+
 const heroActual = () => `<section class="hero" id="top" data-capa>
-  <div class="hero-escena">
-    <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="La bahía de Marbella con La Concha, una villa blanca vista desde un dron, carpintería a mano, una cama recién hecha, una terraza encalada y una piscina al atardecer" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
-    <h1 class="solo-lectores"><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
-    <span class="hero-pista" aria-hidden="true"></span>
+  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="Recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
+  <div class="wrap">
+    <div class="hero-caja">
+${heroTexto}
+    </div>
   </div>
 </section>`;
 
