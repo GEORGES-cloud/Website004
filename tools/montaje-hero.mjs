@@ -29,7 +29,10 @@ const ff = (args, que) => {
 const spec = JSON.parse(readFileSync(join(fotos, 'hero-casa-tomas.json'), 'utf8'));
 const F = spec.fundido ?? 0.9;        // duración de cada fundido (s)
 const FL = spec.barrido ?? 1.3;       // duración de cada barrido de luz (s)
-const tomas = spec.tomas;             // [{ id, nombre, url, inicio, fin, x, filtro?, mosaico? }]
+const tomas = spec.tomas;             // [{ id, nombre, url, inicio, fin, x, entrada?, filtro?, mosaico? }]
+const GRADO = spec.filtro || '';      // corrección de color común a todas las tomas (antes que la de cada una)
+// "entrada" de una toma: duración (s) del fundido con que entra; 0.04 es en la práctica un corte seco.
+// La de la primera toma es la vuelta del bucle. Sin "entrada", la del fundido general (F).
 
 // 1. descargar las fuentes 4K que falten
 for (const t of tomas) {
@@ -46,27 +49,32 @@ const prepara = (t, vertical) => {
   const cx = Math.round(Math.min(3840 - 1215, Math.max(0, t.x * 3840 - 607)));
   const geo = vertical ? `crop=1215:2160:${cx}:0,scale=720:1280:flags=lanczos` : 'scale=2560:1440:flags=lanczos';
   // "filtro" (opcional): corrección de color de esa toma, para igualar tomas de autores distintos
-  return `trim=start=${t.inicio}:duration=${d},setpts=PTS-STARTPTS,fps=30,${geo},${t.filtro ? t.filtro + ',' : ''}hqdn3d=1.2:1.2:5:5,format=yuv420p,setsar=1`;
+  const color = [GRADO, t.filtro].filter(Boolean).map((f) => f + ',').join('');
+  return `trim=start=${t.inicio}:duration=${d},setpts=PTS-STARTPTS,fps=30,${geo},${color}hqdn3d=1.2:1.2:5:5,format=yuv420p,setsar=1`;
 };
 
-// offsets de cada transición en la línea de tiempo de salida (transición k entra a la toma k)
-const tiempos = (dur) => {
+// offsets de cada transición en la línea de tiempo de salida (transición k entra a la toma k).
+// fd(k) = duración de esa transición; tras cada una, la cadena mide lo que medía más la toma nueva menos el fundido.
+const tiempos = (fd) => {
   const D = tomas.map((t) => t.fin - t.inicio);
   const offs = [];
-  let acum = 0;
-  for (let k = 1; k <= tomas.length; k++) { acum += D[k - 1]; offs.push(acum - k * dur); }
+  let largo = D[0];
+  for (let k = 1; k <= tomas.length; k++) { offs.push(largo - fd(k)); largo += (D[k] ?? 0) - fd(k); }
   return offs;   // offs[k-1] = inicio de la transición hacia la toma k (k = n es la vuelta a la primera)
 };
 
-// cadena de transiciones con la primera toma repetida al final; se recorta [dur, offs[n-1] + dur]
+// cadena de transiciones con la primera toma repetida al final; se recorta [fd(n), offs[n-1] + fd(n)]
 const monta = ({ vertical, transicion, dur, salida, linea }) => {
   const n = tomas.length;
+  // con fundidos, cada toma puede traer el suyo ("entrada"); el barrido de luz usa siempre el mismo
+  const fd = (k) => (transicion === 'fade' ? tomas[k % n].entrada ?? dur : dur);
   const entradas = [...tomas, tomas[0]].flatMap((t) => ['-i', t.fichero]);
-  const filtros = [...tomas, tomas[0]].map((t, i) => `[${i}:v]${prepara(i === n ? { ...t, fin: t.inicio + dur + 0.2 } : t, vertical)}[v${i}]`);
-  const offs = tiempos(dur);
+  const filtros = [...tomas, tomas[0]].map((t, i) => `[${i}:v]${prepara(i === n ? { ...t, fin: t.inicio + fd(n) + 0.2 } : t, vertical)}[v${i}]`);
+  const offs = tiempos(fd);
   let prev = 'v0';
-  offs.forEach((o, k) => { filtros.push(`[${prev}][v${k + 1}]xfade=transition=${transicion}:duration=${dur}:offset=${o.toFixed(3)}[x${k}]`); prev = `x${k}`; });
-  const fin = offs[n - 1] + dur;
+  offs.forEach((o, k) => { filtros.push(`[${prev}][v${k + 1}]xfade=transition=${transicion}:duration=${fd(k + 1)}:offset=${o.toFixed(3)}[x${k}]`); prev = `x${k}`; });
+  const fin = offs[n - 1] + fd(n);
+  dur = fd(n);   // a partir de aquí, el recorte final del bucle
   let ultimo = prev;
   if (linea) {
     // línea de luz: imagen con brillo gaussiano que cruza la pantalla en cada barrido

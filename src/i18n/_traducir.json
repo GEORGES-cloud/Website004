@@ -20,8 +20,8 @@
   "contexto": "inicio atributo aria-label | alquileres atributo aria-label | proyectos atributo aria-label"
  },
  {
-  "id": 436,
-  "texto": "Fachada de una villa moderna, planos de obra, operarios trabajando en una reforma, la entrada terminada y la terraza",
+  "id": 437,
+  "texto": "La bahía de Marbella con La Concha, una villa blanca vista desde un dron, carpintería a mano, una cama recién hecha, una terraza encalada y una piscina al atardecer",
   "contexto": "inicio atributo alt"
  },
  {
@@ -153,16 +153,6 @@
   "id": 32,
   "texto": "Hacemos fácil tener casa en Marbella",
   "contexto": "inicio </span>"
- },
- {
-  "id": 335,
-  "texto": "Property services y project management en Marbella y la Costa del Sol: alquileres, reformas y mantenimiento de tu vivienda. Un solo equipo y un solo interlocutor.",
-  "contexto": "inicio <p>"
- },
- {
-  "id": 34,
-  "texto": "Qué hacemos",
-  "contexto": "inicio <a class=\"lnk\" href=\"#servicios\"> | nosotros <h2 class=\"d2\">"
  },
  {
   "id": 35,
@@ -1538,6 +1528,11 @@
   "id": 416,
   "texto": "Trabajamos en cuatro líneas —servicios para alquileres, project management, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.",
   "contexto": "nosotros <p>"
+ },
+ {
+  "id": 34,
+  "texto": "Qué hacemos",
+  "contexto": "nosotros <h2 class=\"d2\">"
  },
  {
   "id": 262,

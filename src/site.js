@@ -77,51 +77,6 @@
     }
   }
 
-  // hero: el texto entra al empezar a bajar. Mientras se recorre el tramo extra del hero (--hero-extra
-  // en site.css) la escena queda fija y --hp va de 0 a 1 (degradado y acercamiento del video); con
-  // .hero-on el titular sube palabra a palabra, y al volver arriba se recoge. Las palabras se envuelven
-  // aquí, después de traducir, para que funcione en todos los idiomas.
-  var hero = document.querySelector('.hero');
-  var heroH1 = hero && hero.querySelector('h1');
-  if (heroH1) {
-    var nPal = 0;
-    each(Array.prototype.slice.call(heroH1.childNodes), function(n){
-      if (n.nodeType !== 3 || !n.textContent.trim()) return;
-      var frag = document.createDocumentFragment();
-      n.textContent.split(/(\s+)/).forEach(function(t){
-        if (!t) return;
-        if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(' ')); return; }
-        var w = document.createElement('span'), dentro = document.createElement('span');
-        w.className = 'w'; dentro.textContent = t;
-        dentro.style.setProperty('--wd', (120 + nPal++ * 70) + 'ms');
-        w.appendChild(dentro); frag.appendChild(w);
-      });
-      heroH1.replaceChild(frag, n);
-    });
-    heroH1.classList.add('partido');
-    hero.style.setProperty('--rd', (220 + nPal * 70) + 'ms');
-    var animaHero = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    if (animaHero) {
-      var tramo = 1, encendido = false, heroCola = false;
-      var heroMide = function(){
-        var esc = hero.querySelector('.hero-escena');
-        tramo = Math.max(1, hero.offsetHeight - esc.offsetHeight);
-      };
-      var heroPinta = function(){
-        heroCola = false;
-        var y = window.scrollY;
-        hero.style.setProperty('--hp', Math.min(1, y / (tramo * 0.6)).toFixed(3));
-        var on = encendido ? y > 12 : y > 28;
-        if (on !== encendido) { encendido = on; hero.classList.toggle('hero-on', on); }
-      };
-      heroMide(); heroPinta();
-      window.addEventListener('scroll', function(){ if (!heroCola) { heroCola = true; requestAnimationFrame(heroPinta); } }, { passive: true });
-      window.addEventListener('resize', function(){ heroMide(); heroPinta(); });
-      // si se llega con el foco del teclado a un enlace del hero, el texto tiene que estar a la vista
-      hero.addEventListener('focusin', function(){ encendido = true; hero.classList.add('hero-on'); });
-    }
-  }
-
   // menu de texto de la cabecera: marca la pagina en la que estamos
   each(document.querySelectorAll('.mh-nav a, .menu-main a, .mh-right .btn'), function(a){
     if (a.pathname === location.pathname) a.setAttribute('aria-current', 'page');
