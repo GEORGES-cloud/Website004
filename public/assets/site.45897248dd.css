@@ -18,23 +18,23 @@
   unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 
 :root{
-  --cal:#FBF8F2;          /* fondo: pared encalada al sol      */
-  --arena:#F2EADD;        /* franjas alternas                  */
-  --travertino:#E6D9C5;   /* franja mas honda                  */
+  --cal:#FFFFFF;          /* fondo: blanco (2026-10-14: antes crema #FBF8F2, el usuario lo queria mas blanco) */
+  --arena:#F5F4F1;        /* franjas alternas: casi blanco, apenas calido (antes #F2EADD) */
+  --travertino:#EBE8E2;   /* franja mas honda y fondo de fotos (antes #E6D9C5) */
   --tinta:#1C1813;        /* texto: marron casi negro          */
   --tinta-2:#5F5447;      /* texto secundario                  */
   --tinta-3:#8C7E6D;      /* solo texto grande o decorativo    */
   --linea:rgba(28,24,19,.15);
   --noche:#111111;        /* bloque de cierre: negro (2026-10-12, antes marron #2A2119) */
-  --sobre-noche:#F2EADD;
-  --sobre-noche-2:#BCAD97;
+  --sobre-noche:#F7F6F3;
+  --sobre-noche-2:#B5B0A8;
   --tierra:#933803;       /* terracota de marca: solo detalles */
   --sol:#F3D9AE;          /* luz calida de la linea del hero   */
 
   --f:"Inter","Helvetica Neue",Arial,sans-serif;
   --wrap:1440px;
   --gutter:clamp(1.1rem,3.6vw,3rem);
-  --mh:76px;              /* alto de la cabecera */
+  --mh:68px;              /* alto de la cabecera */
   --globo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7'%3E%3Ccircle cx='12' cy='12' r='9.2'/%3E%3Cpath d='M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.6 3.9 9.2s-1.3 6.6-3.9 9.2M12 2.8C9.4 5.4 8.1 8.4 8.1 12s1.3 6.6 3.9 9.2'/%3E%3C/svg%3E");
   --flecha:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 8h13M9 3l5 5-5 5' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E");
 }
@@ -99,13 +99,11 @@ h1,h2,h3{overflow-wrap:anywhere;hyphens:auto;font-weight:600;margin:0}
 .lnk:hover{background-size:0 1px;background-position:100% 100%}
 @media (prefers-reduced-motion: reduce){.btn,.btn::after,.lnk{transition:none}}
 
-/* ---------- logo monocromo (version negra del manual, tenida por CSS) ---------- */
+/* ---------- logo monocromo (logo D del 2026-10-14: tejado fino, LUXOR y MARBELLA; tenido por CSS) ---------- */
 .logo-mono{display:block;background:var(--tinta);
-  -webkit-mask:url("/assets/logo-master-mask.webp") no-repeat left center/contain;
-          mask:url("/assets/logo-master-mask.webp") no-repeat left center/contain}
-.masthead .logo-mono{width:92px;height:48px}
-.foot .logo-mono{width:150px;height:78px}
-@media (max-width:1079px){.masthead .logo-mono{width:74px;height:38px}}
+  -webkit-mask:url("/assets/logo-master-mask.webp") no-repeat center/contain;
+          mask:url("/assets/logo-master-mask.webp") no-repeat center/contain}
+.foot .logo-mono{width:134px;height:84px;background-position:left center;-webkit-mask-position:left center;mask-position:left center}
 
 /* ---------- patron de glifos (ADN egipcio de la marca) ---------- */
 .glyphs{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
@@ -138,68 +136,68 @@ html.stack main > section + section{box-shadow:0 -1px 0 var(--linea)}
 @media print{html.stack main > section{position:relative;transform:none}html.stack main > section::after{display:none}}
 
 /* ============================================================
-   CABECERA — logo, menu de texto y acceso a presupuesto
+   CABECERA — barra translucida y minima (2026-10-14): "Menu" e idioma a la izquierda, logo en el
+   centro, presupuesto a la derecha. En la portada flota sobre el video del hero.
    ============================================================ */
-.masthead{position:sticky;top:0;z-index:60;background:var(--cal);border-bottom:1px solid var(--linea)}
-.masthead .wrap{display:flex;align-items:center;gap:2rem;height:var(--mh)}
-.mh-logo{flex:none;margin-right:auto}
-.mh-nav{display:flex;align-items:center;gap:clamp(1.2rem,2.2vw,2.2rem)}
-.mh-nav a,.mh-tel{position:relative;font-size:.95rem;font-weight:500;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}
-.mh-nav a::after{content:"";position:absolute;left:0;right:0;bottom:-.3rem;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .3s ease}
-.mh-nav a:hover::after,.mh-nav a[aria-current]::after{transform:scaleX(1);transform-origin:left}
-.mh-right{display:flex;align-items:center;gap:1.4rem}
-.mh-tel{color:var(--tinta-2)}
-.mh-tel:hover{color:var(--tinta)}
-.mh-right .btn{padding:.8rem 1rem .8rem 1.15rem;font-size:.9rem}
+.masthead{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.72);border-bottom:1px solid rgba(17,17,17,.07);
+  -webkit-backdrop-filter:saturate(1.3) blur(16px);backdrop-filter:saturate(1.3) blur(16px);transition:background-color .25s ease}
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.masthead{background:rgba(255,255,255,.95)}}
+html.menu-abierto .masthead{background:var(--cal)}
+.masthead .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:1rem;height:var(--mh)}
+.mh-izq{display:flex;align-items:center;gap:1.25rem;justify-self:start;min-width:0}
+.mh-logo{justify-self:center}
+.mh-der{justify-self:end;display:flex;align-items:center}
+.mh-cta{display:inline-flex;align-items:center;gap:.55rem;padding:.4rem 0;font-size:.9rem;font-weight:500;letter-spacing:-.01em;
+  text-decoration:none;white-space:nowrap;border-bottom:1px solid currentColor;transition:color .2s ease}
+.mh-cta::after{content:"";flex:none;width:.9em;height:.9em;background:currentColor;
+  -webkit-mask:var(--flecha) center/contain no-repeat;mask:var(--flecha) center/contain no-repeat;transition:transform .25s ease}
+.mh-cta:hover{color:var(--tierra)}
+.mh-cta:hover::after{transform:translateX(3px)}
+.mh-cta[aria-current]{border-bottom-color:transparent;color:var(--tinta-2)}
 
-/* boton del menu: dos trazos que se cruzan al abrir */
-html:not(.js) .burger{display:none!important}
-.burger{display:none;position:relative;width:44px;height:44px;margin-right:-10px;padding:0;background:transparent;border:0;cursor:pointer;color:var(--tinta)}
-.burger span{position:absolute;left:10px;right:10px;height:1.5px;background:currentColor;transition:transform .3s ease,top .3s ease}
-.burger span:nth-child(1){top:17px}
-.burger span:nth-child(2){top:25px}
-.burger span:nth-child(3){display:none}
-.burger[aria-expanded="true"] span:nth-child(1){top:21px;transform:rotate(45deg)}
-.burger[aria-expanded="true"] span:nth-child(2){top:21px;transform:rotate(-45deg)}
+/* boton del menu: dos trazos que se cruzan al abrir, y la palabra "Menu" */
+.burger{display:inline-flex;align-items:center;gap:.65rem;height:40px;padding:0;background:transparent;border:0;cursor:pointer;
+  color:var(--tinta);font:500 .9rem/1 var(--f);letter-spacing:-.01em}
+.burger-ico{position:relative;width:22px;height:9px}
+.burger-ico span{position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s ease,top .3s ease}
+.burger-ico span:nth-child(1){top:0}
+.burger-ico span:nth-child(2){top:7.5px}
+.burger[aria-expanded="true"] .burger-ico span:nth-child(1){top:3.75px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] .burger-ico span:nth-child(2){top:3.75px;transform:rotate(-45deg)}
+/* sin JS no hay menu desplegable: el boton no hace nada y los enlaces estan en el pie */
+html:not(.js) .burger{visibility:hidden}
 
-@media (max-width:1079px){
-  .mh-nav,.mh-tel{display:none}
-  .burger{display:block}
-  .mh-right{gap:.9rem}
-  .mh-right .btn{padding:.7rem .85rem .7rem 1rem;font-size:.84rem}
-}
-@media (max-width:480px){
-  .masthead .wrap{gap:.75rem}
-  .mh-right{gap:.5rem}
-  .mh-right .btn::after{display:none}
-  .mh-right .btn{padding:.65rem .7rem;font-size:.8rem}
-}
-@media (max-width:340px){.masthead .logo-mono{width:62px;height:32px}}
-@media (max-width:359px){
+.masthead .logo-mono{width:67px;height:42px}
+@media (max-width:640px){
   .masthead .wrap{gap:.5rem}
-  .mh-right{gap:.35rem}
-  .masthead .lang summary{gap:0;padding:0 .55rem;font-size:0}
-  .masthead .lang summary .globo{width:18px;height:18px}
-  .mh-right .btn{padding:.62rem .55rem;font-size:.76rem}
+  .masthead .lang{display:none}          /* en movil el idioma se cambia dentro del menu */
+  .burger-txt{display:none}
+  .masthead .logo-mono{width:57px;height:36px}
+  .mh-cta{font-size:.82rem;gap:.4rem}
 }
-/* el botón de presupuesto, cuando ya estamos en esa página, deja de destacar */
-.mh-right .btn[aria-current]{background:transparent;color:var(--tinta)}
-@media (min-width:1080px) and (max-width:1279px){.mh-tel{display:none}}
+/* en movil, barra minima: menu y logo (el presupuesto esta en el hero, en el menu y en WhatsApp) */
+@media (max-width:480px){.mh-cta{display:none}}
+@media (max-width:359px){.masthead .logo-mono{width:51px;height:32px}}
+@media (prefers-reduced-motion: reduce){.burger-ico span,.mh-cta,.mh-cta::after{transition:none}}
+
+/* portada: la cabecera flota sobre el video, que ocupa toda la pantalla */
+main:has(> .hero:first-child){margin-top:calc(var(--mh) * -1)}
+main:has(> .hero:first-child) > .hero{min-height:100vh;min-height:100svh}
+main:has(> .hero:first-child) .hero-pausa{top:calc(var(--mh) + 1rem)}
 
 /* selector de idioma: boton con globo y desplegable en la cabecera (todas las anchuras);
    en el menu movil y en el pie, fila de botones con el nombre de cada idioma en su lengua */
 .globo{display:inline-block;flex:none;width:1.1em;height:1.1em;background:currentColor;
   -webkit-mask:var(--globo) center/contain no-repeat;mask:var(--globo) center/contain no-repeat}
 .lang{position:relative}
-.lang summary{display:flex;align-items:center;gap:.45rem;height:40px;padding:0 .7rem 0 .6rem;list-style:none;cursor:pointer;
-  font-size:.88rem;font-weight:600;letter-spacing:.03em;border:1px solid var(--linea);transition:border-color .2s ease,background-color .2s ease}
-.lang summary:hover,.lang[open] summary{border-color:var(--tinta)}
-.lang[open] summary{background:var(--arena)}
+.lang summary{display:flex;align-items:center;gap:.4rem;height:40px;padding:0 .2rem;list-style:none;cursor:pointer;
+  font-size:.82rem;font-weight:500;letter-spacing:.04em;border:0;transition:color .2s ease}
+.lang summary:hover,.lang[open] summary{color:var(--tierra)}
 .lang summary::-webkit-details-marker{display:none}
 .lang summary::after{content:"";width:5px;height:5px;margin-left:.1rem;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
   transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
 .lang[open] summary::after{transform:translateY(1px) rotate(-135deg)}
-.lang ul{position:absolute;right:0;top:calc(100% + 6px);z-index:70;margin:0;padding:.35rem;list-style:none;min-width:220px;
+.lang ul{position:absolute;left:0;top:calc(100% + 6px);z-index:70;margin:0;padding:.35rem;list-style:none;min-width:220px;
   background:var(--cal);border:1px solid var(--tinta);box-shadow:0 22px 44px -24px rgba(28,24,19,.5)}
 .lang a{display:flex;align-items:center;gap:.65rem;padding:.7rem .75rem;text-decoration:none;font-size:.95rem}
 .lang a::before{content:"";flex:none;width:.45rem;height:.45rem;background:transparent}
@@ -207,9 +205,7 @@ html:not(.js) .burger{display:none!important}
 .lang a[aria-current]{font-weight:600}
 .lang a[aria-current]::before{background:var(--tierra)}
 .lang-cod{margin-left:auto;font-size:.75rem;font-weight:500;letter-spacing:.06em;color:var(--tinta-2)}
-/* en movil y tableta la lista se abre pegada al borde derecho de la cabecera, no del boton */
-@media (max-width:1079px){.masthead .lang{position:static}.masthead .lang ul{top:calc(100% + 1px);right:var(--gutter)}}
-@media (max-width:480px){.lang summary{padding:0 .5rem;gap:.35rem;font-size:.82rem}.lang summary::after{display:none}}
+
 @media (prefers-reduced-motion: reduce){.lang summary,.lang summary::after{transition:none}}
 
 .langs-caja{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
@@ -221,7 +217,7 @@ html:not(.js) .burger{display:none!important}
 .langs a[aria-current]{background:var(--tinta);border-color:var(--tinta);color:var(--cal)}
 @media (prefers-reduced-motion: reduce){.langs a{transition:none}}
 
-/* menu a pantalla completa (movil y tableta) */
+/* menu a pantalla completa (a todas las anchuras desde el 2026-10-14) */
 .menu{position:fixed;inset:var(--mh) 0 0 0;z-index:55;overflow-y:auto;background:var(--cal);color:var(--tinta)}
 .menu .wrap{display:flex;flex-direction:column;gap:2rem;min-height:100%;padding-block:1.25rem 2rem}
 .menu .langs-caja{padding-bottom:1.25rem;border-bottom:1px solid var(--linea)}
@@ -241,7 +237,7 @@ html:not(.js) .burger{display:none!important}
 .menu-side p{margin:0;color:var(--tinta-2);line-height:1.5}
 html.js .menu{opacity:0;transform:translateY(-8px);transition:opacity .25s ease,transform .3s ease}
 html.js .menu.abierto{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){html.js .menu,.burger span,.mh-nav a::after{transition:none}}
+@media (prefers-reduced-motion: reduce){html.js .menu{transition:none}}
 
 /* ============================================================
    HERO — foto (o video) a sangre con luz de dia y titular enorme abajo
@@ -256,8 +252,8 @@ html.stack main > .hero{background:var(--travertino)}
 /* video de fondo (lo anade site.js cuando conviene): entra con un fundido sobre la foto */
 .hero-bg video{z-index:1;opacity:0;transition:opacity 1.4s ease}
 .hero-bg video.is-on{opacity:1}
-/* linea de luz que barre la foto al entrar */
-.hero-bg::before{
+/* linea de luz que barre la foto al entrar: quitada el 2026-10-14 (ruido visual) */
+.hero-bg::before{display:none;
   content:"";position:absolute;top:0;bottom:0;left:0;z-index:2;width:2px;pointer-events:none;opacity:0;
   background:linear-gradient(180deg,rgba(243,217,174,0),rgba(255,240,214,.95) 25%,rgba(255,240,214,.95) 75%,rgba(243,217,174,0));
   box-shadow:0 0 22px 5px rgba(243,217,174,.55),0 0 80px 22px rgba(243,217,174,.22);
@@ -268,15 +264,16 @@ html.stack main > .hero{background:var(--travertino)}
 /* el texto va en un recuadro crema abajo a la izquierda: se lee sobre cualquier estancia del
    recorrido y el video se ve limpio, sin velos que lo apaguen */
 .hero .wrap{position:relative;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding-top:clamp(2rem,7vh,4.5rem);padding-bottom:clamp(1.25rem,4vh,2.5rem)}
-.hero-caja{width:min(760px,100%);padding:clamp(1.25rem,2.6vw,2.4rem);background:var(--cal)}
-.hero h1{font-size:clamp(2.4rem,5vw,5.4rem);line-height:.92;letter-spacing:-.05em;text-wrap:balance;color:var(--tinta)}
-.hero h1 .kick{display:block;margin:0 0 1.2rem;font-size:.9rem;font-weight:500;letter-spacing:0;line-height:1.3;color:var(--tinta-2)}
+.hero-caja{width:min(480px,100%);padding:clamp(1.1rem,1.8vw,1.6rem);background:var(--cal)}
+.hero h1{font-size:clamp(2rem,3.4vw,3.5rem);line-height:.94;letter-spacing:-.05em;text-wrap:balance;color:var(--tinta)}
+.hero h1 .kick{display:block;margin:0 0 .8rem;font-size:.8rem;font-weight:500;letter-spacing:0;line-height:1.3;color:var(--tinta-2)}
 .hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:1.25rem 2rem;margin-top:clamp(1rem,2.5vh,1.75rem);padding-top:1.25rem;border-top:1px solid var(--linea)}
 .hero-row p{margin:0;max-width:46ch;font-size:clamp(1rem,1.2vw,1.1rem);line-height:1.5;color:var(--tinta-2)}
-.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.6rem}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.6rem;margin-top:clamp(1rem,2.4vh,1.4rem)}
+.hero-actions .btn{padding:.85rem 1.05rem .85rem 1.2rem;font-size:.9rem}
 .hero-pausa{position:absolute;z-index:5;top:1rem;right:max(var(--gutter),calc((100% - var(--wrap)) / 2 + var(--gutter)));
   display:grid;place-items:center;width:40px;height:40px;padding:0;cursor:pointer;color:var(--tinta);
-  background:rgba(251,248,242,.6);border:1px solid rgba(28,24,19,.3);transition:background-color .2s ease}
+  background:rgba(255,255,255,.55);border:0;transition:background-color .2s ease}
 .hero-pausa:hover{background:var(--cal)}
 .hero-pausa::before{content:"";width:10px;height:12px;background:linear-gradient(90deg,currentColor 0 34%,transparent 34% 66%,currentColor 66%)}
 .hero-pausa[aria-pressed="true"]::before{width:11px;background:currentColor;clip-path:polygon(0 0,100% 50%,0 100%)}
@@ -351,7 +348,7 @@ html.js .it[aria-pressed="true"]::before{background:var(--tierra);border-color:v
 html.js .dot{
   display:grid;place-items:center;position:absolute;left:var(--mx);top:var(--my);z-index:1;
   width:30px;height:30px;margin:-15px 0 0 -15px;padding:0;border:0;border-radius:50%;cursor:pointer;
-  background:var(--cal);box-shadow:0 0 0 6px rgba(251,248,242,.28);
+  background:var(--cal);box-shadow:0 0 0 6px rgba(255,255,255,.28);
   transition:background-color .2s ease,box-shadow .3s ease;
 }
 html.js .dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tinta)}
