@@ -173,7 +173,7 @@ function jsonld(l, p, t) {
     description: t(FAQ[0].a),           // definición limpia de la empresa (sin el teléfono de la meta description)
     telephone: N.telefono,
     email: N.email,
-    logo: { '@type': 'ImageObject', '@id': ID.logo, url: `${SITE}/assets/logo-master-color.png`, contentUrl: `${SITE}/assets/logo-master-color.png`, width: 620, height: 389, caption: N.nombre },
+    logo: { '@type': 'ImageObject', '@id': ID.logo, url: `${SITE}/assets/logo-master-color.png`, contentUrl: `${SITE}/assets/logo-master-color.png`, width: 620, height: 324, caption: N.nombre },
     image: { '@id': ID.logo },
     address: { '@type': 'PostalAddress', ...(N.direccion || { addressLocality: 'Marbella', addressRegion: 'Málaga', addressCountry: 'ES' }) },
     ...(N.geo && { geo: { '@type': 'GeoCoordinates', ...N.geo } }),
@@ -248,7 +248,7 @@ function cabeza(l, p, t, css, js) {
       ...activos.map((a) => `<link rel="alternate" hreflang="${a.code}" href="${SITE}${ruta(a, p)}">`),
       `<link rel="alternate" hreflang="x-default" href="${SITE}${ruta(PORDEFECTO, p)}">`,
     ]),
-    '<meta name="theme-color" content="#FFFFFF">',
+    '<meta name="theme-color" content="#FBF8F2">',
     '<meta property="og:type" content="website">',
     `<meta property="og:site_name" content="${NEGOCIO.nombre}">`,
     `<meta property="og:locale" content="${l.locale}">`,

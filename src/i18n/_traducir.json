@@ -1,13 +1,18 @@
 [
  {
-  "id": 2,
-  "texto": "Abrir menú",
-  "contexto": "inicio atributo aria-label | inicio texto de site.js (menu_abrir) | alquileres atributo aria-label"
- },
- {
   "id": 1,
   "texto": "Luxor Marbella, inicio",
   "contexto": "inicio atributo aria-label | alquileres atributo aria-label | proyectos atributo aria-label"
+ },
+ {
+  "id": 327,
+  "texto": "Secciones",
+  "contexto": "inicio atributo aria-label | alquileres atributo aria-label | proyectos atributo aria-label"
+ },
+ {
+  "id": 2,
+  "texto": "Abrir menú",
+  "contexto": "inicio atributo aria-label | inicio texto de site.js (menu_abrir) | alquileres atributo aria-label"
  },
  {
   "id": 3,
@@ -45,19 +50,64 @@
   "contexto": "inicio atributo alt | mantenimiento atributo alt"
  },
  {
+  "id": 9,
+  "texto": "Fachada de piedra clara con ventanales y balcones de forja",
+  "contexto": "inicio atributo alt"
+ },
+ {
+  "id": 10,
+  "texto": "Salón en tonos claros con sofá, mesa de centro y dos cuadros",
+  "contexto": "inicio atributo alt"
+ },
+ {
+  "id": 11,
+  "texto": "Terraza con sillones de mimbre, pérgola con cortinas blancas y tumbonas",
+  "contexto": "inicio atributo alt"
+ },
+ {
+  "id": 12,
+  "texto": "Manos cortando una pieza de madera",
+  "contexto": "inicio atributo alt"
+ },
+ {
+  "id": 13,
+  "texto": "Manos con espátula enluciendo una pared",
+  "contexto": "inicio atributo alt"
+ },
+ {
   "id": 330,
   "texto": "Saltar al contenido",
   "contexto": "inicio <a class=\"saltar\" href=\"#contenido\"> | alquileres <a class=\"saltar\" href=\"#contenido\"> | proyectos <a class=\"saltar\" href=\"#contenido\">"
  },
  {
-  "id": 441,
-  "texto": "Menú",
-  "contexto": "inicio <span class=\"burger-txt\"> | alquileres <span class=\"burger-txt\"> | proyectos <span class=\"burger-txt\">"
+  "id": 81,
+  "texto": "Alquileres",
+  "contexto": "inicio <a href=\"{{url:alquileres}}\"> | inicio <img src=\"/photos/svc-alquileres.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | alquileres <a href=\"{{url:alquileres}}\">"
+ },
+ {
+  "id": 331,
+  "texto": "Proyectos",
+  "contexto": "inicio <a href=\"{{url:proyectos}}\"> | inicio <img src=\"/photos/svc-proyectos.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | alquileres <a href=\"{{url:proyectos}}\">"
+ },
+ {
+  "id": 82,
+  "texto": "Reformas",
+  "contexto": "inicio <a href=\"{{url:reformas}}\"> | inicio <img src=\"/photos/svc-reformas.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | alquileres <a href=\"{{url:reformas}}\">"
+ },
+ {
+  "id": 83,
+  "texto": "Mantenimiento",
+  "contexto": "inicio <a href=\"{{url:mantenimiento}}\"> | inicio <img src=\"/photos/svc-mantenimiento.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | alquileres <a href=\"{{url:mantenimiento}}\">"
+ },
+ {
+  "id": 20,
+  "texto": "Quiénes somos",
+  "contexto": "inicio <a href=\"{{url:nosotros}}\"> | alquileres <a href=\"{{url:nosotros}}\"> | proyectos <a href=\"{{url:nosotros}}\">"
  },
  {
   "id": 21,
   "texto": "Pedir presupuesto",
-  "contexto": "inicio <a class=\"mh-cta\" href=\"{{url:presupuesto}}\"> | inicio <a href=\"{{url:presupuesto}}\"> | inicio <a class=\"btn\" href=\"{{url:presupuesto}}\">"
+  "contexto": "inicio <a class=\"btn\" href=\"{{url:presupuesto}}\"> | inicio <a href=\"{{url:presupuesto}}\"> | inicio <a class=\"lnk\" href=\"{{url:presupuesto}}?s=alquileres\">"
  },
  {
   "id": 332,
@@ -78,11 +128,6 @@
   "id": 19,
   "texto": "Mantenimiento y limpieza",
   "contexto": "inicio <a href=\"{{url:mantenimiento}}\"> | inicio | alquileres <a href=\"{{url:mantenimiento}}\">"
- },
- {
-  "id": 20,
-  "texto": "Quiénes somos",
-  "contexto": "inicio <a href=\"{{url:nosotros}}\"> | alquileres <a href=\"{{url:nosotros}}\"> | proyectos <a href=\"{{url:nosotros}}\">"
  },
  {
   "id": 126,
@@ -108,6 +153,16 @@
   "id": 32,
   "texto": "Hacemos fácil tener casa en Marbella",
   "contexto": "inicio </span>"
+ },
+ {
+  "id": 439,
+  "texto": "Property services y project management en Marbella y la Costa del Sol: alquileres, reformas y mantenimiento de tu vivienda. Un solo equipo y un solo interlocutor.",
+  "contexto": "inicio <p>"
+ },
+ {
+  "id": 34,
+  "texto": "Qué hacemos",
+  "contexto": "inicio <a class=\"lnk\" href=\"#servicios\"> | nosotros <h2 class=\"d2\">"
  },
  {
   "id": 35,
@@ -158,26 +213,6 @@
   "id": 336,
   "texto": "Alquileres, project management, reformas y mantenimiento: cuatro líneas de trabajo para una misma vivienda en Marbella. Elige una y recorre los puntos de la foto para ver qué incluye.",
   "contexto": "inicio <p>"
- },
- {
-  "id": 81,
-  "texto": "Alquileres",
-  "contexto": "inicio <img src=\"/photos/svc-alquileres.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
- },
- {
-  "id": 331,
-  "texto": "Proyectos",
-  "contexto": "inicio <img src=\"/photos/svc-proyectos.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
- },
- {
-  "id": 82,
-  "texto": "Reformas",
-  "contexto": "inicio <img src=\"/photos/svc-reformas.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
- },
- {
-  "id": 83,
-  "texto": "Mantenimiento",
-  "contexto": "inicio <img src=\"/photos/svc-mantenimiento.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
  },
  {
   "id": 338,
@@ -413,6 +448,21 @@
   "id": 80,
   "texto": "Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.",
   "contexto": "inicio <span>"
+ },
+ {
+  "id": 84,
+  "texto": "Cuidamos tu casa en Marbella los 365 días",
+  "contexto": "inicio <h2 class=\"d1\">"
+ },
+ {
+  "id": 85,
+  "texto": "Para propietarios que no viven aquí todo el año: guardamos las llaves y dejamos la casa como si fueras a llegar mañana.",
+  "contexto": "inicio <p>"
+ },
+ {
+  "id": 86,
+  "texto": "Conoce Luxor Marbella",
+  "contexto": "inicio <a class=\"lnk\" href=\"{{url:nosotros}}\">"
  },
  {
   "id": 87,
@@ -1488,11 +1538,6 @@
   "id": 416,
   "texto": "Trabajamos en cuatro líneas —servicios para alquileres, project management, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.",
   "contexto": "nosotros <p>"
- },
- {
-  "id": 34,
-  "texto": "Qué hacemos",
-  "contexto": "nosotros <h2 class=\"d2\">"
  },
  {
   "id": 262,

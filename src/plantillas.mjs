@@ -55,22 +55,22 @@ const glifos = `<svg width="0" height="0" aria-hidden="true" style="position:abs
   </defs>
 </svg>`;
 
-// Cabecera (2026-10-14): barra translúcida y mínima, repartida en tres: "Menú" e idioma a la
-// izquierda, el logo en el centro y el presupuesto a la derecha. Los enlaces a los servicios están
-// en el menú a pantalla completa (a todas las anchuras) y en el pie.
 const cabecera = `<header class="masthead">
   <div class="wrap">
-    <div class="mh-izq">
-      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
-        <span class="burger-ico" aria-hidden="true"><span></span><span></span></span><span class="burger-txt">Menú</span>
-      </button>
-      {{langs:desplegable}}
-    </div>
     <a class="mh-logo" href="{{url:inicio}}" aria-label="Luxor Marbella, inicio">
       <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
     </a>
-    <div class="mh-der">
-      <a class="mh-cta" href="{{url:presupuesto}}">Pedir presupuesto</a>
+    <nav class="mh-nav" aria-label="Secciones">
+${SERVICIOS.map((s) => `      <a href="{{url:${s.id}}}">${s.corto}</a>`).join('\n')}
+      <a href="{{url:nosotros}}">Quiénes somos</a>
+    </nav>
+    <div class="mh-right">
+      <a class="mh-tel" href="${TEL}">${N.telefonoVisible}</a>
+      {{langs:desplegable}}
+      <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
@@ -210,8 +210,12 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
 </section>`;
 
 const heroTexto = `    <h1><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
-    <div class="hero-actions">
-      <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
+    <div class="hero-row">
+      <p>Property services y project management en Marbella y la Costa del Sol: alquileres, reformas y mantenimiento de tu vivienda. Un solo equipo y un solo interlocutor.</p>
+      <div class="hero-actions">
+        <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
+        <a class="lnk" href="#servicios">Qué hacemos</a>
+      </div>
     </div>`;
 
 const heroActual = () => `<section class="hero" id="top" data-capa>
@@ -232,6 +236,18 @@ ${GARANTIAS.map(([b, s]) => `    <div><b>${b}</b><span>${s}</span></div>`).join(
 </section>
 
 ${explorador()}
+
+<section class="duo">
+  <div class="wrap">
+    <div class="duo-title">
+      <h2 class="d1">Cuidamos tu casa en Marbella los 365 días</h2>
+      <p>Para propietarios que no viven aquí todo el año: guardamos las llaves y dejamos la casa como si fueras a llegar mañana.</p>
+      <a class="lnk" href="{{url:nosotros}}">Conoce Luxor Marbella</a>
+    </div>
+    <div class="shot slides">${img('hero-villa.jpg', 'Fachada de piedra clara con ventanales y balcones de forja', ' class="is-on"')}${img('hero-villa-2.jpg', 'Salón en tonos claros con sofá, mesa de centro y dos cuadros')}${img('hero-villa-3.jpg', 'Terraza con sillones de mimbre, pérgola con cortinas blancas y tumbonas')}</div>
+    <div class="shot slides">${img('duo-oficio.jpg', 'Manos cortando una pieza de madera', ' class="is-on"')}${img('hero-equipo-3.jpg', 'Manos con espátula enluciendo una pared')}</div>
+  </div>
+</section>
 
 <section class="reviews" id="como-trabajamos" data-capa>
   <div class="wrap">

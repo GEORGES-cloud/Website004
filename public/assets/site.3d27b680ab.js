@@ -78,11 +78,11 @@
   }
 
   // menu de texto de la cabecera: marca la pagina en la que estamos
-  each(document.querySelectorAll('.menu-main a, .mh-cta'), function(a){
+  each(document.querySelectorAll('.mh-nav a, .menu-main a, .mh-right .btn'), function(a){
     if (a.pathname === location.pathname) a.setAttribute('aria-current', 'page');
   });
 
-  // menu a pantalla completa (a todas las anchuras). Escape cierra; mientras esta abierto, lo de
+  // menu a pantalla completa (movil y tableta). Escape cierra; mientras esta abierto, lo de
   // debajo queda inerte (ni el tabulador ni un lector de pantalla entran ahi).
   var burger = $('burger');
   var menu   = $('menu');
@@ -106,6 +106,8 @@
       if (document.activeElement === enlaces[enlaces.length - 1]) { e.preventDefault(); burger.focus(); }
     }
   });
+  // al pasar a escritorio el menu de texto ya esta a la vista
+  window.addEventListener('resize', function(){ if (!menu.hidden && window.innerWidth >= 1080) abrir(false); });
 
   // selector de idioma de la cabecera (<details>): se cierra al tocar fuera o con Escape
   each(document.querySelectorAll('details.lang'), function(d){
