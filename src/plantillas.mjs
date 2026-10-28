@@ -149,14 +149,14 @@ ${lista.map((f) => `      <details>
 // numerada por servicio (marcada la de la página en la que estamos) y, al final, el botón de presupuesto.
 const indice = (actual = '') => `<div class="hc-fila">
         <ol class="hc-svc" aria-label="Servicios">
-${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">0${k + 1}</span><span class="corto">${s.corto}</span></a></li>`).join('\n')}
+${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">{{num:${s.id}}}</span><span class="corto">${s.corto}</span></a></li>`).join('\n')}
         </ol>
         <a class="btn hc-cta" href="{{url:presupuesto}}${actual ? `?s=${actual}` : ''}">Pedir presupuesto</a>
       </div>`;
 
 // Tarjetas de servicio con foto, número y nombre (Otros servicios, Qué hacemos)
 const tarjetas = (lista) => `<div class="more${lista.length === 3 ? ' three' : ' four'}">
-${lista.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><span class="num">0${SERVICIOS.indexOf(o) + 1}</span><b>${o.menu}</b></span></a>`).join('\n')}
+${lista.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><span class="num">{{num:${o.id}}}</span><b>${o.menu}</b></span></a>`).join('\n')}
     </div>`;
 
 const img = (foto, alt, extra = '') => `<img src="/photos/${foto}" alt="${alt}" loading="lazy" decoding="async"${extra}>`;
@@ -172,7 +172,7 @@ const explorador = () => `<section class="grid-sec" id="servicios">
 
     <div class="svcx" id="svcx">
       <div class="svc-nav" role="tablist" aria-label="Líneas de servicio">
-${SERVICIOS.map((s, k) => `        <button class="svc-tab" type="button" role="tab" aria-controls="svc-${s.id}" aria-selected="${k === 0}"><img src="/photos/${s.foto}" alt="" loading="lazy" decoding="async">${s.corto}</button>`).join('\n')}
+${SERVICIOS.map((s, k) => `        <button class="svc-tab" type="button" role="tab" aria-controls="svc-${s.id}" aria-selected="${k === 0}" data-num="{{num:${s.id}}}"><img src="/photos/${s.foto}" alt="" loading="lazy" decoding="async">${s.corto}</button>`).join('\n')}
       </div>
 ${SERVICIOS.map((s, k) => `
       <article class="svc${k === 0 ? ' is-on' : ''}" id="svc-${s.id}">
@@ -201,7 +201,7 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
 // El recuadro crema del hero se dibuja como el cajetín de un plano: el titular y, debajo, una sola
 // fila con las cuatro líneas de servicio (cada celda lleva a su página) y el botón de presupuesto.
 const heroActual = () => `<section class="hero" id="top" data-capa>
-  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="La bahía de Marbella, una villa vista desde un dron, un plano de obra y un recorrido por una villa luminosa: escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="1080" height="1920"><img src="/photos/hero-casa.jpg" alt="Una villa vista desde un dron, un plano de obra y un recorrido por una villa luminosa: escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <div class="hero-caja">
       <h1><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
@@ -267,7 +267,7 @@ const servicio = (id) => {
   <div class="wrap">
     <div class="shot phead-foto">${s.cabecera ? `<img src="/photos/${s.cabecera.foto}" alt="${s.cabecera.alt}" width="${s.cabecera.ancho}" height="${s.cabecera.alto}" fetchpriority="high">` : `<img src="/photos/${s.foto}" alt="${s.alt}" width="1440" height="900" fetchpriority="high"${s.flip ? ' class="flip"' : ''}>`}</div>
     <div class="phead-caja">
-      <div class="pc-top">${migas(['Inicio', 'inicio'], [s.menu])}<span class="num" aria-hidden="true">0${SERVICIOS.indexOf(s) + 1} / 0${SERVICIOS.length}</span></div>
+      <div class="pc-top">${migas(['Inicio', 'inicio'], [s.menu])}<span class="num" aria-hidden="true"><span>{{num:${s.id}}}</span> / 0${SERVICIOS.length}</span></div>
       <h1>${s.h1}</h1>
       <p class="lead">${s.entrada}</p>
       ${indice(s.id)}

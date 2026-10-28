@@ -299,13 +299,22 @@ const conHuella = (f) => {
   }
   return fotos.get(f);
 };
+// Código de cada línea de servicio, como el de una lámina de plano: la inicial de su nombre corto
+// en el idioma de la página y su número de orden (A01 Alquileres, P02 Proyectos… / R01 Rentals…).
+const codigo = (l, t, id) => {
+  const k = SERVICIOS.findIndex((s) => s.id === id);
+  if (k < 0) throw new Error(`Código de un servicio que no existe: ${id}`);
+  const ini = [...t(SERVICIOS[k].corto).replace(/\u00AD/g, '')][0].toLocaleUpperCase(l.code);
+  return ini + String(k + 1).padStart(2, '0');
+};
 let paginasEscritas = 0;
 for (const l of activos) {
   for (const p of PAGINAS) {
     const t = traductor(l, p.id);
     let html = traducir(cuerpo(p), t)
       .replace(/\{\{langs:(desplegable|lista)\}\}/g, (todo, tipo) => selector(l, p, t, tipo))
-      .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)));
+      .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)))
+      .replace(/\{\{num:([\w-]+)\}\}/g, (todo, id) => codigo(l, t, id));
     html = `<!doctype html>\n<html lang="${l.code}">\n<head>\n${cabeza(l, p, t, css, js)}\n</head>\n<body>\n${html}\n</body>\n</html>\n`;
     if (html.includes('{{')) throw new Error(`Quedan marcas sin resolver en ${p.id} (${l.code})`);
     html = html.replace(/\/photos\/([\w.-]+\.(?:jpe?g|png|webp|mp4|webm))/g, (todo, f) => `/photos/${conHuella(f)}`);

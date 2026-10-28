@@ -91,7 +91,7 @@ h1,h2,h3{overflow-wrap:break-word;hyphens:manual;font-weight:600;margin:0}
 .d3{font-size:var(--t-h3);line-height:1.12;letter-spacing:-.028em}
 /* etiqueta: texto pequeno en tinta suave, sin adornos */
 .kicker,.eyebrow{margin:0 0 1.1rem;font-size:var(--t-label);font-weight:500;letter-spacing:.005em;line-height:1.3;color:var(--tinta-2)}
-/* numero de servicio (01-04): la unica numeracion de la web */
+/* codigo de servicio (inicial + numero, como las laminas de un plano: A01, P02...): la unica numeracion de la web */
 .num{font-size:.75rem;font-weight:500;letter-spacing:.02em;line-height:1;color:var(--tinta-2);font-variant-numeric:tabular-nums}
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
 
@@ -431,7 +431,7 @@ html.js .dot.is-on::before{background:#fff}
 .dot span{display:none}
 
 /* selector de linea: palabras grandes con su numero en volado */
-html.js .svc-nav{display:flex;grid-area:1/1;position:relative;z-index:2;gap:1.4rem;margin-bottom:1.5rem;counter-reset:tab;
+html.js .svc-nav{display:flex;grid-area:1/1;position:relative;z-index:2;gap:1.4rem;margin-bottom:1.5rem;
   overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--linea)}
 html.js .svc-nav::-webkit-scrollbar{display:none}
 .svc-tab{
@@ -439,7 +439,7 @@ html.js .svc-nav::-webkit-scrollbar{display:none}
   font:600 clamp(1.5rem,5.6vw,2rem)/1 var(--f);letter-spacing:-.04em;color:var(--tinta-3);white-space:nowrap;
   transition:color var(--t1) var(--e-sal);
 }
-.svc-tab::before{counter-increment:tab;content:counter(tab,decimal-leading-zero);font:500 .7rem/1 var(--f);letter-spacing:.02em;font-variant-numeric:tabular-nums;padding-top:.15em;color:var(--tinta-2)}
+.svc-tab::before{content:attr(data-num);font:500 .7rem/1 var(--f);letter-spacing:.02em;font-variant-numeric:tabular-nums;padding-top:.15em;color:var(--tinta-2)}
 .svc-tab img{display:none}
 .svc-tab:hover{color:var(--tinta-2)}
 .svc-tab[aria-selected="true"]{color:var(--tinta)}

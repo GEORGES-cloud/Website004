@@ -18,7 +18,9 @@
     if (!quieto && !red.saveData && !/(^|-)(2g|3g)$/.test(red.effectiveType || '')) {
       var v = video = document.createElement('video');
       var vertical = window.matchMedia('(orientation: portrait)');
-      var enorme = window.matchMedia('(min-width: 1800px)');
+      // la versión de 2560 en pantallas muy anchas y también en las retina (portátiles y tabletas grandes),
+      // donde la de 1920 se vería ampliada
+      var enorme = window.matchMedia('(min-width: 1800px), (min-width: 1100px) and (min-resolution: 1.5dppx)');
       var fuente = function(){
         if (vertical.matches && fondo.dataset.videoSm) return fondo.dataset.videoSm;
         return enorme.matches && fondo.dataset.videoXl ? fondo.dataset.videoXl : fondo.dataset.video;

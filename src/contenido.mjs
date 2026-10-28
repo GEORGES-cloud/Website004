@@ -138,6 +138,8 @@ export const SERVICIOS = [
     titulo: 'Mantenimiento, limpieza y servicios premium para propietarios',
     resumen: 'Lo que necesita una casa cuando su dueño no está: que funcione, que esté limpia y que alguien responda por ella.',
     foto: 'svc-mantenimiento.jpg',
+    // cabecera de su página: la misma casa recortada sin el televisor ni el reflejo del cristal
+    cabecera: { foto: 'phead-mantenimiento.jpg', alt: 'Salón blanco con patio interior y un árbol', ancho: 1440, alto: 900 },
     alt: 'Salón blanco con patio interior y un árbol',
     flip: false,
     h1: 'Mantenimiento y limpieza de viviendas en Marbella',

@@ -3,8 +3,9 @@
 //   node tools/montaje-hero.mjs --todo    además, las variantes que se enseñaron al cliente y no eligió
 //
 // Salidas en photos/:
-//   hero-casa-xl.mp4 / hero-casa.mp4  tomas unidas con fundidos, a 2560x1440 (pantallas muy grandes) y 1920x1080
-//   hero-casa-v.mp4                   la versión vertical para móvil (720x1280)
+//   hero-casa-xl.mp4 / hero-casa.mp4  tomas unidas con fundidos, a 2560x1440 (pantallas grandes o retina) y 1920x1080
+//   hero-casa-v.mp4                   la versión vertical para móvil (1080x1920)
+// Las tres salen directamente de las fuentes 4K, cada una con su codificación (máxima calidad razonable).
 //   hero-casa.jpg / hero-casa-v.jpg   primer fotograma (póster)
 // Con --todo, también:
 //   hero-luz.mp4  / hero-luz-v.mp4    las mismas tomas, cambiando con una línea de luz que barre la imagen
@@ -44,10 +45,10 @@ for (const t of tomas) {
 }
 
 // 2. cada toma recortada, a 30 fps y al tamaño de salida (horizontal o vertical), sin audio
-const prepara = (t, vertical) => {
+const prepara = (t, vertical, W, H) => {
   const d = (t.fin - t.inicio).toFixed(3);
   const cx = Math.round(Math.min(3840 - 1215, Math.max(0, t.x * 3840 - 607)));
-  const geo = vertical ? `crop=1215:2160:${cx}:0,scale=720:1280:flags=lanczos` : 'scale=2560:1440:flags=lanczos';
+  const geo = vertical ? `crop=1215:2160:${cx}:0,scale=${W}:${H}:flags=lanczos` : `scale=${W}:${H}:flags=lanczos`;
   // "filtro" (opcional): corrección de color de esa toma, para igualar tomas de autores distintos
   const color = [GRADO, t.filtro].filter(Boolean).map((f) => f + ',').join('');
   // "congelar" (opcional): segundo de la fuente que se queda quieto toda la toma, con un acercamiento
@@ -60,7 +61,8 @@ const prepara = (t, vertical) => {
   // algo del borde (en la fachada, una caseta de contadores); se vuelve a 3840x2160 antes de encuadrar
   const z = t.zoom || 1;
   const acerca = z > 1 ? `crop=${Math.round(3840 / z / 2) * 2}:${Math.round(2160 / z / 2) * 2}:${Math.round(Math.min(3840 - 3840 / z, Math.max(0, (t.cx ?? 0.5) * 3840 - 1920 / z)))}:${Math.round((2160 - 2160 / z) / 2)},scale=3840:2160:flags=lanczos,` : '';
-  return `${corte},${acerca}${geo},${color}hqdn3d=1.2:1.2:5:5,format=yuv420p,setsar=1`;
+  // reducción de ruido muy suave: quita el grano de las fuentes sin comerse el detalle
+  return `${corte},${acerca}${geo},${color}hqdn3d=0.6:0.6:3:3,format=yuv420p,setsar=1`;
 };
 
 // offsets de cada transición en la línea de tiempo de salida (transición k entra a la toma k).
@@ -74,12 +76,12 @@ const tiempos = (fd) => {
 };
 
 // cadena de transiciones con la primera toma repetida al final; se recorta [fd(n), offs[n-1] + fd(n)]
-const monta = ({ vertical, transicion, dur, salida, linea }) => {
+const monta = ({ vertical, W, H, crf, maxrate, transicion, dur, salida, linea }) => {
   const n = tomas.length;
   // con fundidos, cada toma puede traer el suyo ("entrada"); el barrido de luz usa siempre el mismo
   const fd = (k) => (transicion === 'fade' ? tomas[k % n].entrada ?? dur : dur);
   const entradas = [...tomas, tomas[0]].flatMap((t) => ['-i', t.fichero]);
-  const filtros = [...tomas, tomas[0]].map((t, i) => `[${i}:v]${prepara(i === n ? { ...t, fin: t.inicio + fd(n) + 0.2 } : t, vertical)}[v${i}]`);
+  const filtros = [...tomas, tomas[0]].map((t, i) => `[${i}:v]${prepara(i === n ? { ...t, fin: t.inicio + fd(n) + 0.2 } : t, vertical, W, H)}[v${i}]`);
   const offs = tiempos(fd);
   let prev = 'v0';
   offs.forEach((o, k) => { filtros.push(`[${prev}][v${k + 1}]xfade=transition=${transicion}:duration=${fd(k + 1)}:offset=${o.toFixed(3)}[x${k}]`); prev = `x${k}`; });
@@ -88,33 +90,31 @@ const monta = ({ vertical, transicion, dur, salida, linea }) => {
   let ultimo = prev;
   if (linea) {
     // línea de luz: imagen con brillo gaussiano que cruza la pantalla en cada barrido
-    const W = vertical ? 720 : 2560, H = vertical ? 1280 : 1440, lw = vertical ? 90 : 160;
+    const lw = vertical ? 120 : 160;
     const x = offs.reduceRight((resto, o) => `if(between(t,${o.toFixed(3)},${(o + dur).toFixed(3)}),(t-${o.toFixed(3)})/${dur}*${W}-w/2,${resto})`, '-w');
     filtros.push(`color=c=black:s=${lw}x${H}:r=30,format=rgba,geq=r=255:g=241:b=218:a='min(255,255*(0.95*exp(-pow((X-${lw / 2})/${vertical ? 3 : 5},2))+0.38*exp(-pow((X-${lw / 2})/${vertical ? 16 : 28},2)))*pow(sin(PI*(Y+1)/(H+1)),0.5))'[luz]`);
     filtros.push(`[${prev}][luz]overlay=x='${x}':y=0:eval=frame:shortest=1[conluz]`);
     ultimo = 'conluz';
   }
   filtros.push(`[${ultimo}]trim=start=${dur}:end=${fin.toFixed(3)},setpts=PTS-STARTPTS,format=yuv420p[out]`);
-  ff([...entradas, '-filter_complex', filtros.join(';'), '-map', '[out]', '-an', '-c:v', 'libx264', '-preset', 'slow',
-    '-crf', vertical ? '27' : '26', '-profile:v', 'high', '-maxrate', vertical ? '3M' : '7M', '-bufsize', vertical ? '6M' : '14M',
+  ff([...entradas, '-filter_complex', filtros.join(';'), '-map', '[out]', '-an', '-c:v', 'libx264', '-preset', 'slower',
+    '-crf', String(crf), '-profile:v', 'high', '-maxrate', maxrate, '-bufsize', String(parseInt(maxrate) * 2) + 'M',
     '-g', '60', '-movflags', '+faststart', join(fotos, salida)], salida);
   return { offs, total: fin - dur };
 };
 
-const casa = monta({ vertical: false, transicion: 'fade', dur: F, salida: 'hero-casa-xl.mp4' });
-// la de 1920 sale de la de 2560 (es la que se descarga casi siempre: pesa menos de la mitad)
-ff(['-i', join(fotos, 'hero-casa-xl.mp4'), '-an', '-vf', 'scale=1920:1080:flags=lanczos', '-c:v', 'libx264', '-preset', 'slow', '-crf', '25',
-  '-profile:v', 'high', '-maxrate', '5M', '-bufsize', '10M', '-g', '60', '-movflags', '+faststart', join(fotos, 'hero-casa.mp4')], 'hero 1920');
-monta({ vertical: true, transicion: 'fade', dur: F, salida: 'hero-casa-v.mp4' });
+const casa = monta({ vertical: false, W: 2560, H: 1440, crf: 19, maxrate: '16M', transicion: 'fade', dur: F, salida: 'hero-casa-xl.mp4' });
+monta({ vertical: false, W: 1920, H: 1080, crf: 19, maxrate: '10M', transicion: 'fade', dur: F, salida: 'hero-casa.mp4' });
+monta({ vertical: true, W: 1080, H: 1920, crf: 20, maxrate: '9M', transicion: 'fade', dur: F, salida: 'hero-casa-v.mp4' });
 const todo = process.argv.includes('--todo');
 if (todo) {
-  monta({ vertical: false, transicion: 'wiperight', dur: FL, salida: 'hero-luz.mp4', linea: true });
-  monta({ vertical: true, transicion: 'wiperight', dur: FL, salida: 'hero-luz-v.mp4', linea: true });
+  monta({ vertical: false, W: 2560, H: 1440, crf: 22, maxrate: '12M', transicion: 'wiperight', dur: FL, salida: 'hero-luz.mp4', linea: true });
+  monta({ vertical: true, W: 1080, H: 1920, crf: 23, maxrate: '7M', transicion: 'wiperight', dur: FL, salida: 'hero-luz-v.mp4', linea: true });
 }
 
 // pósters: primer fotograma de cada montaje
-ff(['-i', join(fotos, 'hero-casa-xl.mp4'), '-frames:v', '1', '-q:v', '4', join(fotos, 'hero-casa.jpg')], 'póster');
-ff(['-i', join(fotos, 'hero-casa-v.mp4'), '-frames:v', '1', '-vf', 'scale=900:1600:flags=lanczos', '-q:v', '4', join(fotos, 'hero-casa-v.jpg')], 'póster vertical');
+ff(['-i', join(fotos, 'hero-casa-xl.mp4'), '-frames:v', '1', '-q:v', '3', join(fotos, 'hero-casa.jpg')], 'póster');
+ff(['-i', join(fotos, 'hero-casa-v.mp4'), '-frames:v', '1', '-q:v', '3', join(fotos, 'hero-casa-v.jpg')], 'póster vertical');
 
 // estancias y tiempos, para el registro (cada una va de la mitad de un fundido a la mitad del siguiente)
 const segmentos = tomas.map((t, k) => ({
