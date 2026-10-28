@@ -28,6 +28,15 @@ export const NEGOCIO = {
   fundacion: null,
 };
 
+// La frase de las zonas se usa tal cual en la portada, en "Quiénes somos", en Mantenimiento y en los datos estructurados.
+export const ZONAS_FRASE = 'Luxor Marbella trabaja en Marbella, Puerto Banús, Nueva Andalucía, San Pedro de Alcántara, Benahavís, Estepona, Elviria y Las Chapas, y Sotogrande.';
+
+// Lo que Luxor NO es. Google, Bing y los asistentes de IA siguen describiendo la web anterior al 12-oct
+// (anuncios en Airbnb e Idealista, precios): estas frases lo desmienten en la FAQ de la portada y de
+// alquileres, en el JSON-LD (disambiguatingDescription) y en llms.txt.
+export const NO_ES = 'Luxor Marbella no es una inmobiliaria ni una agencia de alquiler: no publica anuncios, no busca huéspedes ni inquilinos y no fija precios.';
+const NO_AGENCIA = { q: '¿Luxor Marbella es una inmobiliaria o una agencia de alquiler?', a: 'No. Luxor Marbella no publica anuncios en Airbnb, Booking, Idealista ni en otros portales, no busca huéspedes ni inquilinos y no fija los precios del alquiler. Se ocupa de la parte operativa de la vivienda alquilada (entradas y salidas, limpieza, puesta a punto y atención) con las reservas y los contratos que consigan el propietario o su agencia.' };
+
 // Las líneas de servicio. Alimentan el explorador de la portada, el menú, el pie,
 // el cuestionario de presupuesto y la página propia de cada servicio.
 //   puntos: [x, y, xMovil, yMovil, aLaIzquierda] en % sobre la foto, uno por elemento de "incluye"
@@ -47,10 +56,10 @@ export const SERVICIOS = [
     foto: 'svc-alquileres.jpg',
     alt: 'Villa blanca contemporánea con grandes ventanales iluminados al anochecer',
     flip: false,
-    h1: 'Servicios para alquiler vacacional y de larga temporada en Marbella',
+    h1: 'Check-in, check-out y limpieza para alquileres en Marbella',
     entrada: 'Nos ocupamos de la parte operativa de tu alquiler: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien ocupa la vivienda.',
-    metaTitle: 'Servicios para alquileres en Marbella | Luxor Marbella',
-    metaDesc: 'Property services para viviendas en alquiler en Marbella: entradas y salidas, llaves, limpieza y lavandería entre estancias, puesta a punto y atención a huéspedes.',
+    metaTitle: 'Check-in y limpieza para alquileres en Marbella | Luxor Marbella',
+    metaDesc: 'Entradas y salidas, llaves, limpieza y lavandería entre estancias y atención a huéspedes en Marbella. Tú o tu agencia lleváis el anuncio y las reservas.',
     incluye: [
       { n: 'Entradas, salidas y llaves', t: 'Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.', d: 'Recibimos a huéspedes e inquilinos y les entregamos las llaves. Cuando se van, las recogemos y revisamos la vivienda.', p: [30, 82, 30, 82, false] },
       { n: 'Limpieza y lavandería entre estancias', t: 'La casa limpia y la ropa de cama y baño lista para cada llegada.', d: 'Limpiamos la vivienda y nos ocupamos de la lavandería entre una estancia y la siguiente, para que todo esté listo para cada llegada.', p: [50, 71, 50, 71, false] },
@@ -63,7 +72,8 @@ export const SERVICIOS = [
     ],
     faq: [
       { q: '¿Trabajáis con alquiler de larga temporada o solo vacacional?', a: 'Con los dos. Damos servicio a viviendas en alquiler vacacional y de larga temporada.' },
-      { q: '¿Buscáis huéspedes o inquilinos?', a: 'No. Nos ocupamos de la parte operativa del alquiler: entradas y salidas, limpieza, lavandería, atención y mantenimiento. Trabajamos con las reservas y los contratos que consigas tú o tu agencia.' },
+      NO_AGENCIA,
+      { q: '¿Trabajáis con Airbnb, Booking.com o con mi agencia?', a: 'Sí. Trabajamos con las reservas que consigas tú o tu agencia, por el canal que sea. El anuncio, el precio y las reservas son cosa tuya o de tu agencia; nosotros nos ocupamos de la casa y de quien la ocupa.' },
       { q: '¿Puedo contratar solo la limpieza o las entradas y salidas?', a: 'Sí. Puedes encargarnos toda la parte operativa del alquiler o solo la parte que necesites.' },
       { q: '¿Tengo que estar en Marbella para alquilar mi casa?', a: 'No. Guardamos las llaves y nos ocupamos de la vivienda y de quien la ocupa. Tú hablas con una sola persona.' },
     ],
@@ -98,6 +108,7 @@ export const SERVICIOS = [
       { q: '¿Qué es el project management de una reforma?', a: 'Es dirigir el proyecto de principio a fin: planificarlo, presupuestarlo, coordinar a los oficios y proveedores, supervisar la obra y entregarla terminada.' },
       { q: '¿Tengo que estar en Marbella durante la obra?', a: 'No. Supervisamos la obra por ti y te enviamos partes con fotos de cómo avanza.' },
       { q: '¿Puedo contratar solo el project management?', a: 'Sí. Puedes contratarlo solo o combinarlo con nuestros servicios de reformas, mantenimiento y alquiler.' },
+      { q: '¿El presupuesto es cerrado?', a: 'Sí. Antes de empezar definimos qué se hace, en qué orden y en cuánto tiempo, con un precio cerrado por escrito; cualquier extra se aprueba antes de hacerlo.' },
     ],
   },
   {
@@ -111,13 +122,13 @@ export const SERVICIOS = [
     alt: 'Salón en tonos crema con mesa de travertino',
     flip: false,
     h1: 'Reformas y home staging en Marbella',
-    entrada: 'Reformas integrales, parciales y pequeñas, amueblado y decoración. Dejamos la vivienda lista para vivirla o para sacarla al mercado.',
-    metaTitle: 'Reformas y home staging en Marbella | Luxor Marbella',
+    entrada: 'Reformas integrales, parciales y pequeñas de villas y apartamentos, amueblado y decoración. Dejamos la vivienda lista para vivirla o para sacarla al mercado.',
+    metaTitle: 'Reformas integrales y home staging en Marbella | Luxor Marbella',
     metaDesc: 'Reformas integrales, parciales y pequeñas en Marbella, reacondicionamiento para alquiler, amueblado, decoración, home staging y limpieza de fin de obra.',
     incluye: [
       { n: 'Reformas integrales y parciales', t: 'Desde pequeñas reformas y arreglos hasta la vivienda completa.', d: 'Desde pequeñas reformas y arreglos hasta la vivienda completa: baños, cocinas y actualizaciones puntuales.', p: [62, 22, 60, 20, false] },
       { n: 'Reacondicionamiento para alquiler', t: 'Ponemos la vivienda a punto antes de sacarla al mercado de alquiler.', d: 'Ponemos la vivienda a punto antes de sacarla al mercado de alquiler: reparamos y renovamos lo que haga falta.', p: [50, 56, 50, 56, false] },
-      { n: 'Amueblado, decoración y home staging', t: 'Amueblamos y decoramos la vivienda para las fotos del anuncio y para las visitas.', d: 'Amueblamos y decoramos la vivienda pensando en las fotos del anuncio y en las visitas.', p: [79, 42, 80, 40, true] },
+      { n: 'Amueblado, decoración y home staging', t: 'Amueblamos y decoramos la vivienda para que luzca en las fotos y en las visitas.', d: 'Amueblamos y decoramos la vivienda para que luzca en las fotos y en las visitas.', p: [79, 42, 80, 40, true] },
       { n: 'Limpieza de fin de obra', t: 'Te la entregamos limpia y lista para entrar.', d: 'Al terminar limpiamos a fondo y te entregamos la vivienda lista para entrar.', p: [68, 86, 62, 86, false] },
     ],
     secciones: [
@@ -135,17 +146,17 @@ export const SERVICIOS = [
     corto: 'Mantenimiento',
     menu: 'Mantenimiento y limpieza',
     kicker: 'Para cuando no estás en casa',
-    titulo: 'Mantenimiento, limpieza y servicios premium para propietarios',
+    titulo: 'Mantenimiento, llaves y limpieza para propietarios',
     resumen: 'Lo que necesita una casa cuando su dueño no está: que funcione, que esté limpia y que alguien responda por ella.',
     foto: 'svc-mantenimiento.jpg',
     // cabecera de su página: la misma casa recortada sin el televisor ni el reflejo del cristal
     cabecera: { foto: 'phead-mantenimiento.jpg', alt: 'Salón blanco con patio interior y un árbol', ancho: 1440, alto: 900 },
     alt: 'Salón blanco con patio interior y un árbol',
     flip: false,
-    h1: 'Mantenimiento y limpieza de viviendas en Marbella',
-    entrada: 'Revisiones, averías, limpieza, lavandería, llaves y gestiones de la vivienda, para que la casa esté a punto aunque tú no estés.',
-    metaTitle: 'Mantenimiento y limpieza en Marbella | Luxor Marbella',
-    metaDesc: 'Mantenimiento preventivo y correctivo, limpieza, lavandería, piscina y exteriores, custodia de llaves y gestión de suministros para viviendas en Marbella.',
+    h1: 'Mantenimiento, llaves y limpieza de viviendas en Marbella',
+    entrada: 'Custodia de llaves, revisiones, averías, piscina, limpieza y gestiones de tu villa o apartamento, para que esté a punto aunque tú no estés.',
+    metaTitle: 'Mantenimiento y custodia de llaves en Marbella | Luxor Marbella',
+    metaDesc: 'Custodia de llaves y revisiones con la casa cerrada, mantenimiento, piscina y jardín, limpieza y lavandería en Marbella, con parte y fotos tras cada visita.',
     incluye: [
       { n: 'Mantenimiento y averías', t: 'Preventivo y correctivo, con piscina y exteriores: revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', d: 'Mantenimiento preventivo y correctivo, con piscina y exteriores. Revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', p: [82, 60, 82, 62, true] },
       { n: 'Limpieza y lavandería', t: 'La casa limpia y la ropa de cama y baño lista.', d: 'Limpieza de la vivienda y lavandería, para que la casa y la ropa de cama y baño estén listas cuando llegues.', p: [50, 70, 48, 72, false] },
@@ -154,13 +165,16 @@ export const SERVICIOS = [
       { n: 'Gestión administrativa', t: 'Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.', d: 'Gestionamos el pago de los impuestos de la vivienda y te representamos en las reuniones de la comunidad de propietarios.', p: [86, 36, 84, 34, true] },
     ],
     secciones: [
-      { h: 'Para propietarios que no viven aquí todo el año', p: ['Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.', 'Si además la alquilas mientras no estás, también nos encargamos de los <a href="{{url:alquileres}}">servicios para el alquiler</a>.'] },
+      { h: 'Para propietarios que no viven aquí todo el año', p: ['Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.', 'Si además la alquilas mientras no estás, también nos encargamos de los <a href="{{url:alquileres}}">servicios para el alquiler</a>.', ZONAS_FRASE] },
       { h: 'Un parte después de cada visita', p: ['Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.', 'Si en una visita vemos algo que conviene arreglar o renovar, te pasamos presupuesto antes de tocar nada y lo hacemos con nuestro <a href="{{url:reformas}}">servicio de reformas</a>.'] },
     ],
     faq: [
       { q: '¿Os ocupáis también de la piscina y el jardín?', a: 'Sí. El mantenimiento incluye piscina y exteriores.' },
       { q: '¿Guardáis las llaves de la vivienda?', a: 'Sí. Custodiamos las llaves y las entregamos a quien tú nos indiques.' },
       { q: '¿Podéis contratar la alarma, el seguro o internet?', a: 'Sí. Nos encargamos de contratar los suministros, la alarma, el seguro, la telefonía e internet.' },
+      { q: '¿Qué recibo después de cada visita?', a: 'Un parte con lo que se ha hecho, el material empleado y lo que queda pendiente, con fotos.' },
+      { q: '¿Preparáis la casa antes de que llegue?', a: 'Sí. La limpiamos, dejamos lista la ropa de cama y baño y colocamos los muebles de exterior, para que esté a punto el día que llegues.' },
+      { q: '¿Qué pasa si veis algo que hay que arreglar?', a: 'Te pasamos presupuesto antes de tocar nada y, si lo apruebas, lo hacemos con nuestro equipo.' },
     ],
   },
 ];
@@ -168,7 +182,7 @@ export const SERVICIOS = [
 export const GARANTIAS = [
   ['Llaves en custodia', 'Entramos siempre con aviso previo.'],
   ['Equipo propio', 'Sin subcontratas rotativas.'],
-  ['Respuesta en 24 h', 'En días laborables.'],
+  ['Respuesta en un día laborable', 'Por teléfono, WhatsApp o correo.'],
   ['Parte de cada visita', 'Con fotos, estés donde estés.'],
 ];
 
@@ -176,17 +190,17 @@ export const GARANTIAS = [
 // la entradilla de la sección y «Tu vivienda, lista para alquilar» repetía el servicio de alquileres.
 export const VENTAJAS = [
   ['Molestias al mínimo,<br>casa protegida', 'Cubrimos suelos y mobiliario antes de empezar y dejamos la vivienda recogida al terminar.'],
-  ['Especialistas<br>en segunda residencia', 'Sabemos qué le pasa a una casa cerrada seis meses: humedad, salitre, desagües y persianas.'],
+  ['Especialistas<br>en segunda residencia', 'Sabemos qué le pasa a una villa o un apartamento cerrado seis meses: humedad, salitre, desagües y persianas.'],
   ['Precio cerrado<br>por escrito', 'Visitamos, medimos y damos un precio en firme. Cualquier extra se aprueba antes de tocarlo.'],
 ];
 
-// La frase de las zonas se usa tal cual en la portada, en "Quiénes somos" y en los datos estructurados.
-export const ZONAS_FRASE = 'Luxor Marbella trabaja en Marbella, Puerto Banús, Nueva Andalucía, San Pedro de Alcántara, Benahavís, Estepona, Elviria y Las Chapas, y Sotogrande.';
 
 // Preguntas frecuentes generales (portada). Solo datos ciertos.
 export const FAQ = [
-  { q: '¿Qué es Luxor Marbella?', a: 'Luxor Marbella es una empresa de property services y project management de Marbella: cuida, reforma y prepara para el alquiler las viviendas de propietarios que no viven aquí todo el año.' },
+  { q: '¿Qué es Luxor Marbella?', a: 'Luxor Marbella es una empresa de property services y project management de Marbella: cuida, mantiene y reforma las viviendas de propietarios que no viven aquí todo el año, también mientras están alquiladas.' },
   { q: '¿Qué servicios ofrece Luxor Marbella?', a: 'Luxor Marbella ofrece cuatro líneas de servicio: servicios para alquileres, project management de reformas y obras, reformas y home staging, y mantenimiento y limpieza de viviendas.' },
+  NO_AGENCIA,
+  { q: '¿Qué horario tenéis y en qué idiomas atendéis?', a: 'Atendemos todos los días de 9:00 a 20:00, en español y en inglés, por teléfono y WhatsApp (+34 603 60 55 43) o por correo (info@luxormarbella.com).' },
   { q: '¿En qué zonas trabaja Luxor Marbella?', a: ZONAS_FRASE },
   { q: '¿Puedo contratar un solo servicio?', a: 'Sí. Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.' },
   { q: '¿Tengo que estar en Marbella?', a: 'No. Guardamos las llaves, entramos con aviso previo y te contamos lo que hacemos después de cada visita.' },

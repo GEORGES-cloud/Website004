@@ -6,7 +6,7 @@
 // (zip nuevo), que es quien ejecuta "npm install" en el servidor.
 import * as ftp from 'basic-ftp';
 import { Readable } from 'node:stream';
-import { readdirSync } from 'node:fs';
+import { readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const { FTP_SERVER, FTP_USERNAME, FTP_PASSWORD } = process.env;
@@ -48,7 +48,12 @@ async function podar(c, remoto, local) {
       if (f.name === '.' || f.name === '..') continue;
       const rel = base + f.name;
       if (f.isDirectory) await recorre(`${dir}/${f.name}`, `${rel}/`);
-      else if (!enLocal.has(rel) && !rel.startsWith('.')) { await c.remove(`${dir}/${f.name}`); borrados++; }
+      else if (!enLocal.has(rel) && !rel.startsWith('.')) {
+        // los ficheros con huella (site.<hash>.css, foto.<hash>.jpg…) se dejan 7 días: Google renderiza a veces
+        // con un HTML guardado y pediría el CSS o las fotos de la versión anterior
+        if (/\.[0-9a-f]{10}\.\w+$/.test(f.name) && f.modifiedAt && Date.now() - f.modifiedAt.getTime() < 7 * 864e5) continue;
+        await c.remove(`${dir}/${f.name}`); borrados++;
+      }
     }
   };
   await recorre(remoto, '');
@@ -91,7 +96,14 @@ async function intento(n) {
       return 'mal-mapeado';
     }
 
-    await c.uploadFromDir('public', `${APP}/public`);
+    // primero lo que enlazan las páginas (estilos, script, fotos y vídeos) y después las páginas: así ninguna
+    // página nueva apunta, ni un momento, a un fichero que todavía no está en el servidor
+    for (const d of ['assets', 'photos']) if (existsSync(`public/${d}`)) await c.uploadFromDir(`public/${d}`, `${APP}/public/${d}`);
+    for (const e of readdirSync('public', { withFileTypes: true })) {
+      if (e.isDirectory() && (e.name === 'assets' || e.name === 'photos')) continue;
+      if (e.isDirectory()) await c.uploadFromDir(`public/${e.name}`, `${APP}/public/${e.name}`);
+      else await c.uploadFrom(`public/${e.name}`, `${APP}/public/${e.name}`);
+    }
     console.log(`SUBIDO public/ -> ${APP}/public (intento ${n})`);
     await c.uploadFrom('server.mjs', `${APP}/server.mjs`);
     console.log(`SUBIDO server.mjs -> ${APP}/server.mjs`);

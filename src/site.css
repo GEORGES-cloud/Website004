@@ -94,6 +94,9 @@ h1,h2,h3{overflow-wrap:break-word;hyphens:manual;font-weight:600;margin:0}
 /* codigo de servicio (inicial + numero, como las laminas de un plano: A01, P02...): la unica numeracion de la web */
 .num{font-size:.75rem;font-weight:500;letter-spacing:.02em;line-height:1;color:var(--tinta-2);font-variant-numeric:tabular-nums}
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+/* texto solo para buscadores y lectores de pantalla (el nombre junto al logo) */
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nw{white-space:nowrap}
 
 /* ---------- botones: rectangulos de esquina viva con flecha, y enlaces subrayados ---------- */
 .btn{
@@ -287,7 +290,8 @@ html.js .menu.abierto{opacity:1;transform:none}
 .hc-svc a:hover{background:var(--arena)}
 .hc-svc a:hover::after{opacity:1;transform:none}
 .hc-svc a[aria-current]{box-shadow:inset 0 2px 0 var(--tinta)}
-.hc-svc a[aria-current] .num{color:var(--tinta)}
+.hc-svc a::before{content:attr(data-num);font-size:.75rem;font-weight:500;letter-spacing:.02em;line-height:1;color:var(--tinta-2);font-variant-numeric:tabular-nums}
+.hc-svc a[aria-current]::before{color:var(--tinta)}
 .hc-cta{height:100%;padding:0 .85rem 0 1rem;gap:.6rem;justify-content:space-between;border:0;white-space:normal;text-align:left;line-height:1.2}
 @media (min-width:1080px){.hc-cta{align-items:flex-end;padding-bottom:1.05rem}}
 @media (max-width:1079px){
@@ -334,19 +338,20 @@ html.stack main > .hero{background:var(--travertino)}
 @media (orientation:portrait) and (min-width:761px){.hero-bg img,.hero-bg video{object-position:50% 70%}}
 @media (max-width:760px){
   .hero .wrap{padding-bottom:calc(max(.75rem,env(safe-area-inset-bottom)) + 52px + .75rem)}
-  .hero h1 .kick{display:none}
+  .hero h1 .kick{padding-block:.55rem;margin-bottom:calc(var(--hp) * .6);font-size:.72rem}
 }
 /* movil apaisado: titular y celdas mas compactos; el boton de presupuesto ya esta en la cabecera */
 @media (orientation:landscape) and (max-height:560px){
   .hero .wrap{padding-top:calc(var(--gutter) + 44px + .5rem);padding-bottom:var(--gutter)}
   .hero-caja{width:min(600px,calc(100% - 80px))}
   .hero h1{font-size:clamp(1.7rem,4vw,2.3rem);padding:1rem var(--hp)}
-  .hero h1 .kick,.hero .hc-cta{display:none}
+  .hero .hc-cta{display:none}
+  .hero h1 .kick{padding-block:.4rem;margin-bottom:calc(var(--hp) * .5);font-size:.7rem}
   .hero .hc-svc{grid-template-columns:repeat(4,minmax(0,1fr))}
   .hero .hc-svc li:nth-child(n){border-top:0;border-left:1px solid var(--linea)}
   .hero .hc-svc li:first-child{border-left:0}
   .hero .hc-svc a{min-height:44px;padding:.7rem .8rem}
-  .hero .hc-svc .num{display:none}
+  .hero .hc-svc a::before{display:none}
 }
 
 /* ============================================================

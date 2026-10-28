@@ -8,7 +8,7 @@
 //   DRY=1 node tools/indexnow.mjs      enseña lo que mandaría, sin mandarlo
 //
 // La clave la escribe build.mjs en public/<clave>.txt (32 caracteres hex): aquí solo se busca.
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 
 const SITE = 'https://www.luxormarbella.com';
@@ -51,7 +51,11 @@ function cambiadas() {
   }
 }
 
-const urlList = process.argv.includes('--todas') ? delSitemap : (cambiadas() ?? delSitemap);
+// URL antiguas que redirigen (build.mjs escribe sitemap-movidas.xml mientras haga falta): se avisan siempre,
+// para que Bing y compañía vean el 301 y dejen de enseñar la versión vieja de la web
+const movidas = existsSync('public/sitemap-movidas.xml')
+  ? [...readFileSync('public/sitemap-movidas.xml', 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]) : [];
+const urlList = [...new Set([...(process.argv.includes('--todas') ? delSitemap : (cambiadas() ?? delSitemap)), ...movidas])];
 if (!urlList.length) { console.log('IndexNow: ninguna página cambiada; no se envía nada.'); process.exit(0); }
 console.log(`IndexNow: ${urlList.length} URL\n  ${urlList.join('\n  ')}`);
 if (process.env.DRY) process.exit(0);

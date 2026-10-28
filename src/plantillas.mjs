@@ -40,7 +40,7 @@ const TEXTOS_JS = {
 const cabecera = `<header class="masthead">
   <div class="wrap">
     <a class="mh-logo" href="{{url:inicio}}" aria-label="Luxor Marbella, inicio">
-      <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
+      <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span><span class="vh">Luxor Marbella</span>
     </a>
     <nav class="mh-nav" aria-label="Secciones">
 ${SERVICIOS.map((s) => `      <a href="{{url:${s.id}}}">${s.corto}</a>`).join('\n')}
@@ -88,7 +88,7 @@ const pie = `<footer class="foot">
     <div class="foot-top">
       <div>
         <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span>
-        <p>Luxor Marbella es una empresa de property services y project management de Marbella (Málaga): alquileres, reformas y mantenimiento de viviendas en Marbella y la Costa del Sol.</p>
+        <p>${FAQ[0].a}</p>
       </div>
       <div>
         <p class="tit">Servicios</p>
@@ -97,7 +97,7 @@ ${SERVICIOS.map((s) => `          <li><a href="{{url:${s.id}}}">${s.menu}</a></l
         </ul>
       </div>
       <div>
-        <p class="tit">Luxor Marbella</p>
+        <p class="tit"><a href="{{url:inicio}}">Luxor Marbella</a></p>
         <ul>
           <li><a href="{{url:nosotros}}">Quiénes somos</a></li>
           <li><a href="{{url:presupuesto}}">Pedir presupuesto</a></li>
@@ -149,14 +149,14 @@ ${lista.map((f) => `      <details>
 // numerada por servicio (marcada la de la página en la que estamos) y, al final, el botón de presupuesto.
 const indice = (actual = '') => `<div class="hc-fila">
         <ol class="hc-svc" aria-label="Servicios">
-${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">{{num:${s.id}}}</span><span class="corto">${s.corto}</span></a></li>`).join('\n')}
+${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}" data-num="{{num:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="corto">${s.corto}</span></a></li>`).join('\n')}
         </ol>
         <a class="btn hc-cta" href="{{url:presupuesto}}${actual ? `?s=${actual}` : ''}">Pedir presupuesto</a>
       </div>`;
 
 // Tarjetas de servicio con foto, número y nombre (Otros servicios, Qué hacemos)
 const tarjetas = (lista) => `<div class="more${lista.length === 3 ? ' three' : ' four'}">
-${lista.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><span class="num">{{num:${o.id}}}</span><b>${o.menu}</b></span></a>`).join('\n')}
+${lista.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><span class="num">{{num:${o.id}}}</span> <b>${o.menu}</b></span></a>`).join('\n')}
     </div>`;
 
 const img = (foto, alt, extra = '') => `<img src="/photos/${foto}" alt="${alt}" loading="lazy" decoding="async"${extra}>`;
@@ -184,7 +184,7 @@ ${s.incluye.map((i) => `          <button class="dot${i.p[4] ? ' to-left' : ''}"
           <h3 class="svc-title"><a href="{{url:${s.id}}}">${s.titulo}</a></h3>
           <p class="svc-desc">${s.resumen}</p>
           <ul class="svc-items">
-${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.n}</b><span>${i.t}</span></button></li>`).join('\n')}
+${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.n}</b> <span>${i.t}</span></button></li>`).join('\n')}
           </ul>
           <p class="svc-note" aria-live="polite"></p>
           <div class="svc-actions">
@@ -214,7 +214,7 @@ const inicio = () => `${heroActual()}
 
 <section class="pledges">
   <div class="wrap">
-${GARANTIAS.map(([b, s]) => `    <div><b>${b}</b><span>${s}</span></div>`).join('\n')}
+${GARANTIAS.map(([b, s]) => `    <div><b>${b}</b> <span>${s}</span></div>`).join('\n')}
   </div>
 </section>
 
@@ -370,7 +370,7 @@ ${cierre()}`;
 /* ------------------------------------------------------------------ presupuesto (cuestionario) */
 
 const opcion = (tipo, nombre, valor, titulo, texto = '', clave = '') =>
-  `<label class="opt"><input type="${tipo}" name="${nombre}" value="${valor}"${clave ? ` data-k="${clave}"` : ''}><span><b>${titulo}</b>${texto ? `<small>${texto}</small>` : ''}</span></label>`;
+  `<label class="opt"><input type="${tipo}" name="${nombre}" value="${valor}"${clave ? ` data-k="${clave}"` : ''}><span><b>${titulo}</b>${texto ? ` <small>${texto}</small>` : ''}</span></label>`;
 
 const presupuesto = () => `<section class="quiz-sec">
   <div class="wrap">
@@ -489,11 +489,11 @@ const noEncontrada = () => `<section class="nf">
 
 /* ------------------------------------------------------------------ páginas */
 
-const DESC = 'Property services y project management en Marbella: alquileres, reformas y mantenimiento para propietarios que no viven aquí todo el año. Tel. +34 603 60 55 43.';
+const DESC = 'Property services en Marbella para propietarios que no viven aquí: llaves, mantenimiento, reformas y entradas y salidas de alquileres. Tel. +34 603 60 55 43.';
 
 // id · ruta en español · ruta en el resto de idiomas · título y descripción · cuerpo
 export const PAGINAS = [
-  { id: 'inicio', es: '', xx: '', title: 'Luxor Marbella | Property services y project management', desc: DESC, cuerpo: inicio },
+  { id: 'inicio', es: '', xx: '', title: 'Luxor Marbella | Property services, mantenimiento y reformas', desc: DESC, cuerpo: inicio },
   ...SERVICIOS.map((s) => ({
     id: s.id,
     // las rutas viejas de alquileres (gestion-alquileres, property-management) redirigen en server.mjs

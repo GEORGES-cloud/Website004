@@ -11,7 +11,7 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, renameSync, copyFileSyn
 import { join, dirname } from 'node:path';
 import { createHash } from 'node:crypto';
 import { PAGINAS, cuerpo } from './src/plantillas.mjs';
-import { NEGOCIO, SERVICIOS, FAQ, GARANTIAS } from './src/contenido.mjs';
+import { NEGOCIO, SERVICIOS, FAQ, GARANTIAS, NO_ES } from './src/contenido.mjs';
 import { LEGAL } from './src/legal.mjs';
 
 const root = process.cwd();
@@ -126,7 +126,7 @@ function selector(l, p, t, tipo) {
   if (activos.length < 2) return '';
   const destino = (a) => ruta(a, p.oculta ? pagina('inicio') : p);
   // en el desplegable cada idioma lleva también su código (ES, EN…) a la derecha
-  const enlaces = (conCodigo) => activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}${conCodigo ? `<span class="lang-cod" aria-hidden="true">${a.code.toUpperCase()}</span>` : ''}</a></li>`).join('');
+  const enlaces = (conCodigo) => activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}${conCodigo ? ` <span class="lang-cod" aria-hidden="true">${a.code.toUpperCase()}</span>` : ''}</a></li>`).join('');
   return tipo === 'desplegable'
     ? `<details class="lang"><summary aria-label="${rotulo}: ${l.nombre} (${l.code.toUpperCase()})"><span class="globo" aria-hidden="true"></span>${l.code.toUpperCase()}</summary><ul>${enlaces(true)}</ul></details>`
     : `<div class="langs-caja"><span class="langs-rotulo" aria-hidden="true"><span class="globo"></span>${rotulo}</span><ul class="langs" aria-label="${rotulo}">${enlaces(false)}</ul></div>`;
@@ -161,10 +161,11 @@ function jsonld(l, p, t) {
   const ID = { negocio: `${SITE}/#negocio`, web: `${SITE}/#web`, logo: `${SITE}/#logo` };
   const horario = N.horario && [{ '@type': 'OpeningHoursSpecification', ...N.horario }];
   const zonas = N.zonas.flatMap((z) => z.split(' y ')).map(lugar);   // "Elviria y Las Chapas" son dos lugares
-  // Sin dirección postal pública no hay LocalBusiness (Google lo pide con "address"); con ella, el
-  // subtipo más concreto que encaja con reformas y mantenimiento. No se pone "image" de fotos: son de banco.
+  // Negocio local de servicios en viviendas (HomeAndConstructionBusiness, subtipo de LocalBusiness). Google pide
+  // "address" y acepta la de localidad (Marbella, Málaga, ES) de una empresa que trabaja a domicilio: la calle
+  // solo entra cuando haya una dirección real en NEGOCIO.direccion. No se pone "image" de fotos: son de banco.
   const negocio = {
-    '@type': N.direccion ? 'HomeAndConstructionBusiness' : 'Organization',
+    '@type': 'HomeAndConstructionBusiness',
     '@id': ID.negocio,
     name: N.nombre,
     ...(N.razonSocial && { legalName: N.razonSocial }),
@@ -172,14 +173,17 @@ function jsonld(l, p, t) {
     ...(N.fundacion && { foundingDate: N.fundacion }),
     url: SITE + '/',
     description: t(FAQ[0].a),           // definición limpia de la empresa (sin el teléfono de la meta description)
+    disambiguatingDescription: t(NO_ES), // lo que no es (inmobiliaria, agencia de alquiler): desmiente la web anterior al 12-oct
+    slogan: t('Hacemos fácil tener casa en Marbella'),
     telephone: N.telefono,
     email: N.email,
     logo: { '@type': 'ImageObject', '@id': ID.logo, url: `${SITE}/assets/logo-master-color.png`, contentUrl: `${SITE}/assets/logo-master-color.png`, width: 620, height: 324, caption: N.nombre },
     image: { '@id': ID.logo },
     address: { '@type': 'PostalAddress', ...(N.direccion || { addressLocality: 'Marbella', addressRegion: 'Málaga', addressCountry: 'ES' }) },
     ...(N.geo && { geo: { '@type': 'GeoCoordinates', ...N.geo } }),
-    ...(N.direccion && horario && { openingHoursSpecification: horario }),
+    ...(horario && { openingHoursSpecification: horario }),   // el mismo horario que el pie (la ficha de Google decía 24 h)
     areaServed: zonas,
+    knowsAbout: SERVICIOS.flatMap((s) => s.incluye.map((i) => t(i.n))),
     knowsLanguage: N.idiomasAtencion,   // los idiomas en que se atiende de verdad, no los de la web
     contactPoint: {
       '@type': 'ContactPoint', telephone: N.telefono, email: N.email, contactType: 'customer service',
@@ -189,13 +193,13 @@ function jsonld(l, p, t) {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: t('Servicios'),
-      itemListElement: SERVICIOS.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', '@id': `${SITE}/#servicio-${s.id}`, name: t(s.titulo), url: SITE + ruta(l, pagina(s.id)) } })),
+      itemListElement: SERVICIOS.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', '@id': `${SITE}${ruta(l, pagina(s.id))}#servicio`, name: t(s.titulo), url: SITE + ruta(l, pagina(s.id)) } })),
     },
   };
   // migas visibles en la página (las mismas que pinta migas() en plantillas.mjs)
   const miga = p.servicio ? t(p.servicio.menu) : p.id === 'nosotros' ? t('Quiénes somos') : LEGAL[p.id] ? t(LEGAL[p.id].titulo) : null;
   const tipoPagina = { nosotros: 'AboutPage', presupuesto: 'ContactPage' }[p.id] || 'WebPage';
-  const principal = p.servicio ? { '@id': `${SITE}/#servicio-${p.servicio.id}` } : (p.id === 'nosotros' || p.id === 'presupuesto') ? { '@id': ID.negocio } : null;
+  const principal = p.servicio ? { '@id': `${SITE}${ruta(l, p)}#servicio` } : (p.id === 'nosotros' || p.id === 'presupuesto') ? { '@id': ID.negocio } : null;
   const grafo = [
     negocio,
     { '@type': 'WebSite', '@id': ID.web, url: SITE + '/', name: N.nombre, alternateName: ['luxormarbella.com'], publisher: { '@id': ID.negocio }, inLanguage: activos.map((a) => a.code) },
@@ -209,7 +213,7 @@ function jsonld(l, p, t) {
   // Servicios: en cada página de servicio va el suyo completo; en la portada, los tres, para que
   // la entidad de la empresa y lo que hace queden juntos en la página que Google más mira.
   const servicio = (s, enSuPagina) => ({
-    '@type': 'Service', '@id': `${SITE}/#servicio-${s.id}`, name: t(s.titulo), serviceType: t(s.menu),
+    '@type': 'Service', '@id': `${SITE}${ruta(l, pagina(s.id))}#servicio`, name: t(s.titulo), serviceType: t(s.menu),
     description: t(s.metaDesc), url: SITE + ruta(l, pagina(s.id)),
     provider: { '@id': ID.negocio }, areaServed: zonas.map((z) => ({ '@id': z['@id'] })),   // las zonas completas van en la empresa
     ...(enSuPagina && { hasOfferCatalog: {
@@ -307,17 +311,30 @@ const codigo = (l, t, id) => {
   const ini = [...t(SERVICIOS[k].corto).replace(/\u00AD/g, '')][0].toLocaleUpperCase(l.code);
   return ini + String(k + 1).padStart(2, '0');
 };
+// En los títulos, las palabras con guion (check-in, хоум-стейджинг) no se parten al final de línea.
+const sinCorte = (titulo) => titulo.replace(/>([^<]+)</g, (todo, txt) => '>' + txt.replace(/\p{L}+(?:-\p{L}+)+/gu, (p) => `<span class="nw">${p}</span>`) + '<');
 let paginasEscritas = 0;
+// <lastmod> del sitemap: firma del HTML de cada página (sin las huellas de CSS, JS y fotos, que cambian
+// sin que cambie el texto) y la fecha en que cambió por última vez. Se guarda en src/lastmod.json y se
+// sube con el commit, para que el build de GitHub ponga las mismas fechas.
+const FECHAS = 'src/lastmod.json';
+const fechas = existsSync(join(root, FECHAS)) ? JSON.parse(lee(FECHAS)) : {};
+const hoy = new Date().toISOString().slice(0, 10);
 for (const l of activos) {
   for (const p of PAGINAS) {
     const t = traductor(l, p.id);
     let html = traducir(cuerpo(p), t)
       .replace(/\{\{langs:(desplegable|lista)\}\}/g, (todo, tipo) => selector(l, p, t, tipo))
       .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)))
-      .replace(/\{\{num:([\w-]+)\}\}/g, (todo, id) => codigo(l, t, id));
+      .replace(/\{\{num:([\w-]+)\}\}/g, (todo, id) => codigo(l, t, id))
+      .replace(/<(h[1-3])\b[^>]*>[\s\S]*?<\/\1>/g, sinCorte);
     html = `<!doctype html>\n<html lang="${l.code}">\n<head>\n${cabeza(l, p, t, css, js)}\n</head>\n<body>\n${html}\n</body>\n</html>\n`;
     if (html.includes('{{')) throw new Error(`Quedan marcas sin resolver en ${p.id} (${l.code})`);
     html = html.replace(/\/photos\/([\w.-]+\.(?:jpe?g|png|webp|mp4|webm))/g, (todo, f) => `/photos/${conHuella(f)}`);
+    if (!p.oculta) {
+      const firma = huella(html.replace(/\.[0-9a-f]{10}\.(?=(?:css|js|jpe?g|png|webp|mp4|webm)\b)/g, '.'));
+      if (fechas[ruta(l, p)]?.firma !== firma) fechas[ruta(l, p)] = { firma, fecha: hoy };
+    }
     escribe(join(pub, ruta(l, p), 'index.html'), html);
     paginasEscritas++;
   }
@@ -338,16 +355,26 @@ for (const [f, h] of fotos) copyFileSync(join(root, 'photos', f), join(pub, 'pho
 // favicon.ico en la raíz: los navegadores y Google lo piden ahí aunque haya <link rel="icon">
 copyFileSync(join(root, 'assets', 'favicon-48.png'), join(pub, 'favicon.ico'));
 
-// sitemap con las alternativas de idioma de cada página. Sin <lastmod>: una fecha que cambia
-// en cada generación aunque el contenido no cambie hace que Google deje de fiarse de ella.
+// sitemap con las alternativas de idioma de cada página y su <lastmod> (la fecha en que cambió su contenido,
+// no la del build: una fecha que cambia en cada generación hace que Google deje de fiarse de ella).
 const visibles = PAGINAS.filter((p) => !p.oculta);
 escribe(join(pub, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${activos.flatMap((l) => visibles.map((p) => `  <url>
     <loc>${SITE}${ruta(l, p)}</loc>
+    <lastmod>${fechas[ruta(l, p)].fecha}</lastmod>
 ${activos.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.code}" href="${SITE}${ruta(a, p)}"/>`).join('\n')}
     <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${ruta(PORDEFECTO, p)}"/>
   </url>`)).join('\n')}
+</urlset>
+`);
+// Temporal (hasta diciembre de 2026): las URL antiguas que redirigen con 301 (MOVIDAS en server.mjs).
+// Se envía a mano en Search Console y Bing para que las vuelvan a rastrear y dejen de enseñar la versión
+// vieja (anuncios en Airbnb e Idealista); IndexNow las avisa en cada despliegue. No va en robots.txt.
+const movidas = ['/servicios/gestion-alquileres/', ...activos.filter((a) => a.code !== 'es').map((a) => `/${a.code}/services/property-management/`)];
+escribe(join(pub, 'sitemap-movidas.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${movidas.map((u) => `  <url><loc>${SITE}${u}</loc></url>`).join('\n')}
 </urlset>
 `);
 escribe(join(pub, 'robots.txt'), `# robots.txt de ${SITE}
@@ -376,29 +403,50 @@ escribe(join(pub, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
   const zonas = NEGOCIO.zonas.flatMap((z) => z.split(' y '));
   const lista = (xs) => xs.slice(0, -1).join(', ') + ' and ' + xs.at(-1);
   const N = NEGOCIO;
-  escribe(join(pub, 'llms.txt'), [
+  // En ASCII: lo sirve la capa estática de Hostinger como text/plain sin charset y hay clientes que lo leen
+  // como ISO-8859-1 («MÃ¡laga»). Las tildes se quitan y las rayas y comillas pasan a sus equivalentes simples.
+  const ascii = (txt) => txt.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D\u00AB\u00BB]/g, '"')
+    .replace(/[\u2013\u2014]/g, '-').replace(/\u2026/g, '...').replace(/\u00B7/g, '-').replace(/[\u00A0\u00AD]/g, (c) => (c === '\u00A0' ? ' ' : '')).replace(/[^\x00-\x7F]/g, '');
+  const idioma = { es: 'Spanish', en: 'English', fr: 'French', de: 'German', sv: 'Swedish', ru: 'Russian' };
+  const dias = N.horario && (N.horario.dayOfWeek.length === 7 ? 'every day' : N.horario.dayOfWeek.join(', '));
+  escribe(join(pub, 'llms.txt'), ascii([
     `# ${N.nombre}`,
     '',
-    `> ${N.nombre} is a property services and project management company in Marbella (Málaga, Spain): services for holiday and long-term rentals, project management of renovations and building works, renovations and home staging, and home maintenance and cleaning, for owners who do not live on the Costa del Sol all year round. One team and a single point of contact for the whole property.`,
+    `> ${en(FAQ[0].a)} One team and a single point of contact for the whole property.`,
     '',
-    `- Website: ${SITE}/ (Spanish, with versions in ${lista(activos.filter((a) => a.code !== 'es').map((a) => ({ en: 'English', fr: 'French', de: 'German', sv: 'Swedish', ru: 'Russian' })[a.code]))})`,
+    `- Website: ${SITE}/ (Spanish, with versions in ${lista(activos.filter((a) => a.code !== 'es').map((a) => idioma[a.code]))})`,
     `- Phone and WhatsApp: ${N.telefonoIntl}`,
     `- Email: ${N.email}`,
+    ...(N.horario ? [`- Opening hours: ${dias}, ${N.horario.opens}-${N.horario.closes} (Spain time). It is not a 24-hour service.`] : []),
+    `- Languages spoken with clients: ${lista(N.idiomasAtencion.map((c) => idioma[c]))} (the website is also in ${lista(activos.filter((a) => !N.idiomasAtencion.includes(a.code)).map((a) => idioma[a.code]))}).`,
+    '- Based in Marbella (Malaga, Spain); the services are carried out at the clients\' homes.',
     `- Areas served: ${lista(zonas)}.`,
-    ...GARANTIAS.map(([b, s]) => `- ${en(b)}: ${en(s)}`),
+    ...GARANTIAS.map(([b, g]) => `- ${en(b)}: ${en(g)}`),
+    '',
+    `## What ${N.nombre} does not do`,
+    '',
+    `- ${en(NO_ES)}`,
+    '- For rentals it handles the operations only (check-ins and check-outs, keys, changeover cleaning and laundry, pre-arrival checks and guest and tenant support), with the bookings and contracts secured by the owner or the owner\'s agency.',
+    '- Descriptions published before 12 October 2026 saying that it lists homes on Airbnb or Idealista, manages rentals or adjusts prices are out of date.',
+    '- It is not related to other businesses called Luxor (car dealers, shops or real estate companies in Marbella, renovation companies in Madrid).',
     '',
     '## Services',
     '',
-    ...SERVICIOS.map((s) => `- [${en(s.titulo)}](${url(lEn, s.id)}) (es: [${s.h1}](${url(lEs, s.id)})): ${en(s.metaDesc)} Includes: ${s.incluye.map((i) => en(i.n)).join('; ')}.`),
+    ...SERVICIOS.map((sv) => `- [${en(sv.titulo)}](${url(lEn, sv.id)}) (es: [${sv.h1}](${url(lEs, sv.id)})): ${en(sv.metaDesc)} Includes: ${sv.incluye.map((i) => en(i.n)).join('; ')}.`),
+    '',
+    '## Frequently asked questions',
+    '',
+    ...FAQ.map((f) => `- ${en(f.q)} ${en(f.a)}`),
     '',
     '## Company',
     '',
     `- [About ${N.nombre}](${url(lEn, 'nosotros')}) (es: ${url(lEs, 'nosotros')})`,
     `- [Request a quote](${url(lEn, 'presupuesto')}) (es: ${url(lEs, 'presupuesto')}): four-step form, WhatsApp or phone.`,
+    ...(N.perfiles.length ? ['', '## Profiles', '', ...N.perfiles.map((u) => `- ${u}`)] : []),
     '',
     '## Languages',
     '',
-    ...activos.map((a) => `- [${a.nombre}](${SITE}${ruta(a, pagina('inicio'))})`),
+    ...activos.map((a) => `- [${idioma[a.code]}](${SITE}${ruta(a, pagina('inicio'))})`),
     '',
     '## Optional',
     '',
@@ -406,7 +454,7 @@ escribe(join(pub, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY);
     `- [Privacy policy](${url(lEn, 'privacidad')})`,
     `- [Sitemap](${SITE}/sitemap.xml)`,
     '',
-  ].join('\n'));
+  ].join('\n')));
 }
 
 // catálogo para traducir: un texto por entrada, con el sitio donde aparece
@@ -431,4 +479,5 @@ if (Object.values(faltan).some((s) => s.size)) {
 } else {
   rmSync(pubFinal, { recursive: true, force: true });
   renameSync(pub, pubFinal);
+  escribe(join(root, FECHAS), JSON.stringify(fechas, null, 1) + '\n');
 }
