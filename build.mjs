@@ -90,7 +90,8 @@ function traductor(l, idPagina) {
     }
     const tr = dicc[l.code][clave];
     if (tr === undefined) { (faltan[l.code] ??= new Set()).add(clave); return texto; }
-    return tr;
+    // en ruso y francés la raya no puede empezar línea: espacio duro delante
+    return /^(ru|fr)$/.test(l.code) ? tr.replace(/ ([—–]) /g, '\u00A0$1 ') : tr;
   };
 }
 

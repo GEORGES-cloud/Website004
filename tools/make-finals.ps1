@@ -6,7 +6,9 @@
 #   - conserva solo un 40% del croma original
 #   - deriva ligera hacia calido (sube R, baja B)
 #   - levanta los negros y baja los blancos: nada de negro ni blanco puros
-param([string]$PicksFile = "photos\picks.json")   # cada entrada admite "out", "size", "croma" (0 = monocromo), "flip" (espejo horizontal) y "calidad" (JPEG, 82 por defecto) opcionales
+param([string]$PicksFile = "photos\picks.json")   # cada entrada admite "out", "size", "croma" (0 = monocromo), "flip" (espejo horizontal), "calidad" (JPEG, 82 por defecto) y "recorte" opcionales
+# "recorte": [x0, y0, x1, y1] en fracciones del original; se aplica antes del recorte central al aspecto de salida
+# (sirve para dejar fuera de cuadro algo que estorba, como un inodoro o una escultura)
 Add-Type -AssemblyName System.Drawing
 $root = Split-Path $PSScriptRoot -Parent   # raiz del proyecto (antes era una ruta fija al Escritorio)
 
@@ -73,12 +75,17 @@ foreach ($p in $picks) {
   $img = New-Object System.Drawing.Bitmap($src)
   if ($p.PSObject.Properties['flip'] -and $p.flip) { $img.RotateFlip([System.Drawing.RotateFlipType]::RotateNoneFlipX) }
   $trat = if ($p.PSObject.Properties['croma']) { New-Tratamiento ([double]$p.croma) } else { $ia }
-  $srcAsp = $img.Width / [double]$img.Height
+  $bx = 0; $by = 0; $bw = $img.Width; $bh = $img.Height
+  if ($p.PSObject.Properties['recorte'] -and $p.recorte) {
+    $bx = [int]([Math]::Round([double]$p.recorte[0] * $img.Width)); $by = [int]([Math]::Round([double]$p.recorte[1] * $img.Height))
+    $bw = [int]([Math]::Round([double]$p.recorte[2] * $img.Width)) - $bx; $bh = [int]([Math]::Round([double]$p.recorte[3] * $img.Height)) - $by
+  }
+  $srcAsp = $bw / [double]$bh
   $dstAsp = $tw / [double]$th
-  if ($srcAsp -gt $dstAsp) { $ch = $img.Height; $cw = [int]([Math]::Round($ch * $dstAsp)) }
-  else                     { $cw = $img.Width;  $ch = [int]([Math]::Round($cw / $dstAsp)) }
-  $cx = [int](($img.Width  - $cw) / 2)
-  $cy = [int](($img.Height - $ch) / 2)
+  if ($srcAsp -gt $dstAsp) { $ch = $bh; $cw = [int]([Math]::Round($ch * $dstAsp)) }
+  else                     { $cw = $bw;  $ch = [int]([Math]::Round($cw / $dstAsp)) }
+  $cx = $bx + [int](($bw - $cw) / 2)
+  $cy = $by + [int](($bh - $ch) / 2)
 
   $out = New-Object System.Drawing.Bitmap($tw, $th)
   $g = [System.Drawing.Graphics]::FromImage($out)

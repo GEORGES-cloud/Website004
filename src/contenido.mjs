@@ -31,6 +31,7 @@ export const NEGOCIO = {
 // Las líneas de servicio. Alimentan el explorador de la portada, el menú, el pie,
 // el cuestionario de presupuesto y la página propia de cada servicio.
 //   puntos: [x, y, xMovil, yMovil, aLaIzquierda] en % sobre la foto, uno por elemento de "incluye"
+//   cabecera (opcional): otra foto para la cabecera de su página; si no hay, se usa la de la línea
 // El 2026-10-12 el cliente pasó de presentarse como "property management" a "property services" y
 // añadió el project management: la línea de alquiler dejó de ser "gestión integral" y pasó a ser el
 // conjunto de servicios que necesita una vivienda alquilada, que se contratan juntos o por separado.
@@ -44,17 +45,17 @@ export const SERVICIOS = [
     titulo: 'Servicios para tu vivienda en alquiler',
     resumen: 'La parte operativa de una vivienda alquilada en Marbella, vacacional o de larga temporada: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien la ocupa.',
     foto: 'svc-alquileres.jpg',
-    alt: 'Dormitorio con ventanal panorámico y vistas al lago',
+    alt: 'Villa blanca contemporánea con grandes ventanales iluminados al anochecer',
     flip: false,
     h1: 'Servicios para alquiler vacacional y de larga temporada en Marbella',
-    entrada: 'Nos ocupamos de la parte operativa de tu alquiler: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien ocupa la vivienda. Tú hablas con una sola persona.',
+    entrada: 'Nos ocupamos de la parte operativa de tu alquiler: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien ocupa la vivienda.',
     metaTitle: 'Servicios para alquileres en Marbella | Luxor Marbella',
     metaDesc: 'Property services para viviendas en alquiler en Marbella: entradas y salidas, llaves, limpieza y lavandería entre estancias, puesta a punto y atención a huéspedes.',
     incluye: [
-      { n: 'Entradas, salidas y llaves', t: 'Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.', d: 'Recibimos a huéspedes e inquilinos y les entregamos las llaves. Cuando se van, las recogemos y revisamos la vivienda.', p: [62, 38, 62, 36, false] },
-      { n: 'Limpieza y lavandería entre estancias', t: 'La casa limpia y la ropa de cama y baño lista para cada llegada.', d: 'Limpiamos la vivienda y nos ocupamos de la lavandería entre una estancia y la siguiente, para que todo esté listo para cada llegada.', p: [47, 62, 38, 64, false] },
-      { n: 'Puesta a punto antes de cada llegada', t: 'Revisamos que todo funcione y reponemos lo necesario antes de cada check-in.', d: 'Antes de cada llegada revisamos que todo funcione y reponemos lo necesario, para que la vivienda esté a punto.', p: [65, 63, 70, 62, false] },
-      { n: 'Atención a huéspedes e inquilinos', t: 'Respondemos nosotros: a ti y a quien vive o se aloja en tu casa.', d: 'Somos el contacto de quien vive o se aloja en tu casa, y también el tuyo. Si algo falla, lo resolvemos con nuestro equipo de mantenimiento.', p: [84, 47, 84, 46, true] },
+      { n: 'Entradas, salidas y llaves', t: 'Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.', d: 'Recibimos a huéspedes e inquilinos y les entregamos las llaves. Cuando se van, las recogemos y revisamos la vivienda.', p: [30, 82, 30, 82, false] },
+      { n: 'Limpieza y lavandería entre estancias', t: 'La casa limpia y la ropa de cama y baño lista para cada llegada.', d: 'Limpiamos la vivienda y nos ocupamos de la lavandería entre una estancia y la siguiente, para que todo esté listo para cada llegada.', p: [50, 71, 50, 71, false] },
+      { n: 'Puesta a punto antes de cada llegada', t: 'Revisamos que todo funcione y reponemos lo necesario antes de cada check-in.', d: 'Antes de cada llegada revisamos que todo funcione y reponemos lo necesario, para que la vivienda esté a punto.', p: [73, 34, 73, 34, true] },
+      { n: 'Atención a huéspedes e inquilinos', t: 'Respondemos nosotros: a ti y a quien vive o se aloja en tu casa.', d: 'Somos el contacto de quien vive o se aloja en tu casa, y también el tuyo. Si algo falla, lo resolvemos con nuestro equipo de mantenimiento.', p: [22, 46, 22, 46, false] },
     ],
     secciones: [
       { h: 'Vacacional o de larga temporada', p: ['Trabajamos con las dos modalidades y adaptamos el servicio a cada una: en el alquiler vacacional, las entradas, las salidas y la limpieza entre estancias; en el de larga temporada, la atención al inquilino y el cuidado de la vivienda.'] },
@@ -75,10 +76,12 @@ export const SERVICIOS = [
     titulo: 'Project management de reformas y obras',
     resumen: 'Dirigimos el proyecto de tu vivienda en Marbella de principio a fin: plan, presupuesto, oficios y plazos, con una sola persona que responde por todo.',
     foto: 'svc-proyectos.jpg',
+    // cabecera de su página: el plano del vídeo de la portada (más «obra» que el baño terminado de la foto)
+    cabecera: { foto: 'phead-proyectos.jpg', alt: 'Plano de planta de una vivienda sobre una mesa', ancho: 2400, alto: 1350 },
     alt: 'Baño terminado con encimera de piedra, espejo en arco y ducha de travertino',
     flip: false,
     h1: 'Project management de reformas y obras en Marbella',
-    entrada: 'Planificamos, coordinamos y supervisamos el proyecto de tu vivienda de principio a fin, aunque tú no estés en Marbella. Tú hablas con una sola persona.',
+    entrada: 'Planificamos, coordinamos y supervisamos el proyecto de tu vivienda de principio a fin, aunque tú no estés en Marbella.',
     metaTitle: 'Project management de reformas en Marbella | Luxor Marbella',
     metaDesc: 'Project management de reformas y obras en Marbella: planificación, presupuesto cerrado, coordinación de oficios y proveedores, seguimiento con partes y entrega.',
     incluye: [
@@ -161,21 +164,19 @@ export const SERVICIOS = [
 ];
 
 export const GARANTIAS = [
-  ['Presupuesto cerrado', 'Lo que firmas es lo que pagas.'],
+  ['Llaves en custodia', 'Entramos siempre con aviso previo.'],
   ['Equipo propio', 'Sin subcontratas rotativas.'],
   ['Respuesta en 24 h', 'En días laborables.'],
   ['Parte de cada visita', 'Con fotos, estés donde estés.'],
 ];
 
+// «Cómo trabajamos» de la portada. El 2026-10-28 se quedó en tres: «Un solo interlocutor» pasó a ser
+// la entradilla de la sección y «Tu vivienda, lista para alquilar» repetía el servicio de alquileres.
 export const VENTAJAS = [
-  ['Un solo interlocutor<br>para toda la casa', 'No coordinas a un fontanero, una limpiadora y una agencia por separado. Nos coordinamos nosotros.'],
   ['Molestias al mínimo,<br>casa protegida', 'Cubrimos suelos y mobiliario antes de empezar y dejamos la vivienda recogida al terminar.'],
   ['Especialistas<br>en segunda residencia', 'Sabemos qué le pasa a una casa cerrada seis meses: humedad, salitre, desagües y persianas.'],
-  ['Tu vivienda,<br>lista para alquilar', 'Limpieza entre estancias, lavandería, reposición y revisión técnica antes de cada check-in.'],
   ['Precio cerrado<br>por escrito', 'Visitamos, medimos y damos un precio en firme. Cualquier extra se aprueba antes de tocarlo.'],
 ];
-
-export const TICKER = ['Alquiler vacacional', 'Alquiler de larga temporada', 'Project management', 'Reformas integrales y parciales', 'Pequeñas reformas', 'Amueblado y home staging', 'Mantenimiento y averías', 'Limpieza y lavandería', 'Piscina y exteriores', 'Custodia de llaves'];
 
 // La frase de las zonas se usa tal cual en la portada, en "Quiénes somos" y en los datos estructurados.
 export const ZONAS_FRASE = 'Luxor Marbella trabaja en Marbella, Puerto Banús, Nueva Andalucía, San Pedro de Alcántara, Benahavís, Estepona, Elviria y Las Chapas, y Sotogrande.';

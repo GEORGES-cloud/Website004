@@ -50,7 +50,17 @@ const prepara = (t, vertical) => {
   const geo = vertical ? `crop=1215:2160:${cx}:0,scale=720:1280:flags=lanczos` : 'scale=2560:1440:flags=lanczos';
   // "filtro" (opcional): corrección de color de esa toma, para igualar tomas de autores distintos
   const color = [GRADO, t.filtro].filter(Boolean).map((f) => f + ',').join('');
-  return `trim=start=${t.inicio}:duration=${d},setpts=PTS-STARTPTS,fps=30,${geo},${color}hqdn3d=1.2:1.2:5:5,format=yuv420p,setsar=1`;
+  // "congelar" (opcional): segundo de la fuente que se queda quieto toda la toma, con un acercamiento
+  // lento del 5 %. Sirve para tomas que solo están limpias un instante (el plano, antes de que entre la mano).
+  const corte = t.congelar == null
+    ? `trim=start=${t.inicio}:duration=${d},setpts=PTS-STARTPTS,fps=30`
+    : `trim=start=${t.congelar}:duration=0.2,setpts=PTS-STARTPTS,fps=30,trim=end_frame=1,tpad=stop_mode=clone:stop_duration=${d},` +
+      `scale=w='trunc(3840*(1+0.05*t/${d})/2)*2':h=-2:eval=frame:flags=bicubic,crop=3840:2160:'(iw-3840)/2':'(ih-2160)/2'`;
+  // "zoom" (opcional): acerca la toma alrededor de "cx" (0-1, centro horizontal) para dejar fuera de cuadro
+  // algo del borde (en la fachada, una caseta de contadores); se vuelve a 3840x2160 antes de encuadrar
+  const z = t.zoom || 1;
+  const acerca = z > 1 ? `crop=${Math.round(3840 / z / 2) * 2}:${Math.round(2160 / z / 2) * 2}:${Math.round(Math.min(3840 - 3840 / z, Math.max(0, (t.cx ?? 0.5) * 3840 - 1920 / z)))}:${Math.round((2160 - 2160 / z) / 2)},scale=3840:2160:flags=lanczos,` : '';
+  return `${corte},${acerca}${geo},${color}hqdn3d=1.2:1.2:5:5,format=yuv420p,setsar=1`;
 };
 
 // offsets de cada transición en la línea de tiempo de salida (transición k entra a la toma k).

@@ -77,6 +77,17 @@
     }
   }
 
+  // cabecera: el filete de abajo solo al bajar (arriba, cabecera y pagina son el mismo papel); el boton de
+  // presupuesto pasa a negro cuando el cajetin del hero o de la cabecera, con su celda negra, ya no se ve
+  var raiz = document.documentElement, cabecera = document.querySelector('.masthead');
+  var alBajar = function(){ raiz.classList.toggle('bajado', window.scrollY > 2); };
+  window.addEventListener('scroll', alBajar, { passive: true });
+  alBajar();
+  var caja = document.querySelector('.hero-caja, .phead-caja');
+  if (caja && caja.querySelector('.hc-cta') && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function(e){ cabecera.classList.toggle('cta-fija', !e[0].isIntersecting); }).observe(caja);
+  } else if (cabecera) cabecera.classList.add('cta-fija');
+
   // menu de texto de la cabecera: marca la pagina en la que estamos
   each(document.querySelectorAll('.mh-nav a, .menu-main a, .mh-right .btn'), function(a){
     if (a.pathname === location.pathname) a.setAttribute('aria-current', 'page');
@@ -284,7 +295,9 @@
       var sitio = Math.floor(aIzq ? izq : der);
       if (w > sitio) { s.style.whiteSpace = 'normal'; s.style.width = sitio + 'px'; s.style.lineHeight = '1.25'; s.style.textAlign = 'left'; }
     };
-    var pick = function(svc, i){
+    var pick = function(svc, i, ev){
+      // al pasar el raton la nota cambia sin anunciarse (si no, un lector de pantalla leeria cada fila)
+      svc.querySelector('.svc-note').setAttribute('aria-live', ev === 'mouseenter' ? 'off' : 'polite');
       each(svc.querySelectorAll('.it'), function(b, n){
         b.setAttribute('aria-pressed', String(n === i));
         if (n === i) svc.querySelector('.svc-note').textContent = b.querySelector('span').textContent;
@@ -310,10 +323,10 @@
       svc.setAttribute('role', 'tabpanel');
       svc.setAttribute('aria-label', tabs[k].textContent);
       each(svc.querySelectorAll('.it'), function(b, i){
-        ['click','mouseenter','focus'].forEach(function(ev){ b.addEventListener(ev, function(){ pick(svc, i); }); });
+        ['click','mouseenter','focus'].forEach(function(ev){ b.addEventListener(ev, function(){ pick(svc, i, ev); }); });
       });
       each(svc.querySelectorAll('.dot'), function(d, i){
-        ['click','mouseenter'].forEach(function(ev){ d.addEventListener(ev, function(){ pick(svc, i); }); });
+        ['click','mouseenter'].forEach(function(ev){ d.addEventListener(ev, function(){ pick(svc, i, ev); }); });
       });
       pick(svc, 0);
     });
@@ -325,7 +338,7 @@
         if (!paso) return;
         e.preventDefault();
         show(now + paso);
-        tabs[now].focus();
+        tabs[now].focus({ preventScroll: true });
       });
     });
     // deslizar la foto con el dedo pasa a la linea siguiente o a la anterior
@@ -345,51 +358,23 @@
     show(0);
   }
 
-  // bloque de dos fotos: pase lento. Cada panel avanza cada 6 s; el segundo arranca 3 s despues.
   var quiet = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var HOLD = 6000;
-  each(document.querySelectorAll('.slides'), function(box, n){
-    var frames = box.querySelectorAll('img');
-    if (frames.length < 2 || quiet) return;
-    var cur = 0;
-    function next(){
-      if (document.documentElement.classList.contains('sin-mov')) return;
-      frames[cur].classList.remove('is-on');
-      cur = (cur + 1) % frames.length;
-      var f = frames[cur];
-      f.style.animation = 'none'; void f.offsetWidth; f.style.animation = '';   // reinicia la deriva a oscuras
-      f.classList.add('is-on');
-    }
-    setTimeout(function(){ next(); setInterval(next, HOLD); }, HOLD + n * HOLD / 2);
-  });
-  // cinta y pase de fotos: un botón para pararlos (WCAG 2.2.2); con "reducir movimiento" ya están quietos
-  var cinta = document.querySelector('.quote-block');
-  if (cinta && !quiet) {
-    var bm = document.createElement('button');
-    bm.type = 'button';
-    bm.className = 'hero-pausa mov-pausa';
-    bm.setAttribute('aria-label', T.mov_pausa);
-    bm.setAttribute('aria-pressed', 'false');
-    bm.addEventListener('click', function(){ bm.setAttribute('aria-pressed', String(document.documentElement.classList.toggle('sin-mov'))); });
-    cinta.appendChild(bm);
-    cinta.classList.add('con-pausa');
-  }
 
-  // revelado al hacer scroll: los bloques entran con un leve fundido hacia arriba,
-  // escalonados entre hermanos (80 ms, tope 400 ms). El hero queda fuera: ya tiene su propio movimiento.
-  var SEL = ['.pledges .wrap > div','.about-copy > *','.rev-col > *','.ben','.grid-head > *','.svcx',
-             '.duo-title > *','.duo .shot','.incl li','.row','.faq details','.more a','.zones li','.closer .wrap > *'].join(',');
+  // revelado al hacer scroll: solo titulares y fotos entran con un leve fundido hacia arriba,
+  // escalonados entre hermanos (60 ms, tope 240 ms). El texto de lectura ya esta ahi cuando llegas,
+  // y el hero queda fuera: es lo primero que se pinta.
+  var SEL = ['.grid-head > *','.rev-col > *','.duo-title > *','.duo .shot','.more a','.closer .wrap > *'].join(',');
   var els = document.querySelectorAll(SEL);
   if (!quiet && 'IntersectionObserver' in window && els.length) {
     var count = new Map();
     each(els, function(el){
       var k = count.get(el.parentNode) || 0; count.set(el.parentNode, k + 1);
-      el.style.setProperty('--d', Math.min(k * 80, 400) + 'ms');
+      el.style.setProperty('--d', Math.min(k * 60, 240) + 'ms');
       el.classList.add('rv');
     });
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -4% 0px', threshold: 0.05 });
     each(els, function(el){ io.observe(el); });
 
     // red de seguridad: si el observer no llega a disparar, un chequeo por scroll
@@ -411,9 +396,10 @@
 
   // secciones que se apilan: solo las marcadas con data-capa en plantillas.mjs (dos o tres por
   // pagina; con todas mareaba). Cada una se queda fija (sticky) cuando asoma su final —o arriba,
-  // bajo la cabecera, si cabe entera— y la siguiente sube por encima; la de debajo se oscurece y se
-  // aleja un poco. Las demas siguen el flujo normal. Las cuentas usan la posicion natural de cada
-  // seccion (suma de altos), no la pintada, asi que no dependen de lo que ya esta fijo.
+  // bajo la cabecera, si cabe entera— y la siguiente sube por encima como una losa; la de debajo
+  // se queda quieta y solo al final se apaga un poco (la sombra la pinta site.css con --cover).
+  // Las demas siguen el flujo normal. Las cuentas usan la posicion natural de cada seccion
+  // (suma de altos), no la pintada, asi que no dependen de lo que ya esta fijo.
   // Las secciones con mucho texto que se busca o se enlaza (preguntas frecuentes, textos legales,
   // cuestionario) no se fijan nunca, aunque se marquen: si el navegador salta a una frase suya
   // (buscar en la pagina, enlaces de Google a un fragmento), tiene que quedar a la vista.
@@ -456,7 +442,6 @@
         s.classList.toggle('suelta', d.suelta);
         // las sueltas siguen el flujo normal: sin altura fija (con position:relative, un top negativo las subiría)
         if (d.suelta) s.style.removeProperty('--stick'); else s.style.setProperty('--stick', fija + 'px');
-        s.style.setProperty('--oy', Math.round((arriba + fija + h) / 2 - fija) + 'px');
         y += h;
         return d;
       });
@@ -483,8 +468,7 @@
         if (d.suelta || !d.s.contains(t)) continue;
         var tope = Math.min(window.innerHeight, capas[i + 1].s.getBoundingClientRect().top);
         if (d.p > 0.02 || r.top < cabH || r.bottom > tope) {
-          var esc = d.s.classList.contains('tapando') ? 1 - d.p * 0.06 : 1;
-          var off = (r.top - d.s.getBoundingClientRect().top) / esc;
+          var off = r.top - d.s.getBoundingClientRect().top;
           window.scrollTo({ top: Math.max(0, Math.min(d.a, d.n + off - cabH - 24)), behavior: 'instant' });
         }
         return;

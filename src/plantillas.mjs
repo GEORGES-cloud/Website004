@@ -14,7 +14,6 @@ const TEXTOS_JS = {
   menu_cerrar: 'Cerrar menú',
   wa_hola: 'Hola, os escribo desde la web de Luxor Marbella.',
   video_pausa: 'Pausar el vídeo',
-  mov_pausa: 'Pausar el movimiento',
   paso: 'Paso {n} de {total}',
   q_servicio: 'Marca al menos una opción.',
   q_zona: 'Elige una zona.',
@@ -38,23 +37,6 @@ const TEXTOS_JS = {
 
 /* ------------------------------------------------------------------ piezas comunes */
 
-const glifos = `<svg width="0" height="0" aria-hidden="true" style="position:absolute">
-  <defs>
-    <pattern id="gSand" width="150" height="150" patternUnits="userSpaceOnUse">
-      <g fill="#E1B181">
-        <path d="M28 16l3.2 6.4-.7 19.4h-5l-.7-19.4z"/>
-        <ellipse cx="104" cy="44" rx="4.6" ry="6.2"/><circle cx="104" cy="36" r="2.3"/>
-        <rect x="95" y="40" width="4" height="1.5"/><rect x="95" y="46" width="4" height="1.5"/>
-        <rect x="109" y="40" width="4" height="1.5"/><rect x="109" y="46" width="4" height="1.5"/>
-        <rect x="21" y="94" width="14" height="2.4"/><rect x="23.5" y="97" width="9" height="17"/><rect x="21" y="114" width="14" height="2.4"/>
-      </g>
-      <g fill="none" stroke="#E1B181" stroke-width="1.6">
-        <path d="M96 100q3.5-2.8 7 0t7 0M96 106q3.5-2.8 7 0t7 0M96 112q3.5-2.8 7 0t7 0"/>
-      </g>
-    </pattern>
-  </defs>
-</svg>`;
-
 const cabecera = `<header class="masthead">
   <div class="wrap">
     <a class="mh-logo" href="{{url:inicio}}" aria-label="Luxor Marbella, inicio">
@@ -77,7 +59,6 @@ ${SERVICIOS.map((s) => `      <a href="{{url:${s.id}}}">${s.corto}</a>`).join('\
 
 <nav class="menu" id="menu" aria-label="Menú principal" hidden>
   <div class="wrap">
-    {{langs:lista}}
     <ul class="menu-main">
 ${SERVICIOS.map((s) => `      <li><a href="{{url:${s.id}}}">${s.menu}</a></li>`).join('\n')}
       <li><a href="{{url:nosotros}}">Quiénes somos</a></li>
@@ -91,10 +72,6 @@ ${SERVICIOS.map((s) => `      <li><a href="{{url:${s.id}}}">${s.menu}</a></li>`)
           <li><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="mailto:${N.email}">${N.email}</a></li>
         </ul>
-      </div>
-      <div>
-        <p class="tit">Zonas</p>
-        <p>${ZONAS_FRASE}</p>
       </div>
     </div>
   </div>
@@ -147,7 +124,6 @@ ${N.direccionTexto ? `          <li><a href="${N.mapa}" target="_blank" rel="noo
 </footer>`;
 
 const cierre = (titulo = '¿Empezamos por tu casa?') => `<section class="closer">
-  <svg class="glyphs" aria-hidden="true" style="opacity:.07"><rect width="100%" height="100%" fill="url(#gSand)"/></svg>
   <div class="wrap">
     <h2 class="d2">${titulo}</h2>
     <div class="closer-actions">
@@ -169,11 +145,26 @@ ${lista.map((f) => `      <details>
       </details>`).join('\n')}
     </div>`;
 
+// Índice de las cuatro líneas de servicio, dibujado como la fila de un cajetín de plano: una celda
+// numerada por servicio (marcada la de la página en la que estamos) y, al final, el botón de presupuesto.
+// En escritorio cada celda dice el nombre completo del servicio; en móvil, el corto.
+const indice = (actual = '') => `<div class="hc-fila">
+        <ol class="hc-svc" aria-label="Servicios">
+${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">0${k + 1}</span><span class="largo">${s.menu}</span><span class="corto" aria-hidden="true">${s.corto}</span></a></li>`).join('\n')}
+        </ol>
+        <a class="btn hc-cta" href="{{url:presupuesto}}${actual ? `?s=${actual}` : ''}">Pedir presupuesto</a>
+      </div>`;
+
+// Tarjetas de servicio con foto, número y nombre (Otros servicios, Qué hacemos)
+const tarjetas = (lista) => `<div class="more${lista.length === 3 ? ' three' : ' four'}">
+${lista.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><span class="num">0${SERVICIOS.indexOf(o) + 1}</span><b>${o.menu}</b></span></a>`).join('\n')}
+    </div>`;
+
 const img = (foto, alt, extra = '') => `<img src="/photos/${foto}" alt="${alt}" loading="lazy" decoding="async"${extra}>`;
 
 /* ------------------------------------------------------------------ portada */
 
-const explorador = () => `<section class="grid-sec" id="servicios" data-capa>
+const explorador = () => `<section class="grid-sec" id="servicios">
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Servicios de Luxor Marbella</h2>
@@ -191,7 +182,6 @@ ${SERVICIOS.map((s, k) => `
 ${s.incluye.map((i) => `          <button class="dot${i.p[4] ? ' to-left' : ''}" type="button" tabindex="-1" aria-hidden="true" style="--x:${i.p[0]}%;--y:${i.p[1]}%;--mx:${i.p[2]}%;--my:${i.p[3]}%"><span>${i.n}</span></button>`).join('\n')}
         </div>
         <div class="svc-panel">
-          <p class="svc-kicker">${s.kicker}</p>
           <h3 class="svc-title"><a href="{{url:${s.id}}}">${s.titulo}</a></h3>
           <p class="svc-desc">${s.resumen}</p>
           <ul class="svc-items">
@@ -209,20 +199,14 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
   </div>
 </section>`;
 
-const heroTexto = `    <h1><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
-    <div class="hero-row">
-      <p>Property services y project management en Marbella y la Costa del Sol: alquileres, reformas y mantenimiento de tu vivienda. Un solo equipo y un solo interlocutor.</p>
-      <div class="hero-actions">
-        <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
-        <a class="lnk" href="#servicios">Qué hacemos</a>
-      </div>
-    </div>`;
-
+// El recuadro crema del hero se dibuja como el cajetín de un plano: el titular y, debajo, una sola
+// fila con las cuatro líneas de servicio (cada celda lleva a su página) y el botón de presupuesto.
 const heroActual = () => `<section class="hero" id="top" data-capa>
-  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="La bahía de Marbella, una villa vista desde un dron, un plano de obra y un recorrido por una villa luminosa: salón, comedor, dormitorio, baño, escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="900" height="1600"><img src="/photos/hero-casa.jpg" alt="La bahía de Marbella, una villa vista desde un dron, un plano de obra y un recorrido por una villa luminosa: escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <div class="hero-caja">
-${heroTexto}
+      <h1><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
+      ${indice()}
     </div>
   </div>
 </section>`;
@@ -237,24 +221,23 @@ ${GARANTIAS.map(([b, s]) => `    <div><b>${b}</b><span>${s}</span></div>`).join(
 
 ${explorador()}
 
-<section class="duo">
+<section class="duo" data-capa>
   <div class="wrap">
     <div class="duo-title">
       <h2 class="d1">Cuidamos tu casa en Marbella los 365 días</h2>
       <p>Para propietarios que no viven aquí todo el año: guardamos las llaves y dejamos la casa como si fueras a llegar mañana.</p>
       <a class="lnk" href="{{url:nosotros}}">Conoce Luxor Marbella</a>
     </div>
-    <div class="shot slides">${img('hero-villa.jpg', 'Fachada de piedra clara con ventanales y balcones de forja', ' class="is-on"')}${img('hero-villa-2.jpg', 'Salón en tonos claros con sofá, mesa de centro y dos cuadros')}${img('hero-villa-3.jpg', 'Terraza con sillones de mimbre, pérgola con cortinas blancas y tumbonas')}</div>
-    <div class="shot slides">${img('duo-oficio.jpg', 'Manos cortando una pieza de madera', ' class="is-on"')}${img('hero-equipo-3.jpg', 'Manos con espátula enluciendo una pared')}</div>
+    <div class="shot">${img('duo-cal.jpg', 'Azoteas encaladas de una casa mediterránea')}</div>
+    <div class="shot">${img('hero-villa-2.jpg', 'Salón en tonos claros con sofá, mesa de centro y dos cuadros')}</div>
   </div>
 </section>
 
-<section class="reviews" id="como-trabajamos" data-capa>
+<section class="reviews" id="como-trabajamos">
   <div class="wrap">
     <div class="rev-col">
-      <p class="eyebrow">Cómo trabajamos</p>
       <h2>Una sola llamada para toda la casa</h2>
-      <p>Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.</p>
+      <p>No coordinas a un fontanero, una limpiadora y una agencia por separado. Nos coordinamos nosotros.</p>
     </div>
     <div class="ben-col">
 ${VENTAJAS.map(([h, p]) => `      <div class="ben">
@@ -283,17 +266,13 @@ const servicio = (id) => {
   const otros = SERVICIOS.filter((o) => o.id !== id);
   return `<section class="phead" data-capa>
   <div class="wrap">
-    <div class="phead-copy">
-      ${migas(['Inicio', 'inicio'], [s.menu])}
-      <p class="kicker">${s.kicker}</p>
+    <div class="shot phead-foto">${s.cabecera ? `<img src="/photos/${s.cabecera.foto}" alt="${s.cabecera.alt}" width="${s.cabecera.ancho}" height="${s.cabecera.alto}" fetchpriority="high">` : `<img src="/photos/${s.foto}" alt="${s.alt}" width="1440" height="900" fetchpriority="high"${s.flip ? ' class="flip"' : ''}>`}</div>
+    <div class="phead-caja">
+      <div class="pc-top">${migas(['Inicio', 'inicio'], [s.menu])}<span class="num" aria-hidden="true">0${SERVICIOS.indexOf(s) + 1} / 0${SERVICIOS.length}</span></div>
       <h1>${s.h1}</h1>
       <p class="lead">${s.entrada}</p>
-      <div class="phead-actions">
-        <a class="btn" href="{{url:presupuesto}}?s=${s.id}">Pedir presupuesto</a>
-        <a class="lnk" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
+      ${indice(s.id)}
     </div>
-    <div class="shot"><img src="/photos/${s.foto}" alt="${s.alt}" width="1440" height="900" fetchpriority="high"${s.flip ? ' class="flip"' : ''}></div>
   </div>
 </section>
 
@@ -301,7 +280,6 @@ const servicio = (id) => {
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Qué incluye</h2>
-      <p>${s.resumen}</p>
     </div>
     <ul class="incl">
 ${s.incluye.map((i) => `      <li>
@@ -312,7 +290,7 @@ ${s.incluye.map((i) => `      <li>
   </div>
 </section>
 
-<section class="block tint">
+<section class="block">
   <div class="wrap">
     <div class="rows">
 ${s.secciones.map((x) => `      <div class="row">
@@ -336,11 +314,8 @@ ${s.secciones.map((x) => `      <div class="row">
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Otros servicios</h2>
-      <p>Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.</p>
     </div>
-    <div class="more${otros.length === 3 ? ' three' : ''}">
-${otros.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
-    </div>
+    ${tarjetas(otros)}
   </div>
 </section>
 
@@ -349,24 +324,24 @@ ${cierre()}`;
 
 /* ------------------------------------------------------------------ nosotros */
 
-const nosotros = () => `<section class="phead solo">
+const nosotros = () => `<section class="phead" data-capa>
   <div class="wrap">
-    <div class="phead-copy">
-      ${migas(['Inicio', 'inicio'], ['Quiénes somos'])}
+    <div class="shot phead-foto"><img src="/photos/about-casa.jpg" alt="Salón blanco minimalista con ventanal" width="1160" height="798" fetchpriority="high"></div>
+    <div class="phead-caja">
+      <div class="pc-top">${migas(['Inicio', 'inicio'], ['Quiénes somos'])}</div>
       <h1>Luxor Marbella</h1>
       <p class="lead">${FAQ[0].a}</p>
     </div>
   </div>
 </section>
 
-<section class="about" data-capa>
+<section class="block">
   <div class="wrap">
-    <div class="shot"><img src="/photos/about-casa.jpg" alt="Salón blanco minimalista con ventanal" width="1160" height="798" fetchpriority="high"></div>
-    <div class="about-copy">
-      <h2 class="d2">La llave que no tienes que buscar</h2>
-      <p>Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p>
-      <p>Trabajamos en cuatro líneas —servicios para alquileres, project management, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.</p>
-      <div><a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a></div>
+    <div class="rows">
+      <div class="row">
+        <h2 class="d2">La llave que no tienes que buscar</h2>
+        <div><p>Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p><p>Trabajamos en cuatro líneas —servicios para alquileres, project management, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.</p><p><a class="lnk" href="{{url:presupuesto}}">Pedir presupuesto</a></p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -375,11 +350,8 @@ const nosotros = () => `<section class="phead solo">
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Qué hacemos</h2>
-      <p>Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.</p>
     </div>
-    <div class="more${SERVICIOS.length === 3 ? ' three' : ''}">
-${SERVICIOS.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><b>${o.titulo}</b><small>${o.kicker}</small></span></a>`).join('\n')}
-    </div>
+    ${tarjetas(SERVICIOS)}
   </div>
 </section>
 
@@ -387,7 +359,6 @@ ${SERVICIOS.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Dónde trabajamos</h2>
-      <p>De Sotogrande a Elviria, estas son las zonas en las que trabajamos.</p>
     </div>
     <ul class="zones">
 ${N.zonas.map((z) => `      <li>${z}</li>`).join('\n')}
@@ -406,7 +377,7 @@ const presupuesto = () => `<section class="quiz-sec">
   <div class="wrap">
     <div class="quiz-head">
       <h1>Pide tu presupuesto</h1>
-      <p>Cuatro preguntas y te llamamos para concretar la visita de valoración. Si lo prefieres, escríbenos directamente por WhatsApp.</p>
+      <p>Cuatro preguntas y te llamamos para concretar la visita de valoración.</p>
     </div>
 
     <form class="quiz" id="quiz" novalidate>
@@ -538,9 +509,7 @@ export const PAGINAS = [
 ];
 
 // Todo lo que va dentro de <body>
-export const cuerpo = (pagina) => `${glifos}
-
-<a class="saltar" href="#contenido">Saltar al contenido</a>
+export const cuerpo = (pagina) => `<a class="saltar" href="#contenido">Saltar al contenido</a>
 ${cabecera}
 
 <main id="contenido" tabindex="-1">
@@ -548,6 +517,6 @@ ${pagina.cuerpo()}
 </main>
 
 ${pie}
-${pagina.id === 'presupuesto' ? '' : waFlota}
+${waFlota}
 
 <script type="application/json" id="i18n">${JSON.stringify(TEXTOS_JS)}</script>`;

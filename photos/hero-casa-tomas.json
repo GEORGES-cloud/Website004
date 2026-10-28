@@ -1,16 +1,53 @@
 {
- "nota": "Tomas del hero (Pexels, licencia libre). 2026-10-13: el recorrido original por la villa (Alef Morais: salón → comedor → dormitorio → baño → escalera → terraza) con, delante, la bahía de Marbella con La Concha, un dron sobre una villa blanca y el plano de obra. Sin personas (el usuario no las quiere). Las tomas añadidas llevan 'filtro' para acercarlas al color de la villa. Las monta tools/montaje-hero.mjs.",
+ "nota": "Tomas del hero (Pexels, licencia libre). 2026-10-13: la bahía de Marbella con La Concha, un dron sobre una villa blanca y el plano de obra; después el recorrido por la villa (Alef Morais). 2026-10-28: el plano se congela en 4,6 s (la mano que lo señalaba ya no sale) y la fachada de la villa sustituye al dormitorio, para que el recorrido sea más arquitectónico. Sin personas (el usuario no las quiere). Las tomas añadidas llevan 'filtro' para acercarlas al color de la villa. Las monta tools/montaje-hero.mjs. El mismo día: fuera el comedor (lámparas de mimbre y sillas turquesa, la toma más de resort), la fachada se acerca un 16 % para que no salga la caseta de contadores y lleva el mismo color cálido que la villa, y el baño se desatura un poco para que el ónice no tire a rosa. Después, también fuera el baño (asomaba el inodoro bajo el recuadro) y el salón (cojines y flores desenfocados): el recorrido queda en fachada, escalera y terraza, todo arquitectura. La villa del dron se acerca un 50 % hacia la casa (fuera la calle, los coches y los cables) y el plano lleva un color más cálido, sin la dominante cian. Al final también fuera la fachada (sus cocoteros no parecían Marbella); el plano, más cálido; y en el vídeo vertical la escalera se encuadra en el pasamanos.",
  "fundido": 0.6,
  "barrido": 1.3,
  "tomas": [
-  { "id": "28356654", "nombre": "Bahía", "inicio": 1.0, "fin": 4.0, "x": 0.8, "filtro": "eq=saturation=0.9,huesaturation=colors=c+b:saturation=-0.2,colorbalance=rm=0.045:bm=-0.045:rh=0.015:bh=-0.02", "url": "https://videos.pexels.com/video-files/28356654/12366667_3840_2160_30fps.mp4" },
-  { "id": "28438876", "nombre": "Villa", "inicio": 3.0, "fin": 6.0, "x": 0.52, "filtro": "eq=saturation=0.9,huesaturation=colors=c+b:saturation=-0.2,colorbalance=rm=0.045:bm=-0.045:rh=0.015:bh=-0.02", "url": "https://videos.pexels.com/video-files/28438876/12382834_3840_2160_30fps.mp4" },
-  { "id": "8725793", "nombre": "Plano", "inicio": 0.3, "fin": 3.3, "x": 0.5, "filtro": "colorbalance=rs=0.05:bs=-0.05:rm=0.03:bm=-0.03,eq=saturation=1.05", "url": "https://videos.pexels.com/video-files/8725793/8725793-uhd_3840_2160_25fps.mp4" },
-  { "id": "39576515", "nombre": "Salón", "inicio": 0.3, "fin": 3.3, "x": 0.564, "url": "https://videos.pexels.com/video-files/39576515/16868161_3840_2160_30fps.mp4" },
-  { "id": "39576532", "nombre": "Comedor", "inicio": 3.8, "fin": 6.8, "x": 0.55, "url": "https://videos.pexels.com/video-files/39576532/16868216_3840_2160_30fps.mp4" },
-  { "id": "39024330", "nombre": "Dormitorio", "inicio": 1, "fin": 4, "x": 0.45, "url": "https://videos.pexels.com/video-files/39024330/16605534_3840_2160_30fps.mp4" },
-  { "id": "39024332", "nombre": "Baño", "inicio": 3, "fin": 6, "x": 0.62, "url": "https://videos.pexels.com/video-files/39024332/16605438_3840_2160_30fps.mp4" },
-  { "id": "39024325", "nombre": "Escalera", "inicio": 0.3, "fin": 3.3, "x": 0.5, "url": "https://videos.pexels.com/video-files/39024325/16605474_3840_2160_30fps.mp4" },
-  { "id": "39576516", "nombre": "Terraza", "inicio": 1, "fin": 4, "x": 0.45, "url": "https://videos.pexels.com/video-files/39576516/16868163_3840_2160_30fps.mp4" }
+  {
+   "id": "28356654",
+   "nombre": "Bahía",
+   "inicio": 1.0,
+   "fin": 4.0,
+   "x": 0.8,
+   "filtro": "eq=saturation=0.9,huesaturation=colors=c+b:saturation=-0.2,colorbalance=rm=0.045:bm=-0.045:rh=0.015:bh=-0.02",
+   "url": "https://videos.pexels.com/video-files/28356654/12366667_3840_2160_30fps.mp4"
+  },
+  {
+   "id": "28438876",
+   "nombre": "Villa",
+   "inicio": 3.0,
+   "fin": 6.0,
+   "x": 0.52,
+   "filtro": "eq=saturation=0.9,huesaturation=colors=c+b:saturation=-0.2,colorbalance=rm=0.045:bm=-0.045:rh=0.015:bh=-0.02",
+   "url": "https://videos.pexels.com/video-files/28438876/12382834_3840_2160_30fps.mp4",
+   "zoom": 1.5,
+   "cx": 0.4
+  },
+  {
+   "id": "8725793",
+   "nombre": "Plano",
+   "inicio": 0.3,
+   "fin": 3.3,
+   "x": 0.5,
+   "filtro": "colorbalance=rs=0.10:gs=0.02:bs=-0.10:rm=0.08:bm=-0.08:rh=0.04:bh=-0.05,eq=saturation=0.8",
+   "url": "https://videos.pexels.com/video-files/8725793/8725793-uhd_3840_2160_25fps.mp4",
+   "congelar": 4.6
+  },
+  {
+   "id": "39024325",
+   "nombre": "Escalera",
+   "inicio": 0.3,
+   "fin": 3.3,
+   "x": 0.32,
+   "url": "https://videos.pexels.com/video-files/39024325/16605474_3840_2160_30fps.mp4"
+  },
+  {
+   "id": "39576516",
+   "nombre": "Terraza",
+   "inicio": 1,
+   "fin": 4,
+   "x": 0.45,
+   "url": "https://videos.pexels.com/video-files/39576516/16868163_3840_2160_30fps.mp4"
+  }
  ]
 }
