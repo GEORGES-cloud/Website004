@@ -147,10 +147,9 @@ ${lista.map((f) => `      <details>
 
 // Índice de las cuatro líneas de servicio, dibujado como la fila de un cajetín de plano: una celda
 // numerada por servicio (marcada la de la página en la que estamos) y, al final, el botón de presupuesto.
-// En escritorio cada celda dice el nombre completo del servicio; en móvil, el corto.
 const indice = (actual = '') => `<div class="hc-fila">
         <ol class="hc-svc" aria-label="Servicios">
-${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">0${k + 1}</span><span class="largo">${s.menu}</span><span class="corto" aria-hidden="true">${s.corto}</span></a></li>`).join('\n')}
+${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="num" aria-hidden="true">0${k + 1}</span><span class="corto">${s.corto}</span></a></li>`).join('\n')}
         </ol>
         <a class="btn hc-cta" href="{{url:presupuesto}}${actual ? `?s=${actual}` : ''}">Pedir presupuesto</a>
       </div>`;
