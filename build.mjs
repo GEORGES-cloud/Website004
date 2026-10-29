@@ -177,7 +177,7 @@ function jsonld(l, p, t) {
     slogan: t('Hacemos fácil tener casa en Marbella'),
     telephone: N.telefono,
     email: N.email,
-    logo: { '@type': 'ImageObject', '@id': ID.logo, url: `${SITE}/assets/logo-master-color.png`, contentUrl: `${SITE}/assets/logo-master-color.png`, width: 620, height: 324, caption: N.nombre },
+    logo: { '@type': 'ImageObject', '@id': ID.logo, url: `${SITE}/assets/logo-luxor.png`, contentUrl: `${SITE}/assets/logo-luxor.png`, width: 512, height: 512, caption: N.nombre },
     image: { '@id': ID.logo },
     address: { '@type': 'PostalAddress', ...(N.direccion || { addressLocality: 'Marbella', addressRegion: 'Málaga', addressCountry: 'ES' }) },
     ...(N.geo && { geo: { '@type': 'GeoCoordinates', ...N.geo } }),
@@ -342,7 +342,7 @@ for (const l of activos) {
 }
 
 // ficheros estáticos
-for (const f of ['logo-master-mask.png', 'logo-master-mask.webp', 'logo-master-color.png', 'favicon.svg', 'favicon-48.png', 'favicon-192.png', 'apple-touch-icon.png']) {
+for (const f of ['logo-master-mask.png', 'logo-master-mask.webp', 'logo-luxor.png', 'favicon.svg', 'favicon-48.png', 'favicon-192.png', 'apple-touch-icon.png']) {
   mkdirSync(join(pub, 'assets'), { recursive: true });
   copyFileSync(join(root, 'assets', f), join(pub, 'assets', f));
 }
