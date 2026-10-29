@@ -153,9 +153,9 @@ export const SERVICIOS = [
     cabecera: { foto: 'phead-mantenimiento.jpg', alt: 'Salón blanco con patio interior y un árbol', ancho: 1440, alto: 900 },
     alt: 'Salón blanco con patio interior y un árbol',
     flip: false,
-    h1: 'Mantenimiento, llaves y limpieza de viviendas en Marbella',
+    h1: 'Mantenimiento de viviendas y custodia de llaves en Marbella',
     entrada: 'Custodia de llaves, revisiones, averías, piscina, limpieza y gestiones de tu villa o apartamento, para que esté a punto aunque tú no estés.',
-    metaTitle: 'Mantenimiento y custodia de llaves en Marbella | Luxor Marbella',
+    metaTitle: 'Mantenimiento de viviendas y llaves en Marbella | Luxor Marbella',
     metaDesc: 'Custodia de llaves y revisiones con la casa cerrada, mantenimiento, piscina y jardín, limpieza y lavandería en Marbella, con parte y fotos tras cada visita.',
     incluye: [
       { n: 'Mantenimiento y averías', t: 'Preventivo y correctivo, con piscina y exteriores: revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', d: 'Mantenimiento preventivo y correctivo, con piscina y exteriores. Revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', p: [82, 60, 82, 62, true] },

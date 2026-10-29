@@ -236,7 +236,7 @@ ${explorador()}
   <div class="wrap">
     <div class="rev-col">
       <h2>Una sola llamada para toda la casa</h2>
-      <p>No coordinas a un fontanero, una limpiadora y una agencia por separado. Nos coordinamos nosotros.</p>
+      <p>No coordinas a un fontanero, una limpiadora y tu agencia por separado. Nos coordinamos nosotros.</p>
     </div>
     <div class="ben-col">
 ${VENTAJAS.map(([h, p]) => `      <div class="ben">
