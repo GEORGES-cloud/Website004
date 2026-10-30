@@ -21,13 +21,15 @@
   unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 
 :root{
-  --cal:#FAF7F2;          /* fondo: pared encalada al sol                 */
-  --arena:#EFE9E0;        /* franja: como mucho una por pagina            */
-  --travertino:#E3DACC;   /* hueco de foto mientras carga                 */
+  --cal:#FFFFFF;          /* fondo: blanco                                */
+  --arena:#EFEFED;        /* franja: como mucho una por pagina            */
+  --travertino:#E4E4E1;   /* hueco de foto mientras carga                 */
   --tinta:#1C1813;        /* texto: marron casi negro                     */
-  --tinta-2:#5F5447;      /* texto secundario (6,9:1 sobre cal)           */
-  --tinta-3:#968C82;      /* solo texto grande o decorativo               */
-  --linea:rgba(28,24,19,.14);   /* separadores interiores                 */
+  --tinta-2:#55514B;      /* texto secundario (5,7:1 sobre cal)           */
+  --tinta-3:#7B7873;      /* solo texto grande o decorativo               */
+  --linea:rgba(20,19,17,.15);   /* separadores interiores                 */
+  /* sin textura: fondo blanco liso (la de cemento pulido se probó y no convenció) */
+  --textura:none;
   --regla:var(--tinta);         /* filete que abre cada grupo             */
   --noche:#111111;        /* bloque de cierre                             */
   --sobre-noche:#F2EADD;
@@ -59,6 +61,10 @@
   --globo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7'%3E%3Ccircle cx='12' cy='12' r='9.2'/%3E%3Cpath d='M2.8 12h18.4M12 2.8c2.6 2.6 3.9 5.6 3.9 9.2s-1.3 6.6-3.9 9.2M12 2.8C9.4 5.4 8.1 8.4 8.1 12s1.3 6.6 3.9 9.2'/%3E%3C/svg%3E");
   --flecha:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M1 8h13M9 3l5 5-5 5' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E");
 }
+
+/* cemento pulido: la textura va encima del color de fondo de las superficies lisas */
+html,body,main > section:not(.hero):not(.closer),.masthead,.hero-caja,.phead-caja,.menu,.foot,.quiz,.quiz-done{background-image:var(--textura)}
+
 @media (max-width:1079px){:root{--mh:64px}}
 @media (max-width:760px){:root{--hp:1.1rem;--sec:3.25rem;--t-display:clamp(2.1rem,9.4vw,2.75rem);--t-h1:clamp(2rem,8.4vw,2.4rem);--t-h2:clamp(1.6rem,6.6vw,2rem)}}
 
@@ -173,6 +179,8 @@ html.stack main > section.suelta{position:relative;top:auto}
    CABECERA — logo, menu de texto, idioma y presupuesto
    ============================================================ */
 .masthead{position:sticky;top:0;z-index:60;background:var(--cal);border-bottom:1px solid var(--linea);transition:border-color var(--t2) var(--e-sal)}
+/* cabecera traslúcida: blanco con desenfoque; al bajar deja ver lo que pasa por debajo (se pidió el 2026-10-30) */
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.masthead{background:rgba(255,255,255,.74);-webkit-backdrop-filter:saturate(140%) blur(16px);backdrop-filter:saturate(140%) blur(16px)}}
 html.js:not(.bajado) .masthead{border-bottom-color:transparent}
 .masthead .wrap{display:flex;align-items:center;gap:2rem;height:var(--mh)}
 .mh-logo{flex:none;display:flex;align-items:center;min-height:44px;margin-right:auto}
@@ -320,7 +328,13 @@ html.stack main > .hero{background:var(--travertino)}
 .hero-bg video.is-on{opacity:1}
 /* el recuadro deja libre arriba el hueco de la pausa */
 .hero .wrap{position:relative;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding-top:calc(var(--gutter) + 44px + 1.5rem);padding-bottom:var(--gutter)}
-.hero-caja{width:min(100%,max(40rem,calc((100% - 11 * var(--cg)) / 12 * 8 + 7 * var(--cg))));background:var(--cal)}
+.hero-caja{width:fit-content;max-width:min(100%,46rem);background:var(--cal)}
+/* marca de agua: el logo en blanco, centrado sobre el video, con un velo suave para que se lea */
+.hero .wrap:has(.hero-marca){justify-content:center;align-items:center}
+.hero:has(.hero-marca) .hero-bg::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:rgba(17,17,17,.18)}
+.hero-marca{width:min(46vw,520px);aspect-ratio:460/240;background:#fff;opacity:.92;
+  -webkit-mask:url(/assets/logo-master-mask.webp) center/contain no-repeat;mask:url(/assets/logo-master-mask.webp) center/contain no-repeat}
+@media (max-width:760px){.hero-marca{width:72vw}}
 .hero h1{padding:var(--hp);font-size:var(--t-display);line-height:.92;letter-spacing:-.05em;text-wrap:balance;color:var(--tinta)}
 /* la etiqueta abre la caja como la fila superior de un cajetin (la misma que .pc-top en las cabeceras) */
 .hero h1 .kick{display:block;margin:calc(var(--hp) * -1) calc(var(--hp) * -1) calc(var(--hp) * .9);padding:1rem var(--hp);border-bottom:1px solid var(--linea);
@@ -455,7 +469,7 @@ html.js .svc-nav::-webkit-scrollbar{display:none}
             mask-image:linear-gradient(90deg,var(--fi),#000 2rem,#000 calc(100% - 3rem),var(--fd))}
   html.js .svc-nav.fi{--fi:transparent}
   html.js .svc-nav.fd{--fd:transparent}
-  .svc-tab{gap:.35rem;min-height:44px;padding-inline:.35rem;font-size:clamp(1.05rem,5.3vw,2rem);color:#776C61}
+  .svc-tab{gap:.35rem;min-height:44px;padding-inline:.35rem;font-size:clamp(1.05rem,5.3vw,2rem);color:#605D58}
   .svc-tab::before{font-size:.62rem}
   html[lang="de"] .svc-tab{font-size:clamp(.9rem,4.5vw,2rem)}
   .svc-tab:focus-visible{outline-offset:-2px}

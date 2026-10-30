@@ -52,7 +52,7 @@ for (const e of fuente) {
   if (/[<>]/.test(t)) problemas.push(`${donde}: lleva < o > (los textos no llevan etiquetas HTML)`);
   if (/&(?:[a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);/.test(t)) problemas.push(`${donde}: lleva una entidad HTML (&…;); escribe el carácter directamente (p. ej. el espacio duro U+00A0)`);
   if (marcas(t) !== marcas(e.texto)) problemas.push(`${donde}: no conserva las marcas ${marcas(e.texto) || '(ninguna)'}`);
-  if (e.texto.includes('603 60 55 43') && !t.includes('603 60 55 43')) problemas.push(`${donde}: falta el teléfono 603 60 55 43`);
+  if (e.texto.includes('655 67 36 68') && !t.includes('655 67 36 68')) problemas.push(`${donde}: falta el teléfono 655 67 36 68`);
   if (e.texto.includes('+34') && !t.includes('+34')) problemas.push(`${donde}: falta el prefijo +34`);
   if (/Luxor Marbella/.test(e.texto) && !/Luxor Marbella/.test(t)) problemas.push(`${donde}: falta la marca "Luxor Marbella" tal cual`);
   if (t !== t.trim()) problemas.push(`${donde}: sobran espacios al principio o al final`);

@@ -47,7 +47,7 @@ ${SERVICIOS.map((s) => `      <a href="{{url:${s.id}}}">${s.corto}</a>`).join('\
       <a href="{{url:nosotros}}">Quiénes somos</a>
     </nav>
     <div class="mh-right">
-      <a class="mh-tel" href="${TEL}">${N.telefonoVisible}</a>
+      <a class="mh-tel" href="${TEL}">${N.telefonoIntl}</a>
       {{langs:desplegable}}
       <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
       <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
@@ -198,15 +198,14 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
   </div>
 </section>`;
 
-// El recuadro crema del hero se dibuja como el cajetín de un plano: el titular y, debajo, una sola
-// fila con las cuatro líneas de servicio (cada celda lleva a su página) y el botón de presupuesto.
+// Hero sin texto a la vista: el logo en blanco, grande y centrado, como marca de agua sobre el vídeo (lo eligió
+// el usuario el 2026-10-30). El titular sigue en el h1, oculto, para Google y los lectores de pantalla; los
+// servicios están en el menú y justo debajo, y el presupuesto en la cabecera.
 const heroActual = () => `<section class="hero" id="top" data-capa>
-  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="1080" height="1920"><img src="/photos/hero-casa.jpg" alt="Una villa vista desde un dron, un plano de obra y un recorrido por una villa luminosa: escalera y terraza" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
+  <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="1080" height="1920"><img src="/photos/hero-casa.jpg" alt="La fachada blanca de una villa entre palmeras, un plano de obra y un jardín con un estanque largo" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
-    <div class="hero-caja">
-      <h1><span class="kick">Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
-      ${indice()}
-    </div>
+    <h1 class="vh"><span>Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
+    <div class="hero-marca" aria-hidden="true"></div>
   </div>
 </section>`;
 
@@ -489,7 +488,7 @@ const noEncontrada = () => `<section class="nf">
 
 /* ------------------------------------------------------------------ páginas */
 
-const DESC = 'Property services en Marbella para propietarios que no viven aquí: llaves, mantenimiento, reformas y entradas y salidas de alquileres. Tel. +34 603 60 55 43.';
+const DESC = 'Property services en Marbella para propietarios que no viven aquí: llaves, mantenimiento, reformas y entradas y salidas de alquileres. Tel. +34 655 67 36 68.';
 
 // id · ruta en español · ruta en el resto de idiomas · título y descripción · cuerpo
 export const PAGINAS = [

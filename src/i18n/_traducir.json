@@ -611,7 +611,7 @@
  },
  {
   "id": 117,
-  "texto": "Desde el formulario de la web, por WhatsApp o llamando al +34 603 60 55 43.",
+  "texto": "Desde el formulario de la web, por WhatsApp o llamando al +34 655 67 36 68.",
   "contexto": "inicio <p> | inicio"
  },
  {
@@ -746,7 +746,7 @@
  },
  {
   "id": 144,
-  "texto": "o llámanos al +34 603 60 55 43.",
+  "texto": "o llámanos al +34 655 67 36 68.",
   "contexto": "inicio texto de site.js (error_despues) | alquileres texto de site.js (error_despues) | proyectos texto de site.js (error_despues)"
  },
  {
@@ -791,7 +791,7 @@
  },
  {
   "id": 368,
-  "texto": "Property services y project management en Marbella: alquileres, reformas y mantenimiento para propietarios que no viven aquí todo el año. Tel. +34 603 60 55 43.",
+  "texto": "Property services y project management en Marbella: alquileres, reformas y mantenimiento para propietarios que no viven aquí todo el año. Tel. +34 655 67 36 68.",
   "contexto": "inicio"
  },
  {
@@ -1476,7 +1476,7 @@
  },
  {
   "id": 249,
-  "texto": "Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al +34 603 60 55 43.",
+  "texto": "Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al +34 655 67 36 68.",
   "contexto": "presupuesto <p class=\"quiz-error quiz-sinjs\">"
  },
  {
@@ -1502,12 +1502,12 @@
  {
   "id": 254,
   "texto": "Enviar por WhatsApp",
-  "contexto": "presupuesto <a class=\"btn btn-borde\" id=\"quiz-wa\" href=\"https://wa.me/34603605543\" target=\"_blank\" rel=\"noopener\">"
+  "contexto": "presupuesto <a class=\"btn btn-borde\" id=\"quiz-wa\" href=\"https://wa.me/34655673668\" target=\"_blank\" rel=\"noopener\">"
  },
  {
   "id": 255,
-  "texto": "Llamar al +34 603 60 55 43",
-  "contexto": "presupuesto <a class=\"lnk\" href=\"tel:+34603605543\">"
+  "texto": "Llamar al +34 655 67 36 68",
+  "contexto": "presupuesto <a class=\"lnk\" href=\"tel:+34655673668\">"
  },
  {
   "id": 256,

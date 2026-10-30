@@ -253,7 +253,7 @@ function cabeza(l, p, t, css, js) {
       ...activos.map((a) => `<link rel="alternate" hreflang="${a.code}" href="${SITE}${ruta(a, p)}">`),
       `<link rel="alternate" hreflang="x-default" href="${SITE}${ruta(PORDEFECTO, p)}">`,
     ]),
-    '<meta name="theme-color" content="#FBF8F2">',
+    '<meta name="theme-color" content="#FFFFFF">',
     '<meta property="og:type" content="website">',
     `<meta property="og:site_name" content="${NEGOCIO.nombre}">`,
     `<meta property="og:locale" content="${l.locale}">`,

@@ -21,548 +21,548 @@
  },
  {
   "id": 5,
-  "texto": "Una villa vista desde un dron, un plano de obra y un recorrido por una villa luminosa: escalera y terraza",
+  "texto": "La fachada blanca de una villa entre palmeras, un plano de obra y un jardín con un estanque largo",
   "contexto": "inicio atributo alt"
  },
  {
   "id": 6,
-  "texto": "Servicios",
-  "contexto": "inicio atributo aria-label | inicio <p class=\"tit\"> | inicio"
- },
- {
-  "id": 7,
   "texto": "Líneas de servicio",
   "contexto": "inicio atributo aria-label"
  },
  {
-  "id": 8,
+  "id": 7,
   "texto": "Villa blanca contemporánea con grandes ventanales iluminados al anochecer",
   "contexto": "inicio atributo alt | alquileres atributo alt"
  },
  {
-  "id": 9,
+  "id": 8,
   "texto": "Baño terminado con encimera de piedra, espejo en arco y ducha de travertino",
   "contexto": "inicio atributo alt"
  },
  {
-  "id": 10,
+  "id": 9,
   "texto": "Salón en tonos crema con mesa de travertino",
   "contexto": "inicio atributo alt | reformas atributo alt"
  },
  {
-  "id": 11,
+  "id": 10,
   "texto": "Salón blanco con patio interior y un árbol",
   "contexto": "inicio atributo alt | mantenimiento atributo alt"
  },
  {
-  "id": 12,
+  "id": 11,
   "texto": "Azoteas encaladas de una casa mediterránea",
   "contexto": "inicio atributo alt"
  },
  {
-  "id": 13,
+  "id": 12,
   "texto": "Salón en tonos claros con sofá, mesa de centro y dos cuadros",
   "contexto": "inicio atributo alt"
  },
  {
-  "id": 14,
+  "id": 13,
   "texto": "Escríbenos por WhatsApp",
   "contexto": "inicio atributo aria-label | alquileres atributo aria-label | proyectos atributo aria-label"
  },
  {
-  "id": 15,
+  "id": 14,
   "texto": "Saltar al contenido",
   "contexto": "inicio <a class=\"saltar\" href=\"#contenido\"> | alquileres <a class=\"saltar\" href=\"#contenido\"> | proyectos <a class=\"saltar\" href=\"#contenido\">"
  },
  {
-  "id": 16,
+  "id": 15,
   "texto": "Alquileres",
-  "contexto": "inicio <a href=\"{{url:alquileres}}\"> | inicio <span class=\"corto\"> | inicio <img src=\"/photos/svc-alquileres.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
+  "contexto": "inicio <a href=\"{{url:alquileres}}\"> | inicio <img src=\"/photos/svc-alquileres.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | inicio"
+ },
+ {
+  "id": 16,
+  "texto": "Proyectos",
+  "contexto": "inicio <a href=\"{{url:proyectos}}\"> | inicio <img src=\"/photos/svc-proyectos.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | inicio"
  },
  {
   "id": 17,
-  "texto": "Proyectos",
-  "contexto": "inicio <a href=\"{{url:proyectos}}\"> | inicio <span class=\"corto\"> | inicio <img src=\"/photos/svc-proyectos.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
+  "texto": "Reformas",
+  "contexto": "inicio <a href=\"{{url:reformas}}\"> | inicio <img src=\"/photos/svc-reformas.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | inicio"
  },
  {
   "id": 18,
-  "texto": "Reformas",
-  "contexto": "inicio <a href=\"{{url:reformas}}\"> | inicio <span class=\"corto\"> | inicio <img src=\"/photos/svc-reformas.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
+  "texto": "Mantenimiento",
+  "contexto": "inicio <a href=\"{{url:mantenimiento}}\"> | inicio <img src=\"/photos/svc-mantenimiento.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\"> | inicio"
  },
  {
   "id": 19,
-  "texto": "Mantenimiento",
-  "contexto": "inicio <a href=\"{{url:mantenimiento}}\"> | inicio <span class=\"corto\"> | inicio <img src=\"/photos/svc-mantenimiento.jpg\" alt=\"\" loading=\"lazy\" decoding=\"async\">"
- },
- {
-  "id": 20,
   "texto": "Quiénes somos",
   "contexto": "inicio <a href=\"{{url:nosotros}}\"> | alquileres <a href=\"{{url:nosotros}}\"> | proyectos <a href=\"{{url:nosotros}}\">"
  },
  {
-  "id": 21,
+  "id": 20,
   "texto": "Pedir presupuesto",
-  "contexto": "inicio <a class=\"btn\" href=\"{{url:presupuesto}}\"> | inicio <a href=\"{{url:presupuesto}}\"> | inicio <a class=\"btn hc-cta\" href=\"{{url:presupuesto}}\">"
+  "contexto": "inicio <a class=\"btn\" href=\"{{url:presupuesto}}\"> | inicio <a href=\"{{url:presupuesto}}\"> | inicio <a class=\"lnk\" href=\"{{url:presupuesto}}?s=alquileres\">"
  },
  {
-  "id": 22,
+  "id": 21,
   "texto": "Servicios para alquileres",
   "contexto": "inicio <a href=\"{{url:alquileres}}\"> | inicio | alquileres <a href=\"{{url:alquileres}}\">"
  },
  {
-  "id": 23,
+  "id": 22,
   "texto": "Project management",
   "contexto": "inicio <a href=\"{{url:proyectos}}\"> | inicio | alquileres <a href=\"{{url:proyectos}}\">"
  },
  {
-  "id": 24,
+  "id": 23,
   "texto": "Reformas y home staging",
   "contexto": "inicio <a href=\"{{url:reformas}}\"> | inicio | alquileres <a href=\"{{url:reformas}}\">"
  },
  {
-  "id": 25,
+  "id": 24,
   "texto": "Mantenimiento y limpieza",
   "contexto": "inicio <a href=\"{{url:mantenimiento}}\"> | inicio | alquileres <a href=\"{{url:mantenimiento}}\">"
  },
  {
-  "id": 26,
+  "id": 25,
   "texto": "Contacto",
   "contexto": "inicio <p class=\"tit\"> | alquileres <p class=\"tit\"> | proyectos <p class=\"tit\">"
  },
  {
-  "id": 27,
+  "id": 26,
   "texto": "Luxor Marbella · Property services",
-  "contexto": "inicio <span class=\"kick\">"
+  "contexto": "inicio <span>"
  },
  {
-  "id": 28,
+  "id": 27,
   "texto": "Hacemos fácil tener casa en Marbella",
   "contexto": "inicio </span> | inicio | alquileres"
  },
  {
-  "id": 29,
+  "id": 28,
   "texto": "Llaves en custodia",
   "contexto": "inicio <b>"
  },
  {
-  "id": 30,
+  "id": 29,
   "texto": "Entramos siempre con aviso previo.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 31,
+  "id": 30,
   "texto": "Equipo propio",
   "contexto": "inicio <b>"
  },
  {
-  "id": 32,
+  "id": 31,
   "texto": "Sin subcontratas rotativas.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 33,
+  "id": 32,
   "texto": "Respuesta en un día laborable",
   "contexto": "inicio <b>"
  },
  {
-  "id": 34,
+  "id": 33,
   "texto": "Por teléfono, WhatsApp o correo.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 35,
+  "id": 34,
   "texto": "Parte de cada visita",
   "contexto": "inicio <b>"
  },
  {
-  "id": 36,
+  "id": 35,
   "texto": "Con fotos, estés donde estés.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 37,
+  "id": 36,
   "texto": "Servicios de Luxor Marbella",
   "contexto": "inicio <h2 class=\"d2\">"
  },
  {
-  "id": 38,
+  "id": 37,
   "texto": "Alquileres, project management, reformas y mantenimiento: cuatro líneas de trabajo para una misma vivienda en Marbella. Elige una y recorre los puntos de la foto para ver qué incluye.",
   "contexto": "inicio <p>"
  },
  {
-  "id": 39,
+  "id": 38,
   "texto": "Entradas, salidas y llaves",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 40,
+  "id": 39,
   "texto": "Limpieza y lavandería entre estancias",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 41,
+  "id": 40,
   "texto": "Puesta a punto antes de cada llegada",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 42,
+  "id": 41,
   "texto": "Atención a huéspedes e inquilinos",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 43,
+  "id": 42,
   "texto": "Servicios para tu vivienda en alquiler",
   "contexto": "inicio <a href=\"{{url:alquileres}}\"> | inicio | alquileres"
  },
  {
-  "id": 44,
+  "id": 43,
   "texto": "La parte operativa de una vivienda alquilada en Marbella, vacacional o de larga temporada: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien la ocupa.",
   "contexto": "inicio <p class=\"svc-desc\">"
  },
  {
-  "id": 45,
+  "id": 44,
   "texto": "Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 46,
+  "id": 45,
   "texto": "La casa limpia y la ropa de cama y baño lista para cada llegada.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 47,
+  "id": 46,
   "texto": "Revisamos que todo funcione y reponemos lo necesario antes de cada check-in.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 48,
+  "id": 47,
   "texto": "Respondemos nosotros: a ti y a quien vive o se aloja en tu casa.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 49,
+  "id": 48,
   "texto": "Ver el servicio",
   "contexto": "inicio <a class=\"btn\" href=\"{{url:alquileres}}\"> | inicio <a class=\"btn\" href=\"{{url:proyectos}}\"> | inicio <a class=\"btn\" href=\"{{url:reformas}}\">"
  },
  {
-  "id": 50,
+  "id": 49,
   "texto": "Planificación y presupuesto",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 51,
+  "id": 50,
   "texto": "Coordinación de oficios y proveedores",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 52,
+  "id": 51,
   "texto": "Seguimiento de obra",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 53,
+  "id": 52,
   "texto": "Control de calidad y entrega",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 54,
+  "id": 53,
   "texto": "Project management de reformas y obras",
   "contexto": "inicio <a href=\"{{url:proyectos}}\"> | inicio | alquileres"
  },
  {
-  "id": 55,
+  "id": 54,
   "texto": "Dirigimos el proyecto de tu vivienda en Marbella de principio a fin: plan, presupuesto, oficios y plazos, con una sola persona que responde por todo.",
   "contexto": "inicio <p class=\"svc-desc\">"
  },
  {
-  "id": 56,
+  "id": 55,
   "texto": "Definimos contigo qué se hace, en qué orden y en cuánto tiempo, con un presupuesto cerrado.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 57,
+  "id": 56,
   "texto": "Organizamos a cada oficio y cada pedido de material para que la obra no se pare.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 58,
+  "id": 57,
   "texto": "Supervisamos la obra y te enviamos partes con fotos, estés donde estés.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 59,
+  "id": 58,
   "texto": "Revisamos cada acabado y te entregamos la vivienda limpia y lista.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 60,
+  "id": 59,
   "texto": "Reformas integrales y parciales",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 61,
+  "id": 60,
   "texto": "Reacondicionamiento para alquiler",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 62,
+  "id": 61,
   "texto": "Amueblado, decoración y home staging",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 63,
+  "id": 62,
   "texto": "Limpieza de fin de obra",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 64,
+  "id": 63,
   "texto": "Reformas, home staging y optimización de viviendas",
   "contexto": "inicio <a href=\"{{url:reformas}}\"> | inicio | alquileres"
  },
  {
-  "id": 65,
+  "id": 64,
   "texto": "Reformas en Marbella, grandes o pequeñas, para que la vivienda guste más y se alquile mejor.",
   "contexto": "inicio <p class=\"svc-desc\">"
  },
  {
-  "id": 66,
+  "id": 65,
   "texto": "Desde pequeñas reformas y arreglos hasta la vivienda completa.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 67,
+  "id": 66,
   "texto": "Ponemos la vivienda a punto antes de sacarla al mercado de alquiler.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 68,
+  "id": 67,
   "texto": "Amueblamos y decoramos la vivienda para que luzca en las fotos y en las visitas.",
   "contexto": "inicio <span> | reformas <p> | reformas"
  },
  {
-  "id": 69,
+  "id": 68,
   "texto": "Te la entregamos limpia y lista para entrar.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 70,
+  "id": 69,
   "texto": "Mantenimiento y averías",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 71,
+  "id": 70,
   "texto": "Limpieza y lavandería",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 72,
+  "id": 71,
   "texto": "Llaves e inspecciones",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 73,
+  "id": 72,
   "texto": "Suministros y servicios",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 74,
+  "id": 73,
   "texto": "Gestión administrativa",
   "contexto": "inicio <span> | inicio <b> | inicio"
  },
  {
-  "id": 75,
+  "id": 74,
   "texto": "Mantenimiento, llaves y limpieza para propietarios",
   "contexto": "inicio <a href=\"{{url:mantenimiento}}\"> | inicio | alquileres"
  },
  {
-  "id": 76,
+  "id": 75,
   "texto": "Lo que necesita una casa cuando su dueño no está: que funcione, que esté limpia y que alguien responda por ella.",
   "contexto": "inicio <p class=\"svc-desc\">"
  },
  {
-  "id": 77,
+  "id": 76,
   "texto": "Preventivo y correctivo, con piscina y exteriores: revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 78,
+  "id": 77,
   "texto": "La casa limpia y la ropa de cama y baño lista.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 79,
+  "id": 78,
   "texto": "Custodia y entrega de llaves, e inspección periódica de la vivienda cuando está cerrada.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 80,
+  "id": 79,
   "texto": "Contratación de suministros, alarma, seguro, telefonía e internet, y de servicio doméstico.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 81,
+  "id": 80,
   "texto": "Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.",
   "contexto": "inicio <span>"
  },
  {
-  "id": 82,
+  "id": 81,
   "texto": "Cuidamos tu casa en Marbella los 365 días",
   "contexto": "inicio <h2 class=\"d1\">"
  },
  {
-  "id": 83,
+  "id": 82,
   "texto": "Para propietarios que no viven aquí todo el año: guardamos las llaves y dejamos la casa como si fueras a llegar mañana.",
   "contexto": "inicio <p>"
  },
  {
-  "id": 84,
+  "id": 83,
   "texto": "Conoce Luxor Marbella",
   "contexto": "inicio <a class=\"lnk\" href=\"{{url:nosotros}}\">"
  },
  {
-  "id": 85,
+  "id": 84,
   "texto": "Una sola llamada para toda la casa",
   "contexto": "inicio <h2>"
  },
  {
-  "id": 86,
+  "id": 85,
   "texto": "No coordinas a un fontanero, una limpiadora y tu agencia por separado. Nos coordinamos nosotros.",
   "contexto": "inicio <p>"
  },
  {
-  "id": 87,
+  "id": 86,
   "texto": "Molestias al mínimo,",
   "contexto": "inicio <h3 class=\"d3\">"
  },
  {
-  "id": 88,
+  "id": 87,
   "texto": "casa protegida",
   "contexto": "inicio <br>"
  },
  {
-  "id": 89,
+  "id": 88,
   "texto": "Cubrimos suelos y mobiliario antes de empezar y dejamos la vivienda recogida al terminar.",
   "contexto": "inicio <p>"
  },
  {
-  "id": 90,
+  "id": 89,
   "texto": "Especialistas",
   "contexto": "inicio <h3 class=\"d3\">"
  },
  {
-  "id": 91,
+  "id": 90,
   "texto": "en segunda residencia",
   "contexto": "inicio <br>"
  },
  {
-  "id": 92,
+  "id": 91,
   "texto": "Sabemos qué le pasa a una villa o un apartamento cerrado seis meses: humedad, salitre, desagües y persianas.",
   "contexto": "inicio <p>"
  },
  {
-  "id": 93,
+  "id": 92,
   "texto": "Precio cerrado",
   "contexto": "inicio <h3 class=\"d3\">"
  },
  {
-  "id": 94,
+  "id": 93,
   "texto": "por escrito",
   "contexto": "inicio <br>"
  },
  {
-  "id": 95,
+  "id": 94,
   "texto": "Visitamos, medimos y damos un precio en firme. Cualquier extra se aprueba antes de tocarlo.",
   "contexto": "inicio <p>"
  },
  {
-  "id": 96,
+  "id": 95,
   "texto": "Preguntas frecuentes",
   "contexto": "inicio <h2 class=\"d2\"> | alquileres <h2 class=\"d2\"> | proyectos <h2 class=\"d2\">"
  },
  {
-  "id": 97,
+  "id": 96,
   "texto": "¿Qué es Luxor Marbella?",
   "contexto": "inicio <summary> | inicio"
  },
  {
-  "id": 98,
+  "id": 97,
   "texto": "Luxor Marbella es una empresa de property services y project management de Marbella: cuida, mantiene y reforma las viviendas de propietarios que no viven aquí todo el año, también mientras están alquiladas.",
   "contexto": "inicio <p> | inicio | alquileres <p>"
  },
  {
-  "id": 99,
+  "id": 98,
   "texto": "¿Qué servicios ofrece Luxor Marbella?",
   "contexto": "inicio <summary> | inicio"
  },
  {
-  "id": 100,
+  "id": 99,
   "texto": "Luxor Marbella ofrece cuatro líneas de servicio: servicios para alquileres, project management de reformas y obras, reformas y home staging, y mantenimiento y limpieza de viviendas.",
   "contexto": "inicio <p> | inicio"
  },
  {
-  "id": 101,
+  "id": 100,
   "texto": "¿Luxor Marbella es una inmobiliaria o una agencia de alquiler?",
   "contexto": "inicio <summary> | inicio | alquileres <summary>"
  },
  {
-  "id": 102,
+  "id": 101,
   "texto": "No. Luxor Marbella no publica anuncios en Airbnb, Booking, Idealista ni en otros portales, no busca huéspedes ni inquilinos y no fija los precios del alquiler. Se ocupa de la parte operativa de la vivienda alquilada (entradas y salidas, limpieza, puesta a punto y atención) con las reservas y los contratos que consigan el propietario o su agencia.",
   "contexto": "inicio <p> | inicio | alquileres <p>"
  },
  {
-  "id": 103,
+  "id": 102,
   "texto": "¿Qué horario tenéis y en qué idiomas atendéis?",
   "contexto": "inicio <summary> | inicio"
  },
  {
-  "id": 104,
-  "texto": "Atendemos todos los días de 9:00 a 20:00, en español y en inglés, por teléfono y WhatsApp (+34 603 60 55 43) o por correo (info@luxormarbella.com).",
+  "id": 103,
+  "texto": "Atendemos todos los días de 9:00 a 20:00, en español y en inglés, por teléfono y WhatsApp (+34 655 67 36 68) o por correo (info@luxormarbella.com).",
   "contexto": "inicio <p> | inicio"
  },
  {
-  "id": 105,
+  "id": 104,
   "texto": "¿En qué zonas trabaja Luxor Marbella?",
   "contexto": "inicio <summary> | inicio"
  },
  {
-  "id": 106,
+  "id": 105,
   "texto": "Luxor Marbella trabaja en Marbella, Puerto Banús, Nueva Andalucía, San Pedro de Alcántara, Benahavís, Estepona, Elviria y Las Chapas, y Sotogrande.",
   "contexto": "inicio <p> | inicio | mantenimiento <p>"
  },
  {
-  "id": 107,
+  "id": 106,
   "texto": "¿Puedo contratar un solo servicio?",
   "contexto": "inicio <summary> | inicio"
  },
  {
-  "id": 108,
+  "id": 107,
   "texto": "Sí. Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.",
   "contexto": "inicio <p> | inicio"
  },
  {
-  "id": 109,
+  "id": 108,
   "texto": "¿Tengo que estar en Marbella?",
   "contexto": "inicio <summary> | inicio"
  },
  {
-  "id": 110,
+  "id": 109,
   "texto": "No. Guardamos las llaves, entramos con aviso previo y te contamos lo que hacemos después de cada visita.",
   "contexto": "inicio <p> | inicio"
  },
  {
-  "id": 111,
+  "id": 110,
   "texto": "¿Cómo pido presupuesto?",
   "contexto": "inicio <summary> | inicio"
  },
  {
-  "id": 112,
-  "texto": "Desde el formulario de la web, por WhatsApp o llamando al +34 603 60 55 43.",
+  "id": 111,
+  "texto": "Desde el formulario de la web, por WhatsApp o llamando al +34 655 67 36 68.",
   "contexto": "inicio <p> | inicio"
  },
  {
-  "id": 113,
+  "id": 112,
   "texto": "¿Empezamos por tu casa?",
   "contexto": "inicio <h2 class=\"d2\"> | alquileres <h2 class=\"d2\"> | proyectos <h2 class=\"d2\">"
+ },
+ {
+  "id": 113,
+  "texto": "Servicios",
+  "contexto": "inicio <p class=\"tit\"> | inicio | alquileres atributo aria-label"
  },
  {
   "id": 114,
@@ -671,7 +671,7 @@
  },
  {
   "id": 135,
-  "texto": "o llámanos al +34 603 60 55 43.",
+  "texto": "o llámanos al +34 655 67 36 68.",
   "contexto": "inicio texto de site.js (error_despues) | alquileres texto de site.js (error_despues) | proyectos texto de site.js (error_despues)"
  },
  {
@@ -716,7 +716,7 @@
  },
  {
   "id": 144,
-  "texto": "Property services en Marbella para propietarios que no viven aquí: llaves, mantenimiento, reformas y entradas y salidas de alquileres. Tel. +34 603 60 55 43.",
+  "texto": "Property services en Marbella para propietarios que no viven aquí: llaves, mantenimiento, reformas y entradas y salidas de alquileres. Tel. +34 655 67 36 68.",
   "contexto": "inicio"
  },
  {
@@ -1446,7 +1446,7 @@
  },
  {
   "id": 290,
-  "texto": "Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al +34 603 60 55 43.",
+  "texto": "Para enviar el formulario hace falta JavaScript. Escríbenos por WhatsApp o llámanos al +34 655 67 36 68.",
   "contexto": "presupuesto <p class=\"quiz-error quiz-sinjs\">"
  },
  {
@@ -1472,12 +1472,12 @@
  {
   "id": 295,
   "texto": "Enviar por WhatsApp",
-  "contexto": "presupuesto <a class=\"btn btn-borde\" id=\"quiz-wa\" href=\"https://wa.me/34603605543\" target=\"_blank\" rel=\"noopener\">"
+  "contexto": "presupuesto <a class=\"btn btn-borde\" id=\"quiz-wa\" href=\"https://wa.me/34655673668\" target=\"_blank\" rel=\"noopener\">"
  },
  {
   "id": 296,
-  "texto": "Llamar al +34 603 60 55 43",
-  "contexto": "presupuesto <a class=\"lnk\" href=\"tel:+34603605543\">"
+  "texto": "Llamar al +34 655 67 36 68",
+  "contexto": "presupuesto <a class=\"lnk\" href=\"tel:+34655673668\">"
  },
  {
   "id": 297,

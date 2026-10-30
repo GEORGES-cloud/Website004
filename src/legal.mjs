@@ -12,7 +12,7 @@ export const LEGAL = {
     entrada: 'Información general sobre este sitio web y las condiciones para usarlo.',
     html: `      <h2>Titular del sitio</h2>
       <p>El sitio web www.luxormarbella.com pertenece a Luxor Marbella.</p>
-      <p>Contacto: <a href="mailto:${N.email}">${N.email}</a> · <a href="tel:${N.telefono}">+34 ${N.telefonoVisible}</a></p>
+      <p>Contacto: <a href="mailto:${N.email}">${N.email}</a> · <a href="tel:${N.telefono}">${N.telefonoIntl}</a></p>
 ${N.direccionTexto ? `      <p>Oficina: ${N.direccionTexto}</p>
 ` : ''}      <h2>Objeto</h2>
       <p>El sitio informa sobre los servicios de Luxor Marbella —property services y project management: alquileres, reformas y mantenimiento de viviendas en Marbella y la Costa del Sol— y permite pedir presupuesto.</p>
@@ -32,7 +32,7 @@ ${N.direccionTexto ? `      <p>Oficina: ${N.direccionTexto}</p>
     titulo: 'Política de privacidad',
     entrada: 'Qué datos personales recogemos en esta web, para qué los usamos y cómo puedes ejercer tus derechos.',
     html: `      <h2>Quién es el responsable</h2>
-      <p>El responsable del tratamiento es Luxor Marbella. Puedes escribirnos a <a href="mailto:${N.email}">${N.email}</a> o llamarnos al <a href="tel:${N.telefono}">+34 ${N.telefonoVisible}</a>.</p>
+      <p>El responsable del tratamiento es Luxor Marbella. Puedes escribirnos a <a href="mailto:${N.email}">${N.email}</a> o llamarnos al <a href="tel:${N.telefono}">${N.telefonoIntl}</a>.</p>
       <h2>Qué datos recogemos</h2>
       <p>Solo los que tú nos das al pedir presupuesto: nombre, teléfono, correo electrónico si lo indicas, la zona de la vivienda, el servicio que te interesa, para cuándo lo necesitas, lo que quieras contarnos en el mensaje y si aceptas o no recibir comunicaciones comerciales. Con la solicitud nos llega también el idioma en que has usado la web.</p>
       <p>Si nos escribes por WhatsApp, por correo o nos llamas, trataremos los datos que nos facilites por ese medio.</p>

@@ -4,10 +4,10 @@
 
 export const NEGOCIO = {
   nombre: 'Luxor Marbella',
-  telefono: '+34603605543',
-  telefonoVisible: '603 60 55 43',          // solo para el botón de la cabecera, donde no cabe el prefijo
-  telefonoIntl: '+34 603 60 55 43',         // el formato que se muestra en el resto del sitio
-  whatsapp: '34603605543',
+  telefono: '+34655673668',
+  telefonoVisible: '655 67 36 68',          // sin prefijo; la web muestra siempre telefonoIntl
+  telefonoIntl: '+34 655 67 36 68',         // el formato que se muestra en el resto del sitio
+  whatsapp: '34655673668',
   email: 'info@luxormarbella.com',
   zonas: ['Marbella', 'Puerto Banús', 'Nueva Andalucía', 'San Pedro de Alcántara', 'Benahavís', 'Estepona', 'Elviria y Las Chapas', 'Sotogrande'],
 
@@ -200,9 +200,9 @@ export const FAQ = [
   { q: '¿Qué es Luxor Marbella?', a: 'Luxor Marbella es una empresa de property services y project management de Marbella: cuida, mantiene y reforma las viviendas de propietarios que no viven aquí todo el año, también mientras están alquiladas.' },
   { q: '¿Qué servicios ofrece Luxor Marbella?', a: 'Luxor Marbella ofrece cuatro líneas de servicio: servicios para alquileres, project management de reformas y obras, reformas y home staging, y mantenimiento y limpieza de viviendas.' },
   NO_AGENCIA,
-  { q: '¿Qué horario tenéis y en qué idiomas atendéis?', a: 'Atendemos todos los días de 9:00 a 20:00, en español y en inglés, por teléfono y WhatsApp (+34 603 60 55 43) o por correo (info@luxormarbella.com).' },
+  { q: '¿Qué horario tenéis y en qué idiomas atendéis?', a: 'Atendemos todos los días de 9:00 a 20:00, en español y en inglés, por teléfono y WhatsApp (+34 655 67 36 68) o por correo (info@luxormarbella.com).' },
   { q: '¿En qué zonas trabaja Luxor Marbella?', a: ZONAS_FRASE },
   { q: '¿Puedo contratar un solo servicio?', a: 'Sí. Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.' },
   { q: '¿Tengo que estar en Marbella?', a: 'No. Guardamos las llaves, entramos con aviso previo y te contamos lo que hacemos después de cada visita.' },
-  { q: '¿Cómo pido presupuesto?', a: 'Desde el formulario de la web, por WhatsApp o llamando al +34 603 60 55 43.' },
+  { q: '¿Cómo pido presupuesto?', a: 'Desde el formulario de la web, por WhatsApp o llamando al +34 655 67 36 68.' },
 ];
