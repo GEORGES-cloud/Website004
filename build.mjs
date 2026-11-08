@@ -305,7 +305,7 @@ const conHuella = (f) => {
   return fotos.get(f);
 };
 // Código de cada línea de servicio, como el de una lámina de plano: la inicial de su nombre corto
-// en el idioma de la página y su número de orden (A01 Alquileres, P02 Proyectos… / R01 Rentals…).
+// en el idioma de la página y su número de orden (P01 Proyectos, R02 Reformas, M03 Mantenimiento).
 const codigo = (l, t, id) => {
   const k = SERVICIOS.findIndex((s) => s.id === id);
   if (k < 0) throw new Error(`Código de un servicio que no existe: ${id}`);
@@ -329,7 +329,7 @@ for (const l of activos) {
       .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)))
       .replace(/\{\{num:([\w-]+)\}\}/g, (todo, id) => codigo(l, t, id))
       .replace(/<(h[1-3])\b[^>]*>[\s\S]*?<\/\1>/g, sinCorte);
-    html = `<!doctype html>\n<html lang="${l.code}">\n<head>\n${cabeza(l, p, t, css, js)}\n</head>\n<body>\n${html}\n</body>\n</html>\n`;
+    html = `<!doctype html>\n<html lang="${l.code}">\n<head>\n${cabeza(l, p, t, css, js)}\n</head>\n<body data-pagina="${p.id}">\n${html}\n</body>\n</html>\n`;
     if (html.includes('{{')) throw new Error(`Quedan marcas sin resolver en ${p.id} (${l.code})`);
     html = html.replace(/\/photos\/([\w.-]+\.(?:jpe?g|png|webp|mp4|webm))/g, (todo, f) => `/photos/${conHuella(f)}`);
     if (!p.oculta) {
@@ -372,7 +372,7 @@ ${activos.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.code}" href=
 // Temporal (hasta diciembre de 2026): las URL antiguas que redirigen con 301 (MOVIDAS en server.mjs).
 // Se envía a mano en Search Console y Bing para que las vuelvan a rastrear y dejen de enseñar la versión
 // vieja (anuncios en Airbnb e Idealista); IndexNow las avisa en cada despliegue. No va en robots.txt.
-const movidas = ['/servicios/gestion-alquileres/', ...activos.filter((a) => a.code !== 'es').map((a) => `/${a.code}/services/property-management/`)];
+const movidas = ['/servicios/gestion-alquileres/', '/servicios/alquileres/', ...activos.filter((a) => a.code !== 'es').flatMap((a) => [`/${a.code}/services/property-management/`, `/${a.code}/services/rentals/`])];
 escribe(join(pub, 'sitemap-movidas.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${movidas.map((u) => `  <url><loc>${SITE}${u}</loc></url>`).join('\n')}

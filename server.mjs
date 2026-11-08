@@ -61,10 +61,11 @@ app.use((req, res, next) => {
 
 // Páginas que han cambiado de dirección → 301 a la nueva (arrastrando la query), para no perder
 // enlaces ni lo que Google ya tenga indexado. 2026-10-12: "Gestión de propiedades y alquileres"
-// pasó a "Servicios para alquileres" al presentarse Luxor como property services.
+// pasó a "Servicios para alquileres" al presentarse Luxor como property services. 2026-11-08: la página de
+// alquileres se quitó y su contenido pasó a Mantenimiento (entradas, salidas y limpieza entre estancias).
 const MOVIDAS = [
-  [/^\/servicios\/gestion-alquileres\/?$/, '/servicios/alquileres/'],
-  [/^\/(en|fr|de|sv|ru)\/services\/property-management\/?$/, '/$1/services/rentals/'],
+  [/^\/servicios\/(gestion-alquileres|alquileres)\/?$/, '/servicios/mantenimiento-limpieza/'],
+  [/^\/(en|fr|de|sv|ru)\/services\/(property-management|rentals)\/?$/, '/$1/services/maintenance-cleaning/'],
 ];
 app.use((req, res, next) => {
   if (req.method === 'GET' || req.method === 'HEAD') {

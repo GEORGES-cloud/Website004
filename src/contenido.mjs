@@ -35,7 +35,7 @@ export const ZONAS_FRASE = 'Luxor Marbella trabaja en Marbella, Puerto Banús, N
 // (anuncios en Airbnb e Idealista, precios): estas frases lo desmienten en la FAQ de la portada y de
 // alquileres, en el JSON-LD (disambiguatingDescription) y en llms.txt.
 export const NO_ES = 'Luxor Marbella no es una inmobiliaria ni una agencia de alquiler: no publica anuncios, no busca huéspedes ni inquilinos y no fija precios.';
-const NO_AGENCIA = { q: '¿Luxor Marbella es una inmobiliaria o una agencia de alquiler?', a: 'No. Luxor Marbella no publica anuncios en Airbnb, Booking, Idealista ni en otros portales, no busca huéspedes ni inquilinos y no fija los precios del alquiler. Se ocupa de la parte operativa de la vivienda alquilada (entradas y salidas, limpieza, puesta a punto y atención) con las reservas y los contratos que consigan el propietario o su agencia.' };
+const NO_AGENCIA = { q: '¿Luxor Marbella es una inmobiliaria o una agencia de alquiler?', a: 'No. Luxor Marbella no publica anuncios en Airbnb, Booking ni Idealista, no busca huéspedes ni inquilinos y no fija precios. Se ocupa de la parte operativa del alquiler (entradas y salidas, limpieza y atención) con las reservas del propietario o de su agencia.' };
 
 // Las líneas de servicio. Alimentan el explorador de la portada, el menú, el pie,
 // el cuestionario de presupuesto y la página propia de cada servicio.
@@ -46,38 +46,6 @@ const NO_AGENCIA = { q: '¿Luxor Marbella es una inmobiliaria o una agencia de a
 // conjunto de servicios que necesita una vivienda alquilada, que se contratan juntos o por separado.
 // Solo la parte operativa: Luxor no busca huéspedes ni inquilinos (no publica anuncios ni lleva captación).
 export const SERVICIOS = [
-  {
-    id: 'alquileres',
-    corto: 'Alquileres',
-    menu: 'Servicios para alquileres',
-    kicker: 'Property services · vacacional y larga temporada',
-    titulo: 'Servicios para tu vivienda en alquiler',
-    resumen: 'La parte operativa de una vivienda alquilada en Marbella, vacacional o de larga temporada: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien la ocupa.',
-    foto: 'svc-alquileres.jpg',
-    alt: 'Villa blanca contemporánea con grandes ventanales iluminados al anochecer',
-    flip: false,
-    h1: 'Check-in, check-out y limpieza para alquileres en Marbella',
-    entrada: 'Nos ocupamos de la parte operativa de tu alquiler: entradas y salidas, limpieza entre estancias, puesta a punto y atención a quien ocupa la vivienda.',
-    metaTitle: 'Check-in y limpieza para alquileres en Marbella | Luxor Marbella',
-    metaDesc: 'Entradas y salidas, llaves, limpieza y lavandería entre estancias y atención a huéspedes en Marbella. Tú o tu agencia lleváis el anuncio y las reservas.',
-    incluye: [
-      { n: 'Entradas, salidas y llaves', t: 'Recibimos a huéspedes e inquilinos, entregamos las llaves y revisamos la casa a la salida.', d: 'Recibimos a huéspedes e inquilinos y les entregamos las llaves. Cuando se van, las recogemos y revisamos la vivienda.', p: [30, 82, 30, 82, false] },
-      { n: 'Limpieza y lavandería entre estancias', t: 'La casa limpia y la ropa de cama y baño lista para cada llegada.', d: 'Limpiamos la vivienda y nos ocupamos de la lavandería entre una estancia y la siguiente, para que todo esté listo para cada llegada.', p: [50, 71, 50, 71, false] },
-      { n: 'Puesta a punto antes de cada llegada', t: 'Revisamos que todo funcione y reponemos lo necesario antes de cada check-in.', d: 'Antes de cada llegada revisamos que todo funcione y reponemos lo necesario, para que la vivienda esté a punto.', p: [73, 34, 73, 34, true] },
-      { n: 'Atención a huéspedes e inquilinos', t: 'Respondemos nosotros: a ti y a quien vive o se aloja en tu casa.', d: 'Somos el contacto de quien vive o se aloja en tu casa, y también el tuyo. Si algo falla, lo resolvemos con nuestro equipo de mantenimiento.', p: [22, 46, 22, 46, false] },
-    ],
-    secciones: [
-      { h: 'Vacacional o de larga temporada', p: ['Trabajamos con las dos modalidades y adaptamos el servicio a cada una: en el alquiler vacacional, las entradas, las salidas y la limpieza entre estancias; en el de larga temporada, la atención al inquilino y el cuidado de la vivienda.'] },
-      { h: 'Contratas solo lo que necesitas', p: ['Puedes encargarnos toda la parte operativa del alquiler o solo una parte: las entradas y salidas, la limpieza o la atención a huéspedes. Lo que haga falta en la casa lo resolvemos con nuestro propio servicio de <a href="{{url:mantenimiento}}">mantenimiento y limpieza</a>, así que no tienes que coordinar a nadie.'] },
-    ],
-    faq: [
-      { q: '¿Trabajáis con alquiler de larga temporada o solo vacacional?', a: 'Con los dos. Damos servicio a viviendas en alquiler vacacional y de larga temporada.' },
-      NO_AGENCIA,
-      { q: '¿Trabajáis con Airbnb, Booking.com o con mi agencia?', a: 'Sí. Trabajamos con las reservas que consigas tú o tu agencia, por el canal que sea. El anuncio, el precio y las reservas son cosa tuya o de tu agencia; nosotros nos ocupamos de la casa y de quien la ocupa.' },
-      { q: '¿Puedo contratar solo la limpieza o las entradas y salidas?', a: 'Sí. Puedes encargarnos toda la parte operativa del alquiler o solo la parte que necesites.' },
-      { q: '¿Tengo que estar en Marbella para alquilar mi casa?', a: 'No. Guardamos las llaves y nos ocupamos de la vivienda y de quien la ocupa. Tú hablas con una sola persona.' },
-    ],
-  },
   {
     id: 'proyectos',
     corto: 'Proyectos',
@@ -91,24 +59,24 @@ export const SERVICIOS = [
     alt: 'Baño terminado con encimera de piedra, espejo en arco y ducha de travertino',
     flip: false,
     h1: 'Project management de reformas y obras en Marbella',
-    entrada: 'Planificamos, coordinamos y supervisamos el proyecto de tu vivienda de principio a fin, aunque tú no estés en Marbella.',
+    entrada: 'Planificamos, coordinamos y supervisamos tu proyecto de principio a fin, aunque no estés en Marbella.',
     metaTitle: 'Project management de reformas en Marbella | Luxor Marbella',
     metaDesc: 'Project management de reformas y obras en Marbella: planificación, presupuesto cerrado, coordinación de oficios y proveedores, seguimiento con partes y entrega.',
     incluye: [
-      { n: 'Planificación y presupuesto', t: 'Definimos contigo qué se hace, en qué orden y en cuánto tiempo, con un presupuesto cerrado.', d: 'Antes de empezar definimos contigo qué se va a hacer, en qué orden y en cuánto tiempo, y te damos un presupuesto cerrado.', p: [48, 37, 44, 37, false] },
-      { n: 'Coordinación de oficios y proveedores', t: 'Organizamos a cada oficio y cada pedido de material para que la obra no se pare.', d: 'Organizamos a cada oficio y cada pedido de material para que la obra avance sin tiempos muertos.', p: [80, 34, 86, 34, true] },
-      { n: 'Seguimiento de obra', t: 'Supervisamos la obra y te enviamos partes con fotos, estés donde estés.', d: 'Supervisamos la obra en persona y te enviamos partes con fotos de cómo avanza y de lo que queda pendiente, estés donde estés.', p: [16, 30, 10, 30, false] },
-      { n: 'Control de calidad y entrega', t: 'Revisamos cada acabado y te entregamos la vivienda limpia y lista.', d: 'Revisamos cada acabado antes de darlo por terminado y te entregamos la vivienda limpia y lista para usar o alquilar.', p: [55, 64, 58, 64, false] },
+      { n: 'Planificación y presupuesto', t: 'Definimos contigo qué se hace, en qué orden y en cuánto tiempo, con un presupuesto cerrado.', d: 'Qué se hace, en qué orden y en cuánto tiempo, con presupuesto cerrado.', p: [48, 37, 44, 37, false] },
+      { n: 'Coordinación de oficios y proveedores', t: 'Organizamos a cada oficio y cada pedido de material para que la obra no se pare.', d: 'Oficios y materiales coordinados para que la obra no se pare.', p: [80, 34, 86, 34, true] },
+      { n: 'Seguimiento de obra', t: 'Supervisamos la obra y te enviamos partes con fotos, estés donde estés.', d: 'Supervisión en persona y partes con fotos, estés donde estés.', p: [16, 30, 10, 30, false] },
+      { n: 'Control de calidad y entrega', t: 'Revisamos cada acabado y te entregamos la vivienda limpia y lista.', d: 'Revisamos cada acabado y te entregamos la vivienda limpia, lista para usar o alquilar.', p: [55, 64, 58, 64, false] },
     ],
     secciones: [
-      { h: 'Una sola persona al frente', p: ['Un proyecto reúne a muchos oficios y proveedores. Nosotros los coordinamos y tú hablas con una sola persona, que responde por todo el proyecto.'] },
-      { h: 'Para propietarios que no están en Marbella', p: ['Te mantenemos al día con partes y fotos, y solo te consultamos lo que de verdad necesita tu decisión. La obra la puede hacer nuestro propio <a href="{{url:reformas}}">equipo de reformas</a> y, al terminar, podemos encargarnos también del <a href="{{url:mantenimiento}}">mantenimiento</a> o de los <a href="{{url:alquileres}}">servicios para el alquiler</a>.'] },
+      { h: 'Una sola persona al frente', p: ['Muchos oficios y proveedores, y tú hablas con una sola persona que responde por todo.'] },
+      { h: 'Para propietarios que no están en Marbella', p: ['Solo te consultamos lo que necesita tu decisión. La obra la puede hacer nuestro propio <a href="{{url:reformas}}">equipo de reformas</a> y, al terminar, nos encargamos del <a href="{{url:mantenimiento}}">mantenimiento</a>, también si la alquilas.'] },
     ],
     faq: [
-      { q: '¿Qué es el project management de una reforma?', a: 'Es dirigir el proyecto de principio a fin: planificarlo, presupuestarlo, coordinar a los oficios y proveedores, supervisar la obra y entregarla terminada.' },
-      { q: '¿Tengo que estar en Marbella durante la obra?', a: 'No. Supervisamos la obra por ti y te enviamos partes con fotos de cómo avanza.' },
-      { q: '¿Puedo contratar solo el project management?', a: 'Sí. Puedes contratarlo solo o combinarlo con nuestros servicios de reformas, mantenimiento y alquiler.' },
-      { q: '¿El presupuesto es cerrado?', a: 'Sí. Antes de empezar definimos qué se hace, en qué orden y en cuánto tiempo, con un precio cerrado por escrito; cualquier extra se aprueba antes de hacerlo.' },
+      { q: '¿Qué es el project management de una reforma?', a: 'Dirigir la reforma de principio a fin: plan, presupuesto, oficios, obra y entrega.' },
+      { q: '¿Tengo que estar en Marbella durante la obra?', a: 'No. Supervisamos la obra por ti y te enviamos partes con fotos.' },
+      { q: '¿Puedo contratar solo el project management?', a: 'Sí. Solo o junto a reformas, mantenimiento y alquiler.' },
+      { q: '¿El presupuesto es cerrado?', a: 'Sí. Precio cerrado por escrito; cualquier extra se aprueba antes.' },
     ],
   },
   {
@@ -122,23 +90,23 @@ export const SERVICIOS = [
     alt: 'Salón en tonos crema con mesa de travertino',
     flip: false,
     h1: 'Reformas y home staging en Marbella',
-    entrada: 'Reformas integrales, parciales y pequeñas de villas y apartamentos, amueblado y decoración. Dejamos la vivienda lista para vivirla o para sacarla al mercado.',
+    entrada: 'Reformas integrales, parciales y pequeñas, amueblado y decoración. Tu vivienda, lista para vivirla o para el mercado.',
     metaTitle: 'Reformas integrales y home staging en Marbella | Luxor Marbella',
     metaDesc: 'Reformas integrales, parciales y pequeñas en Marbella, reacondicionamiento para alquiler, amueblado, decoración, home staging y limpieza de fin de obra.',
     incluye: [
-      { n: 'Reformas integrales y parciales', t: 'Desde pequeñas reformas y arreglos hasta la vivienda completa.', d: 'Desde pequeñas reformas y arreglos hasta la vivienda completa: baños, cocinas y actualizaciones puntuales.', p: [62, 22, 60, 20, false] },
-      { n: 'Reacondicionamiento para alquiler', t: 'Ponemos la vivienda a punto antes de sacarla al mercado de alquiler.', d: 'Ponemos la vivienda a punto antes de sacarla al mercado de alquiler: reparamos y renovamos lo que haga falta.', p: [50, 56, 50, 56, false] },
-      { n: 'Amueblado, decoración y home staging', t: 'Amueblamos y decoramos la vivienda para que luzca en las fotos y en las visitas.', d: 'Amueblamos y decoramos la vivienda para que luzca en las fotos y en las visitas.', p: [79, 42, 80, 40, true] },
-      { n: 'Limpieza de fin de obra', t: 'Te la entregamos limpia y lista para entrar.', d: 'Al terminar limpiamos a fondo y te entregamos la vivienda lista para entrar.', p: [68, 86, 62, 86, false] },
+      { n: 'Reformas integrales y parciales', t: 'Desde pequeñas reformas y arreglos hasta la vivienda completa.', d: 'Del pequeño arreglo a la vivienda completa.', p: [62, 22, 60, 20, false] },
+      { n: 'Reacondicionamiento para alquiler', t: 'Ponemos la vivienda a punto antes de sacarla al mercado de alquiler.', d: 'A punto antes de salir al mercado de alquiler.', p: [50, 56, 50, 56, false] },
+      { n: 'Amueblado, decoración y home staging', t: 'Para que luzca en las fotos y en las visitas.', d: 'Para que luzca en las fotos y en las visitas.', p: [79, 42, 80, 40, true] },
+      { n: 'Limpieza de fin de obra', t: 'Te la entregamos limpia y lista para entrar.', d: 'Te la entregamos limpia y lista para entrar.', p: [68, 86, 62, 86, false] },
     ],
     secciones: [
-      { h: 'De una pequeña reforma a la vivienda entera', p: ['No hace falta una obra grande para llamarnos. Hacemos arreglos y pequeñas reformas igual que reformas parciales e integrales.', 'Si el proyecto es grande, también lo dirigimos de principio a fin con nuestro servicio de <a href="{{url:proyectos}}">project management</a>.'] },
-      { h: 'Pensado para alquilar mejor', p: ['Si la vivienda va a alquilarse, la reforma y el amueblado se deciden con ese fin: que guste, que aguante el uso y que sea fácil de mantener. Después podemos encargarnos también de los <a href="{{url:alquileres}}">servicios para el alquiler</a>.'] },
+      { h: 'De una pequeña reforma a la vivienda entera', p: ['No hace falta una obra grande para llamarnos.', 'Si la obra es grande, la dirigimos con nuestro servicio de <a href="{{url:proyectos}}">project management</a>.'] },
+      { h: 'Pensado para alquilar mejor', p: ['Si va a alquilarse, reformamos y amueblamos para que guste, aguante el uso y sea fácil de mantener. Y si la alquilas, llevamos también las <a href="{{url:mantenimiento}}">entradas, salidas y limpieza</a>.'] },
     ],
     faq: [
-      { q: '¿Hacéis pequeñas reformas?', a: 'Sí. Hacemos pequeñas reformas y arreglos, además de reformas parciales e integrales.' },
-      { q: '¿Amuebláis la vivienda?', a: 'Sí. Nos ocupamos del amueblado, la decoración y el home staging.' },
-      { q: '¿Quién limpia al terminar la obra?', a: 'Nosotros. Hacemos la limpieza de fin de obra y entregamos la vivienda lista para entrar.' },
+      { q: '¿Hacéis pequeñas reformas?', a: 'Sí, y también reformas parciales e integrales.' },
+      { q: '¿Amuebláis la vivienda?', a: 'Sí: amueblado, decoración y home staging.' },
+      { q: '¿Quién limpia al terminar la obra?', a: 'Nosotros, y entregamos la vivienda lista para entrar.' },
     ],
   },
   {
@@ -154,27 +122,30 @@ export const SERVICIOS = [
     alt: 'Salón blanco con patio interior y un árbol',
     flip: false,
     h1: 'Mantenimiento de viviendas y custodia de llaves en Marbella',
-    entrada: 'Custodia de llaves, revisiones, averías, piscina, limpieza y gestiones de tu villa o apartamento, para que esté a punto aunque tú no estés.',
+    entrada: 'Custodia de llaves, revisiones, averías, piscina, limpieza y gestiones de tu villa o apartamento, también mientras está alquilado.',
     metaTitle: 'Mantenimiento de viviendas y llaves en Marbella | Luxor Marbella',
-    metaDesc: 'Custodia de llaves y revisiones con la casa cerrada, mantenimiento, piscina y jardín, limpieza y lavandería en Marbella, con parte y fotos tras cada visita.',
+    metaDesc: 'Llaves, revisiones, mantenimiento, piscina y jardín, limpieza y lavandería en Marbella. Y si la alquilas: check-in, check-out y limpieza entre estancias.',
     incluye: [
-      { n: 'Mantenimiento y averías', t: 'Preventivo y correctivo, con piscina y exteriores: revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', d: 'Mantenimiento preventivo y correctivo, con piscina y exteriores. Revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', p: [82, 60, 82, 62, true] },
-      { n: 'Limpieza y lavandería', t: 'La casa limpia y la ropa de cama y baño lista.', d: 'Limpieza de la vivienda y lavandería, para que la casa y la ropa de cama y baño estén listas cuando llegues.', p: [50, 70, 48, 72, false] },
-      { n: 'Llaves e inspecciones', t: 'Custodia y entrega de llaves, e inspección periódica de la vivienda cuando está cerrada.', d: 'Custodiamos y entregamos las llaves, e inspeccionamos la vivienda de forma periódica cuando está cerrada.', p: [52, 30, 44, 30, false] },
-      { n: 'Suministros y servicios', t: 'Contratación de suministros, alarma, seguro, telefonía e internet, y de servicio doméstico.', d: 'Contratamos por ti los suministros, la alarma, el seguro, la telefonía e internet, y el servicio doméstico.', p: [63, 42, 66, 44, false] },
-      { n: 'Gestión administrativa', t: 'Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.', d: 'Gestionamos el pago de los impuestos de la vivienda y te representamos en las reuniones de la comunidad de propietarios.', p: [86, 36, 84, 34, true] },
+      { n: 'Mantenimiento y averías', t: 'Preventivo y correctivo, con piscina y exteriores: revisamos la vivienda, gestionamos cada avería y colocamos y recogemos los muebles de exterior.', d: 'Preventivo y correctivo, con piscina y jardín. Gestionamos cada avería.', p: [82, 60, 82, 62, true] },
+      { n: 'Limpieza y lavandería', t: 'La casa limpia y la ropa de cama y baño lista.', d: 'La casa limpia y la ropa de cama y baño lista cuando llegues.', p: [50, 70, 48, 72, false] },
+      { n: 'Llaves e inspecciones', t: 'Custodia y entrega de llaves, e inspección periódica de la vivienda cuando está cerrada.', d: 'Custodia y entrega de llaves. Inspecciones periódicas con la casa cerrada.', p: [52, 30, 44, 30, false] },
+      { n: 'Suministros y servicios', t: 'Contratación de suministros, alarma, seguro, telefonía e internet, y de servicio doméstico.', d: 'Suministros, alarma, seguro, telefonía, internet y servicio doméstico: lo contratamos por ti.', p: [63, 42, 66, 44, false] },
+      { n: 'Entradas y salidas de alquileres', t: 'Check-in, check-out, llaves y limpieza entre estancias, vacacional o de larga temporada.', d: 'Si la alquilas: check-in, check-out, llaves, limpieza entre estancias y atención a huéspedes e inquilinos.', p: [24, 62, 22, 62, false] },
+      { n: 'Gestión administrativa', t: 'Gestión del pago de impuestos de la vivienda y representación en las reuniones de la comunidad de propietarios.', d: 'Pago de impuestos de la vivienda y representación en la comunidad de propietarios.', p: [86, 36, 84, 34, true] },
     ],
     secciones: [
-      { h: 'Para propietarios que no viven aquí todo el año', p: ['Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.', 'Si además la alquilas mientras no estás, también nos encargamos de los <a href="{{url:alquileres}}">servicios para el alquiler</a>.', ZONAS_FRASE] },
-      { h: 'Un parte después de cada visita', p: ['Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.', 'Si en una visita vemos algo que conviene arreglar o renovar, te pasamos presupuesto antes de tocar nada y lo hacemos con nuestro <a href="{{url:reformas}}">servicio de reformas</a>.'] },
+      { h: 'Para propietarios que no viven aquí todo el año', p: ['Entramos con aviso previo y dejamos la casa como si llegaras mañana.', ZONAS_FRASE] },
+      { h: 'También si la alquilas', p: ['Vacacional o de larga temporada, con las reservas que consigas tú o tu agencia.'] },
+      { h: 'Un parte después de cada visita', p: ['Lo hecho, el material empleado y lo pendiente, con fotos.', 'Si hay algo que arreglar, te pasamos presupuesto antes de tocar nada y lo hacemos con nuestro <a href="{{url:reformas}}">servicio de reformas</a>.'] },
     ],
     faq: [
       { q: '¿Os ocupáis también de la piscina y el jardín?', a: 'Sí. El mantenimiento incluye piscina y exteriores.' },
-      { q: '¿Guardáis las llaves de la vivienda?', a: 'Sí. Custodiamos las llaves y las entregamos a quien tú nos indiques.' },
+      { q: '¿Guardáis las llaves de la vivienda?', a: 'Sí, y las entregamos a quien nos indiques.' },
       { q: '¿Podéis contratar la alarma, el seguro o internet?', a: 'Sí. Nos encargamos de contratar los suministros, la alarma, el seguro, la telefonía e internet.' },
-      { q: '¿Qué recibo después de cada visita?', a: 'Un parte con lo que se ha hecho, el material empleado y lo que queda pendiente, con fotos.' },
-      { q: '¿Preparáis la casa antes de que llegue?', a: 'Sí. La limpiamos, dejamos lista la ropa de cama y baño y colocamos los muebles de exterior, para que esté a punto el día que llegues.' },
-      { q: '¿Qué pasa si veis algo que hay que arreglar?', a: 'Te pasamos presupuesto antes de tocar nada y, si lo apruebas, lo hacemos con nuestro equipo.' },
+      { q: '¿Preparáis la casa antes de que llegue?', a: 'Sí. Limpieza, ropa de cama y baño y muebles de exterior, listos el día que llegues.' },
+      { q: '¿Trabajáis con alquiler de larga temporada o solo vacacional?', a: 'Con los dos: alquiler vacacional y de larga temporada.' },
+      { q: '¿Trabajáis con Airbnb, Booking.com o con mi agencia?', a: 'Sí, por el canal que sea. El anuncio, el precio y las reservas son cosa tuya o de tu agencia; nosotros, de la casa y de quien la ocupa.' },
+      NO_AGENCIA,
     ],
   },
 ];
@@ -189,20 +160,20 @@ export const GARANTIAS = [
 // «Cómo trabajamos» de la portada. El 2026-10-28 se quedó en tres: «Un solo interlocutor» pasó a ser
 // la entradilla de la sección y «Tu vivienda, lista para alquilar» repetía el servicio de alquileres.
 export const VENTAJAS = [
-  ['Molestias al mínimo,<br>casa protegida', 'Cubrimos suelos y mobiliario antes de empezar y dejamos la vivienda recogida al terminar.'],
-  ['Especialistas<br>en segunda residencia', 'Sabemos qué le pasa a una villa o un apartamento cerrado seis meses: humedad, salitre, desagües y persianas.'],
-  ['Precio cerrado<br>por escrito', 'Visitamos, medimos y damos un precio en firme. Cualquier extra se aprueba antes de tocarlo.'],
+  ['Molestias al mínimo,<br>casa protegida', 'Cubrimos suelos y muebles, y lo dejamos todo recogido.'],
+  ['Especialistas<br>en segunda residencia', 'Humedad, salitre, desagües, persianas: sabemos qué le pasa a una casa cerrada.'],
+  ['Precio cerrado<br>por escrito', 'Precio en firme tras visitar y medir. Ningún extra sin tu aprobación.'],
 ];
 
 
 // Preguntas frecuentes generales (portada). Solo datos ciertos.
 export const FAQ = [
-  { q: '¿Qué es Luxor Marbella?', a: 'Luxor Marbella es una empresa de property services y project management de Marbella: cuida, mantiene y reforma las viviendas de propietarios que no viven aquí todo el año, también mientras están alquiladas.' },
-  { q: '¿Qué servicios ofrece Luxor Marbella?', a: 'Luxor Marbella ofrece cuatro líneas de servicio: servicios para alquileres, project management de reformas y obras, reformas y home staging, y mantenimiento y limpieza de viviendas.' },
+  { q: '¿Qué es Luxor Marbella?', a: 'Luxor Marbella es una empresa de property services y project management de Marbella: cuida, mantiene y reforma viviendas de propietarios que no viven aquí todo el año, también en alquiler.' },
+  { q: '¿Qué servicios ofrece Luxor Marbella?', a: 'Luxor Marbella ofrece tres líneas de servicio: project management de reformas y obras, reformas y home staging, y mantenimiento y limpieza de viviendas. Todas valen también para viviendas en alquiler.' },
   NO_AGENCIA,
-  { q: '¿Qué horario tenéis y en qué idiomas atendéis?', a: 'Atendemos todos los días de 9:00 a 20:00, en español y en inglés, por teléfono y WhatsApp (+34 655 67 36 68) o por correo (info@luxormarbella.com).' },
+  { q: '¿Qué horario tenéis y en qué idiomas atendéis?', a: 'Todos los días de 9:00 a 20:00, en español e inglés, por teléfono, WhatsApp (+34 655 67 36 68) o correo (info@luxormarbella.com).' },
   { q: '¿En qué zonas trabaja Luxor Marbella?', a: ZONAS_FRASE },
-  { q: '¿Puedo contratar un solo servicio?', a: 'Sí. Puedes contratar un solo servicio o combinarlos. Si los combinas, coordinamos las visitas entre nosotros.' },
-  { q: '¿Tengo que estar en Marbella?', a: 'No. Guardamos las llaves, entramos con aviso previo y te contamos lo que hacemos después de cada visita.' },
-  { q: '¿Cómo pido presupuesto?', a: 'Desde el formulario de la web, por WhatsApp o llamando al +34 655 67 36 68.' },
+  { q: '¿Puedo contratar un solo servicio?', a: 'Sí, uno o varios. Si los combinas, coordinamos nosotros las visitas.' },
+  { q: '¿Tengo que estar en Marbella?', a: 'No. Guardamos las llaves, entramos con aviso previo y te informamos tras cada visita.' },
+  { q: '¿Cómo pido presupuesto?', a: 'Por el formulario, WhatsApp o al +34 655 67 36 68.' },
 ];

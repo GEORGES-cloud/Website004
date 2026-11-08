@@ -37,8 +37,16 @@ const TEXTOS_JS = {
 
 /* ------------------------------------------------------------------ piezas comunes */
 
+// Cabecera B (elegida el 2026-11-08): menú y teléfono a la izquierda, logo centrado, idioma y presupuesto
+// a la derecha; en PC las secciones van en una segunda línea centrada.
 const cabecera = `<header class="masthead">
   <div class="wrap">
+    <div class="mh-left">
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span><b class="burger-txt" aria-hidden="true">Menú</b>
+      </button>
+      <a class="mh-tel" href="${TEL}">${N.telefonoIntl}</a>
+    </div>
     <a class="mh-logo" href="{{url:inicio}}" aria-label="Luxor Marbella, inicio">
       <span class="logo-mono" role="img" aria-label="Luxor Marbella"></span><span class="vh">Luxor Marbella</span>
     </a>
@@ -47,12 +55,8 @@ ${SERVICIOS.map((s) => `      <a href="{{url:${s.id}}}">${s.corto}</a>`).join('\
       <a href="{{url:nosotros}}">Quiénes somos</a>
     </nav>
     <div class="mh-right">
-      <a class="mh-tel" href="${TEL}">${N.telefonoIntl}</a>
       {{langs:desplegable}}
       <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
-      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </div>
 </header>
@@ -149,14 +153,14 @@ ${lista.map((f) => `      <details>
 // numerada por servicio (marcada la de la página en la que estamos) y, al final, el botón de presupuesto.
 const indice = (actual = '') => `<div class="hc-fila">
         <ol class="hc-svc" aria-label="Servicios">
-${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}" data-num="{{num:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="corto">${s.corto}</span></a></li>`).join('\n')}
+${SERVICIOS.map((s, k) => `          <li><a href="{{url:${s.id}}}" data-s="${s.id}" data-num="{{num:${s.id}}}"${s.id === actual ? ' aria-current="page"' : ''}><span class="corto">${s.corto}</span></a></li>`).join('\n')}
         </ol>
         <a class="btn hc-cta" href="{{url:presupuesto}}${actual ? `?s=${actual}` : ''}">Pedir presupuesto</a>
       </div>`;
 
 // Tarjetas de servicio con foto, número y nombre (Otros servicios, Qué hacemos)
-const tarjetas = (lista) => `<div class="more${lista.length === 3 ? ' three' : ' four'}">
-${lista.map((o) => `      <a href="{{url:${o.id}}}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><span class="num">{{num:${o.id}}}</span> <b>${o.menu}</b></span></a>`).join('\n')}
+const tarjetas = (lista) => `<div class="more${lista.length === 3 ? ' three' : lista.length === 4 ? ' four' : ''}">
+${lista.map((o) => `      <a href="{{url:${o.id}}}" data-s="${o.id}"><span class="ph">${img(o.foto, '', o.flip ? ' class="flip"' : '')}</span><span><span class="num">{{num:${o.id}}}</span> <b>${o.menu}</b></span></a>`).join('\n')}
     </div>`;
 
 const img = (foto, alt, extra = '') => `<img src="/photos/${foto}" alt="${alt}" loading="lazy" decoding="async"${extra}>`;
@@ -167,22 +171,21 @@ const explorador = () => `<section class="grid-sec" id="servicios">
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Servicios de Luxor Marbella</h2>
-      <p>Alquileres, project management, reformas y mantenimiento: cuatro líneas de trabajo para una misma vivienda en Marbella. Elige una y recorre los puntos de la foto para ver qué incluye.</p>
+      <p>Tres líneas de trabajo para tu vivienda en Marbella, también si la alquilas.</p>
     </div>
 
     <div class="svcx" id="svcx">
       <div class="svc-nav" role="tablist" aria-label="Líneas de servicio">
-${SERVICIOS.map((s, k) => `        <button class="svc-tab" type="button" role="tab" aria-controls="svc-${s.id}" aria-selected="${k === 0}" data-num="{{num:${s.id}}}"><img src="/photos/${s.foto}" alt="" loading="lazy" decoding="async">${s.corto}</button>`).join('\n')}
+${SERVICIOS.map((s, k) => `        <button class="svc-tab" data-s="${s.id}" type="button" role="tab" aria-controls="svc-${s.id}" aria-selected="${k === 0}" data-num="{{num:${s.id}}}"><img src="/photos/${s.foto}" alt="" loading="lazy" decoding="async">${s.corto}</button>`).join('\n')}
       </div>
 ${SERVICIOS.map((s, k) => `
-      <article class="svc${k === 0 ? ' is-on' : ''}" id="svc-${s.id}">
+      <article class="svc${k === 0 ? ' is-on' : ''}" data-s="${s.id}" id="svc-${s.id}">
         <div class="shot svc-photo">
           ${img(s.foto, s.alt, s.flip ? ' class="flip"' : '')}
 ${s.incluye.map((i) => `          <button class="dot${i.p[4] ? ' to-left' : ''}" type="button" tabindex="-1" aria-hidden="true" style="--x:${i.p[0]}%;--y:${i.p[1]}%;--mx:${i.p[2]}%;--my:${i.p[3]}%"><span>${i.n}</span></button>`).join('\n')}
         </div>
         <div class="svc-panel">
           <h3 class="svc-title"><a href="{{url:${s.id}}}">${s.titulo}</a></h3>
-          <p class="svc-desc">${s.resumen}</p>
           <ul class="svc-items">
 ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.n}</b> <span>${i.t}</span></button></li>`).join('\n')}
           </ul>
@@ -212,7 +215,7 @@ const inicio = () => `${heroActual()}
 
 <section class="pledges">
   <div class="wrap">
-${GARANTIAS.map(([b, s]) => `    <div><b>${b}</b> <span>${s}</span></div>`).join('\n')}
+${GARANTIAS.map(([b, s]) => `    <div><b>${b}</b></div>`).join('\n')}
   </div>
 </section>
 
@@ -222,7 +225,6 @@ ${explorador()}
   <div class="wrap">
     <div class="duo-title">
       <h2 class="d1">Cuidamos tu casa en Marbella los 365 días</h2>
-      <p>Para propietarios que no viven aquí todo el año: guardamos las llaves y dejamos la casa como si fueras a llegar mañana.</p>
       <a class="lnk" href="{{url:nosotros}}">Conoce Luxor Marbella</a>
     </div>
     <div class="shot">${img('duo-cal.jpg', 'Azoteas encaladas de una casa mediterránea')}</div>
@@ -234,7 +236,7 @@ ${explorador()}
   <div class="wrap">
     <div class="rev-col">
       <h2>Una sola llamada para toda la casa</h2>
-      <p>No coordinas a un fontanero, una limpiadora y tu agencia por separado. Nos coordinamos nosotros.</p>
+      <p>Fontanero, limpieza y tu agencia: lo coordinamos nosotros.</p>
     </div>
     <div class="ben-col">
 ${VENTAJAS.map(([h, p]) => `      <div class="ben">
@@ -337,7 +339,7 @@ const nosotros = () => `<section class="phead" data-capa>
     <div class="rows">
       <div class="row">
         <h2 class="d2">La llave que no tienes que buscar</h2>
-        <div><p>Cuidamos viviendas en Marbella y su entorno para propietarios que no viven aquí todo el año. Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p><p>Trabajamos en cuatro líneas —servicios para alquileres, project management, reformas y mantenimiento— coordinadas desde una sola persona de contacto. Después de cada visita recibes un parte con lo que se ha hecho, el material empleado y lo que queda pendiente.</p><p><a class="lnk" href="{{url:presupuesto}}">Pedir presupuesto</a></p></div>
+        <div><p>Guardamos las llaves, entramos con aviso previo y dejamos la casa como si fueras a llegar mañana.</p><p>Tres líneas —project management, reformas y mantenimiento, también para viviendas en alquiler— y una sola persona de contacto. Tras cada visita, un parte con lo hecho y lo pendiente.</p></div>
       </div>
     </div>
   </div>
@@ -374,7 +376,7 @@ const presupuesto = () => `<section class="quiz-sec">
   <div class="wrap">
     <div class="quiz-head">
       <h1>Pide tu presupuesto</h1>
-      <p>Cuatro preguntas y te llamamos para concretar la visita de valoración.</p>
+      <p>Cuatro preguntas. Te llamamos para concretar la visita.</p>
     </div>
 
     <form class="quiz" id="quiz" novalidate>
@@ -382,19 +384,18 @@ const presupuesto = () => `<section class="quiz-sec">
 
       <fieldset>
         <legend tabindex="-1" aria-describedby="quiz-count">¿Qué necesitas?</legend>
-        <p class="hint">Puedes marcar más de una opción.</p>
+        <p class="hint">Una o varias.</p>
         <div class="opts">
-          ${opcion('checkbox', 'servicio', 'Servicios para alquileres', 'Mi vivienda en alquiler', 'Entradas y salidas, limpieza y atención, vacacional o de larga temporada.', 'alquileres')}
-          ${opcion('checkbox', 'servicio', 'Project management', 'Dirigir un proyecto', 'Una reforma o una obra coordinada de principio a fin.', 'proyectos')}
-          ${opcion('checkbox', 'servicio', 'Reformas y home staging', 'Reformar o amueblar', 'Reformas grandes o pequeñas, amueblado y home staging.', 'reformas')}
-          ${opcion('checkbox', 'servicio', 'Mantenimiento y limpieza', 'Mantenimiento y limpieza', 'Averías, limpieza, llaves y todo lo que necesita la casa.', 'mantenimiento')}
-          ${opcion('checkbox', 'servicio', 'Otra cosa', 'Otra cosa', 'Nos lo cuentas más adelante.')}
+          ${opcion('checkbox', 'servicio', 'Servicios para alquileres', 'Mi vivienda en alquiler', 'Entradas y salidas, limpieza y atención.', 'alquileres')}
+          ${opcion('checkbox', 'servicio', 'Project management', 'Dirigir un proyecto', 'Una reforma u obra, de principio a fin.', 'proyectos')}
+          ${opcion('checkbox', 'servicio', 'Reformas y home staging', 'Reformar o amueblar', 'Reformas, amueblado y home staging.', 'reformas')}
+          ${opcion('checkbox', 'servicio', 'Mantenimiento y limpieza', 'Mantenimiento y limpieza', 'Averías, limpieza y llaves.', 'mantenimiento')}
+          ${opcion('checkbox', 'servicio', 'Otra cosa', 'Otra cosa')}
         </div>
       </fieldset>
 
       <fieldset>
         <legend tabindex="-1" aria-describedby="quiz-count">¿Dónde está la vivienda?</legend>
-        <p class="hint">Elige la zona más cercana.</p>
         <div class="opts cols3">
           ${N.zonas.map((z) => opcion('radio', 'zona', z, z)).join('\n          ')}
           ${opcion('radio', 'zona', 'Otra zona', 'Otra zona')}
@@ -403,7 +404,6 @@ const presupuesto = () => `<section class="quiz-sec">
 
       <fieldset>
         <legend tabindex="-1" aria-describedby="quiz-count">¿Para cuándo lo necesitas?</legend>
-        <p class="hint">Así sabemos con qué prisa llamarte.</p>
         <div class="opts">
           ${opcion('radio', 'plazo', 'Cuanto antes', 'Cuanto antes')}
           ${opcion('radio', 'plazo', 'Este mes', 'Este mes')}
@@ -411,13 +411,12 @@ const presupuesto = () => `<section class="quiz-sec">
           ${opcion('radio', 'plazo', 'Solo me estoy informando', 'Solo me estoy informando')}
         </div>
         <div class="fields">
-          <label class="full"><span class="lbl">Algo que debamos saber (opcional)</span><textarea id="q-mensaje" rows="3" maxlength="1200" placeholder="Por ejemplo: villa de cuatro dormitorios, vacía desde junio."></textarea></label>
+          <label class="full"><span class="lbl">Algo que debamos saber (opcional)</span><textarea id="q-mensaje" rows="3" maxlength="1200" placeholder="Villa de cuatro dormitorios, vacía desde junio."></textarea></label>
         </div>
       </fieldset>
 
       <fieldset>
         <legend tabindex="-1" aria-describedby="quiz-count">¿Cómo te localizamos?</legend>
-        <p class="hint">Te llamamos al teléfono que nos dejes.</p>
         <div class="fields">
           <label><span class="lbl">Tu nombre</span><input id="q-nombre" type="text" placeholder="Nombre y apellidos" autocomplete="name" required></label>
           <label><span class="lbl">Teléfono</span><input id="q-tel" type="tel" inputmode="tel" placeholder="600 00 00 00" autocomplete="tel" required></label>
@@ -443,7 +442,7 @@ const presupuesto = () => `<section class="quiz-sec">
 
     <div class="quiz-done" id="quiz-done" hidden tabindex="-1">
       <h2 class="d3">Recibido, <span id="done-name">gracias</span>.</h2>
-      <p>Te llamamos al teléfono que nos has dejado para concretar la visita y darte un precio cerrado.</p>
+      <p>Te llamamos para concretar la visita y darte un precio cerrado.</p>
     </div>
 
     <p class="quiz-wa"><span>¿Prefieres escribirnos?</span> <a class="btn btn-borde" id="quiz-wa" href="${WA}" target="_blank" rel="noopener">Enviar por WhatsApp</a> <a class="lnk" href="${TEL}">Llamar al ${N.telefonoIntl}</a></p>
@@ -494,9 +493,9 @@ export const PAGINAS = [
   { id: 'inicio', es: '', xx: '', title: 'Luxor Marbella | Property services, mantenimiento y reformas', desc: DESC, cuerpo: inicio },
   ...SERVICIOS.map((s) => ({
     id: s.id,
-    // las rutas viejas de alquileres (gestion-alquileres, property-management) redirigen en server.mjs
-    es: { alquileres: 'servicios/alquileres', proyectos: 'servicios/project-management', reformas: 'servicios/reformas-home-staging', mantenimiento: 'servicios/mantenimiento-limpieza' }[s.id],
-    xx: { alquileres: 'services/rentals', proyectos: 'services/project-management', reformas: 'services/renovation-home-staging', mantenimiento: 'services/maintenance-cleaning' }[s.id],
+    // las rutas viejas de alquileres (gestion-alquileres, property-management y, desde el 2026-11-08, alquileres/rentals) redirigen en server.mjs a Mantenimiento
+    es: { proyectos: 'servicios/project-management', reformas: 'servicios/reformas-home-staging', mantenimiento: 'servicios/mantenimiento-limpieza' }[s.id],
+    xx: { proyectos: 'services/project-management', reformas: 'services/renovation-home-staging', mantenimiento: 'services/maintenance-cleaning' }[s.id],
     title: s.metaTitle, desc: s.metaDesc, cuerpo: () => servicio(s.id), servicio: s,
   })),
   { id: 'presupuesto', es: 'presupuesto', xx: 'quote', title: 'Pedir presupuesto | Luxor Marbella', desc: 'Pide presupuesto a Luxor Marbella en cuatro pasos o escríbenos por WhatsApp. Property services y project management para viviendas en Marbella.', cuerpo: presupuesto },

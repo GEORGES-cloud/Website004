@@ -32,9 +32,9 @@
   --textura:none;
   --regla:var(--tinta);         /* filete que abre cada grupo             */
   --noche:#111111;        /* bloque de cierre                             */
-  --sobre-noche:#F2EADD;
-  --tierra:#933803;       /* terracota de marca: un solo acento           */
-  --sol:#F3D9AE;
+  --sobre-noche:#FFFFFF;  /* blanco puro: el crema se quitó (2026-11-08) */
+  --tierra:#1F3BFF;       /* acento: azul Klein (elegido el 2026-11-08; antes terracota) */
+  --sol:#E4E4E1;
 
   --f:"Inter","Helvetica Neue",Arial,sans-serif;
   --wrap:1440px;
@@ -115,7 +115,7 @@ h1,h2,h3{overflow-wrap:break-word;hyphens:manual;font-weight:600;margin:0}
 .btn::after{content:"";flex:none;width:.875em;height:.875em;background:currentColor;
   -webkit-mask:var(--flecha) center/contain no-repeat;mask:var(--flecha) center/contain no-repeat;transition:transform var(--t2) var(--e-sal)}
 /* al pasar el raton cambia el valor, no el color */
-.btn:hover{background:#3A3027;border-color:#3A3027;color:var(--cal)}
+.btn:hover{background:#333333;border-color:#333333;color:var(--cal)}
 .btn:hover::after{transform:translateX(3px)}
 .btn-borde{background:transparent;color:var(--tinta)}
 .btn-borde:hover{background:var(--tinta);border-color:var(--tinta);color:var(--cal)}
@@ -201,7 +201,7 @@ html.js:not(.bajado) .masthead{border-bottom-color:transparent}
 .mh-right{display:flex;align-items:center;gap:1rem}
 .mh-right .btn{height:44px;padding:0 1rem 0 1.15rem;font-size:.875rem;background:transparent;color:var(--tinta)}
 .mh-right .btn:hover,.masthead.cta-fija .mh-right .btn{background:var(--tinta);border-color:var(--tinta);color:var(--cal)}
-.masthead.cta-fija .mh-right .btn:hover{background:#3A3027;border-color:#3A3027}
+.masthead.cta-fija .mh-right .btn:hover{background:#333333;border-color:#333333}
 .mh-tel{font-size:.9375rem;font-weight:500;letter-spacing:-.01em;text-decoration:none;white-space:nowrap;color:var(--tinta-2)}
 .mh-tel:hover{color:var(--tinta)}
 @media (max-width:1279px){.mh-tel{display:none}}
@@ -279,6 +279,8 @@ html:not(.js) .burger{display:none!important}
 .menu-main a{display:block;padding:.9rem 0 .75rem;text-decoration:none;font-size:clamp(1.75rem,7vw,2.75rem);font-weight:600;line-height:1;letter-spacing:-.045em}
 .menu-main a:hover{color:var(--tinta-2)}
 .menu-main a[aria-current]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.14em}
+/* menú en mayúsculas (se pidió el 2026-11-08); con menos tracking negativo para que no se apelotonen */
+.menu-main a{text-transform:uppercase;letter-spacing:-.02em}
 .menu-side{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem 2rem;margin-top:auto;font-size:.95rem}
 .menu .tit,.foot .tit{margin:0 0 .75rem;font-size:var(--t-label);font-weight:500;color:var(--tinta-2)}
 .menu-side ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1.25rem}
@@ -295,7 +297,7 @@ html.js .menu.abierto{opacity:1;transform:none}
 .hc-fila{display:grid;grid-template-columns:minmax(0,1fr) calc((100% - 3 * var(--cg)) / 4);border-top:1px solid var(--regla)}
 /* por debajo de 1280 sin celda negra: las cuatro celdas ocupan toda la fila */
 @media (max-width:1279px){.hc-fila{grid-template-columns:minmax(0,1fr)}}
-.hc-svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:0;list-style:none}
+.hc-svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:0;list-style:none}
 .hc-svc li + li{border-left:1px solid var(--linea)}
 .hc-svc a{position:relative;display:flex;flex-direction:column;gap:.75rem;height:100%;padding:.95rem 1rem 1.05rem;
   text-decoration:none;font-size:.9375rem;font-weight:500;letter-spacing:-.012em;line-height:1.2;hyphens:auto;
@@ -448,7 +450,7 @@ html.js .dot{
 }
 html.js .dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--tinta)}
 html.js .dot::after{content:"";position:absolute;inset:-7px;border-radius:50%}
-html.js .dot.is-on{z-index:3;background:var(--tierra);box-shadow:0 0 0 9px rgba(147,56,3,.22)}
+html.js .dot.is-on{z-index:3;background:var(--tierra);box-shadow:0 0 0 9px rgba(31,59,255,.22)}
 html.js .dot.is-on::before{background:#fff}
 .dot span{display:none}
 
@@ -724,9 +726,9 @@ main:not(:has(.closer)):not(:has(.quiz-sec)) + .foot .foot-top{border-top:1px so
 html.stack main > .closer{background:var(--noche)}
 .closer .wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:2.5rem;padding-block:clamp(4.5rem,10vw,9rem)}
 .closer .d2{font-size:var(--t-display);line-height:.92;letter-spacing:-.05em;max-width:13ch;color:var(--sobre-noche)}
-.closer-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;align-self:stretch;padding-top:2rem;border-top:1px solid rgba(242,234,221,.25)}
+.closer-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;align-self:stretch;padding-top:2rem;border-top:1px solid rgba(255,255,255,.22)}
 .closer .btn{background:var(--sobre-noche);border-color:var(--sobre-noche);color:var(--tinta)}
-.closer .btn:hover{background:#fff;border-color:#fff;color:var(--tinta)}
+.closer .btn:hover{background:var(--arena);border-color:var(--arena);color:var(--tinta)}
 .closer .lnk{color:var(--sobre-noche)}
 @media (max-width:480px){.closer .btn{flex:1 1 100%;justify-content:space-between}}
 
@@ -869,3 +871,77 @@ body:has(.wa-flota) .foot-base .wrap{padding-bottom:5.5rem}
 @media (min-width:761px){
   .block:not(.tint) + .block:not(.tint) .wrap,.reviews + .block .wrap{padding-top:0}
 }
+
+/* ============================================================
+   ACENTO AZUL KLEIN (elegido el 2026-11-08): solo en detalles.
+   Códigos de servicio, subrayado de los enlaces, selección, foco,
+   punto activo de la foto y el botón del cierre negro.
+   ============================================================ */
+.num,.hc-svc a::before,.svc-tab::before{color:var(--tierra)}
+.hc-svc a[aria-current]::before{color:var(--tierra)}
+.hc-svc a[aria-current]{box-shadow:inset 0 2px 0 var(--tierra)}
+.lnk{background-image:linear-gradient(var(--tierra),var(--tierra))}
+::selection{background:var(--tierra);color:#fff}
+.closer :focus-visible{outline-color:#fff}
+.closer .btn{background:var(--tierra);border-color:var(--tierra);color:#fff}
+.closer .btn:hover{background:#fff;border-color:#fff;color:var(--tinta)}
+
+/* ============================================================
+   CABECERA B (elegida el 2026-11-08): menú y teléfono a la izquierda,
+   logo centrado, idioma y presupuesto a la derecha; en PC las
+   secciones van en una segunda línea centrada, en mayúsculas.
+   ============================================================ */
+html.js .burger{display:block}
+.masthead .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-areas:"l c r" "n n n";align-items:center;height:auto;gap:0 1.5rem}
+.mh-left{grid-area:l;display:flex;align-items:center;gap:1.4rem;min-width:0}
+.masthead .mh-logo{grid-area:c;margin:0;justify-content:center;height:var(--mh1)}
+.masthead .mh-right{grid-area:r;justify-content:flex-end}
+.masthead .mh-nav{grid-area:n;justify-content:center;height:46px;border-top:1px solid rgba(255,255,255,.12);gap:clamp(2rem,3.4vw,3.2rem)}
+.masthead .mh-nav a{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.masthead .mh-right .btn{text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:600}
+.burger{width:auto;margin:0 0 0 -10px;padding:0 0 0 44px;display:flex;align-items:center}
+.burger span{left:10px;right:auto;width:24px}
+.burger-txt{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:#fff}
+.masthead .mh-tel{display:inline;font-size:.78rem;letter-spacing:.06em;padding-left:1.4rem;border-left:1px solid rgba(255,255,255,.2)}
+:root{--mh1:92px;--mh:139px}
+@media (max-width:1079px){
+  :root{--mh1:64px;--mh:65px}
+  .masthead .mh-nav,.masthead .mh-tel{display:none}
+}
+@media (max-width:600px){
+  .burger-txt{display:none}
+  .burger{padding-left:44px}
+  .masthead .wrap{gap:0 .5rem;grid-template-columns:auto minmax(0,1fr) auto}
+  .masthead .mh-logo{justify-content:flex-start;padding-left:.25rem}
+}
+
+/* ============================================================
+   UN COLOR POR SECCIÓN (2026-11-08): el azul Klein es el de la marca
+   y de las páginas generales; cada línea de servicio tiene el suyo,
+   como los colores de un plano. --sf es el color de relleno y --sc
+   su versión para texto pequeño sobre blanco (contraste 4,5:1).
+   ============================================================ */
+:root{--acento-txt:#fff}
+[data-s="proyectos"],body[data-pagina="proyectos"]{--sf:#1F3BFF;--sc:#1F3BFF}
+[data-s="reformas"],body[data-pagina="reformas"]{--sf:#FF5A1F;--sc:#C2380A}
+[data-s="mantenimiento"],body[data-pagina="mantenimiento"]{--sf:#2FE0C8;--sc:#0A7A6C}
+.hc-svc a[data-s]::before,.svc-tab[data-s]::before,.more a[data-s] .num,body[data-pagina] .phead .num{color:var(--sc,var(--tierra))}
+.hc-svc a[data-s][aria-current]{box-shadow:inset 0 2px 0 var(--sf)}
+.svc[data-s]{--tierra:var(--sf)}
+html.js .svc[data-s] .dot.is-on{box-shadow:0 0 0 9px color-mix(in srgb,var(--sf) 25%,transparent)}
+body[data-pagina="proyectos"]{--tierra:#1F3BFF}
+body[data-pagina="reformas"]{--tierra:#FF5A1F;--acento-txt:#111}
+body[data-pagina="mantenimiento"]{--tierra:#2FE0C8;--acento-txt:#111}
+.closer .btn{color:var(--acento-txt)}
+::selection{color:var(--acento-txt)}
+
+/* Índice de servicios con tres líneas (2026-11-08, sin alquileres): tres columnas también en móvil */
+@media (max-width:1079px){
+  .hc-svc{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hc-svc li:nth-child(n){border-top:0;border-left:1px solid var(--linea)}
+  .hc-svc li:first-child{border-left:0}
+  .hc-svc a{flex-direction:column;gap:.35rem;padding:.8rem .75rem}
+  .hc-svc li:nth-child(odd) a{padding-left:.75rem}
+  .hc-svc li:first-child a{padding-left:var(--hp)}
+}
+@media (max-width:420px){.hc-svc a{font-size:.8125rem;letter-spacing:-.01em}}
