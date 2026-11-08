@@ -198,14 +198,13 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
   </div>
 </section>`;
 
-// Hero sin texto a la vista: el logo en blanco, grande y centrado, como marca de agua sobre el vídeo (lo eligió
-// el usuario el 2026-10-30). El titular sigue en el h1, oculto, para Google y los lectores de pantalla; los
-// servicios están en el menú y justo debajo, y el presupuesto en la cabecera.
+// Hero solo con el vídeo: el logo va en blanco en la cabecera negra (2026-11-08). El titular sigue en el h1,
+// oculto, para Google y los lectores de pantalla; los servicios están en el menú y justo debajo, y el
+// presupuesto en la cabecera.
 const heroActual = () => `<section class="hero" id="top" data-capa>
   <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="1080" height="1920"><img src="/photos/hero-casa.jpg" alt="La fachada blanca de una villa entre palmeras, un plano de obra y un jardín con un estanque largo" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <h1 class="vh"><span>Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
-    <div class="hero-marca" aria-hidden="true"></div>
   </div>
 </section>`;
 

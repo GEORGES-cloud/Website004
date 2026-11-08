@@ -140,7 +140,7 @@ h1,h2,h3{overflow-wrap:break-word;hyphens:manual;font-weight:600;margin:0}
 .logo-mono{display:block;background:var(--tinta);
   -webkit-mask:url("/assets/logo-master-mask.webp") no-repeat left center/contain;
           mask:url("/assets/logo-master-mask.webp") no-repeat left center/contain}
-.masthead .logo-mono{width:108px;height:56px}
+.masthead .logo-mono{width:124px;height:64px}
 .foot .logo-mono{width:128px;height:67px}
 @media (max-width:1079px){.masthead .logo-mono{width:80px;height:42px}}
 @media (max-width:340px){.masthead .logo-mono{width:64px;height:34px}}
@@ -179,8 +179,17 @@ html.stack main > section.suelta{position:relative;top:auto}
    CABECERA — logo, menu de texto, idioma y presupuesto
    ============================================================ */
 .masthead{position:sticky;top:0;z-index:60;background:var(--cal);border-bottom:1px solid var(--linea);transition:border-color var(--t2) var(--e-sal)}
-/* cabecera traslúcida: blanco con desenfoque; al bajar deja ver lo que pasa por debajo (se pidió el 2026-10-30) */
-@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.masthead{background:rgba(255,255,255,.74);-webkit-backdrop-filter:saturate(140%) blur(16px);backdrop-filter:saturate(140%) blur(16px)}}
+/* cabecera negra con el logo y el texto en blanco (se pidió el 2026-11-08); el desplegable de idioma sigue claro */
+.masthead{background:var(--noche);border-bottom-color:rgba(255,255,255,.12)}
+.masthead .logo-mono{background:#fff}
+.masthead .mh-nav a,.masthead .lang summary,.masthead .burger{color:#fff}
+.masthead .mh-tel{color:rgba(255,255,255,.72)}
+.masthead .mh-tel:hover{color:#fff}
+.masthead .lang summary:hover,.masthead .lang[open] summary{border-color:rgba(255,255,255,.3)}
+.masthead .lang ul{color:var(--tinta)}
+html .masthead .mh-right .btn,html .masthead.cta-fija .mh-right .btn{background:#fff;border-color:#fff;color:var(--noche)}
+html .masthead .mh-right .btn:hover,html .masthead.cta-fija .mh-right .btn:hover{background:var(--arena);border-color:var(--arena)}
+html .masthead .mh-right .btn[aria-current]{background:transparent;border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.72)}
 html.js:not(.bajado) .masthead{border-bottom-color:transparent}
 .masthead .wrap{display:flex;align-items:center;gap:2rem;height:var(--mh)}
 .mh-logo{flex:none;display:flex;align-items:center;min-height:44px;margin-right:auto}
@@ -329,12 +338,6 @@ html.stack main > .hero{background:var(--travertino)}
 /* el recuadro deja libre arriba el hueco de la pausa */
 .hero .wrap{position:relative;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;padding-top:calc(var(--gutter) + 44px + 1.5rem);padding-bottom:var(--gutter)}
 .hero-caja{width:fit-content;max-width:min(100%,46rem);background:var(--cal)}
-/* marca de agua: el logo en blanco, centrado sobre el video, con un velo suave para que se lea */
-.hero .wrap:has(.hero-marca){justify-content:center;align-items:center}
-.hero:has(.hero-marca) .hero-bg::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:rgba(17,17,17,.18)}
-.hero-marca{width:min(46vw,520px);aspect-ratio:460/240;background:#fff;opacity:.92;
-  -webkit-mask:url(/assets/logo-master-mask.webp) center/contain no-repeat;mask:url(/assets/logo-master-mask.webp) center/contain no-repeat}
-@media (max-width:760px){.hero-marca{width:72vw}}
 .hero h1{padding:var(--hp);font-size:var(--t-display);line-height:.92;letter-spacing:-.05em;text-wrap:balance;color:var(--tinta)}
 /* la etiqueta abre la caja como la fila superior de un cajetin (la misma que .pc-top en las cabeceras) */
 .hero h1 .kick{display:block;margin:calc(var(--hp) * -1) calc(var(--hp) * -1) calc(var(--hp) * .9);padding:1rem var(--hp);border-bottom:1px solid var(--linea);

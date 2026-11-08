@@ -1,7 +1,7 @@
 {
  "/": {
-  "firma": "8650090079",
-  "fecha": "2026-10-30"
+  "firma": "3336d2a35f",
+  "fecha": "2026-11-08"
  },
  "/servicios/alquileres/": {
   "firma": "6de69d7e83",
@@ -40,8 +40,8 @@
   "fecha": "2026-10-30"
  },
  "/en/": {
-  "firma": "6bf4ee595b",
-  "fecha": "2026-10-30"
+  "firma": "7093c88cc8",
+  "fecha": "2026-11-08"
  },
  "/en/services/rentals/": {
   "firma": "4df53ce384",
@@ -80,8 +80,8 @@
   "fecha": "2026-10-30"
  },
  "/fr/": {
-  "firma": "7bcfddc86e",
-  "fecha": "2026-10-30"
+  "firma": "bfa558c245",
+  "fecha": "2026-11-08"
  },
  "/fr/services/rentals/": {
   "firma": "c9713a57e1",
@@ -120,8 +120,8 @@
   "fecha": "2026-10-30"
  },
  "/de/": {
-  "firma": "7506405854",
-  "fecha": "2026-10-30"
+  "firma": "44025dcb6d",
+  "fecha": "2026-11-08"
  },
  "/de/services/rentals/": {
   "firma": "9cd9ff17da",
@@ -160,8 +160,8 @@
   "fecha": "2026-10-30"
  },
  "/sv/": {
-  "firma": "09f61f7e76",
-  "fecha": "2026-10-30"
+  "firma": "f1c058cfa9",
+  "fecha": "2026-11-08"
  },
  "/sv/services/rentals/": {
   "firma": "54717f62e4",
@@ -200,8 +200,8 @@
   "fecha": "2026-10-30"
  },
  "/ru/": {
-  "firma": "47d7fc3747",
-  "fecha": "2026-10-30"
+  "firma": "10ebeec064",
+  "fecha": "2026-11-08"
  },
  "/ru/services/rentals/": {
   "firma": "56cde799a5",
