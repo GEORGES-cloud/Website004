@@ -389,7 +389,9 @@ ${movidas.map((u) => `  <url><loc>${SITE}${u}</loc></url>`).join('\n')}
     'PHOTO;ENCODING=b;TYPE=PNG:' + foto, 'END:VCARD'];
   // las líneas largas se pliegan (RFC 2425): salto y un espacio
   const pliega = (l) => (l.length <= 75 ? l : l.match(/.{1,74}/g).join('\r\n '));
-  escribe(join(pub, 'luxor-marbella.vcf'), lineas.map(pliega).join('\r\n') + '\r\n');
+  // Se guarda con otra extensión: Hostinger sirve los ficheros estáticos sin pasar por la app y daría un .vcf como
+  // text/plain (el iPhone no lo abriría como contacto). /luxor-marbella.vcf lo sirve server.mjs con text/vcard.
+  escribe(join(pub, 'contacto.vcard.txt'), lineas.map(pliega).join('\r\n') + '\r\n');
 }
 escribe(join(pub, 'robots.txt'), `# robots.txt de ${SITE}
 # Sitio público: rastreo permitido a buscadores y a asistentes de IA.

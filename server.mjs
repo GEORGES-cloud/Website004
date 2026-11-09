@@ -96,6 +96,14 @@ app.use(
 );
 
 // Healthcheck simple para despliegues.
+// Ficha de contacto del aviso (2026-11-09): con text/vcard el móvil la abre como contacto para guardarla.
+// No puede ir como fichero .vcf en public/: Hostinger lo serviría directamente como text/plain.
+app.get('/luxor-marbella.vcf', (_req, res) => {
+  res.setHeader('Content-Type', 'text/vcard; charset=utf-8');
+  res.setHeader('Content-Disposition', 'inline; filename="luxor-marbella.vcf"');
+  res.setHeader('Cache-Control', 'public, max-age=3600');
+  res.sendFile(join(PUBLIC_DIR, 'contacto.vcard.txt'));
+});
 app.get('/api/health', (_req, res) => res.json({ ok: true, ts: Date.now() }));
 
 // --- Formulario de presupuesto → correo a Luxor ---------------------------------
