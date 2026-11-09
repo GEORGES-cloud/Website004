@@ -105,7 +105,6 @@ const aviso = `<dialog class="aviso" id="aviso" aria-labelledby="aviso-tit">
     <div class="av-puerta">
       <div class="av-dentro">
         <a class="av-num" href="${TEL}">${N.telefonoIntl}</a>
-        <p class="av-sub">Te contestamos en un ratito.</p>
       </div>
       <div class="av-cerradura">
         <span class="av-pista">Desliza la llave para abrir</span>
