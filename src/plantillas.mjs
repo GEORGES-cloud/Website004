@@ -211,11 +211,12 @@ const img = (foto, alt, extra = '') => `<img src="/photos/${foto}" alt="${alt}" 
 
 /* ------------------------------------------------------------------ portada */
 
+// Fotos con puntos (versión A, 2026-11-09): arriba los códigos grandes; debajo de la foto solo el punto que se
+// toca (su nombre y su frase) y un enlace. Antes de tocar, la pista «Toca un punto de la foto».
 const explorador = () => `<section class="grid-sec" id="servicios">
   <div class="wrap">
     <div class="grid-head">
       <h2 class="d2">Servicios de Luxor Marbella</h2>
-      <p>Tres líneas de trabajo para tu vivienda en Marbella, también si la alquilas.</p>
     </div>
 
     <div class="svcx" id="svcx">
@@ -229,13 +230,12 @@ ${SERVICIOS.map((s, k) => `
 ${s.incluye.map((i) => `          <button class="dot${i.p[4] ? ' to-left' : ''}" type="button" tabindex="-1" aria-hidden="true" style="--x:${i.p[0]}%;--y:${i.p[1]}%;--mx:${i.p[2]}%;--my:${i.p[3]}%"><span>${i.n}</span></button>`).join('\n')}
         </div>
         <div class="svc-panel">
-          <h3 class="svc-title"><a href="{{url:${s.id}}}">${s.titulo}</a></h3>
+          <p class="svc-pista">Toca un punto de la foto</p>
           <ul class="svc-items">
 ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.n}</b> <span>${i.t}</span></button></li>`).join('\n')}
           </ul>
           <p class="svc-note" aria-live="polite"></p>
           <div class="svc-actions">
-            <a class="btn" href="{{url:${s.id}}}">Ver el servicio</a>
             <a class="lnk" href="{{url:presupuesto}}?s=${s.id}">Pedir presupuesto</a>
           </div>
         </div>
