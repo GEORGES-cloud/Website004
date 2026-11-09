@@ -901,6 +901,35 @@ html.js .burger{display:block}
   .menu-langs a{font-family:var(--f-tit);font-size:.8rem;font-weight:500;letter-spacing:.16em;color:var(--tinta-2)}
   .menu-langs a[aria-current]{color:var(--tinta);border-bottom:1px solid currentColor}
 }
+/* Hero centrado en móvil y tableta (2026-11-09, tipo JW Property): el vídeo ocupa toda la pantalla, la
+   cabecera va transparente encima hasta que se baja, y la barra de llamar aparece al bajar. */
+.hero-txt{display:none}
+@media (max-width:1079px){
+  .hero-txt{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    padding:calc(var(--mh1) + 32px) max(22px,env(safe-area-inset-right)) 60px max(22px,env(safe-area-inset-left));color:#fff;
+    background:linear-gradient(180deg,rgba(0,0,0,.32),rgba(0,0,0,.3) 40%,rgba(0,0,0,.4))}
+  .hero-tit{margin:0 0 14px;font-family:Inter,var(--f),sans-serif;font-weight:400;font-size:2.6rem;line-height:1.05;letter-spacing:-.03em;text-wrap:balance;max-width:16ch}
+  .hero-tit b{font-weight:600}
+  .hero-sub{margin:0 auto 28px;max-width:30ch;font-family:Inter,var(--f),sans-serif;font-weight:500;font-size:1.02rem;line-height:1.4;letter-spacing:-.01em}
+  .hero-bts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+  .hero-bts a{display:flex;align-items:center;justify-content:center;height:50px;padding:0 22px;border-radius:7px;font-family:Inter,var(--f),sans-serif;font-weight:500;font-size:1.02rem;letter-spacing:-.01em;text-decoration:none}
+  .hero-bts .hb1{background:#fff;color:#111}
+  .hero-bts .hb2{border:1.5px solid #fff;color:#fff}
+  .hero-bts .hb1:hover{background:var(--arena)}
+  .hero-bts .hb2:hover{background:rgba(255,255,255,.12)}
+  body[data-pagina="inicio"] .masthead{position:fixed;left:0;right:0;top:0;transition:background-color .35s ease,border-color .35s ease}
+  html.js:not(.bajado):not(.menu-abierto) body[data-pagina="inicio"] .masthead{background:transparent;border-bottom-color:transparent}
+  body[data-pagina="inicio"] .hero{min-height:100vh;min-height:100svh}
+  body[data-pagina="inicio"] .hero .wrap{padding:0}
+  body[data-pagina="inicio"] .hero-pausa{top:auto;bottom:max(20px,env(safe-area-inset-bottom));right:20px;width:32px;height:32px;background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+  body[data-pagina="inicio"] .hero-pausa:hover{background:rgba(255,255,255,.12)}
+  body[data-pagina="inicio"] .barra-llamar{transition:transform .4s ease}
+  html.js:not(.bajado) body[data-pagina="inicio"] .barra-llamar{transform:translateY(110%)}
+}
+/* en tableta el botón redondo de WhatsApp ocupa la esquina derecha: la pausa va a la izquierda */
+@media (min-width:761px) and (max-width:1079px){body[data-pagina="inicio"] .hero-pausa{right:auto;left:20px}}
+@media (max-width:374px){.hero-tit{font-size:2.2rem}.hero-bts a{padding:0 16px;font-size:.95rem}}
+@media (max-width:1079px) and (orientation:landscape) and (max-height:560px){.hero-txt{padding-top:calc(var(--mh1) + 12px);padding-bottom:20px}.hero-tit{font-size:1.9rem;max-width:none}.hero-sub{margin-bottom:16px}}
 
 /* ============================================================
    UN COLOR POR SECCIÓN (2026-11-08): el azul Klein es el de la marca

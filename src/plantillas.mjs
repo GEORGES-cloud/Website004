@@ -251,10 +251,17 @@ ${s.incluye.map((i) => `            <li><button class="it" type="button"><b>${i.
 // Hero solo con el vídeo: el logo va en blanco en la cabecera negra (2026-11-08). El titular sigue en el h1,
 // oculto, para Google y los lectores de pantalla; los servicios están en el menú y justo debajo, y el
 // presupuesto en la cabecera.
+// En móvil y tableta (2026-11-09, tipo JW Property; borrador en marca/borradores/hero-movil-centrado): texto
+// centrado sobre el vídeo con dos botones, y la cabecera transparente hasta que se baja. En el ordenador no se ve.
 const heroActual = () => `<section class="hero" id="top" data-capa>
   <div class="hero-bg" data-video="/photos/hero-casa.mp4" data-video-xl="/photos/hero-casa-xl.mp4" data-video-sm="/photos/hero-casa-v.mp4"><picture><source media="(orientation: portrait)" srcset="/photos/hero-casa-v.jpg" width="1080" height="1920"><img src="/photos/hero-casa.jpg" alt="La fachada blanca de una villa entre palmeras, un plano de obra y un jardín con un estanque largo" width="2560" height="1440" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap">
     <h1 class="vh"><span>Luxor Marbella · Property services</span> Hacemos fácil tener casa en Marbella</h1>
+  </div>
+  <div class="hero-txt">
+    <p class="hero-tit">Hacemos <b>fácil la gestión de tu propiedad</b></p>
+    <p class="hero-sub">Obras, reformas y mantenimiento en Marbella con una sola llamada.</p>
+    <div class="hero-bts"><a class="hb1" href="{{url:presupuesto}}">Contáctanos</a><a class="hb2" href="#servicios">Qué hacemos</a></div>
   </div>
 </section>`;
 
