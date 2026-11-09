@@ -1,0 +1,474 @@
+<title>Luxor Brand Book</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: láminas de plano. Columna izquierda = cajetín (título, texto, pie); derecha = paneles a sangre, esquinas rectas. */
+:root{
+  --negro:#111111; --blanco:#FFFFFF; --tinta:#1C1813; --arena:#EFEFED; --travertino:#E4E4E1; --gris:#6B6862;
+  --klein:#1F3BFF; --naranja:#FF5A1F; --naranja-txt:#C2380A; --turquesa:#2FE0C8; --turquesa-txt:#0A7A6C;
+  --linea:rgba(20,19,17,.15);
+  --f-tit:"Jost","Futura","Century Gothic",sans-serif;
+  --f:"Inter","Helvetica Neue",Arial,sans-serif;
+  --mono:none;
+}
+*{box-sizing:border-box}
+body{background:var(--arena);color:var(--tinta);font:400 15px/1.55 var(--f);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 64px}
+.libro{max-width:1440px;margin:0 auto;display:grid;gap:20px}
+.lamina{background:var(--blanco);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(20px,3vw,48px);padding:clamp(20px,3.2vw,44px);min-height:min(820px,62vw)}
+.caj{display:flex;flex-direction:column;gap:20px;min-width:0}
+.caj h2{font:400 clamp(2.4rem,4.6vw,4.4rem)/.95 var(--f-tit);text-transform:uppercase;letter-spacing:.01em;margin:0;text-wrap:balance}
+.caj .cod{font:500 .72rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase;color:var(--gris);display:flex;justify-content:space-between;border-top:1px solid var(--tinta);padding-top:10px}
+.caj .txt{margin-top:auto;max-width:42ch;font-size:.92rem;color:var(--tinta)}
+.caj .txt p{margin:0 0 .7em}
+.pie{display:flex;justify-content:space-between;gap:12px;font:500 .7rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase;border-top:1px solid var(--linea);padding-top:12px}
+.paneles{display:grid;gap:12px;min-width:0}
+.p{position:relative;overflow:hidden;min-height:180px;background:var(--arena)}
+.p > img.foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.et{position:absolute;left:14px;bottom:12px;font:500 .66rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase;color:inherit;opacity:.8}
+
+/* logo y monograma como máscaras: se pintan del color que toque */
+.logo{display:block;aspect-ratio:620/324;width:min(46%,340px);background:currentColor;
+  -webkit-mask:url("img/logo.webp") center/contain no-repeat;mask:url("img/logo.webp") center/contain no-repeat}
+.mono{display:block;aspect-ratio:1;width:38%;max-width:200px;background:currentColor;-webkit-mask:var(--mono) center/contain no-repeat;mask:var(--mono) center/contain no-repeat}
+.centro{display:grid;place-items:center}
+
+/* 00 portada */
+.portada{grid-template-columns:1fr;background:var(--negro);color:var(--blanco);min-height:min(860px,70vw);position:relative}
+.portada .arriba,.portada .abajo{display:flex;justify-content:space-between;gap:16px;font:500 .72rem var(--f-tit);letter-spacing:.22em;text-transform:uppercase}
+.portada .abajo{align-self:end;border-top:1px solid rgba(255,255,255,.25);padding-top:14px;flex-wrap:wrap}
+.portada .logo{width:min(64%,560px)}
+.portada .lema{font:300 clamp(1.1rem,2vw,1.6rem) var(--f-tit);letter-spacing:.14em;text-transform:uppercase;text-align:center;margin:28px 0 0}
+.portada .medio{display:grid;place-items:center;align-content:center}
+
+/* patrón de frontones: el tejado del logo, en serie, como una cubierta vista en alzado */
+.patron{background-color:var(--klein);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='80' viewBox='0 0 160 80'%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.38' stroke-width='3'%3E%3Cpath d='M4 50 80 14l76 36z'/%3E%3Cpath d='M0 60h160M0 70h160'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:160px 80px}
+.patron.negro{background-color:var(--negro)}
+.patron.grande{background-size:320px 160px}
+
+/* color */
+.colores{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(150px,1fr)}
+.col{padding:16px;display:flex;flex-direction:column;justify-content:space-between;font:500 .78rem var(--f);min-height:150px}
+.col b{font:500 1.05rem var(--f-tit);text-transform:uppercase;letter-spacing:.08em;display:block}
+.col span{display:block;opacity:.85;font-variant-numeric:tabular-nums}
+.col.ancho{grid-column:span 2}
+
+/* tipografía */
+.tipo{grid-template-columns:1fr 1fr}
+.esp{padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.esp .gigante{font:400 clamp(5rem,11vw,10rem)/.8 var(--f-tit);letter-spacing:-.01em}
+.esp .gigante.inter{font-family:var(--f);font-weight:500;letter-spacing:-.04em}
+.esp .nombre{font:500 .72rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase;display:flex;justify-content:space-between;border-top:1px solid currentColor;padding-top:10px}
+.esp .muestra{font:400 1.25rem/1.3 var(--f-tit);text-transform:uppercase;letter-spacing:.06em}
+.esp .muestra-i{font:400 .98rem/1.55 var(--f);max-width:46ch}
+.escala{grid-column:1/-1;padding:24px;display:grid;gap:14px}
+.escala div{display:grid;grid-template-columns:110px 1fr;align-items:baseline;gap:16px;border-top:1px solid var(--linea);padding-top:12px}
+.escala small{font:500 .68rem var(--f-tit);letter-spacing:.18em;text-transform:uppercase;color:var(--gris)}
+
+/* códigos */
+.codigos{grid-template-columns:repeat(3,minmax(0,1fr))}
+.codigo{display:flex;flex-direction:column;justify-content:space-between;padding:20px;min-height:340px;position:relative;color:var(--blanco)}
+.codigo .n{font:400 clamp(4rem,8vw,7.5rem)/.85 var(--f-tit)}
+.codigo .s{font:500 .78rem var(--f-tit);letter-spacing:.18em;text-transform:uppercase;border-top:1px solid currentColor;padding-top:10px;position:relative}
+.codigo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.0}
+.codigo.osc{color:var(--negro)}
+
+/* mood */
+.mood{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(170px,1fr))}
+.mood .alto{grid-row:span 2}
+.mood .ancho{grid-column:span 2}
+.frase{padding:22px;display:flex;align-items:flex-end;justify-content:flex-end;text-align:right;font:400 clamp(1.4rem,2.4vw,2.2rem)/1.05 var(--f-tit);text-transform:uppercase;letter-spacing:.04em}
+
+/* papelería */
+.papel{grid-template-columns:3fr 2fr;grid-template-rows:auto auto}
+.mesa{background:#D9D9D6;display:grid;place-items:center;padding:clamp(20px,4vw,48px);min-height:320px;overflow:hidden}
+.mesa.grande{grid-column:1/-1;min-height:420px}
+.sombra{box-shadow:0 1px 1px rgba(0,0,0,.08),0 18px 40px -16px rgba(0,0,0,.45)}
+.carta{background:var(--blanco);width:min(62%,300px);aspect-ratio:210/297;padding:8% 9%;display:flex;flex-direction:column;position:relative;color:var(--tinta)}
+.carta .logo{width:34%;color:var(--negro)}
+.carta .lineas{margin-top:14%;display:grid;gap:7px}
+.carta .lineas i{height:3px;background:var(--travertino);display:block}
+.carta .lineas i:nth-child(3n){width:70%}
+.carta .pc{margin-top:auto;font:500 6px/1.6 var(--f-tit);letter-spacing:.18em;text-transform:uppercase;display:flex;justify-content:space-between;border-top:1px solid var(--tinta);padding-top:5px}
+.carta .franja{position:absolute;right:0;top:0;bottom:0;width:4%;background:var(--klein)}
+.escena{position:relative;width:100%;max-width:640px;aspect-ratio:16/9}
+.sobre{position:absolute;right:2%;bottom:6%;width:58%;aspect-ratio:220/110;background:var(--blanco);display:grid;place-items:center;transform:rotate(-4deg)}
+.sobre .logo{width:34%;color:var(--negro)}
+.sobre::after{content:"";position:absolute;left:0;right:0;top:0;height:44%;background:var(--negro);clip-path:polygon(0 0,100% 0,50% 100%)}
+.sobre .rem{position:absolute;left:6%;bottom:9%;font:500 5px var(--f-tit);letter-spacing:.18em;text-transform:uppercase}
+.hoja-incl{position:absolute;left:4%;top:2%;width:34%;aspect-ratio:210/297;background:var(--blanco);transform:rotate(-14deg);padding:5%;display:flex;flex-direction:column}
+.hoja-incl .logo{width:46%;color:var(--negro)}
+.hoja-incl .pat{margin-top:auto;height:28%;background-size:60px 30px}
+.tarjetas{display:grid;gap:12px;width:min(78%,300px)}
+.tarjeta{aspect-ratio:85/55;padding:9% 8%;display:flex;flex-direction:column;justify-content:space-between}
+.tarjeta.f{background:var(--negro);color:var(--blanco)}
+.tarjeta.f .logo{width:44%}
+.tarjeta.d{background:var(--blanco);color:var(--tinta);font:400 7.5px/1.5 var(--f)}
+.tarjeta.d b{font:500 10px var(--f-tit);letter-spacing:.14em;text-transform:uppercase;display:block}
+.tarjeta.d .fila{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--tinta);padding-top:6px}
+.tarjeta.d .mono{width:18%;color:var(--klein)}
+
+/* señalética */
+.senal{grid-template-columns:1fr}
+.fachada{min-height:560px;background:linear-gradient(180deg,#F4F4F2 0 58%,#E6E6E3 58% 60%,#CFCFCB 60%);position:relative}
+.fachada .rotulo{position:absolute;left:8%;top:22%;width:46%;color:var(--negro);filter:drop-shadow(3px 5px 2px rgba(0,0,0,.22))}
+.fachada .rotulo .logo{width:100%}
+.bandera{position:absolute;right:12%;top:16%;width:clamp(110px,16%,180px);aspect-ratio:1;background:var(--negro);color:var(--blanco);display:grid;place-items:center;box-shadow:12px 16px 24px -10px rgba(0,0,0,.45)}
+.bandera::before{content:"";position:absolute;left:-26px;top:22%;width:26px;height:56%;background:#2A2A2A;box-shadow:inset -4px 0 0 #444}
+.bandera .mono{width:56%}
+.placa{position:absolute;right:12%;bottom:8%;width:clamp(150px,22%,240px);aspect-ratio:3/2;background:#C9C9C5;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1),8px 10px 18px -8px rgba(0,0,0,.35);display:flex;flex-direction:column;justify-content:space-between;padding:6%;color:var(--negro);font:500 .58rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase}
+.placa .logo{width:48%}
+.luces{position:absolute;left:0;right:0;top:66%;display:flex;justify-content:space-around}
+.luces i{width:34px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 28px 10px rgba(255,255,255,.7)}
+
+/* mockups */
+.mock{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(230px,auto)}
+.tejido{background:repeating-linear-gradient(90deg,#2c2c2c 0 2px,#262626 2px 4px),#262626;display:grid;place-items:center}
+.etiqueta{width:34%;aspect-ratio:1;background:repeating-linear-gradient(0deg,#f7f7f5 0 1px,#ececea 1px 2px);color:var(--negro);display:grid;place-items:center;box-shadow:0 10px 20px -6px rgba(0,0,0,.6);transform:rotate(-6deg)}
+.etiqueta .mono{width:60%}
+.llavero{background:var(--klein);display:grid;place-items:center}
+.llave-set{position:relative;width:62%;max-width:300px;aspect-ratio:2/1}
+.aro{position:absolute;left:0;top:28%;width:30%;aspect-ratio:1;border-radius:50%;border:5px solid #D8D8D4;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.chapa{position:absolute;left:22%;top:12%;width:70%;aspect-ratio:2/1;background:var(--negro);color:var(--blanco);border-radius:6px 999px 999px 6px;display:flex;align-items:center;gap:10%;padding-left:12%;box-shadow:0 18px 30px -12px rgba(0,0,0,.6)}
+.chapa .mono{width:26%}
+.chapa small{font:500 .62rem/1.5 var(--f-tit);letter-spacing:.2em;text-transform:uppercase}
+.bolsa-fondo{background:var(--arena);display:grid;place-items:center}
+.bolsa{width:44%;max-width:230px;aspect-ratio:4/5;background:var(--negro);color:var(--blanco);position:relative;margin-top:16%;padding:12%;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 22px 40px -18px rgba(0,0,0,.55)}
+.bolsa::before{content:"";position:absolute;left:24%;right:24%;top:-38%;height:44%;border:6px solid var(--negro);border-bottom:0;border-radius:999px 999px 0 0}
+.bolsa .logo{width:100%}
+.bolsa small{font:500 .62rem/1.4 var(--f-tit);letter-spacing:.2em;text-transform:uppercase}
+.calle{background:linear-gradient(180deg,#BFD1DD 0 55%,#9C9C98 55%);display:grid;place-items:end center;padding-bottom:8%}
+.furgo{position:relative;width:78%;max-width:420px;aspect-ratio:2.4/1}
+.furgo .caja{position:absolute;left:0;top:0;width:74%;height:82%;background:var(--blanco);display:flex;flex-direction:column;justify-content:center;gap:8%;padding-left:8%;box-shadow:inset 0 -6px 0 rgba(0,0,0,.06)}
+.furgo .caja .logo{width:46%;color:var(--negro)}
+.furgo .caja small{font:500 .55rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase;color:var(--tinta)}
+.furgo .cab{position:absolute;right:0;top:22%;width:27%;height:60%;background:var(--negro);border-radius:0 26px 4px 0}
+.furgo .cab::before{content:"";position:absolute;right:12%;top:12%;width:46%;height:36%;background:#8FA6B5;border-radius:0 14px 0 0}
+.furgo .franja{position:absolute;left:0;top:70%;width:74%;height:5%;background:var(--klein)}
+.furgo .rueda{position:absolute;bottom:-8%;width:17%;aspect-ratio:1;border-radius:50%;background:#1a1a1a;box-shadow:inset 0 0 0 7px #2b2b2b,inset 0 0 0 11px #9a9a9a}
+.app{background:var(--negro);display:grid;place-items:center}
+.ficha{background:var(--blanco);width:min(84%,380px);padding:18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;border-radius:18px}
+.icono{width:84px;aspect-ratio:1;border-radius:20px;background:var(--negro);color:var(--blanco);display:grid;place-items:center}
+.icono .mono{width:64%}
+.ficha b{font:500 1.1rem var(--f-tit);text-transform:uppercase;letter-spacing:.06em;display:block}
+.ficha span{font-size:.78rem;color:var(--gris)}
+.ficha .get{margin-top:10px;display:inline-block;background:var(--klein);color:var(--blanco);font:600 .72rem var(--f);padding:5px 16px;border-radius:999px}
+.uniforme{background:var(--travertino);display:grid;place-items:center}
+.polo{position:relative;width:40%;max-width:210px;aspect-ratio:1/1.05;background:var(--negro);clip-path:polygon(28% 0,40% 6%,60% 6%,72% 0,100% 14%,92% 38%,80% 33%,80% 100%,20% 100%,20% 33%,8% 38%,0 14%)}
+.polo .mono{position:absolute;right:28%;top:22%;width:13%;color:var(--blanco)}
+
+/* voz */
+.voz{grid-template-columns:1fr 1fr}
+.bloque{padding:24px;display:flex;flex-direction:column;gap:14px}
+.bloque h3{margin:0;font:500 .78rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase;border-top:1px solid currentColor;padding-top:10px}
+.bloque ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.bloque li{font:400 1.05rem/1.4 var(--f)}
+.bloque li small{display:block;font-size:.78rem;opacity:.7;margin-top:3px}
+.si{background:var(--negro);color:var(--blanco)}
+.no{background:var(--arena);color:var(--tinta)}
+.no li s{text-decoration-color:var(--naranja);text-decoration-thickness:2px}
+
+.contacto{grid-column:1/-1;background:var(--klein);color:var(--blanco);padding:24px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.contacto .tel{font:400 clamp(2rem,5vw,4rem)/1 var(--f-tit);letter-spacing:.02em;user-select:all}
+.contacto small{font:500 .72rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase}
+
+@media (max-width:860px){
+  .lamina{grid-template-columns:1fr;min-height:0}
+  .caj .txt{margin-top:0}
+  .colores{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tipo,.voz,.papel,.mock{grid-template-columns:1fr}
+  .codigos{grid-template-columns:1fr}
+  .codigo{min-height:200px}
+  .mood{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:170px}
+  .mood .alto{grid-row:span 2}
+  .fachada{min-height:380px}
+  .portada{min-height:560px}
+}
+@media (prefers-reduced-motion:no-preference){.lamina{animation:asienta .7s cubic-bezier(.2,1.45,.4,1) both}}
+@keyframes asienta{from{transform:translateY(14px)}}
+</style>
+
+<main class="libro">
+
+<!-- 00 · Portada -->
+<section class="lamina portada" aria-label="Portada">
+  <div class="arriba"><span>Luxor Marbella</span><span>Brand book · 2026</span></div>
+  <div class="medio">
+    <span class="logo" role="img" aria-label="Logo de Luxor Marbella"></span>
+    <p class="lema">Hacemos fácil tener casa en Marbella</p>
+  </div>
+  <div class="abajo"><span>P01 Project management</span><span>R02 Reformas</span><span>M03 Mantenimiento</span><span>luxormarbella.com</span></div>
+</section>
+
+<!-- 01 · Logo principal -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 01</span><span>Identidad</span></div>
+    <h2>Logo principal</h2>
+    <div class="txt">
+      <p>El logo de siempre, en blanco y negro. El frontón de arriba es la casa; las dos líneas son el suelo firme. Luxor es la palabra grande; Marbella va debajo, espaciada.</p>
+      <p>Solo dos versiones: negro sobre claro y blanco sobre oscuro o sobre foto. Nunca en color, nunca con sombra, nunca deformado.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles" style="grid-template-rows:1fr 1fr">
+    <div class="p centro" style="background:var(--negro);color:var(--blanco)"><span class="logo"></span><span class="et">Blanco sobre negro #111111</span></div>
+    <div class="p centro" style="color:var(--blanco)"><img class="foto" src="img/hero-casa.jpg" alt="Villa en Marbella"><span style="position:absolute;inset:0;background:rgba(0,0,0,.3)"></span><span class="logo" style="position:relative"></span><span class="et">Blanco sobre foto, con velo del 30 %</span></div>
+  </div>
+</section>
+
+<!-- 02 · Monograma -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 02</span><span>Identidad</span></div>
+    <h2>Monograma</h2>
+    <div class="txt">
+      <p>Las letras de Luxor cruzadas en una sola pieza, con remates de piedra. Es la firma corta: icono de la web, llavero, etiqueta, perfil de redes.</p>
+      <p>Va siempre centrado en un cuadrado y con aire alrededor de al menos un tercio de su ancho.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles" style="grid-template-columns:1fr 1fr">
+    <div class="p centro" style="background:var(--negro);color:var(--blanco);aspect-ratio:1.1"><span class="mono"></span><span class="et">Negro</span></div>
+    <div class="p centro" style="background:var(--klein);color:var(--blanco);aspect-ratio:1.1"><span class="mono"></span><span class="et">Klein · P01</span></div>
+    <div class="p centro" style="background:var(--arena);color:var(--negro);aspect-ratio:1.1"><span class="mono"></span><span class="et">Arena</span></div>
+    <div class="p centro" style="background:var(--blanco);color:var(--negro);box-shadow:inset 0 0 0 1px var(--linea);aspect-ratio:1.1"><span class="mono"></span><span class="et">Blanco</span></div>
+  </div>
+</section>
+
+<!-- 03 · Color -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 03</span><span>Sistema</span></div>
+    <h2>Color</h2>
+    <div class="txt">
+      <p>Base en blanco y negro, como un plano. El color solo aparece para señalar: un toque por pieza, nunca de fondo en todo.</p>
+      <p>Cada servicio tiene el suyo. Para texto sobre blanco se usa la versión oscura del naranja y del turquesa.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles colores">
+    <div class="col ancho" style="background:var(--negro);color:var(--blanco)"><b>Negro noche</b><div><span>#111111</span><span>Cabecera, cierre, logo</span></div></div>
+    <div class="col" style="background:var(--blanco);color:var(--tinta);box-shadow:inset 0 0 0 1px var(--linea)"><b>Blanco</b><div><span>#FFFFFF</span><span>Fondo de página</span></div></div>
+    <div class="col" style="background:var(--arena);color:var(--tinta)"><b>Arena</b><div><span>#EFEFED</span><span>Una franja por página</span></div></div>
+    <div class="col ancho" style="background:var(--klein);color:var(--blanco)"><b>Azul Klein · P01</b><div><span>#1F3BFF</span><span>Project management y acento general</span></div></div>
+    <div class="col" style="background:var(--naranja);color:var(--negro)"><b>Naranja · R02</b><div><span>#FF5A1F</span><span>Texto: #C2380A</span></div></div>
+    <div class="col" style="background:var(--turquesa);color:var(--negro)"><b>Turquesa · M03</b><div><span>#2FE0C8</span><span>Texto: #0A7A6C</span></div></div>
+  </div>
+</section>
+
+<!-- 04 · Tipografía -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 04</span><span>Sistema</span></div>
+    <h2>Tipo­grafía</h2>
+    <div class="txt">
+      <p>Jost para títulos, siempre en mayúsculas: geométrica, de regla y compás. Inter para leer: párrafos, botones, formularios.</p>
+      <p>Títulos como capítulos: la palabra clave grande y el resto debajo, pequeño.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles tipo">
+    <div class="p esp" style="background:var(--negro);color:var(--blanco)">
+      <div class="nombre"><span>Jost</span><span>Títulos</span></div>
+      <div class="gigante">Aa</div>
+      <div class="muestra">Project management<br><span style="opacity:.6;font-size:.8em">de reformas y obras en Marbella</span></div>
+    </div>
+    <div class="p esp" style="background:var(--arena)">
+      <div class="nombre"><span>Inter</span><span>Texto</span></div>
+      <div class="gigante inter">Aa</div>
+      <div class="muestra-i">Una sola llamada para toda la casa. Coordinamos oficios, plazos y presupuesto, y te mandamos fotos de cada avance.</div>
+    </div>
+    <div class="p escala" style="background:var(--blanco);box-shadow:inset 0 0 0 1px var(--linea)">
+      <div><small>Display</small><span style="font:400 clamp(1.8rem,3.4vw,3rem)/1 var(--f-tit);text-transform:uppercase">Reformas</span></div>
+      <div><small>Etiqueta</small><span style="font:500 .78rem var(--f-tit);letter-spacing:.2em;text-transform:uppercase">Toca un punto de la foto</span></div>
+      <div><small>Texto</small><span>Respuesta en un día laborable, por teléfono, WhatsApp o correo.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · Códigos -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 05</span><span>Sistema</span></div>
+    <h2>Códigos de servicio</h2>
+    <div class="txt">
+      <p>Como en un juego de planos, cada línea de trabajo tiene su número de lámina: la inicial y el orden. Ordenan la web, los presupuestos y las facturas.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles codigos">
+    <div class="p codigo" style="background:var(--klein)"><span class="n">P01</span><span class="s">Project management</span></div>
+    <div class="p codigo osc" style="background:var(--naranja)"><span class="n">R02</span><span class="s">Reformas y home staging</span></div>
+    <div class="p codigo osc" style="background:var(--turquesa)"><span class="n">M03</span><span class="s">Mantenimiento de viviendas</span></div>
+  </div>
+</section>
+
+<!-- 06 · Patrón -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 06</span><span>Recursos</span></div>
+    <h2>Patrón</h2>
+    <div class="txt">
+      <p>El frontón del logo repetido en hilera, como una calle de tejados vista de frente, con las dos líneas de suelo. Para interiores de sobres, bolsas, fondos de redes y lonas de obra.</p>
+      <p>Siempre en línea fina, al 40 %, sobre negro o sobre el color del servicio.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles" style="grid-template-columns:2fr 1fr">
+    <div class="p patron grande" style="min-height:420px"></div>
+    <div class="p patron negro"></div>
+  </div>
+</section>
+
+<!-- 07 · Tono y mood -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 07</span><span>Mood</span></div>
+    <h2>Tono y mood</h2>
+    <div class="txt">
+      <p>Luz de mediodía, piedra clara, líneas rectas. Casas reales de la Costa del Sol y manos trabajando; nunca fotos de banco de imágenes con gente posando.</p>
+      <p>Encuadres limpios, mucho cielo y paredes lisas para que respire el texto.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles mood">
+    <div class="p centro" style="background:var(--negro);color:var(--blanco)"><span class="mono" style="width:44%"></span></div>
+    <div class="p"><img class="foto" src="img/svc-reformas.jpg" alt="Reforma en curso"></div>
+    <div class="p patron alto"></div>
+    <div class="p"><img class="foto" src="img/about-casa.jpg" alt="Casa en Marbella"></div>
+    <div class="p frase" style="background:var(--klein);color:var(--blanco)">Hacemos fácil tener casa en Marbella</div>
+    <div class="p ancho"><img class="foto" src="img/hero-villa-2.jpg" alt="Villa con piscina"></div>
+    <div class="p"><img class="foto" src="img/svc-mantenimiento.jpg" alt="Mantenimiento"></div>
+  </div>
+</section>
+
+<!-- 08 · Papelería -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 08</span><span>Aplicaciones</span></div>
+    <h2>Papelería</h2>
+    <div class="txt">
+      <p>Papel blanco grueso, logo arriba a la izquierda y el cajetín abajo, como en un plano. El interior del sobre en negro.</p>
+      <p>Tarjeta: logo en blanco sobre negro por delante; por detrás, nombre, cargo y el teléfono con prefijo.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles papel">
+    <div class="mesa grande">
+      <div class="escena">
+        <div class="hoja-incl sombra"><span class="logo"></span><div class="pat patron negro"></div></div>
+        <div class="sobre sombra"><span class="logo" style="position:relative;z-index:1;margin-top:18%"></span><span class="rem">Marbella · Málaga · luxormarbella.com</span></div>
+      </div>
+    </div>
+    <div class="mesa">
+      <div class="carta sombra">
+        <span class="logo"></span>
+        <div class="lineas"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="pc"><span>Presupuesto P01-0142</span><span>Hoja 1 de 2</span></div>
+      </div>
+    </div>
+    <div class="mesa" style="background:var(--arena)">
+      <div class="tarjetas">
+        <div class="tarjeta f sombra"><span class="logo"></span><span style="font:500 6px var(--f-tit);letter-spacing:.2em;text-transform:uppercase">Hacemos fácil tener casa en Marbella</span></div>
+        <div class="tarjeta d sombra"><div><b>Tu nombre</b>Project manager</div><div class="fila"><span>+34 655 67 36 68<br>info@luxormarbella.com<br>luxormarbella.com</span><span class="mono"></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · Señalética -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 09</span><span>Aplicaciones</span></div>
+    <h2>Seña­lética</h2>
+    <div class="txt">
+      <p>Letras corpóreas en negro mate sobre pared blanca, separadas unos centímetros para que hagan sombra. Banderola con el monograma y placa de latón cepillado en la puerta.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles senal">
+    <div class="p fachada">
+      <div class="rotulo"><span class="logo"></span></div>
+      <div class="bandera"><span class="mono"></span></div>
+      <div class="luces"><i></i><i></i><i></i><i></i></div>
+      <div class="placa"><span class="logo"></span><span>Atención con cita · +34 655 67 36 68</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Mockups -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 10</span><span>Aplicaciones</span></div>
+    <h2>Mockups</h2>
+    <div class="txt">
+      <p>La llave es el objeto de Luxor: guardamos las llaves de la casa. El llavero lleva el monograma y el número de vivienda, nunca la dirección.</p>
+      <p>Uniforme negro con el monograma pequeño en el pecho. Furgoneta blanca con el logo en negro y la línea del color del servicio.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles mock">
+    <div class="p llavero"><div class="llave-set"><div class="aro"></div><div class="chapa"><span class="mono"></span><small>Casa<br>M03 · 027</small></div></div><span class="et" style="color:#fff">Llavero de custodia</span></div>
+    <div class="p tejido"><div class="etiqueta"><span class="mono"></span></div><span class="et" style="color:#fff">Etiqueta tejida</span></div>
+    <div class="p calle"><div class="furgo"><div class="caja"><span class="logo"></span><small>+34 655 67 36 68</small></div><div class="franja"></div><div class="cab"></div><div class="rueda" style="left:10%"></div><div class="rueda" style="left:74%"></div></div><span class="et">Furgoneta</span></div>
+    <div class="p bolsa-fondo"><div class="bolsa"><span class="logo"></span><small>Una sola llamada<br>para toda la casa</small></div><span class="et" style="left:auto;right:14px">Bolsa de llaves</span></div>
+    <div class="p app"><div class="ficha"><div class="icono"><span class="mono"></span></div><div><b>Luxor Marbella</b><span>Property services · Marbella</span><br><span class="get">Abrir</span></div></div><span class="et" style="color:#fff">Icono de app y perfil</span></div>
+    <div class="p uniforme"><div class="polo"><span class="mono"></span></div><span class="et">Uniforme</span></div>
+  </div>
+</section>
+
+<!-- 11 · Voz -->
+<section class="lamina">
+  <div class="caj">
+    <div class="cod"><span>Lámina 11</span><span>Voz</span></div>
+    <h2>Voz</h2>
+    <div class="txt">
+      <p>Cercana y del sur, como un vecino que sabe de casas. Frases cortas, tuteo y cero tecnicismos. Lo importante va primero; el teléfono, siempre con prefijo.</p>
+    </div>
+    <div class="pie"><span>Luxor Marbella</span><span>luxormarbella.com</span></div>
+  </div>
+  <div class="paneles voz">
+    <div class="p bloque si">
+      <h3>Así hablamos</h3>
+      <ul>
+        <li>¿Te lo estás pensando? Guárdate nuestro número.<small>Aviso de la web</small></li>
+        <li>Una sola llamada para toda la casa.<small>Portada</small></li>
+        <li>Te mandamos fotos de cada avance.<small>Project management</small></li>
+      </ul>
+    </div>
+    <div class="p bloque no">
+      <h3>Así no</h3>
+      <ul>
+        <li><s>Soluciones integrales de gestión patrimonial premium.</s><small>Vacío y frío</small></li>
+        <li><s>Contacte con nuestro departamento comercial.</s><small>Distante</small></li>
+        <li><s>Llámenos al 655 67 36 68.</s><small>Sin prefijo y de usted</small></li>
+      </ul>
+    </div>
+    <div class="contacto"><span class="tel">+34 655 67 36 68</span><small>Todos los días, 9:00 – 20:00 · info@luxormarbella.com</small></div>
+  </div>
+</section>
+
+</main>
+
+<script>
+// El monograma viene en negro sobre blanco: se convierte en máscara (lo blanco pasa a transparente)
+// para poder pintarlo de cualquier color, como el logo.
+(function(){
+  var im=new Image();
+  im.onload=function(){
+    try{
+      var c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;
+      var x=c.getContext('2d');x.drawImage(im,0,0);
+      var d=x.getImageData(0,0,c.width,c.height),p=d.data;
+      for(var i=0;i<p.length;i+=4){var l=(p[i]+p[i+1]+p[i+2])/3;p[i]=p[i+1]=p[i+2]=0;p[i+3]=255-l}
+      x.putImageData(d,0,0);
+      document.documentElement.style.setProperty('--mono','url("'+c.toDataURL('image/png')+'")');
+    }catch(e){}
+  };
+  im.src='img/mono.png';
+})();
+</script>
