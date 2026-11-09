@@ -271,6 +271,7 @@ function cabeza(l, p, t, css, js) {
     '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">',
     '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">',
     '<link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>',
+    '<link rel="preload" href="/assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>',
     l.code === 'ru' && '<link rel="preload" href="/assets/fonts/inter-cyrillic-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>',
     `<link rel="stylesheet" href="${css}">`,
     // la clase "js" se pone antes de pintar para que no parpadee la versión sin JavaScript
@@ -378,6 +379,18 @@ escribe(join(pub, 'sitemap-movidas.xml'), `<?xml version="1.0" encoding="UTF-8"?
 ${movidas.map((u) => `  <url><loc>${SITE}${u}</loc></url>`).join('\n')}
 </urlset>
 `);
+// Ficha de contacto (vCard) del botón «Guardar en mis contactos» del aviso (2026-11-09): en el móvil abre la
+// ficha con el teléfono, el correo, la web y el logo, lista para guardar con un toque.
+{
+  const foto = readFileSync(join(root, 'assets/apple-touch-icon.png')).toString('base64');
+  const lineas = ['BEGIN:VCARD', 'VERSION:3.0', 'N:;Luxor Marbella;;;', 'FN:Luxor Marbella', 'ORG:Luxor Marbella',
+    `TEL;TYPE=CELL,VOICE:${NEGOCIO.telefono}`, `EMAIL;TYPE=WORK:${NEGOCIO.email}`, `URL:${SITE}/`,
+    'NOTE:Property services · Project management · Marbella', 'ADR;TYPE=WORK:;;;Marbella;Málaga;;España',
+    'PHOTO;ENCODING=b;TYPE=PNG:' + foto, 'END:VCARD'];
+  // las líneas largas se pliegan (RFC 2425): salto y un espacio
+  const pliega = (l) => (l.length <= 75 ? l : l.match(/.{1,74}/g).join('\r\n '));
+  escribe(join(pub, 'luxor-marbella.vcf'), lineas.map(pliega).join('\r\n') + '\r\n');
+}
 escribe(join(pub, 'robots.txt'), `# robots.txt de ${SITE}
 # Sitio público: rastreo permitido a buscadores y a asistentes de IA.
 # No añadir grupos por bot: un bot con grupo propio deja de leer el grupo *.

@@ -87,6 +87,41 @@ const waFlota = `<a class="wa-flota" id="wa-flota" href="${WA}" target="_blank" 
   <span class="wa-txt">WhatsApp</span>
 </a>`;
 
+// Barra fija en el móvil (2026-11-09): llamar o escribir sin buscar el teléfono. En el móvil sustituye al botón
+// redondo de WhatsApp.
+const barraLlamar = `<div class="barra-llamar" id="barra-llamar">
+  <a class="bl-tel" href="${TEL}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg><span>Llamar ahora</span></a>
+  <a class="bl-wa" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
+</div>`;
+
+// Aviso a los 3 segundos (2026-11-09, idea C con algo interactivo): la llave se desliza hasta la cerradura y abre
+// la tarjeta con el número. Los botones (guardar contacto, WhatsApp, llamar) se pueden usar siempre. Sale como
+// mucho una vez por semana (site.js) y nunca en la página de presupuesto.
+const aviso = `<dialog class="aviso" id="aviso" aria-labelledby="aviso-tit">
+  <div class="av-caja">
+    <button class="av-x" type="button" data-cerrar aria-label="Cerrar">×</button>
+    <h2 class="av-tit" id="aviso-tit">¿Te lo estás pensando?</h2>
+    <p class="av-txt">Normal, es tu casa. Guárdanos en el móvil como guardas las llaves: a mano, para cuando haga falta.</p>
+    <div class="av-puerta">
+      <div class="av-dentro">
+        <a class="av-num" href="${TEL}">${N.telefonoIntl}</a>
+        <p class="av-sub">Te contestamos en un ratito.</p>
+      </div>
+      <div class="av-cerradura">
+        <span class="av-pista">Desliza la llave para abrir</span>
+        <button class="av-llave" type="button" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Desliza la llave para abrir"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><circle cx="7" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M11 12h10M17 12v3M20 12v2" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></button>
+        <span class="av-ojo" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="av-bts">
+      <a class="av-b av-guardar" href="/luxor-marbella.vcf">Guardar en mis contactos</a>
+      <a class="av-b av-wa" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="av-b av-tel" href="${TEL}">Llamar ahora</a>
+    </div>
+    <button class="av-no" type="button" data-cerrar>Ahora no</button>
+  </div>
+</dialog>`;
+
 const pie = `<footer class="foot">
   <div class="wrap">
     <div class="foot-top">
@@ -130,10 +165,15 @@ ${N.direccionTexto ? `          <li><a href="${N.mapa}" target="_blank" rel="noo
 const cierre = (titulo = '¿Empezamos por tu casa?') => `<section class="closer">
   <div class="wrap">
     <h2 class="d2">${titulo}</h2>
+    <div class="closer-tel">
+      <p class="closer-kick">Llámanos</p>
+      <a class="closer-num" href="${TEL}">${N.telefonoIntl}</a>
+      <p class="closer-hora"><span>${N.horarioTexto}</span> · <span>Respuesta en un día laborable</span></p>
+    </div>
     <div class="closer-actions">
-      <a class="btn" href="{{url:presupuesto}}">Pedir presupuesto</a>
+      <a class="btn" href="${TEL}">Llamar ahora</a>
       <a class="lnk" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="lnk" href="${TEL}">${N.telefonoIntl}</a>
+      <a class="lnk" href="{{url:presupuesto}}">Pedir presupuesto</a>
     </div>
   </div>
 </section>`;
@@ -224,7 +264,7 @@ ${explorador()}
 <section class="duo" data-capa>
   <div class="wrap">
     <div class="duo-title">
-      <h2 class="d1">Cuidamos tu casa en Marbella los 365 días</h2>
+      <h2 class="d1"><span class="cap">365 días</span> <span class="cap-desc">Cuidamos tu casa en Marbella todo el año</span></h2>
       <a class="lnk" href="{{url:nosotros}}">Conoce Luxor Marbella</a>
     </div>
     <div class="shot">${img('duo-cal.jpg', 'Azoteas encaladas de una casa mediterránea')}</div>
@@ -235,7 +275,7 @@ ${explorador()}
 <section class="reviews" id="como-trabajamos">
   <div class="wrap">
     <div class="rev-col">
-      <h2>Una sola llamada para toda la casa</h2>
+      <h2><span class="cap">Una sola llamada</span> <span class="cap-desc">para toda la casa</span></h2>
       <p>Fontanero, limpieza y tu agencia: lo coordinamos nosotros.</p>
     </div>
     <div class="ben-col">
@@ -268,8 +308,7 @@ const servicio = (id) => {
     <div class="shot phead-foto">${s.cabecera ? `<img src="/photos/${s.cabecera.foto}" alt="${s.cabecera.alt}" width="${s.cabecera.ancho}" height="${s.cabecera.alto}" fetchpriority="high">` : `<img src="/photos/${s.foto}" alt="${s.alt}" width="1440" height="900" fetchpriority="high"${s.flip ? ' class="flip"' : ''}>`}</div>
     <div class="phead-caja">
       <div class="pc-top">${migas(['Inicio', 'inicio'], [s.menu])}<span class="num" aria-hidden="true"><span>{{num:${s.id}}}</span> / 0${SERVICIOS.length}</span></div>
-      <h1>${s.h1}</h1>
-      <p class="lead">${s.entrada}</p>
+      <h1><span class="cap">${s.cap}</span> <span class="cap-desc">${s.capDesc}</span></h1>
       ${indice(s.id)}
     </div>
   </div>
@@ -329,7 +368,6 @@ const nosotros = () => `<section class="phead" data-capa>
     <div class="phead-caja">
       <div class="pc-top">${migas(['Inicio', 'inicio'], ['Quiénes somos'])}</div>
       <h1>Luxor Marbella</h1>
-      <p class="lead">${FAQ[0].a}</p>
     </div>
   </div>
 </section>
@@ -514,5 +552,7 @@ ${pagina.cuerpo()}
 
 ${pie}
 ${waFlota}
+${barraLlamar}
+${pagina.id === 'presupuesto' || pagina.id === '404' ? '' : aviso}
 
 <script type="application/json" id="i18n">${JSON.stringify(TEXTOS_JS)}</script>`;

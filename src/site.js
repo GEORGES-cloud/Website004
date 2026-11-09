@@ -300,6 +300,8 @@
     var pick = function(svc, i, ev){
       // al pasar el raton la nota cambia sin anunciarse (si no, un lector de pantalla leeria cada fila)
       svc.querySelector('.svc-note').setAttribute('aria-live', ev === 'mouseenter' ? 'off' : 'polite');
+      // el texto del panel está borroso hasta que se toca un punto (o una fila); luego solo se lee el elegido
+      if (ev) svc.classList.add('tocado');
       each(svc.querySelectorAll('.it'), function(b, n){
         b.setAttribute('aria-pressed', String(n === i));
         if (n === i) svc.querySelector('.svc-note').textContent = b.querySelector('span').textContent;
@@ -477,5 +479,54 @@
       }
     });
   }
+  // ---------- aviso a los 3 segundos: la llave se desliza hasta la cerradura y abre la tarjeta ----------
+  (function(){
+    var av = $('aviso');
+    if (!av || typeof av.showModal !== 'function') return;
+    var forzar = /[?&]aviso=1/.test(location.search), ultimo = 0;
+    try { ultimo = +localStorage.getItem('luxor-aviso') || 0; } catch (e) {}
+    if (!forzar && Date.now() - ultimo < 7 * 864e5) return;
+    var puerta = av.querySelector('.av-puerta'), riel = av.querySelector('.av-cerradura'), llave = av.querySelector('.av-llave');
+    var abierta = false, x0 = null, base = 0;
+    var max = function(){ return riel.clientWidth - llave.offsetWidth - 8; };
+    var pon = function(v){
+      v = Math.max(0, Math.min(max(), v));
+      llave.style.transform = 'translateX(' + v + 'px)';
+      var pct = Math.round(v / max() * 100);
+      llave.setAttribute('aria-valuenow', String(pct));
+      riel.style.setProperty('--avance', pct / 100);
+      return pct;
+    };
+    var abre = function(){
+      if (abierta) return;
+      abierta = true; pon(max()); puerta.classList.add('abierta');
+      llave.setAttribute('aria-valuenow', '100'); llave.disabled = true;
+    };
+    llave.addEventListener('pointerdown', function(e){ if (abierta) return; x0 = e.clientX; base = 0; llave.setPointerCapture(e.pointerId); riel.classList.add('arrastra'); });
+    llave.addEventListener('pointermove', function(e){ if (x0 === null) return; base = e.clientX - x0; pon(base); });
+    var suelta = function(){
+      if (x0 === null) return;
+      x0 = null; riel.classList.remove('arrastra');
+      if (base / max() > .8) abre(); else pon(0);
+    };
+    llave.addEventListener('pointerup', suelta);
+    llave.addEventListener('pointercancel', suelta);
+    // con el teclado: flechas para deslizar, Intro o espacio para abrir del tirón
+    llave.addEventListener('keydown', function(e){
+      if (abierta) return;
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abre(); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); var v = (+llave.getAttribute('aria-valuenow') + 25) / 100 * max(); if (pon(v) >= 100) abre(); }
+    });
+    var cierra = function(){ av.close(); };
+    each(av.querySelectorAll('[data-cerrar]'), function(b){ b.addEventListener('click', cierra); });
+    av.addEventListener('click', function(e){ if (e.target === av) cierra(); });
+    setTimeout(function(){
+      if (document.documentElement.classList.contains('menu-abierto') || document.querySelector('dialog[open]')) return;
+      av.showModal();
+      llave.focus({ preventScroll: true });
+      try { localStorage.setItem('luxor-aviso', String(Date.now())); } catch (e) {}
+    }, forzar ? 300 : 3000);
+  })();
+
   window.luxorListo = true;
 })();

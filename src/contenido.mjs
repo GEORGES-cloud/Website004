@@ -59,6 +59,8 @@ export const SERVICIOS = [
     alt: 'Baño terminado con encimera de piedra, espejo en arco y ducha de travertino',
     flip: false,
     h1: 'Project management de reformas y obras en Marbella',
+    cap: 'Project management',          // título de capítulo (grande, en mayúsculas)
+    capDesc: 'de reformas y obras en Marbella',    // el resto del h1, debajo y en pequeño
     entrada: 'Planificamos, coordinamos y supervisamos tu proyecto de principio a fin, aunque no estés en Marbella.',
     metaTitle: 'Project management de reformas en Marbella | Luxor Marbella',
     metaDesc: 'Project management de reformas y obras en Marbella: planificación, presupuesto cerrado, coordinación de oficios y proveedores, seguimiento con partes y entrega.',
@@ -90,6 +92,8 @@ export const SERVICIOS = [
     alt: 'Salón en tonos crema con mesa de travertino',
     flip: false,
     h1: 'Reformas y home staging en Marbella',
+    cap: 'Reformas y home staging',          // título de capítulo (grande, en mayúsculas)
+    capDesc: 'de villas y apartamentos en Marbella',    // el resto del h1, debajo y en pequeño
     entrada: 'Reformas integrales, parciales y pequeñas, amueblado y decoración. Tu vivienda, lista para vivirla o para el mercado.',
     metaTitle: 'Reformas integrales y home staging en Marbella | Luxor Marbella',
     metaDesc: 'Reformas integrales, parciales y pequeñas en Marbella, reacondicionamiento para alquiler, amueblado, decoración, home staging y limpieza de fin de obra.',
@@ -122,6 +126,8 @@ export const SERVICIOS = [
     alt: 'Salón blanco con patio interior y un árbol',
     flip: false,
     h1: 'Mantenimiento de viviendas y custodia de llaves en Marbella',
+    cap: 'Mantenimiento de viviendas',          // título de capítulo (grande, en mayúsculas)
+    capDesc: 'y custodia de llaves en Marbella',    // el resto del h1, debajo y en pequeño
     entrada: 'Custodia de llaves, revisiones, averías, piscina, limpieza y gestiones de tu villa o apartamento, también mientras está alquilado.',
     metaTitle: 'Mantenimiento de viviendas y llaves en Marbella | Luxor Marbella',
     metaDesc: 'Llaves, revisiones, mantenimiento, piscina y jardín, limpieza y lavandería en Marbella. Y si la alquilas: check-in, check-out y limpieza entre estancias.',
