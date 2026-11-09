@@ -480,13 +480,14 @@
       }
     });
   }
-  // ---------- aviso a los 3 segundos: la llave se desliza hasta la cerradura y abre la tarjeta ----------
+  // ---------- aviso: a los 3 segundos y luego cada 2 minutos (pedido el 2026-11-09); la llave se desliza
+  // hasta la cerradura y abre la tarjeta. La hora del último aviso se guarda para no repetirlo al cambiar de página.
   (function(){
     var av = $('aviso');
     if (!av || typeof av.showModal !== 'function') return;
     var forzar = /[?&]aviso=1/.test(location.search), ultimo = 0;
     try { ultimo = +localStorage.getItem('luxor-aviso') || 0; } catch (e) {}
-    if (!forzar && Date.now() - ultimo < 7 * 864e5) return;
+    var CADA = 2 * 60 * 1000, reloj = null;
     var puerta = av.querySelector('.av-puerta'), riel = av.querySelector('.av-cerradura'), llave = av.querySelector('.av-llave');
     var abierta = false, x0 = null, base = 0;
     var max = function(){ return riel.clientWidth - llave.offsetWidth - 8; };
@@ -519,14 +520,23 @@
       if (e.key === 'ArrowRight') { e.preventDefault(); var v = (+llave.getAttribute('aria-valuenow') + 25) / 100 * max(); if (pon(v) >= 100) abre(); }
     });
     var cierra = function(){ av.close(); };
-    each(av.querySelectorAll('[data-cerrar]'), function(b){ b.addEventListener('click', cierra); });
-    av.addEventListener('click', function(e){ if (e.target === av) cierra(); });
-    setTimeout(function(){
-      if (document.documentElement.classList.contains('menu-abierto') || document.querySelector('dialog[open]')) return;
+    var programa = function(ms){ clearTimeout(reloj); reloj = setTimeout(muestra, ms); };
+    var muestra = function(){
+      // si está el menú abierto, otro diálogo o alguien escribiendo en un campo, se espera un poco
+      var el = document.activeElement;
+      if (document.documentElement.classList.contains('menu-abierto') || document.querySelector('dialog[open]') || (el && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) { programa(15000); return; }
+      // la cerradura vuelve a estar cerrada cada vez que sale
+      abierta = false; puerta.classList.remove('abierta'); llave.disabled = false; pon(0);
       av.showModal();
       llave.focus({ preventScroll: true });
       try { localStorage.setItem('luxor-aviso', String(Date.now())); } catch (e) {}
-    }, forzar ? 300 : 3000);
+    };
+    av.addEventListener('close', function(){ programa(CADA); });
+    each(av.querySelectorAll('[data-cerrar]'), function(b){ b.addEventListener('click', cierra); });
+    av.addEventListener('click', function(e){ if (e.target === av) cierra(); });
+    // primera vez: a los 3 s si hace más de 2 minutos del último aviso (o nunca salió); si no, cuando se cumplan
+    var pasado = Date.now() - ultimo;
+    programa(forzar ? 300 : pasado >= CADA ? 3000 : CADA - pasado);
   })();
 
   window.luxorListo = true;

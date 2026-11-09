@@ -99,9 +99,9 @@ const barraLlamar = `<div class="barra-llamar" id="barra-llamar">
   <a class="bl-wa" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
 </div>`;
 
-// Aviso a los 3 segundos (2026-11-09, idea C con algo interactivo): la llave se desliza hasta la cerradura y abre
-// la tarjeta con el número. Los botones (guardar contacto, WhatsApp, llamar) se pueden usar siempre. Sale como
-// mucho una vez por semana (site.js) y nunca en la página de presupuesto.
+// Aviso a los 3 segundos y luego cada 2 minutos (2026-11-09, idea C con algo interactivo): la llave se desliza hasta la cerradura y abre
+// la tarjeta con el número. Los botones (guardar contacto, WhatsApp, llamar) se pueden usar siempre. El ritmo
+// lo lleva site.js; nunca sale en la página de presupuesto.
 const aviso = `<dialog class="aviso" id="aviso" aria-labelledby="aviso-tit">
   <div class="av-caja">
     <button class="av-x" type="button" data-cerrar aria-label="Cerrar">×</button>
