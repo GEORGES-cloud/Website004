@@ -534,9 +534,10 @@
     av.addEventListener('close', function(){ programa(CADA); });
     each(av.querySelectorAll('[data-cerrar]'), function(b){ b.addEventListener('click', cierra); });
     av.addEventListener('click', function(e){ if (e.target === av) cierra(); });
-    // primera vez: a los 3 s si hace más de 2 minutos del último aviso (o nunca salió); si no, cuando se cumplan
+    // primera vez: a los 15 s (deja ver el vídeo y empezar a leer) si hace más de 2 minutos del último aviso (o nunca salió); si no, cuando se cumplan
+    var PRIMERA = 15000;
     var pasado = Date.now() - ultimo;
-    programa(forzar ? 300 : pasado >= CADA ? 3000 : CADA - pasado);
+    programa(forzar ? 300 : pasado >= CADA ? PRIMERA : Math.max(PRIMERA, CADA - pasado));
   })();
 
   window.luxorListo = true;

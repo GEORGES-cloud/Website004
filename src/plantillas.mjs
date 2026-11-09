@@ -39,6 +39,8 @@ const TEXTOS_JS = {
 
 // Cabecera B (elegida el 2026-11-08): menú y teléfono a la izquierda, logo centrado, idioma y presupuesto
 // a la derecha; en PC las secciones van en una segunda línea centrada.
+// En el móvil (2026-11-09, más minimalista): solo logo a la izquierda y ☰ a la derecha; idioma y presupuesto
+// van dentro del menú.
 const cabecera = `<header class="masthead">
   <div class="wrap">
     <div class="mh-left">
@@ -82,6 +84,7 @@ ${SERVICIOS.map((s) => `        <li><a href="{{url:${s.id}}}" data-s="${s.id}"><
           <li><a href="mailto:${N.email}">${N.email}</a></li>
         </ul>
       </div>
+      {{langs:menu}}
     </div>
   </div>
 </nav>`;
@@ -99,7 +102,7 @@ const barraLlamar = `<div class="barra-llamar" id="barra-llamar">
   <a class="bl-wa" href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
 </div>`;
 
-// Aviso a los 3 segundos y luego cada 2 minutos (2026-11-09, idea C con algo interactivo): la llave se desliza hasta la cerradura y abre
+// Aviso a los 15 segundos (antes 3; cambiado el 2026-11-09) y luego cada 2 minutos (2026-11-09, idea C con algo interactivo): la llave se desliza hasta la cerradura y abre
 // la tarjeta con el número. Los botones (guardar contacto, WhatsApp, llamar) se pueden usar siempre. El ritmo
 // lo lleva site.js; nunca sale en la página de presupuesto.
 const aviso = `<dialog class="aviso" id="aviso" aria-labelledby="aviso-tit">
@@ -255,6 +258,8 @@ const heroActual = () => `<section class="hero" id="top" data-capa>
   </div>
 </section>`;
 
+// El plano de obra salió del vídeo del hero (2026-11-09): el vídeo de arriba es solo la casa y el plano
+// acompaña a «Una sola llamada», que es donde se explica cómo trabajamos.
 const inicio = () => `${heroActual()}
 
 <section class="pledges">
@@ -281,6 +286,7 @@ ${explorador()}
     <div class="rev-col">
       <h2><span class="cap">Una sola llamada</span> <span class="cap-desc">para toda la casa</span></h2>
       <p>Fontanero, limpieza y tu agencia: lo coordinamos nosotros.</p>
+      <div class="shot rev-foto">${img('plano-obra.jpg', 'Plano de obra de una vivienda sobre la mesa', ' width="1200" height="1500"')}</div>
     </div>
     <div class="ben-col">
 ${VENTAJAS.map(([h, p]) => `      <div class="ben">

@@ -127,6 +127,8 @@ function selector(l, p, t, tipo) {
   const destino = (a) => ruta(a, p.oculta ? pagina('inicio') : p);
   // en el desplegable cada idioma lleva también su código (ES, EN…) a la derecha
   const enlaces = (conCodigo) => activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}"${a === l ? ' aria-current="true"' : ''}>${a.nombre}${conCodigo ? ` <span class="lang-cod" aria-hidden="true">${a.code.toUpperCase()}</span>` : ''}</a></li>`).join('');
+  // en el menú del móvil (2026-11-09): solo los códigos en fila, el actual subrayado
+  if (tipo === 'menu') return `<div class="menu-langs"><p class="tit">${rotulo}</p><ul aria-label="${rotulo}">${activos.map((a) => `<li><a href="${destino(a)}" lang="${a.code}" hreflang="${a.code}" aria-label="${a.nombre}"${a === l ? ' aria-current="true"' : ''}>${a.code.toUpperCase()}</a></li>`).join('')}</ul></div>`;
   return tipo === 'desplegable'
     ? `<details class="lang"><summary aria-label="${rotulo}: ${l.nombre} (${l.code.toUpperCase()})"><span class="globo" aria-hidden="true"></span>${l.code.toUpperCase()}</summary><ul>${enlaces(true)}</ul></details>`
     : `<div class="langs-caja"><span class="langs-rotulo" aria-hidden="true"><span class="globo"></span>${rotulo}</span><ul class="langs" aria-label="${rotulo}">${enlaces(false)}</ul></div>`;
@@ -326,7 +328,7 @@ for (const l of activos) {
   for (const p of PAGINAS) {
     const t = traductor(l, p.id);
     let html = traducir(cuerpo(p), t)
-      .replace(/\{\{langs:(desplegable|lista)\}\}/g, (todo, tipo) => selector(l, p, t, tipo))
+      .replace(/\{\{langs:(desplegable|lista|menu)\}\}/g, (todo, tipo) => selector(l, p, t, tipo))
       .replace(/\{\{url:([\w-]+)\}\}/g, (todo, id) => ruta(l, pagina(id)))
       .replace(/\{\{num:([\w-]+)\}\}/g, (todo, id) => codigo(l, t, id))
       .replace(/<(h[1-3])\b[^>]*>[\s\S]*?<\/\1>/g, sinCorte);

@@ -1,5 +1,5 @@
 {
- "nota": "2026-10-30: el usuario eligió fachada blanca con palmeras (Pixabay 143861), plano y jardín con estanque (Pixabay 211152). Las dos de Pixabay llevan la saturación un poco bajada.",
+ "nota": "2026-10-30: el usuario eligió fachada blanca con palmeras (Pixabay 143861), plano y jardín con estanque (Pixabay 211152). Las dos de Pixabay llevan la saturación un poco bajada. 2026-11-09: el plano sale del hero (pidió que el vídeo de arriba sea solo la casa) y pasa a una foto fija más abajo en la portada (photos/plano-obra.jpg).",
  "fundido": 0.9,
  "barrido": 1.3,
  "filtro": "",
@@ -14,16 +14,6 @@
    "filtro": "eq=saturation=0.88"
   },
   {
-   "id": "8725793",
-   "nombre": "Plano",
-   "inicio": 0.3,
-   "fin": 3.3,
-   "x": 0.5,
-   "filtro": "colorbalance=rs=0.10:gs=0.02:bs=-0.10:rm=0.08:bm=-0.08:rh=0.04:bh=-0.05,eq=saturation=0.8",
-   "url": "https://videos.pexels.com/video-files/8725793/8725793-uhd_3840_2160_25fps.mp4",
-   "congelar": 4.6
-  },
-  {
    "id": "pxb211152",
    "nombre": "Jardín (9)",
    "inicio": 0.4,
@@ -32,5 +22,15 @@
    "url": "https://cdn.pixabay.com/video/2024/05/08/211152_large.mp4",
    "filtro": "eq=saturation=0.88"
   }
- ]
+ ],
+ "plano": {
+  "id": "8725793",
+  "nombre": "Plano",
+  "inicio": 0.3,
+  "fin": 3.3,
+  "x": 0.5,
+  "filtro": "colorbalance=rs=0.10:gs=0.02:bs=-0.10:rm=0.08:bm=-0.08:rh=0.04:bh=-0.05,eq=saturation=0.8",
+  "url": "https://videos.pexels.com/video-files/8725793/8725793-uhd_3840_2160_25fps.mp4",
+  "congelar": 4.6
+ }
 }
