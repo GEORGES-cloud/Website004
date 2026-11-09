@@ -298,8 +298,7 @@
       if (w > sitio) { s.style.whiteSpace = 'normal'; s.style.width = sitio + 'px'; s.style.lineHeight = '1.25'; s.style.textAlign = 'left'; }
     };
     var pick = function(svc, i, ev){
-      // al pasar el raton la nota cambia sin anunciarse (si no, un lector de pantalla leeria cada fila)
-      svc.querySelector('.svc-note').setAttribute('aria-live', ev === 'mouseenter' ? 'off' : 'polite');
+      svc.querySelector('.svc-note').setAttribute('aria-live', 'polite');
       // el texto del panel está borroso hasta que se toca un punto (o una fila); luego solo se lee el elegido
       if (ev) svc.classList.add('tocado');
       each(svc.querySelectorAll('.it'), function(b, n){
@@ -326,12 +325,9 @@
     each(svcs, function(svc, k){
       svc.setAttribute('role', 'tabpanel');
       svc.setAttribute('aria-label', tabs[k].textContent);
-      each(svc.querySelectorAll('.it'), function(b, i){
-        ['click','mouseenter','focus'].forEach(function(ev){ b.addEventListener(ev, function(){ pick(svc, i, ev); }); });
-      });
-      each(svc.querySelectorAll('.dot'), function(d, i){
-        ['click','mouseenter'].forEach(function(ev){ d.addEventListener(ev, function(){ pick(svc, i, ev); }); });
-      });
+      // (2026-11-09) solo cambia al pulsar: ni al pasar el ratón ni al enfocar
+      each(svc.querySelectorAll('.it'), function(b, i){ b.addEventListener('click', function(){ pick(svc, i, 'click'); }); });
+      each(svc.querySelectorAll('.dot'), function(d, i){ d.addEventListener('click', function(){ pick(svc, i, 'click'); }); });
       pick(svc, 0);
     });
     each(tabs, function(t, k){
@@ -345,16 +341,8 @@
         tabs[now].focus({ preventScroll: true });
       });
     });
-    // deslizar la foto con el dedo pasa a la linea siguiente o a la anterior
-    var x0 = null;
-    sx.addEventListener('touchstart', function(e){
-      x0 = e.target.closest('.svc-photo') ? e.touches[0].clientX : null;
-    }, { passive: true });
-    sx.addEventListener('touchend', function(e){
-      if (x0 === null) return;
-      var dx = e.changedTouches[0].clientX - x0; x0 = null;
-      if (Math.abs(dx) > 50) show(now + (dx < 0 ? 1 : -1));
-    }, { passive: true });
+    // (2026-11-09) ya no se cambia de línea deslizando la foto: al bajar por la página saltaba sola.
+    // Solo cambia al pulsar una pestaña.
     fila.addEventListener('scroll', bordes, { passive: true });
     var recoloca = function(){ bordes(); each(sx.querySelectorAll('.svc.is-on .dot.is-on'), coloca); };
     window.addEventListener('resize', recoloca);
