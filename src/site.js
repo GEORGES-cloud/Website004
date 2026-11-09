@@ -367,7 +367,8 @@
   // revelado al hacer scroll: solo titulares y fotos entran con un leve fundido hacia arriba,
   // escalonados entre hermanos (60 ms, tope 240 ms). El texto de lectura ya esta ahi cuando llegas,
   // y el hero queda fuera: es lo primero que se pinta.
-  var SEL = ['.grid-head > *','.rev-col > *','.duo-title > *','.duo .shot','.more a','.closer .wrap > *'].join(',');
+  // (2026-11-09) también los textos de cada bloque, con un pequeño rebote al asentarse
+  var SEL = ['.grid-head > *','.rev-col > *','.duo-title > *','.duo .shot','.more a','.closer .wrap > *','.closer-tel > *','.incl li','.row > *','.faq details','.ben','.pledges > div','.zonas li','.prose > *'].join(',');
   var els = document.querySelectorAll(SEL);
   if (!quiet && 'IntersectionObserver' in window && els.length) {
     var count = new Map();

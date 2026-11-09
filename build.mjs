@@ -276,7 +276,7 @@ function cabeza(l, p, t, css, js) {
     `<link rel="stylesheet" href="${css}">`,
     // la clase "js" se pone antes de pintar para que no parpadee la versión sin JavaScript
     // modo JS desde el principio; si site.js no llega a terminar (red cortada, error), al cargar se vuelve al modo sin JS
-    "<script>document.documentElement.classList.add('js');addEventListener('load',function(){if(!window.luxorListo)document.documentElement.classList.remove('js')})</script>",
+    "<script>(function(h){h.classList.add('js');var t0=Date.now();try{if(sessionStorage.getItem('luxor-carga'))h.classList.add('sin-carga');else sessionStorage.setItem('luxor-carga','1')}catch(e){}addEventListener('load',function(){if(!window.luxorListo)h.classList.remove('js');setTimeout(function(){h.classList.add('cargada')},Math.max(0,1300-(Date.now()-t0)))})})(document.documentElement)</script>",
     `<script src="${js}" defer></script>`,
     p.oculta ? '' : `<script type="application/ld+json">${jsonld(l, p, t)}</script>`,
   ].filter(Boolean).map((x) => '  ' + x).join('\n');

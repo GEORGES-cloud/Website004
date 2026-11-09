@@ -23,11 +23,12 @@
   <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/inter-cyrillic-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.885b317178.css">
-  <script>document.documentElement.classList.add('js');addEventListener('load',function(){if(!window.luxorListo)document.documentElement.classList.remove('js')})</script>
-  <script src="/assets/site.8f30261b0f.js" defer></script>
+  <link rel="stylesheet" href="/assets/site.21680f7d8e.css">
+  <script>(function(h){h.classList.add('js');var t0=Date.now();try{if(sessionStorage.getItem('luxor-carga'))h.classList.add('sin-carga');else sessionStorage.setItem('luxor-carga','1')}catch(e){}addEventListener('load',function(){if(!window.luxorListo)h.classList.remove('js');setTimeout(function(){h.classList.add('cargada')},Math.max(0,1300-(Date.now()-t0)))})})(document.documentElement)</script>
+  <script src="/assets/site.4b2dfb8b9a.js" defer></script>
 </head>
 <body data-pagina="404">
+<div class="carga" aria-hidden="true"><span class="carga-logo"><i></i></span></div>
 <a class="saltar" href="#contenido">Перейти к содержанию</a>
 <header class="masthead">
   <div class="wrap">
@@ -55,10 +56,15 @@
 
 <nav class="menu" id="menu" aria-label="Главное меню" hidden>
   <div class="wrap">
-    <ul class="menu-main">
-      <li><a href="/ru/services/project-management/">Управление проектами</a></li>
-      <li><a href="/ru/services/renovation-home-staging/">Ремонт и хоум-стейджинг</a></li>
-      <li><a href="/ru/services/maintenance-cleaning/">Обслуживание и уборка</a></li>
+    <div class="menu-grupo">
+      <p class="menu-tit">Услуги</p>
+      <ul class="menu-main menu-svc">
+        <li><a href="/ru/services/project-management/" data-s="proyectos"><span class="num">П01</span> <span>Управление проектами</span></a></li>
+        <li><a href="/ru/services/renovation-home-staging/" data-s="reformas"><span class="num">Р02</span> <span>Ремонт и хоум-стейджинг</span></a></li>
+        <li><a href="/ru/services/maintenance-cleaning/" data-s="mantenimiento"><span class="num">О03</span> <span>Обслуживание и уборка</span></a></li>
+      </ul>
+    </div>
+    <ul class="menu-main menu-sec">
       <li><a href="/ru/about/">О компании</a></li>
       <li><a href="/ru/quote/">Узнать стоимость</a></li>
     </ul>

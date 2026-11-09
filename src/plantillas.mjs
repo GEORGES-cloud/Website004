@@ -63,8 +63,13 @@ ${SERVICIOS.map((s) => `      <a href="{{url:${s.id}}}">${s.corto}</a>`).join('\
 
 <nav class="menu" id="menu" aria-label="Menú principal" hidden>
   <div class="wrap">
-    <ul class="menu-main">
-${SERVICIOS.map((s) => `      <li><a href="{{url:${s.id}}}">${s.menu}</a></li>`).join('\n')}
+    <div class="menu-grupo">
+      <p class="menu-tit">Servicios</p>
+      <ul class="menu-main menu-svc">
+${SERVICIOS.map((s) => `        <li><a href="{{url:${s.id}}}" data-s="${s.id}"><span class="num">{{num:${s.id}}}</span> <span>${s.menu}</span></a></li>`).join('\n')}
+      </ul>
+    </div>
+    <ul class="menu-main menu-sec">
       <li><a href="{{url:nosotros}}">Quiénes somos</a></li>
       <li><a href="{{url:presupuesto}}">Pedir presupuesto</a></li>
     </ul>
@@ -542,7 +547,8 @@ export const PAGINAS = [
 ];
 
 // Todo lo que va dentro de <body>
-export const cuerpo = (pagina) => `<a class="saltar" href="#contenido">Saltar al contenido</a>
+export const cuerpo = (pagina) => `<div class="carga" aria-hidden="true"><span class="carga-logo"><i></i></span></div>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
 ${cabecera}
 
 <main id="contenido" tabindex="-1">

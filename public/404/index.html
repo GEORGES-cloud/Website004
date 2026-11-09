@@ -22,11 +22,12 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/site.885b317178.css">
-  <script>document.documentElement.classList.add('js');addEventListener('load',function(){if(!window.luxorListo)document.documentElement.classList.remove('js')})</script>
-  <script src="/assets/site.8f30261b0f.js" defer></script>
+  <link rel="stylesheet" href="/assets/site.21680f7d8e.css">
+  <script>(function(h){h.classList.add('js');var t0=Date.now();try{if(sessionStorage.getItem('luxor-carga'))h.classList.add('sin-carga');else sessionStorage.setItem('luxor-carga','1')}catch(e){}addEventListener('load',function(){if(!window.luxorListo)h.classList.remove('js');setTimeout(function(){h.classList.add('cargada')},Math.max(0,1300-(Date.now()-t0)))})})(document.documentElement)</script>
+  <script src="/assets/site.4b2dfb8b9a.js" defer></script>
 </head>
 <body data-pagina="404">
+<div class="carga" aria-hidden="true"><span class="carga-logo"><i></i></span></div>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
 <header class="masthead">
   <div class="wrap">
@@ -54,10 +55,15 @@
 
 <nav class="menu" id="menu" aria-label="Menú principal" hidden>
   <div class="wrap">
-    <ul class="menu-main">
-      <li><a href="/servicios/project-management/">Project management</a></li>
-      <li><a href="/servicios/reformas-home-staging/">Reformas y home staging</a></li>
-      <li><a href="/servicios/mantenimiento-limpieza/">Mantenimiento y limpieza</a></li>
+    <div class="menu-grupo">
+      <p class="menu-tit">Servicios</p>
+      <ul class="menu-main menu-svc">
+        <li><a href="/servicios/project-management/" data-s="proyectos"><span class="num">P01</span> <span>Project management</span></a></li>
+        <li><a href="/servicios/reformas-home-staging/" data-s="reformas"><span class="num">R02</span> <span>Reformas y home staging</span></a></li>
+        <li><a href="/servicios/mantenimiento-limpieza/" data-s="mantenimiento"><span class="num">M03</span> <span>Mantenimiento y limpieza</span></a></li>
+      </ul>
+    </div>
+    <ul class="menu-main menu-sec">
       <li><a href="/nosotros/">Quiénes somos</a></li>
       <li><a href="/presupuesto/">Pedir presupuesto</a></li>
     </ul>

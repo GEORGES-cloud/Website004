@@ -1108,3 +1108,48 @@ html.js .svc:not(.tocado) .dot span{display:none!important}
 .av-tel:hover{border-color:var(--tinta)}
 .av-no{align-self:center;padding:.6rem 1rem;border:0;background:transparent;font:400 .875rem var(--f);color:var(--tinta-2);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .av-pista{padding:0 46px 0 68px;font-size:.7rem;letter-spacing:.12em;text-align:center}
+
+/* ============================================================
+   MENÚ DEL MÓVIL (2026-11-09), inspirado en el de De Antonio Yachts:
+   «Servicios» en negrita, los servicios grandes con su código,
+   un filete y el resto en mayúsculas finas. Sin rayas entre filas.
+   ============================================================ */
+.menu .wrap{gap:clamp(1.75rem,5vh,2.75rem);padding-block:clamp(1.75rem,5vh,3rem) 1.5rem}
+.menu-tit{margin:0 0 .9rem;font-family:var(--f-tit);font-size:clamp(1.9rem,8vw,2.6rem);font-weight:600;line-height:1;letter-spacing:.01em;text-transform:uppercase}
+.menu-main{border-top:0}
+.menu-main li{border-bottom:0}
+.menu-svc{display:flex;flex-direction:column;gap:.2rem;padding-left:clamp(1rem,5vw,1.75rem)}
+.menu-svc a{display:flex;align-items:baseline;gap:.75rem;padding:.45rem 0;font-family:var(--f);font-size:clamp(1.55rem,6.6vw,2.1rem);font-weight:400;
+  text-transform:none;letter-spacing:-.02em;line-height:1.1}
+.menu-svc .num{flex:none;width:2.4rem;font-size:.75rem;font-weight:600;letter-spacing:.06em;color:var(--sc,var(--tierra))}
+.menu-sec{display:flex;flex-direction:column;gap:.15rem;padding-top:clamp(1.25rem,3vh,1.75rem);border-top:1px solid var(--linea)}
+.menu-sec a{padding:.4rem 0 .4rem clamp(1rem,5vw,1.75rem);font-family:var(--f-tit);font-size:clamp(1.3rem,5.4vw,1.6rem);font-weight:300;letter-spacing:.03em;text-transform:uppercase;line-height:1.2}
+.menu-main a:hover{color:var(--tinta-2)}
+.menu-main a[aria-current]{text-decoration:none;color:var(--tinta)}
+.menu-svc a[aria-current] span:last-child{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em}
+
+/* ============================================================
+   PANTALLA DE CARGA (2026-11-09): el logo se va llenando de abajo
+   arriba, como una fachada que se levanta, y luego todo sube y deja
+   ver la página. Solo en la primera página de cada visita.
+   ============================================================ */
+.carga{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:var(--noche);
+  transition:transform .85s cubic-bezier(.75,0,.2,1) .05s,visibility 0s .95s;animation:cargaFuera .01s 4s forwards}
+html:not(.js) .carga,html.sin-carga .carga{display:none}
+html.cargada .carga{transform:translateY(-100%);visibility:hidden}
+@keyframes cargaFuera{to{transform:translateY(-100%);visibility:hidden}}
+.carga-logo{position:relative;display:block;width:min(240px,56vw);aspect-ratio:620/324}
+.carga-logo::before,.carga-logo i{content:"";position:absolute;inset:0;-webkit-mask:url("/assets/logo-master-mask.webp") center/contain no-repeat;mask:url("/assets/logo-master-mask.webp") center/contain no-repeat}
+.carga-logo::before{background:rgba(255,255,255,.14)}
+.carga-logo i{background:#fff;clip-path:inset(100% 0 0 0);animation:llena 1.15s cubic-bezier(.6,0,.25,1) .15s forwards}
+.carga-logo::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:1px;background:rgba(255,255,255,.5);transform:scaleX(0);transform-origin:left;animation:linea 1.15s cubic-bezier(.6,0,.25,1) .15s forwards}
+@keyframes llena{to{clip-path:inset(0 0 0 0)}}
+@keyframes linea{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.carga-logo i{animation:none;clip-path:none}.carga-logo::after{animation:none;transform:none}.carga{transition:opacity .3s,visibility 0s .3s}html.cargada .carga{transform:none;opacity:0}}
+
+/* ============================================================
+   AL HACER SCROLL (2026-11-09): los textos entran un poco más abajo y
+   se asientan con un rebote mínimo, como si se clavaran a la página.
+   ============================================================ */
+html.js .rv{transform:translateY(22px);transition:opacity .55s var(--e-sal),transform .8s cubic-bezier(.2,1.45,.4,1);transition-delay:var(--d,0ms)}
+html.js .rv.in{transform:none}
